@@ -16,6 +16,20 @@
 		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
 		05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B523E16995009CED63 /* KingFisherWrapper.swift */; };
 		05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */; };
+		05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08BF23E1AB54009CED63 /* Trail.storyboard */; };
+		05BF08C223E1AB7F009CED63 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08C123E1AB7F009CED63 /* Auth.storyboard */; };
+		05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08C323E1AB94009CED63 /* Profile.storyboard */; };
+		05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08C523E1ABA4009CED63 /* Chat.storyboard */; };
+		05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08C723E1AC16009CED63 /* Campaign.storyboard */; };
+		05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08C923E1AC2C009CED63 /* Map.storyboard */; };
+		05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08D623E1D5D5009CED63 /* GHTabBarViewController.swift */; };
+		05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08D923E1E392009CED63 /* UIStoryboard+Extension.swift */; };
+		05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08DB23E1E55E009CED63 /* UIImage+Extension.swift */; };
+		05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08DD23E1FF40009CED63 /* MapViewController.swift */; };
+		05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08DF23E20008009CED63 /* TrailViewController.swift */; };
+		05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E123E2001C009CED63 /* CampaignViewController.swift */; };
+		05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E323E2002D009CED63 /* ChatViewController.swift */; };
+		05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E523E2003E009CED63 /* ProfileViewController.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +45,20 @@
 		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		05BF08B523E16995009CED63 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
+		05BF08BF23E1AB54009CED63 /* Trail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trail.storyboard; sourceTree = "<group>"; };
+		05BF08C123E1AB7F009CED63 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		05BF08C323E1AB94009CED63 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		05BF08C523E1ABA4009CED63 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		05BF08C723E1AC16009CED63 /* Campaign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Campaign.storyboard; sourceTree = "<group>"; };
+		05BF08C923E1AC2C009CED63 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		05BF08D623E1D5D5009CED63 /* GHTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHTabBarViewController.swift; sourceTree = "<group>"; };
+		05BF08D923E1E392009CED63 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		05BF08DB23E1E55E009CED63 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		05BF08DD23E1FF40009CED63 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		05BF08DF23E20008009CED63 /* TrailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailViewController.swift; sourceTree = "<group>"; };
+		05BF08E123E2001C009CED63 /* CampaignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
+		05BF08E323E2002D009CED63 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		05BF08E523E2003E009CED63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +99,7 @@
 			children = (
 				05BF08B323E0873B009CED63 /* Resource */,
 				05BF08AF23E0865D009CED63 /* Third Party Wrapper */,
+				05BF08D823E1E361009CED63 /* Extension */,
 				05BF08B023E08680009CED63 /* Model */,
 				05BF08B223E08692009CED63 /* Controller */,
 				05BF08B123E0868A009CED63 /* View */,
@@ -92,6 +121,10 @@
 		05BF08B023E08680009CED63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08D423E1AD37009CED63 /* Profile */,
+				05BF08D323E1AD26009CED63 /* Trail */,
+				05BF08D223E1AD1B009CED63 /* HTTP */,
+				05BF08D123E1AD14009CED63 /* User */,
 				05BF08B423E08858009CED63 /* Local Storage */,
 			);
 			path = Model;
@@ -100,8 +133,19 @@
 		05BF08B123E0868A009CED63 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08BE23E1AB10009CED63 /* Chat */,
+				05BF08BA23E1AA41009CED63 /* Map */,
+				05BF08BD23E1AA7A009CED63 /* Trail */,
+				05BF08B923E1AA27009CED63 /* Campaign */,
+				05BF08BC23E1AA51009CED63 /* Profile */,
 				058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */,
 				058873B623DB4A9B00B1612F /* Main.storyboard */,
+				05BF08C123E1AB7F009CED63 /* Auth.storyboard */,
+				05BF08C923E1AC2C009CED63 /* Map.storyboard */,
+				05BF08BF23E1AB54009CED63 /* Trail.storyboard */,
+				05BF08C723E1AC16009CED63 /* Campaign.storyboard */,
+				05BF08C523E1ABA4009CED63 /* Chat.storyboard */,
+				05BF08C323E1AB94009CED63 /* Profile.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -109,7 +153,13 @@
 		05BF08B223E08692009CED63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				058873B423DB4A9B00B1612F /* ViewController.swift */,
+				05BF08D523E1D186009CED63 /* Base */,
+				05BF08CB23E1AC91009CED63 /* Auth */,
+				05BF08CC23E1AC99009CED63 /* Map */,
+				05BF08CD23E1ACA4009CED63 /* Trail */,
+				05BF08D023E1ACBA009CED63 /* Campaign */,
+				05BF08CF23E1ACB4009CED63 /* Chat */,
+				05BF08CE23E1ACAD009CED63 /* Profile */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -129,6 +179,134 @@
 				058873B923DB4A9B00B1612F /* Go_Hiking.xcdatamodeld */,
 			);
 			path = "Local Storage";
+			sourceTree = "<group>";
+		};
+		05BF08B923E1AA27009CED63 /* Campaign */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Campaign;
+			sourceTree = "<group>";
+		};
+		05BF08BA23E1AA41009CED63 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		05BF08BC23E1AA51009CED63 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		05BF08BD23E1AA7A009CED63 /* Trail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Trail;
+			sourceTree = "<group>";
+		};
+		05BF08BE23E1AB10009CED63 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		05BF08CB23E1AC91009CED63 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		05BF08CC23E1AC99009CED63 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08DD23E1FF40009CED63 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		05BF08CD23E1ACA4009CED63 /* Trail */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08DF23E20008009CED63 /* TrailViewController.swift */,
+			);
+			path = Trail;
+			sourceTree = "<group>";
+		};
+		05BF08CE23E1ACAD009CED63 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08E523E2003E009CED63 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		05BF08CF23E1ACB4009CED63 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08E323E2002D009CED63 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		05BF08D023E1ACBA009CED63 /* Campaign */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08E123E2001C009CED63 /* CampaignViewController.swift */,
+			);
+			path = Campaign;
+			sourceTree = "<group>";
+		};
+		05BF08D123E1AD14009CED63 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		05BF08D223E1AD1B009CED63 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HTTP;
+			sourceTree = "<group>";
+		};
+		05BF08D323E1AD26009CED63 /* Trail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Trail;
+			sourceTree = "<group>";
+		};
+		05BF08D423E1AD37009CED63 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		05BF08D523E1D186009CED63 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				058873B423DB4A9B00B1612F /* ViewController.swift */,
+				05BF08D623E1D5D5009CED63 /* GHTabBarViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		05BF08D823E1E361009CED63 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08D923E1E392009CED63 /* UIStoryboard+Extension.swift */,
+				05BF08DB23E1E55E009CED63 /* UIImage+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
@@ -208,9 +386,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BF08C223E1AB7F009CED63 /* Auth.storyboard in Resources */,
 				058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */,
 				058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */,
+				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
+				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
+				05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */,
+				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
+				05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */,
 				058873B823DB4A9B00B1612F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,10 +449,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
+				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
+				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
+				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
+				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
+				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
+				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
+				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
+				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
