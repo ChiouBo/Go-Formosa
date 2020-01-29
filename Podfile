@@ -19,5 +19,15 @@ target 'Go Hiking' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  
+  pod 'Kingfisher'
+  pod 'MJRefresh'
+  pod 'IQKeyboardManagerSwift'
+  pod 'JGProgressHUD'
+  pod 'KeychainAccess'
+  pod 'FBSDKLoginKit'
+  pod 'SwiftLint'
+  pod 'Alamofire'
+  pod 'Starscream'
 
 end

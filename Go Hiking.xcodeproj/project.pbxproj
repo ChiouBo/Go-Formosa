@@ -14,6 +14,7 @@
 		058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058873BC23DB4AA100B1612F /* Assets.xcassets */; };
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
 		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
+		05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B523E16995009CED63 /* KingFisherWrapper.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +27,8 @@
 		058873BC23DB4AA100B1612F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05BF08B523E16995009CED63 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,16 +67,65 @@
 		058873AF23DB4A9B00B1612F /* Go Hiking */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08B323E0873B009CED63 /* Resource */,
+				05BF08AF23E0865D009CED63 /* Third Party Wrapper */,
+				05BF08B023E08680009CED63 /* Model */,
+				05BF08B223E08692009CED63 /* Controller */,
+				05BF08B123E0868A009CED63 /* View */,
 				058873B023DB4A9B00B1612F /* AppDelegate.swift */,
-				058873B423DB4A9B00B1612F /* ViewController.swift */,
-				058873B623DB4A9B00B1612F /* Main.storyboard */,
-				058873BC23DB4AA100B1612F /* Assets.xcassets */,
-				058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */,
 				058873C123DB4AA100B1612F /* Info.plist */,
-				058873C723DB4DE200B1612F /* GoogleService-Info.plist */,
-				058873B923DB4A9B00B1612F /* Go_Hiking.xcdatamodeld */,
 			);
 			path = "Go Hiking";
+			sourceTree = "<group>";
+		};
+		05BF08AF23E0865D009CED63 /* Third Party Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08B523E16995009CED63 /* KingFisherWrapper.swift */,
+			);
+			path = "Third Party Wrapper";
+			sourceTree = "<group>";
+		};
+		05BF08B023E08680009CED63 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08B423E08858009CED63 /* Local Storage */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		05BF08B123E0868A009CED63 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */,
+				058873B623DB4A9B00B1612F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		05BF08B223E08692009CED63 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				058873B423DB4A9B00B1612F /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		05BF08B323E0873B009CED63 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				058873BC23DB4AA100B1612F /* Assets.xcassets */,
+				058873C723DB4DE200B1612F /* GoogleService-Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		05BF08B423E08858009CED63 /* Local Storage */ = {
+			isa = PBXGroup;
+			children = (
+				058873B923DB4A9B00B1612F /* Go_Hiking.xcdatamodeld */,
+			);
+			path = "Local Storage";
 			sourceTree = "<group>";
 		};
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
@@ -211,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
+				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 			);
