@@ -3,24 +3,116 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Auth View Controller-->
         <scene sceneID="DCU-Wd-9TN">
             <objects>
-                <viewController id="2yc-L0-X9R" sceneMemberID="viewController">
+                <viewController id="2yc-L0-X9R" customClass="AuthViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N7V-ec-ZfY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVW-XR-rAA">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-eL-reJ">
+                                        <rect key="frame" x="40" y="612" width="334" height="48"/>
+                                        <color key="backgroundColor" name="Facebook"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="WfQ-Y8-RPg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Facebook 登入"/>
+                                        <connections>
+                                            <action selector="ghFacebookLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="fkK-S0-pJD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOw-7E-UUC">
+                                        <rect key="frame" x="40" y="680" width="334" height="48"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Qiw-Pe-zs5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Apple 登入"/>
+                                        <connections>
+                                            <action selector="ghAppleLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="vWo-3b-xP5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCQ-Tf-zTp">
+                                        <rect key="frame" x="40" y="748" width="334" height="48"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="aSZ-Bh-bHy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="登入"/>
+                                        <connections>
+                                            <action selector="ghLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="pz6-rh-ejV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBg-pW-vrM">
+                                        <rect key="frame" x="40" y="544" width="334" height="48"/>
+                                        <color key="backgroundColor" name="T1"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="XVW-qa-jPi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="免費註冊"/>
+                                        <connections>
+                                            <action selector="ghSignUp:" destination="2yc-L0-X9R" eventType="touchUpInside" id="Ux5-iR-uZ4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="1dY-hP-cKd"/>
+                                    <constraint firstAttribute="bottom" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="100" id="N42-Mw-nEl"/>
+                                    <constraint firstAttribute="trailing" secondItem="SCQ-Tf-zTp" secondAttribute="trailing" constant="40" id="NRP-Co-Azr"/>
+                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="top" secondItem="FOw-7E-UUC" secondAttribute="bottom" constant="20" id="OVN-z6-I1P"/>
+                                    <constraint firstAttribute="trailing" secondItem="KBg-pW-vrM" secondAttribute="trailing" constant="40" id="W6z-Bk-zwQ"/>
+                                    <constraint firstItem="FOw-7E-UUC" firstAttribute="top" secondItem="fwA-eL-reJ" secondAttribute="bottom" constant="20" id="hf7-Ts-zIM"/>
+                                    <constraint firstAttribute="trailing" secondItem="fwA-eL-reJ" secondAttribute="trailing" constant="40" id="iFZ-4p-dqH"/>
+                                    <constraint firstAttribute="trailing" secondItem="FOw-7E-UUC" secondAttribute="trailing" constant="40" id="jNx-1A-8QF"/>
+                                    <constraint firstItem="FOw-7E-UUC" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="st3-nx-Mft"/>
+                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="centerX" secondItem="jVW-XR-rAA" secondAttribute="centerX" id="ty5-NQ-0x7"/>
+                                    <constraint firstItem="fwA-eL-reJ" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="u0a-jZ-FsC"/>
+                                    <constraint firstItem="KBg-pW-vrM" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="uda-FC-bYR"/>
+                                    <constraint firstItem="fwA-eL-reJ" firstAttribute="top" secondItem="KBg-pW-vrM" secondAttribute="bottom" constant="20" id="xiT-da-q15"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <constraints>
+                            <constraint firstItem="jVW-XR-rAA" firstAttribute="centerX" secondItem="N7V-ec-ZfY" secondAttribute="centerX" id="5Ot-AG-roB"/>
+                            <constraint firstAttribute="bottom" secondItem="jVW-XR-rAA" secondAttribute="bottom" id="MYm-Y2-D12"/>
+                            <constraint firstItem="jVW-XR-rAA" firstAttribute="top" secondItem="N7V-ec-ZfY" secondAttribute="top" id="dgA-wX-3Be"/>
+                            <constraint firstItem="jVW-XR-rAA" firstAttribute="leading" secondItem="AiM-ao-EDv" secondAttribute="leading" id="rjI-T8-uqE"/>
+                            <constraint firstItem="jVW-XR-rAA" firstAttribute="trailing" secondItem="AiM-ao-EDv" secondAttribute="trailing" id="wXa-Cw-qdj"/>
+                            <constraint firstItem="jVW-XR-rAA" firstAttribute="centerY" secondItem="N7V-ec-ZfY" secondAttribute="centerY" id="wcc-US-6Ih"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="AiM-ao-EDv"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dH-Bh-ZbO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="-360"/>
+            <point key="canvasLocation" x="40.579710144927539" y="-360.26785714285711"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Facebook">
+            <color red="0.25926578039999998" green="0.40468230840000002" blue="0.69936054940000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="T1">
+            <color red="0.033892814069999999" green="0.71151572470000002" blue="0.68899410959999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
