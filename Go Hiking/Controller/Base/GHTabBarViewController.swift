@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FacebookLogin
+import FacebookCore
+import Alamofire
+import JGProgressHUD
 
 private enum Tab {
     
@@ -87,7 +91,7 @@ private enum Tab {
     }
 }
 
-class GHTabBarViewController: UITabBarController {
+class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     private let tabs: [Tab] = [.earth, .trail, .campaign, .chat, .profile]
     
@@ -100,22 +104,53 @@ class GHTabBarViewController: UITabBarController {
 
         viewControllers = tabs.map({ $0.controller() })
         
+        delegate = self
         // ChatTabBarItem 顯示未讀訊息對象個數
     }
 
-}
-
-extension GHTabBarViewController: UITabBarControllerDelegate {
-    
     func tabBarController(_ tabBarController: UITabBarController,
                           shouldSelect viewController: UIViewController) -> Bool {
         
         guard let navVC = viewController as? UINavigationController,
             navVC.viewControllers.first is ProfileViewController else { return true }
         
+                guard AccessToken.current?.tokenString != nil else {
         
+                    if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
         
+                        authVC.modalPresentationStyle = .overCurrentContext
         
+                        present(authVC, animated: false, completion: nil)
+                    }
+        
+                    return false
+                }
+        
+//        if AccessToken.current?.tokenString != nil {
+//
+//            Profile.loadCurrentProfile { (profile, error) in
+//
+//                if let profile = profile {
+//
+//                    print(profile.name ?? "")
+//
+//                    print(profile.imageURL(forMode: .square, size: CGSize(width: 300, height: 300)) ?? "")
+//
+//                    print(AccessToken.current?.tokenString ?? "")
+//                }
+//            }
+//
+//        } else if AccessToken.current?.tokenString == nil {
+//
+//            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+//
+//                authVC.modalPresentationStyle = .overCurrentContext
+//
+//                present(authVC, animated: false, completion: nil)
+//            }
+//        }
+//
+//
         return true
     }
 }
