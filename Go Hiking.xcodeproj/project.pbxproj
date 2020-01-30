@@ -30,6 +30,12 @@
 		05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E123E2001C009CED63 /* CampaignViewController.swift */; };
 		05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E323E2002D009CED63 /* ChatViewController.swift */; };
 		05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E523E2003E009CED63 /* ProfileViewController.swift */; };
+		05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E723E314AF009CED63 /* AuthViewController.swift */; };
+		05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08E923E325D0009CED63 /* UserProvider.swift */; };
+		05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08EB23E32784009CED63 /* HTTPClient.swift */; };
+		05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08EE23E328F4009CED63 /* GHConstant.swift */; };
+		05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */; };
+		05BF08F323E3310E009CED63 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F223E3310E009CED63 /* UserObject.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +65,12 @@
 		05BF08E123E2001C009CED63 /* CampaignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		05BF08E323E2002D009CED63 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		05BF08E523E2003E009CED63 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		05BF08E723E314AF009CED63 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		05BF08E923E325D0009CED63 /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
+		05BF08EB23E32784009CED63 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		05BF08EE23E328F4009CED63 /* GHConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHConstant.swift; sourceTree = "<group>"; };
+		05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		05BF08F223E3310E009CED63 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +179,7 @@
 		05BF08B323E0873B009CED63 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08ED23E328D4009CED63 /* Constant */,
 				058873BC23DB4AA100B1612F /* Assets.xcassets */,
 				058873C723DB4DE200B1612F /* GoogleService-Info.plist */,
 			);
@@ -219,6 +232,7 @@
 		05BF08CB23E1AC91009CED63 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08E723E314AF009CED63 /* AuthViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -266,6 +280,8 @@
 		05BF08D123E1AD14009CED63 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08E923E325D0009CED63 /* UserProvider.swift */,
+				05BF08F223E3310E009CED63 /* UserObject.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -273,6 +289,7 @@
 		05BF08D223E1AD1B009CED63 /* HTTP */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08EB23E32784009CED63 /* HTTPClient.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -305,8 +322,17 @@
 			children = (
 				05BF08D923E1E392009CED63 /* UIStoryboard+Extension.swift */,
 				05BF08DB23E1E55E009CED63 /* UIImage+Extension.swift */,
+				05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		05BF08ED23E328D4009CED63 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				05BF08EE23E328F4009CED63 /* GHConstant.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
@@ -449,16 +475,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
+				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
+				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
+				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
+				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
+				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
 				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
+				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
 				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
 			);

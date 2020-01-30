@@ -40,7 +40,7 @@ private enum Tab {
         
         controller.tabBarItem = tabBarItem()
         
-        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 8.0, left: 0.0, bottom: -8.0, right: 0.0)
         
         return controller
     }
@@ -66,8 +66,8 @@ private enum Tab {
         case .campaign:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Campaign_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Campaign_Selected)
+                image: UIImage.asset(.Icons_48px_Go_Normal),
+                selectedImage: UIImage.asset(.Icons_48px_Go_Selected)
             )
             
         case .chat:
@@ -103,4 +103,19 @@ class GHTabBarViewController: UITabBarController {
         // ChatTabBarItem 顯示未讀訊息對象個數
     }
 
+}
+
+extension GHTabBarViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
+        
+        guard let navVC = viewController as? UINavigationController,
+            navVC.viewControllers.first is ProfileViewController else { return true }
+        
+        
+        
+        
+        return true
+    }
 }
