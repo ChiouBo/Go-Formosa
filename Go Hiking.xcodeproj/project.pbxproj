@@ -37,6 +37,7 @@
 		05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */; };
 		05BF08F323E3310E009CED63 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F223E3310E009CED63 /* UserObject.swift */; };
 		05BF08F523E3349C009CED63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BF08F423E3349C009CED63 /* Accelerate.framework */; };
+		05BF08F723E429F3009CED63 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F623E429F3009CED63 /* UserManager.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		05BF08F223E3310E009CED63 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		05BF08F423E3349C009CED63 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		05BF08F623E429F3009CED63 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				05BF08E923E325D0009CED63 /* UserProvider.swift */,
 				05BF08F223E3310E009CED63 /* UserObject.swift */,
+				05BF08F623E429F3009CED63 /* UserManager.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
 				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
+				05BF08F723E429F3009CED63 /* UserManager.swift in Sources */,
 				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

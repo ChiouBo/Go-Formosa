@@ -112,8 +112,9 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                           shouldSelect viewController: UIViewController) -> Bool {
         
         guard let navVC = viewController as? UINavigationController,
-            navVC.viewControllers.first is ProfileViewController else { return true }
-        
+            navVC.viewControllers.first is ProfileViewController else {
+                return true
+        }
                 guard AccessToken.current?.tokenString != nil else {
         
                     if let authVC = UIStoryboard.auth.instantiateInitialViewController() {

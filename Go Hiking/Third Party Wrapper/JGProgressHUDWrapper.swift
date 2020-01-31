@@ -14,6 +14,8 @@ enum HUDType {
     case success(String)
     
     case waitinglist(String)
+    
+    case failure(String)
 }
 
 class LKProgressHUD {
@@ -40,6 +42,10 @@ class LKProgressHUD {
         case .waitinglist(let text):
             
             showWaitingList(text: text)
+            
+        case .failure(let text):
+            
+            showFailure(text: text)
         }
     }
     
@@ -69,6 +75,26 @@ class LKProgressHUD {
             
             DispatchQueue.main.async {
                 showWaitingList(text: text)
+            }
+            
+            return
+        }
+        
+        shared.hud.textLabel.text = text
+        
+        shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        
+        shared.hud.show(in: shared.view)
+        
+        shared.hud.dismiss(afterDelay: 1)
+    }
+    
+    static func showFailure(text: String = "Failure") {
+        
+        if Thread.isMainThread {
+            
+            DispatchQueue.main.async {
+                showFailure(text: text)
             }
             
             return
