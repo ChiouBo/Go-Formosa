@@ -7,24 +7,27 @@
 //
 
 import UIKit
+import Firebase
+import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var logout: UIButton!
+    
+    @IBAction func logout(_ sender: UIButton) {
+        
+        let manager = LoginManager()
+        
+        manager.logOut()
+        
+        self.presentingViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        logout.layer.cornerRadius = 24
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
