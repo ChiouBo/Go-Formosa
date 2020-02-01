@@ -21,9 +21,14 @@ class UserManager {
     
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
+//        print(Auth.auth().currentUser?.displayName)
+//        print(Auth.auth().currentUser?.uid)
+//        print(Auth.auth().currentUser?.email)
+//        print(Auth.auth().currentUser?.photoURL)
+        
         guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
-            //            let email = Auth.auth().currentUser?.email,
+//            let email = Auth.auth().currentUser?.email,
             let picture = Auth.auth().currentUser?.photoURL else { return }
         
         let pictureString = "\(picture)"
@@ -53,6 +58,8 @@ class UserManager {
                 print("Login error: \(error.localizedDescription)")
                 
             }
+            
+//            print(authResult?.user.email)
             
             completion(.success("SigninUserData"))
         }

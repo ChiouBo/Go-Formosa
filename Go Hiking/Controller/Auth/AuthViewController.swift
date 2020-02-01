@@ -24,14 +24,13 @@ class AuthViewController: UIViewController {
     
     @IBOutlet weak var ghLogin: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ghSignUp.layer.cornerRadius = 24
-        ghFacebookLogin.layer.cornerRadius = 24
-        ghAppleLogin.layer.cornerRadius = 24
-        ghLogin.layer.cornerRadius = 24
+        setButtonUI(button: ghSignUp)
+        setButtonUI(button: ghFacebookLogin)
+        setButtonUI(button: ghAppleLogin)
+        setButtonUI(button: ghLogin)
         
         if let token = AccessToken.current {
             
@@ -40,7 +39,6 @@ class AuthViewController: UIViewController {
             
             print("no login")
         }
-        
     }
     
     @IBAction func ghSignUp(_ sender: UIButton) {
@@ -51,6 +49,15 @@ class AuthViewController: UIViewController {
         let manager = LoginManager()
         
         manager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
+            
+//            switch result {
+//
+//                case .success(let grants, let declined, let token):
+//                    print(grants)
+//                    print(declined)
+//                    print(token)
+//                default: break
+//            }
             
             if case LoginResult.success(granted: _, declined: _, token: _) = result {
                 
@@ -107,5 +114,15 @@ class AuthViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func setButtonUI(button: UIButton) {
+        
+        button.layer.cornerRadius = 24
+        button.layer.shadowOffset = CGSize(width: 3, height: 3)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 5
+        button.layer.shadowColor = UIColor.lightGray.cgColor
+    }
+    
     
 }

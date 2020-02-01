@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
+import JGProgressHUD
+import Firebase
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
+    let userDB = Firestore.firestore()
     
     @IBOutlet weak var userName: UITextField!
     
@@ -22,45 +27,107 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var userSubmit: UIButton!
     
     @IBAction func userSubmit(_ sender: UIButton) {
+        
+        if let name = userName.text,
+            let email = userEmail.text,
+            let password = userPassword.text,
+            let confirmpassword = userConfirmPassword.text,
+            name != "",
+            email != "",
+            password != "",
+            confirmpassword != "" {
+            
+            if userPassword.text != userConfirmPassword.text {
+                
+                let alertController = UIAlertController(title: "Error", message: "欄位不可以空白！", preferredStyle: .alert)
+                
+                let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                present(alertController, animated: true, completion: nil)
+                
+            } else {
+                
+                Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { (user, error) in
+                    
+                    if error == nil {
+                        
+                        print("You have successfully signed up")
+                        
+                        self.addUserSignUpData()
+                        
+                        LKProgressHUD.showSuccess(text: "註冊成功！", viewController: self)
+                        
+                    } else {
+                        
+                        let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                        
+                        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        
+                        alertController.addAction(defaultAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
+            }
+        }
     }
     
-    func setTextField() {
+    let userID = Auth.auth().currentUser?.uid
+    
+    func addUserSignUpData() {
         
-        userName.layer.masksToBounds = true
-        userEmail.layer.masksToBounds = true
-        userPassword.layer.masksToBounds = true
-        userConfirmPassword.layer.masksToBounds = true
+        guard let name = userName.text,
+            let email = userEmail.text,
+            let password = userPassword.text,
+            let confirmpassword = userConfirmPassword.text else { return }
         
-        userName.layer.borderWidth = 1
-        userEmail.layer.borderWidth = 1
-        userPassword.layer.borderWidth = 1
-        userConfirmPassword.layer.borderWidth = 1
+        userDB.collection("userEmail").document("\(userEmail.text!)").setData([
         
-        userName.layer.cornerRadius = 25
-        userEmail.layer.cornerRadius = 25
-        userPassword.layer.cornerRadius = 25
-        userConfirmPassword.layer.cornerRadius = 25
+            "Name": name,
+            "Email": email,
+            "Password": password,
+            "Confirm": confirmpassword,
+            "ID": userID as Any
+        ]) { (error) in
+            
+            if let error = error {
+                
+                print(error)
+            }
+        }
+    }
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        userName.layer.borderColor = UIColor.T3?.cgColor
-        userEmail.layer.borderColor = UIColor.T3?.cgColor
-        userPassword.layer.borderColor = UIColor.T3?.cgColor
-        userConfirmPassword.layer.borderColor = UIColor.T3?.cgColor
+        setButton()
+        
+        setTextField(textField: userName)
+        setTextField(textField: userEmail)
+        setTextField(textField: userPassword)
+        setTextField(textField: userConfirmPassword)
+    }
+
+    func setTextField(textField: UITextField) {
+        
+        textField.layer.masksToBounds = true
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 25
+        textField.layer.borderColor = UIColor.T3?.cgColor
     }
     
     func setButton() {
         
         userSubmit.layer.cornerRadius = 24
+        userSubmit.layer.shadowOffset = CGSize(width: 3, height: 3)
+        userSubmit.layer.shadowOpacity = 0.7
+        userSubmit.layer.shadowRadius = 5
+        userSubmit.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setTextField()
-        
-        setButton()
-    }
-    
-
     
 
 }
