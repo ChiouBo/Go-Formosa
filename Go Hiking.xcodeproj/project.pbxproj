@@ -38,6 +38,10 @@
 		05BF08F323E3310E009CED63 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F223E3310E009CED63 /* UserObject.swift */; };
 		05BF08F523E3349C009CED63 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BF08F423E3349C009CED63 /* Accelerate.framework */; };
 		05BF08F723E429F3009CED63 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08F623E429F3009CED63 /* UserManager.swift */; };
+		05BF08FC23E5A4A9009CED63 /* CampaignTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08FA23E5A4A9009CED63 /* CampaignTableViewCell.swift */; };
+		05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08FB23E5A4A9009CED63 /* CampaignTableViewCell.xib */; };
+		05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08FE23E5AF28009CED63 /* SignUpViewController.swift */; };
+		05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090023E5B70D009CED63 /* UIColor+Extension.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +79,10 @@
 		05BF08F223E3310E009CED63 /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		05BF08F423E3349C009CED63 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		05BF08F623E429F3009CED63 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		05BF08FA23E5A4A9009CED63 /* CampaignTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignTableViewCell.swift; sourceTree = "<group>"; };
+		05BF08FB23E5A4A9009CED63 /* CampaignTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampaignTableViewCell.xib; sourceTree = "<group>"; };
+		05BF08FE23E5AF28009CED63 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		05BF090023E5B70D009CED63 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +210,8 @@
 		05BF08B923E1AA27009CED63 /* Campaign */ = {
 			isa = PBXGroup;
 			children = (
+				05BF08FA23E5A4A9009CED63 /* CampaignTableViewCell.swift */,
+				05BF08FB23E5A4A9009CED63 /* CampaignTableViewCell.xib */,
 			);
 			path = Campaign;
 			sourceTree = "<group>";
@@ -238,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08E723E314AF009CED63 /* AuthViewController.swift */,
+				05BF08FE23E5AF28009CED63 /* SignUpViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -329,6 +340,7 @@
 				05BF08D923E1E392009CED63 /* UIStoryboard+Extension.swift */,
 				05BF08DB23E1E55E009CED63 /* UIImage+Extension.swift */,
 				05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */,
+				05BF090023E5B70D009CED63 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -427,6 +439,7 @@
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
 				05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */,
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
+				05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */,
 				05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */,
 				058873B823DB4A9B00B1612F /* Main.storyboard in Resources */,
 			);
@@ -481,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
@@ -497,6 +511,8 @@
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
 				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
+				05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */,
+				05BF08FC23E5A4A9009CED63 /* CampaignTableViewCell.swift in Sources */,
 				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
 				05BF08F723E429F3009CED63 /* UserManager.swift in Sources */,

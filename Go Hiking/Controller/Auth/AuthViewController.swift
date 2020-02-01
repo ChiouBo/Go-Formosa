@@ -11,6 +11,7 @@ import FacebookLogin
 import FacebookCore
 import FBSDKLoginKit
 import Firebase
+import FirebaseFirestore
 import JGProgressHUD
 
 class AuthViewController: UIViewController {
@@ -55,39 +56,43 @@ class AuthViewController: UIViewController {
                 
                 print("Login Success")
                 
-                LKProgressHUD.showSuccess(text: "登入成功！")
-                
-                let hud = JGProgressHUD(style: .dark)
-                hud.textLabel.text = "登入成功"
-                hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-                hud.show(in: self.view)
-                hud.dismiss(afterDelay: 1.0)
+                LKProgressHUD.showSuccess(text: "登入成功！", viewController: self)
                 
                 let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current?.tokenString ?? "")
                 
-                Auth.auth().signIn(with: credential) { (authResult, error) in
-                    
-                    if let error = error {
+                UserManager.share.signinUserData { (result) in
+                    switch result {
                         
-                        print("Login error: \(error.localizedDescription)")
+                    case .success:
                         
-                        LKProgressHUD.showFailure(text: "Facebook 登入錯誤！")
+                        UserManager.share.saveUserData { result in
+                            
+                            switch result {
+                                
+                            case .success(let ya):
+                                print(ya)
+                                
+                            case .failure:
+                                
+                                print("error")
+                            }
+                        }
+                        
+                    case .failure:
+                        
+                        LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
+                        
                     }
-                    
+                }
                     print("\(credential)")
                     
-                }
-                
-                DispatchQueue.main.async {
-                    
-                    self.presentingViewController?.dismiss(animated: false, completion: nil)
-                }
+                    self.dismiss(animated: true, completion: nil)
                 
             } else {
                 
                 print("Login Fail")
                 
-                LKProgressHUD.showFailure(text: "Facebook 登入錯誤！")
+                LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
             }
         }
     }
@@ -98,9 +103,9 @@ class AuthViewController: UIViewController {
     @IBAction func ghLogin(_ sender: UIButton) {
     }
     
-    func onGoHikingLogin(token: String) {
+    @IBAction func guestUser(_ sender: UIButton) {
         
+        self.dismiss(animated: true, completion: nil)
     }
-    
     
 }

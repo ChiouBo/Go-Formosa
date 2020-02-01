@@ -22,13 +22,21 @@ struct UserObject: Codable {
 
 struct User: Codable {
 
-    let id: Int
-
-    let provider: String
+    let id: String
 
     let name: String
 
     let email: String
 
     let picture: String
+    
+    var todict: [String: Any] {
+        
+        return [
+            "id": id,
+            "name": name,
+            "email": email,
+            "picture": picture
+        ]
+    }
 }

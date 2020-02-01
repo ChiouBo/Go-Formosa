@@ -20,7 +20,10 @@ class ProfileViewController: UIViewController {
         
         manager.logOut()
         
-        self.presentingViewController?.dismiss(animated: false, completion: nil)
+        let mainStoryboard = UIStoryboard.main
+        guard let mainVC = mainStoryboard.instantiateViewController(identifier: "mainVC") as? GHTabBarViewController else { return }
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.window?.rootViewController = mainVC
     }
     
     
