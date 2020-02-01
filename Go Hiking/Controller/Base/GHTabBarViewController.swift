@@ -152,6 +152,10 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 //        }
 //
 //
+//        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+//        let profileVC = profileStoryboard.instantiateViewController(identifier: "")
+//        let delegate = UIApplication.shared.delegate as! AppDelegate
+//        delegate.window?.rootViewController = viewControllers?[4]
         return true
     }
 }

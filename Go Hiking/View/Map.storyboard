@@ -10,7 +10,7 @@
         <!--Map View Controller-->
         <scene sceneID="fpy-lk-c4h">
             <objects>
-                <viewController id="Xy9-G2-Eza" customClass="MapViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="earthVC" id="Xy9-G2-Eza" customClass="MapViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z4G-of-RcC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

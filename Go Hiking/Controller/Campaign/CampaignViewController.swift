@@ -14,6 +14,10 @@ class CampaignViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let apple = UINib(nibName: "CampaignTableViewCell", bundle: nil)
+        
+         
     }
     
 
