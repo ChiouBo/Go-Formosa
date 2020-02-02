@@ -11,6 +11,7 @@ import FacebookLogin
 import FacebookCore
 import Alamofire
 import JGProgressHUD
+import FirebaseAuth
 
 private enum Tab {
     
@@ -115,7 +116,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             navVC.viewControllers.first is ProfileViewController else {
                 return true
         }
-                guard AccessToken.current?.tokenString != nil else {
+        guard AccessToken.current?.tokenString != nil || Auth.auth().currentUser != nil else {
         
                     if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
         

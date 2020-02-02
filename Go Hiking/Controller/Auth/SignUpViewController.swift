@@ -8,7 +8,6 @@
 
 import UIKit
 import IQKeyboardManagerSwift
-import JGProgressHUD
 import Firebase
 import FirebaseAuth
 
@@ -39,7 +38,7 @@ class SignUpViewController: UIViewController {
             
             if userPassword.text != userConfirmPassword.text {
                 
-                let alertController = UIAlertController(title: "Error", message: "欄位不可以空白！", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Error", message: "輸入的密碼不一致！", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(defaultAction)
@@ -57,6 +56,11 @@ class SignUpViewController: UIViewController {
                         self.addUserSignUpData()
                         
                         LKProgressHUD.showSuccess(text: "註冊成功！", viewController: self)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                            
+                            self.navigationController?.popViewController(animated: true)
+                        }
                         
                     } else {
                         
@@ -105,24 +109,25 @@ class SignUpViewController: UIViewController {
         
         setButton()
         
-        setTextField(textField: userName)
-        setTextField(textField: userEmail)
-        setTextField(textField: userPassword)
-        setTextField(textField: userConfirmPassword)
+        setTextField(textField: userName, placeholder: "  Name")
+        setTextField(textField: userEmail, placeholder: "  Email")
+        setTextField(textField: userPassword, placeholder: "  Password")
+        setTextField(textField: userConfirmPassword, placeholder: "  Confirm Password")
     }
 
-    func setTextField(textField: UITextField) {
+    func setTextField(textField: UITextField, placeholder: String) {
         
         textField.layer.masksToBounds = true
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = 25
         textField.layer.borderColor = UIColor.T3?.cgColor
+        textField.placeholder = placeholder
     }
     
     func setButton() {
         
-        userSubmit.layer.cornerRadius = 24
-        userSubmit.layer.shadowOffset = CGSize(width: 3, height: 3)
+        userSubmit.layer.cornerRadius = 25
+        userSubmit.layer.shadowOffset = CGSize(width: 0, height: 3)
         userSubmit.layer.shadowOpacity = 0.7
         userSubmit.layer.shadowRadius = 5
         userSubmit.layer.shadowColor = UIColor.lightGray.cgColor

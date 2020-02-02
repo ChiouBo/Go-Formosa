@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
@@ -20,12 +21,25 @@ class ProfileViewController: UIViewController {
         
         manager.logOut()
         
+        do{
+            try Auth.auth().signOut()
+          
+        } catch let logOutError {
+          
+          print(logOutError)
+        }
+        
         let mainStoryboard = UIStoryboard.main
-        guard let mainVC = mainStoryboard.instantiateViewController(identifier: "mainVC") as? GHTabBarViewController else { return }
+        
+        guard let mainVC = mainStoryboard.instantiateViewController(
+            identifier: "mainVC") as? GHTabBarViewController else {
+                return
+        }
+        
         let delegate = UIApplication.shared.delegate as! AppDelegate
+        
         delegate.window?.rootViewController = mainVC
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
