@@ -108,6 +108,8 @@ class AuthViewController: UIViewController {
     }
     
     @IBAction func ghLogin(_ sender: UIButton) {
+        
+        
     }
     
     @IBAction func guestUser(_ sender: UIButton) {

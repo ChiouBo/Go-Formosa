@@ -64,7 +64,7 @@ class LKProgressHUD {
         
         shared.hud.textLabel.text = text
         
-        shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        shared.hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
         
         shared.hud.show(in: viewController.view)
         
@@ -84,7 +84,7 @@ class LKProgressHUD {
         
         shared.hud.textLabel.text = text
         
-        shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        shared.hud.indicatorView = JGProgressHUDErrorIndicatorView()
         
         shared.hud.show(in: viewController.view)
         
