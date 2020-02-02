@@ -10,6 +10,13 @@ import UIKit
 
 class CampaignTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var campaignTitle: UILabel!
+    
+    @IBOutlet weak var campaignLevel: UILabel!
+    
+    @IBOutlet weak var campaignImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

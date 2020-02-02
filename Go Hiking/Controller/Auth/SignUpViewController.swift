@@ -102,8 +102,6 @@ class SignUpViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -132,7 +130,4 @@ class SignUpViewController: UIViewController {
         userSubmit.layer.shadowRadius = 5
         userSubmit.layer.shadowColor = UIColor.lightGray.cgColor
     }
-    
-    
-
 }

@@ -21,10 +21,10 @@ class UserManager {
     
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
-        print(Auth.auth().currentUser?.displayName)
-        print(Auth.auth().currentUser?.uid)
-        print(Auth.auth().currentUser?.email)
-        print(Auth.auth().currentUser?.photoURL)
+//        print(Auth.auth().currentUser?.displayName)
+//        print(Auth.auth().currentUser?.uid)
+//        print(Auth.auth().currentUser?.email)
+//        print(Auth.auth().currentUser?.photoURL)
         
         guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
@@ -59,7 +59,7 @@ class UserManager {
                 
             }
             
-            print(authResult?.user.email)
+//            print(authResult?.user.email)
             
             completion(.success("SigninUserData"))
         }

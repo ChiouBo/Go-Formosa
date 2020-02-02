@@ -128,31 +128,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                     return false
                 }
         
-//        if AccessToken.current?.tokenString != nil {
-//
-//            Profile.loadCurrentProfile { (profile, error) in
-//
-//                if let profile = profile {
-//
-//                    print(profile.name ?? "")
-//
-//                    print(profile.imageURL(forMode: .square, size: CGSize(width: 300, height: 300)) ?? "")
-//
-//                    print(AccessToken.current?.tokenString ?? "")
-//                }
-//            }
-//
-//        } else if AccessToken.current?.tokenString == nil {
-//
-//            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
-//
-//                authVC.modalPresentationStyle = .overCurrentContext
-//
-//                present(authVC, animated: false, completion: nil)
-//            }
-//        }
-//
-//
+
 //        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
 //        let profileVC = profileStoryboard.instantiateViewController(identifier: "")
 //        let delegate = UIApplication.shared.delegate as! AppDelegate
