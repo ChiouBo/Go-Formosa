@@ -229,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqa-x8-skQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="351"/>
+            <point key="canvasLocation" x="1730" y="368"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="fzf-Em-C3j">
@@ -379,13 +379,13 @@
     </scenes>
     <resources>
         <namedColor name="Facebook">
-            <color red="0.25926578039999998" green="0.40468230840000002" blue="0.69936054940000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.25900000333786011" green="0.4050000011920929" blue="0.69900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="T1">
-            <color red="0.033892814069999999" green="0.71151572470000002" blue="0.68899410959999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.034000001847743988" green="0.71200001239776611" blue="0.68900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="T2">
-            <color red="0.219371289" green="0.7741386294" blue="0.75988715890000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.21899999678134918" green="0.77399998903274536" blue="0.75999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

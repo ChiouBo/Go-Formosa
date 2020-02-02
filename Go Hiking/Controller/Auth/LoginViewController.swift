@@ -65,7 +65,6 @@ class LoginViewController: UIViewController {
         setButton()
         setLoginTextField(textField: userLoginEmail, placeholder: "  Email")
         setLoginTextField(textField: userLoginPassword, placeholder: "  Password")
-        
     }
     
     func setLoginTextField(textField: UITextField, placeholder: String) {
