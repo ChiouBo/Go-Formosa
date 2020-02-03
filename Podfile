@@ -25,7 +25,13 @@ target 'Go Hiking' do
   pod 'IQKeyboardManagerSwift'
   pod 'JGProgressHUD'
   pod 'KeychainAccess'
+  pod 'ESPullToRefresh'
+  
   pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
+  pod 'FacebookLogin'
+  
   pod 'SwiftLint'
   pod 'Alamofire'
   pod 'Starscream'
