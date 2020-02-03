@@ -27,6 +27,19 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let barAppearance =  UINavigationBarAppearance()
+//        barAppearance.configureWithTransparentBackground()
+//        navigationController?.navigationBar.standardAppearance = barAppearance
+        
+        let navBarNude = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(navBarNude, for: .default)
+        self.navigationController?.navigationBar.shadowImage = navBarNude
+        
+        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        
         setButtonUI(button: ghSignUp)
         setButtonUI(button: ghFacebookLogin)
         setButtonUI(button: ghAppleLogin)
