@@ -10,7 +10,7 @@
         <!--Tab Bar View Controller-->
         <scene sceneID="3gz-fP-rIE">
             <objects>
-                <tabBarController id="GZe-l3-O1h" customClass="GHTabBarViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainVC" id="GZe-l3-O1h" customClass="GHTabBarViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n7j-3O-8R2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

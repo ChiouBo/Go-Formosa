@@ -14,6 +14,8 @@ enum HUDType {
     case success(String)
     
     case waitinglist(String)
+    
+    case failure(String)
 }
 
 class LKProgressHUD {
@@ -29,26 +31,12 @@ class LKProgressHUD {
         return (AppDelegate.shared?.window?.rootViewController!.view)!
     }
     
-    static func show(type: HUDType) {
+    static func showSuccess(text: String = "Success", viewController: UIViewController) {
         
-        switch type {
-            
-        case .success(let text):
-            
-            showSuccess(text: text)
-            
-        case .waitinglist(let text):
-            
-            showWaitingList(text: text)
-        }
-    }
-    
-    static func showSuccess(text: String = "Success") {
-        
-        if Thread.isMainThread {
+        if !Thread.isMainThread {
             
             DispatchQueue.main.async {
-                showSuccess(text: text)
+                showSuccess(text: text, viewController: viewController)
             }
             
             return
@@ -58,17 +46,17 @@ class LKProgressHUD {
         
         shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
         
-        shared.hud.show(in: shared.view)
+        shared.hud.show(in: viewController.view)
         
         shared.hud.dismiss(afterDelay: 1)
     }
     
-    static func showWaitingList(text: String = "Waiting List") {
+    static func showWaitingList(text: String = "Waiting List", viewController: UIViewController) {
         
-        if Thread.isMainThread {
+        if !Thread.isMainThread {
             
             DispatchQueue.main.async {
-                showWaitingList(text: text)
+                showWaitingList(text: text, viewController: viewController)
             }
             
             return
@@ -76,9 +64,29 @@ class LKProgressHUD {
         
         shared.hud.textLabel.text = text
         
-        shared.hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        shared.hud.indicatorView = JGProgressHUDIndeterminateIndicatorView()
         
-        shared.hud.show(in: shared.view)
+        shared.hud.show(in: viewController.view)
+        
+        shared.hud.dismiss(afterDelay: 1)
+    }
+    
+    static func showFailure(text: String = "Failure", viewController: UIViewController) {
+        
+        if !Thread.isMainThread {
+            
+            DispatchQueue.main.async {
+                showFailure(text: text, viewController: viewController)
+            }
+            
+            return
+        }
+        
+        shared.hud.textLabel.text = text
+        
+        shared.hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        
+        shared.hud.show(in: viewController.view)
         
         shared.hud.dismiss(afterDelay: 1)
     }

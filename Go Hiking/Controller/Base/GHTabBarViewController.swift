@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import FacebookLogin
+import FacebookCore
+import Alamofire
+import JGProgressHUD
+import FirebaseAuth
 
 private enum Tab {
     
@@ -40,7 +45,7 @@ private enum Tab {
         
         controller.tabBarItem = tabBarItem()
         
-        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
+        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 8.0, left: 0.0, bottom: -8.0, right: 0.0)
         
         return controller
     }
@@ -66,8 +71,8 @@ private enum Tab {
         case .campaign:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Campaign_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Campaign_Selected)
+                image: UIImage.asset(.Icons_48px_Go_Normal),
+                selectedImage: UIImage.asset(.Icons_48px_Go_Selected)
             )
             
         case .chat:
@@ -87,7 +92,7 @@ private enum Tab {
     }
 }
 
-class GHTabBarViewController: UITabBarController {
+class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
     private let tabs: [Tab] = [.earth, .trail, .campaign, .chat, .profile]
     
@@ -100,7 +105,34 @@ class GHTabBarViewController: UITabBarController {
 
         viewControllers = tabs.map({ $0.controller() })
         
+        delegate = self
         // ChatTabBarItem 顯示未讀訊息對象個數
     }
 
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
+        
+        guard let navVC = viewController as? UINavigationController,
+            navVC.viewControllers.first is ProfileViewController else {
+                return true
+        }
+        guard AccessToken.current?.tokenString != nil || Auth.auth().currentUser != nil else {
+        
+                    if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+        
+                        authVC.modalPresentationStyle = .overCurrentContext
+        
+                        present(authVC, animated: false, completion: nil)
+                    }
+        
+                    return false
+                }
+        
+
+//        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+//        let profileVC = profileStoryboard.instantiateViewController(identifier: "")
+//        let delegate = UIApplication.shared.delegate as! AppDelegate
+//        delegate.window?.rootViewController = viewControllers?[4]
+        return true
+    }
 }

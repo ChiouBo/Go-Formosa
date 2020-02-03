@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 import CoreData
 import Firebase
+import FacebookCore
+import FacebookLogin
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,11 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static let shared = UIApplication.shared.delegate as? AppDelegate
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    FirebaseApp.configure()
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        ApplicationDelegate.shared.application(app, open: url, options: options)
         return true
     }
-
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+        IQKeyboardManager.shared.enable = true
+        
+        FirebaseApp.configure()
+        
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true
+    }
 
     // MARK: - Core Data stack
 
