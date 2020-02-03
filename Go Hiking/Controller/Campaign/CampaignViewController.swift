@@ -45,7 +45,15 @@ class CampaignViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.self
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
+            style: .plain, target: self, action: nil)
+        navigationController?.navigationBar.barTintColor = UIColor.T4
+        
         navigationItem.searchController = searchController
+        
+        publicTableView.separatorStyle = .none
         
         setupElements()
     }
@@ -108,7 +116,7 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ucm-S8-Xwt">
-                                <rect key="frame" x="20" y="10" width="200" height="180"/>
+                                <rect key="frame" x="20" y="20" width="200" height="180"/>
                                 <color key="backgroundColor" name="T3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="NJD-zT-RCN"/>
@@ -47,9 +47,9 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="atV-cQ-Y6k" secondAttribute="bottom" constant="20" id="4Mx-Nk-0gt"/>
                             <constraint firstAttribute="trailing" secondItem="I1W-lu-1ZC" secondAttribute="trailing" constant="50" id="8fA-yQ-84Q"/>
-                            <constraint firstItem="Ucm-S8-Xwt" firstAttribute="top" secondItem="q6D-Sh-9qW" secondAttribute="top" constant="10" id="XrR-aa-2yk"/>
+                            <constraint firstItem="Ucm-S8-Xwt" firstAttribute="top" secondItem="q6D-Sh-9qW" secondAttribute="top" constant="20" id="XrR-aa-2yk"/>
                             <constraint firstItem="I1W-lu-1ZC" firstAttribute="leading" secondItem="Ucm-S8-Xwt" secondAttribute="trailing" constant="12" id="YJW-HB-Umv"/>
-                            <constraint firstAttribute="bottom" secondItem="Ucm-S8-Xwt" secondAttribute="bottom" constant="10" id="gGD-Kq-gg5"/>
+                            <constraint firstAttribute="bottom" secondItem="Ucm-S8-Xwt" secondAttribute="bottom" id="gGD-Kq-gg5"/>
                             <constraint firstItem="I1W-lu-1ZC" firstAttribute="centerY" secondItem="q6D-Sh-9qW" secondAttribute="centerY" id="whq-pg-NOC"/>
                             <constraint firstItem="Ucm-S8-Xwt" firstAttribute="leading" secondItem="q6D-Sh-9qW" secondAttribute="leading" constant="20" id="wyN-Kk-7BK"/>
                             <constraint firstItem="atV-cQ-Y6k" firstAttribute="leading" secondItem="q6D-Sh-9qW" secondAttribute="leading" constant="32" id="xMf-n0-rNp"/>
