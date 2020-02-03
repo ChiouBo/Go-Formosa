@@ -107,10 +107,10 @@ class SignUpViewController: UIViewController {
         
         setButton()
         
-        setTextField(textField: userName, placeholder: "  Name")
-        setTextField(textField: userEmail, placeholder: "  Email")
-        setTextField(textField: userPassword, placeholder: "  Password")
-        setTextField(textField: userConfirmPassword, placeholder: "  Confirm Password")
+        setTextField(textField: userName, placeholder: "Name")
+        setTextField(textField: userEmail, placeholder: "Email")
+        setTextField(textField: userPassword, placeholder: "Password")
+        setTextField(textField: userConfirmPassword, placeholder: "Confirm Password")
     }
 
     func setTextField(textField: UITextField, placeholder: String) {

@@ -151,7 +151,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-67-2gf">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-67-2gf" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
                                         <rect key="frame" x="40" y="291" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XUG-nU-Lpd"/>
@@ -159,7 +159,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-3j-kqG">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-3j-kqG" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
                                         <rect key="frame" x="40" y="361" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KPC-0D-qe4"/>
@@ -254,7 +254,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-2M-wgN">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-2M-wgN" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
                                 <rect key="frame" x="40" y="379" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2tX-83-Bfx"/>
@@ -269,7 +269,7 @@
                                     <constraint firstAttribute="height" constant="1" id="kTu-kS-u7z"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qkw-cO-euO">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qkw-cO-euO" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
                                 <rect key="frame" x="40" y="450" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VTk-ZX-MMH"/>
@@ -277,7 +277,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-zo-aJC">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-zo-aJC" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
                                 <rect key="frame" x="40" y="520" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kJC-5X-LNm"/>
@@ -285,7 +285,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOx-x0-2w6">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOx-x0-2w6" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
                                 <rect key="frame" x="40" y="590" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="J68-Bd-Rkt"/>
