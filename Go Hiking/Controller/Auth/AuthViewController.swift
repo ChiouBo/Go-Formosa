@@ -24,12 +24,7 @@ class AuthViewController: UIViewController {
     
     @IBOutlet weak var ghLogin: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        let barAppearance =  UINavigationBarAppearance()
-//        barAppearance.configureWithTransparentBackground()
-//        navigationController?.navigationBar.standardAppearance = barAppearance
+    func setNavVC() {
         
         let navBarNude = UIImage()
         navigationController?.navigationBar.setBackgroundImage(navBarNude, for: .default)
@@ -39,6 +34,16 @@ class AuthViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = backImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+//        let barAppearance =  UINavigationBarAppearance()
+//        barAppearance.configureWithTransparentBackground()
+//        navigationController?.navigationBar.standardAppearance = barAppearance
+        
+        setNavVC()
         
         setButtonUI(button: ghSignUp)
         setButtonUI(button: ghFacebookLogin)
@@ -138,8 +143,5 @@ class AuthViewController: UIViewController {
         button.layer.shadowRadius = 5
         button.layer.shadowColor = UIColor.lightGray.cgColor
     }
-    
-    let padding = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
-    
     
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Trail" id="KGk-i7-Jjw" customClass="TrailTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M001" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-Xy-dP2">
+                        <rect key="frame" x="20" y="15" width="130" height="100"/>
+                        <color key="backgroundColor" name="T5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="0Cr-Hh-DEC"/>
+                            <constraint firstAttribute="width" constant="130" id="Rco-d1-eJe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鳶嘴捎來小雪山國家步道" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5K-O6-dGx">
+                        <rect key="frame" x="160" y="15" width="234" height="20"/>
+                        <color key="tintColor" name="denim"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Mdk-Oy-hui"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" name="denim"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中市和平區" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiU-4Q-Kik">
+                        <rect key="frame" x="160" y="38.5" width="150" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="HVY-fA-2m6"/>
+                            <constraint firstAttribute="height" constant="20" id="OLn-kL-a3f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全線封閉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVv-Vs-L8T">
+                        <rect key="frame" x="324" y="49.5" width="80" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="027-Ka-vsG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="難易度：4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAY-ut-Web">
+                        <rect key="frame" x="160" y="63.5" width="100" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="BTY-PX-vgR"/>
+                            <constraint firstAttribute="width" constant="100" id="lvI-j6-FD1"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全程約 6.2 公里" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDX-Ic-Pc0">
+                        <rect key="frame" x="160" y="88.5" width="150" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="11q-EN-wOk"/>
+                            <constraint firstAttribute="height" constant="20" id="4yc-pN-0Aq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="a5K-O6-dGx" firstAttribute="leading" secondItem="Sv0-Xy-dP2" secondAttribute="trailing" constant="10" id="2eW-nH-jKF"/>
+                    <constraint firstItem="yiU-4Q-Kik" firstAttribute="leading" secondItem="Sv0-Xy-dP2" secondAttribute="trailing" constant="10" id="G9U-sd-yPK"/>
+                    <constraint firstItem="mVv-Vs-L8T" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GLv-Vl-dHN"/>
+                    <constraint firstItem="yiU-4Q-Kik" firstAttribute="top" secondItem="a5K-O6-dGx" secondAttribute="bottom" constant="3.5" id="I9G-K5-KpN"/>
+                    <constraint firstAttribute="bottom" secondItem="qDX-Ic-Pc0" secondAttribute="bottom" constant="11.5" id="LLE-iS-6hG"/>
+                    <constraint firstItem="qDX-Ic-Pc0" firstAttribute="top" secondItem="VAY-ut-Web" secondAttribute="bottom" constant="5" id="NQU-Dj-H1g"/>
+                    <constraint firstItem="a5K-O6-dGx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="PCe-Bb-wEw"/>
+                    <constraint firstAttribute="trailing" secondItem="a5K-O6-dGx" secondAttribute="trailing" constant="20" id="QFx-yC-6fT"/>
+                    <constraint firstItem="VAY-ut-Web" firstAttribute="top" secondItem="yiU-4Q-Kik" secondAttribute="bottom" constant="5" id="Z71-g5-iIR"/>
+                    <constraint firstAttribute="trailing" secondItem="mVv-Vs-L8T" secondAttribute="trailing" constant="10" id="nZK-9R-byr"/>
+                    <constraint firstItem="Sv0-Xy-dP2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="nlr-aV-Rzb"/>
+                    <constraint firstItem="qDX-Ic-Pc0" firstAttribute="leading" secondItem="Sv0-Xy-dP2" secondAttribute="trailing" constant="10" id="pKI-i5-pQ8"/>
+                    <constraint firstItem="VAY-ut-Web" firstAttribute="leading" secondItem="Sv0-Xy-dP2" secondAttribute="trailing" constant="10" id="sUV-L4-4hk"/>
+                    <constraint firstAttribute="bottom" secondItem="Sv0-Xy-dP2" secondAttribute="bottom" constant="5" id="vVJ-yo-E8o"/>
+                    <constraint firstItem="Sv0-Xy-dP2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="wZ9-pB-RWv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="trailImage" destination="Sv0-Xy-dP2" id="F5Q-FX-2qK"/>
+                <outlet property="trailLength" destination="qDX-Ic-Pc0" id="2ol-52-P7s"/>
+                <outlet property="trailLevel" destination="VAY-ut-Web" id="zhG-vC-f2i"/>
+                <outlet property="trailPosition" destination="yiU-4Q-Kik" id="rXa-p2-aiA"/>
+                <outlet property="trailStatus" destination="mVv-Vs-L8T" id="OVc-up-Gjd"/>
+                <outlet property="trailTitle" destination="a5K-O6-dGx" id="06M-GZ-Emx"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="M001" width="850" height="566"/>
+        <namedColor name="T5">
+            <color red="0.76700001955032349" green="0.96200001239776611" blue="0.95899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="denim">
+            <color red="0.23529411764705882" green="0.35294117647058826" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

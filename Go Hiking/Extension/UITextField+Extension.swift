@@ -28,6 +28,4 @@ class GHTextField: UITextField {
         super.awakeFromNib()
        
     }
-
-    
 }
