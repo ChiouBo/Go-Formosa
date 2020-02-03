@@ -1,21 +1,21 @@
 //
-//  CampaignViewController.swift
+//  PrivateListViewController.swift
 //  Go Hiking
 //
-//  Created by 邱博晟 on 2020/1/30.
+//  Created by 邱博晟 on 2020/2/3.
 //  Copyright © 2020 Chioubo. All rights reserved.
 //
 
 import UIKit
 import IQKeyboardManagerSwift
 
-class CampaignViewController: UIViewController {
-
+class PrivateListViewController: UIViewController {
+    
     var filteredCampaign = [Campaign]()
     
     let campaigns = Campaign.getAllCampaigns()
     
-    lazy var publicTableView: UITableView = {
+    lazy var privateTableView: UITableView = {
         let pTV = UITableView()
         let pCell = UINib(nibName: "CampaignTableViewCell", bundle: nil)
         pTV.translatesAutoresizingMaskIntoConstraints = false
@@ -34,49 +34,29 @@ class CampaignViewController: UIViewController {
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
         search.searchBar.scopeButtonTitles = ["All", "Easy", "Medium", "Hard"]
-        
         search.searchBar.delegate = self
-        
-        
         return search
     }()
-    
-    @objc func toPrivateList() {
-        
-        let controller = self.navigationController?.storyboard?.instantiateViewController(identifier: "Private")
-        self.navigationController?.pushViewController(controller!, animated: true)
-    }
-    
-    func setNavVC() {
-        
-        navigationController?.navigationBar.self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
-            style: .done, target: self, action: #selector(toPrivateList))
-        navigationController?.navigationBar.barTintColor = UIColor.T4
-        
-        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
-        navigationController?.navigationBar.backIndicatorImage = backImage
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavVC()
-        
+        navigationController?.navigationBar.self
+        self.title = "我的活動"
         navigationItem.searchController = searchController
         
-        publicTableView.separatorStyle = .none
+        privateTableView.separatorStyle = .none
         
         setupElements()
     }
-
+    
+    
+    
+    
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
         filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
-        
+            
             let doesCategoryMatch = (scope == "All") || (campaign.level == scope)
             
             if isSearchBarEmpty() {
@@ -88,9 +68,9 @@ class CampaignViewController: UIViewController {
             }
         })
         
-        publicTableView.reloadData()
+        privateTableView.reloadData()
     }
-
+    
     func isSearchBarEmpty() -> Bool {
         
         return searchController.searchBar.text?.isEmpty ?? true
@@ -104,14 +84,14 @@ class CampaignViewController: UIViewController {
     }
     
 }
-extension CampaignViewController: UISearchBarDelegate {
+extension PrivateListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
-extension CampaignViewController: UISearchResultsUpdating {
+extension PrivateListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
@@ -121,7 +101,7 @@ extension CampaignViewController: UISearchResultsUpdating {
     }
 }
 
-extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
+extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -154,15 +134,15 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension CampaignViewController {
+extension PrivateListViewController {
     
     func setupElements() {
         
-        view.addSubview(publicTableView)
+        view.addSubview(privateTableView)
         
-        publicTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        publicTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        publicTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        publicTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        privateTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        privateTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        privateTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        privateTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
     }
 }
