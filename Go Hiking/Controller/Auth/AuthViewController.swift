@@ -139,5 +139,7 @@ class AuthViewController: UIViewController {
         button.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
+    let padding = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 3)
+    
     
 }

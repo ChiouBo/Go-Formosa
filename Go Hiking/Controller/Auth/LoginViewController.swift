@@ -63,8 +63,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setButton()
-        setLoginTextField(textField: userLoginEmail, placeholder: "  Email")
-        setLoginTextField(textField: userLoginPassword, placeholder: "  Password")
+        setLoginTextField(textField: userLoginEmail, placeholder: "Email")
+        setLoginTextField(textField: userLoginPassword, placeholder: "Password")
     }
     
     func setLoginTextField(textField: UITextField, placeholder: String) {
