@@ -51,6 +51,7 @@
 		05BF091023E80571009CED63 /* TrailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BF090E23E80571009CED63 /* TrailTableViewCell.xib */; };
 		05BF091223E80C84009CED63 /* TrailObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091123E80C84009CED63 /* TrailObject.swift */; };
 		05BF091423E8116A009CED63 /* TrailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091323E8116A009CED63 /* TrailManager.swift */; };
+		05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091523E960B8009CED63 /* TrailTypeObject.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,7 @@
 		05BF090E23E80571009CED63 /* TrailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailTableViewCell.xib; sourceTree = "<group>"; };
 		05BF091123E80C84009CED63 /* TrailObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailObject.swift; sourceTree = "<group>"; };
 		05BF091323E8116A009CED63 /* TrailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailManager.swift; sourceTree = "<group>"; };
+		05BF091523E960B8009CED63 /* TrailTypeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTypeObject.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			children = (
 				05BF091123E80C84009CED63 /* TrailObject.swift */,
 				05BF091323E8116A009CED63 /* TrailManager.swift */,
+				05BF091523E960B8009CED63 /* TrailTypeObject.swift */,
 			);
 			path = Trail;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
+				05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
