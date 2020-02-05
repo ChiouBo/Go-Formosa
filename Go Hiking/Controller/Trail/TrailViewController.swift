@@ -9,9 +9,17 @@
 import UIKit
 
 struct Buttons {
+    
     var buttons: [String]
 }
 
+struct TrailInfo {
+    var trailName: String
+    
+    var trailPosition: String
+    
+    var trailDescrip: String
+}
 class TrailViewController: UIViewController {
     
     var trailResponse = TrailResponse()
@@ -67,11 +75,15 @@ class TrailViewController: UIViewController {
     
     func setNavVC() {
         
-        navigationController?.navigationBar.self
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(filterBtn))
         navigationController?.navigationBar.barTintColor = UIColor.T4
+        
+        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
     override func viewDidLoad() {
@@ -87,6 +99,11 @@ class TrailViewController: UIViewController {
         setupElements()
         
         setNavVC()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+       navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     // MARK: - Filter for Search
@@ -170,8 +187,14 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         let trail = UIStoryboard(name: "Trail", bundle: nil)
         guard let trailVC = trail.instantiateViewController(identifier: "TrailDetail") as? TrailDetailViewController else { return }
         
-        show(trailVC, sender: nil)
+//        var trailDict = ["Name": trailFilter[indexPath.row].trCname]
+//        trailVC.trailDict = trailDict
+        let trailInfo = TrailInfo(trailName: trailFilter[indexPath.row].trCname,
+                                  trailPosition: trailFilter[indexPath.row].trPosition ?? "",
+                                  trailDescrip: trailFilter[indexPath.row].guideContent ?? "")
+        trailVC.trailDict = trailInfo
         
+        show(trailVC, sender: nil)
     }
 }
 
