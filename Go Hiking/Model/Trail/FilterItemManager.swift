@@ -13,13 +13,23 @@ class FilterItemManager {
     let positionGroup = FilterGroup(
     
         items: [
-            SelectedItem.allPosition,
-            SelectedItem.east,
-            SelectedItem.west,
-            SelectedItem.north,
-            SelectedItem.south
+            PositionItem.allPosition,
+            PositionItem.east,
+            PositionItem.west,
+            PositionItem.north,
+            PositionItem.south
         ]
     )
     
-    lazy var groups: FilterGroup = positionGroup
+    let levelGroup = FilterGroup(
+    
+        items: [
+            LevelItem.allLevel,
+            LevelItem.easy,
+            LevelItem.medium,
+            LevelItem.hard
+        ]
+    )
+    
+    lazy var groups: [FilterGroup] = [positionGroup, levelGroup]
 }

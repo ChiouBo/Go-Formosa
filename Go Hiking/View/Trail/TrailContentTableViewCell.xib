@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrailContent" rowHeight="432" id="KGk-i7-Jjw" customClass="TrailContentTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="465"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="465"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="知道天空多藍的人啊" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNY-d2-sR3">
+                        <rect key="frame" x="20" y="12" width="374" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="ydM-Jl-h67"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市信義區" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cho-yt-byP">
+                        <rect key="frame" x="243.5" y="66" width="110.5" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2v-U7-bFJ">
+                        <rect key="frame" x="370" y="64" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="UKc-U8-e3Q"/>
+                            <constraint firstAttribute="height" constant="24" id="xA7-0A-RRc"/>
+                        </constraints>
+                        <state key="normal" image="Icons_24px_Heart_Normal"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jN9-J9-kHD">
+                        <rect key="frame" x="20" y="108" width="374" height="317"/>
+                        <string key="text">一點都不喜歡啊
+恐怖電影和焦糖味的吻
+完全無法喜歡上
+但是呢
+我現在卻一邊痛苦地叫喊著
+一邊尋找你的側臉  空虛的心裡黑洞
+太暗了甚麼也看不清
+明明沒有原因
+但身體逕自奔走向前  從染紅的天空中
+滿溢而出的雨點打在我身上
+湧現出來 浮現出來
+是我最脆弱時的影子
+藏不住的是那過往的青澀回憶
+於是我再次尋求著同樣的日子</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="jN9-J9-kHD" secondAttribute="trailing" constant="20" id="09f-l7-3EH"/>
+                    <constraint firstItem="sNY-d2-sR3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="178-SL-0nx"/>
+                    <constraint firstAttribute="trailing" secondItem="k2v-U7-bFJ" secondAttribute="trailing" constant="20" id="2VE-ZK-oOe"/>
+                    <constraint firstAttribute="bottom" secondItem="jN9-J9-kHD" secondAttribute="bottom" constant="40" id="4IN-Bp-uS9"/>
+                    <constraint firstItem="jN9-J9-kHD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Enf-ME-oXK"/>
+                    <constraint firstItem="jN9-J9-kHD" firstAttribute="top" secondItem="k2v-U7-bFJ" secondAttribute="bottom" constant="20" id="PAj-CF-K7V"/>
+                    <constraint firstAttribute="trailing" secondItem="sNY-d2-sR3" secondAttribute="trailing" constant="20" id="dZx-FT-gE1"/>
+                    <constraint firstItem="sNY-d2-sR3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="gMa-t1-jWa"/>
+                    <constraint firstItem="cho-yt-byP" firstAttribute="top" secondItem="sNY-d2-sR3" secondAttribute="bottom" constant="14" id="lip-rQ-Flj"/>
+                    <constraint firstItem="k2v-U7-bFJ" firstAttribute="top" secondItem="sNY-d2-sR3" secondAttribute="bottom" constant="12" id="pky-sg-1wk"/>
+                    <constraint firstItem="k2v-U7-bFJ" firstAttribute="leading" secondItem="cho-yt-byP" secondAttribute="trailing" constant="16" id="wgg-8l-j4q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="trailDescription" destination="jN9-J9-kHD" id="sOw-Pr-cYi"/>
+                <outlet property="trailFavorite" destination="k2v-U7-bFJ" id="sot-Sy-8ow"/>
+                <outlet property="trailLocation" destination="cho-yt-byP" id="vOr-5G-zSw"/>
+                <outlet property="trailTitle" destination="sNY-d2-sR3" id="m5X-tB-8xR"/>
+            </connections>
+            <point key="canvasLocation" x="130.43478260869566" y="232.70089285714283"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Icons_24px_Heart_Normal" width="24" height="24"/>
+    </resources>
+</document>
