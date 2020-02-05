@@ -10,15 +10,16 @@ import UIKit
 
 protocol FilterItem {
     
-    var title: String { get }
+    var filterButton: String { get }
 }
 
 struct FilterGroup {
     
     let items: [FilterItem]
+    
 }
 
-enum SelectedItem: FilterItem {
+enum PositionItem: FilterItem {
     
     case allPosition
     
@@ -29,12 +30,12 @@ enum SelectedItem: FilterItem {
     case north
     
     case south
-    
-    var title: String {
+
+    var filterButton: String {
         
         switch self {
             
-        case .allPosition: return NSLocalizedString("全部")
+        case .allPosition: return NSLocalizedString("全部區域")
             
         case .east: return NSLocalizedString("東部")
             
@@ -43,6 +44,32 @@ enum SelectedItem: FilterItem {
         case .north: return NSLocalizedString("北部")
             
         case .south: return NSLocalizedString("南部")
+        }
+    }
+}
+
+enum LevelItem: FilterItem {
+    
+    case allLevel
+    
+    case easy
+    
+    case medium
+    
+    case hard
+    
+    var filterButton: String {
+        
+        switch self {
+            
+        case .allLevel: return NSLocalizedString("全部類型")
+            
+        case .easy: return NSLocalizedString("郊  山")
+            
+        case .medium: return NSLocalizedString("中級山")
+            
+        case .hard: return NSLocalizedString("百  岳")
+            
         }
     }
 }

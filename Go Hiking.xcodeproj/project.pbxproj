@@ -14,6 +14,11 @@
 		058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058873BC23DB4AA100B1612F /* Assets.xcassets */; };
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
 		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
+		05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */; };
+		05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */; };
+		05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */; };
+		05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */; };
+		05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */; };
 		05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B523E16995009CED63 /* KingFisherWrapper.swift */; };
 		05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */; };
 		05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08BF23E1AB54009CED63 /* Trail.storyboard */; };
@@ -72,6 +77,11 @@
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
+		05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailContentTableViewCell.swift; sourceTree = "<group>"; };
+		05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailContentTableViewCell.xib; sourceTree = "<group>"; };
+		05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailLocationTableViewCell.swift; sourceTree = "<group>"; };
+		05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailLocationTableViewCell.xib; sourceTree = "<group>"; };
 		05BF08B523E16995009CED63 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		05BF08BF23E1AB54009CED63 /* Trail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trail.storyboard; sourceTree = "<group>"; };
@@ -272,6 +282,10 @@
 				05BF090E23E80571009CED63 /* TrailTableViewCell.xib */,
 				05BF091F23E99B2C009CED63 /* FilterCollectionViewCell.swift */,
 				05BF092023E99B2C009CED63 /* FilterCollectionViewCell.xib */,
+				05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */,
+				05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */,
+				05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */,
+				05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */,
 			);
 			path = Trail;
 			sourceTree = "<group>";
@@ -305,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08DF23E20008009CED63 /* TrailViewController.swift */,
+				05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */,
 			);
 			path = Trail;
 			sourceTree = "<group>";
@@ -484,12 +499,14 @@
 			files = (
 				05BF08C223E1AB7F009CED63 /* Auth.storyboard in Resources */,
 				058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */,
+				05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */,
 				05BF091023E80571009CED63 /* TrailTableViewCell.xib in Resources */,
 				05BF092223E99B2C009CED63 /* FilterCollectionViewCell.xib in Resources */,
 				058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */,
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
+				05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */,
 				05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */,
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
 				05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */,
@@ -559,7 +576,9 @@
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
 				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
 				05BF090C23E7F70E009CED63 /* String+Extension.swift in Sources */,
+				05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
+				05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */,
 				05BF091A23E976BD009CED63 /* CreateCampaignViewController.swift in Sources */,
 				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
@@ -570,6 +589,7 @@
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
 				05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */,
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
+				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,

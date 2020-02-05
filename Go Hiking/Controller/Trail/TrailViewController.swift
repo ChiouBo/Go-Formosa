@@ -45,12 +45,17 @@ class TrailViewController: UIViewController {
     }()
     
     lazy var filterView: UICollectionView = {
-       let filter = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+        
+        let layoutObject = UICollectionViewFlowLayout.init()
+        let filter = UICollectionView(frame: CGRect.zero, collectionViewLayout: layoutObject)
         let filterButton = UINib(nibName: "FilterCollectionViewCell", bundle: nil)
         filter.translatesAutoresizingMaskIntoConstraints = false
+        filter.backgroundColor = UIColor.T4
         filter.delegate = self
         filter.dataSource = self
         filter.register(filterButton, forCellWithReuseIdentifier: "Filter")
+        filter.isScrollEnabled = true
+        layoutObject.scrollDirection = .vertical
         return filter
     }()
     
@@ -83,7 +88,8 @@ class TrailViewController: UIViewController {
         
         setNavVC()
     }
-  
+    
+    // MARK: - Filter for Search
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
         trailFilter = trailListData.filter({ (trail: Trail) -> Bool in
@@ -116,6 +122,8 @@ class TrailViewController: UIViewController {
     }
     
 }
+
+// MARK: - SearchBar
 extension TrailViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
@@ -131,6 +139,7 @@ extension TrailViewController: UISearchResultsUpdating {
     }
 }
 
+// MARK: - TableViewDelegate, TableViewDataSource
 extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -155,29 +164,42 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let trail = UIStoryboard(name: "Trail", bundle: nil)
+        guard let trailVC = trail.instantiateViewController(identifier: "TrailDetail") as? TrailDetailViewController else { return }
+        
+        show(trailVC, sender: nil)
+        
+    }
 }
 
+// MARK: - CollectionViewDelegate, CollectionViewDataSource
 extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        return filter.groups.count
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filter.groups.items.count
+        
+        return filter.groups[section].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        guard let filterCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Filter", for: indexPath) as? FilterCollectionViewCell else { return UICollectionViewCell() }
-            
-//        let cell = collectionView.dequeueReusableCell(
-//            withReuseIdentifier: "Filter",
-//            for: indexPath)
+        guard let filterCell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "Filter", for: indexPath)
+            as? FilterCollectionViewCell else {
+                return UICollectionViewCell() }
+
+        let item = filter.groups[indexPath.section].items[indexPath.row]
         
-//        guard let filterCell = cell as? FilterCollectionViewCell else { return cell }
-        
-        let item = filter.groups.items[indexPath.row]
-        
-        filterCell.layoutCell(title: item.title)
+        filterCell.layoutCell(title: item.filterButton)
         
         return filterCell
     }
@@ -188,8 +210,26 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width / 5.0, height: 50.0)
+        
+        if indexPath.section == 0 && indexPath.row == 0 {
+            
+            return CGSize(width: UIScreen.main.bounds.width / 4.0, height: 40.0)
+        
+        } else if indexPath.section == 1 && indexPath.row == 0 {
+            
+            return CGSize(width: UIScreen.main.bounds.width / 4.0, height: 40.0)
+            
+        } else if indexPath.section == 0 {
+            
+            return CGSize(width: UIScreen.main.bounds.width / 7.0, height: 40.0)
+        } else  {
+            
+            return CGSize(width: UIScreen.main.bounds.width / 5.2, height: 40.0)
+        }
+        
+        return CGSize.zero
     }
+    
     
     func collectionView(
         _ collectionView: UICollectionView,
@@ -197,7 +237,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
 
-        return UIEdgeInsets(top: 24.0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 10.0, left: 35, bottom: 0, right: 35)
     }
 
     func collectionView(
@@ -206,7 +246,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
 
-        return 24.0
+        return 20.0
     }
     
     func collectionView(
@@ -219,6 +259,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - Trail DataSource API
 extension TrailViewController: TrailResponseDelegate {
     
     func response(_ response: TrailResponse, get trailListData: [Trail]) {
@@ -234,6 +275,7 @@ extension TrailViewController: TrailResponseDelegate {
     }
 }
 
+// MARK: - ViewConstrants
 extension TrailViewController {
     
     func setupElements() {
@@ -250,7 +292,9 @@ extension TrailViewController {
 //        filterView.bottomAnchor.constraint(equalTo: trailTableView.topAnchor).isActive = true
         filterView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         filterView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        filterView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        filterView.heightAnchor.constraint(equalToConstant: 110).isActive = true
     }
     
 }
+
+// 收起filter, filter功能, 按鈕變色
