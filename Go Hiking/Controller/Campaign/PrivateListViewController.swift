@@ -42,6 +42,7 @@ class PrivateListViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.self
+        
         self.title = "我的活動"
         navigationItem.searchController = searchController
         
@@ -49,9 +50,6 @@ class PrivateListViewController: UIViewController {
         
         setupElements()
     }
-    
-    
-    
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         

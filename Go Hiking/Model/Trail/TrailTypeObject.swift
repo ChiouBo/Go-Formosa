@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - TrailTypeElement
-struct TrailTypeElement: Codable {
+struct TrailType: Codable {
     let trailid, trCname: String
     let trTyp: TrTyp
     let title, content, annDate, opendate: String
@@ -42,4 +42,4 @@ enum TrTyp: String, Codable {
     case 部分封閉 = "部分封閉"
 }
 
-typealias TrailType = [TrailTypeElement]
+typealias AllTrailType = [TrailType]
