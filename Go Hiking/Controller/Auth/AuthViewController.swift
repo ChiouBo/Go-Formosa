@@ -39,10 +39,6 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let barAppearance =  UINavigationBarAppearance()
-//        barAppearance.configureWithTransparentBackground()
-//        navigationController?.navigationBar.standardAppearance = barAppearance
-        
         setNavVC()
         
         setButtonUI(button: ghSignUp)
