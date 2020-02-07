@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateCampaignViewController: UIViewController {
+class RecordCampaignViewController: UIViewController {
     
     private enum infoType: Int {
         
