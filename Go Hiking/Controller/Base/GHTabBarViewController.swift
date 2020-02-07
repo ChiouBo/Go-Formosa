@@ -113,7 +113,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
                           shouldSelect viewController: UIViewController) -> Bool {
         
         guard let navVC = viewController as? UINavigationController,
-            navVC.viewControllers.first is ProfileViewController else {
+            navVC.viewControllers.first is ProfileViewController || navVC.viewControllers.first is ChatViewController else {
                 return true
         }
         guard AccessToken.current?.tokenString != nil || Auth.auth().currentUser != nil else {
@@ -127,12 +127,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
                     return false
                 }
-        
 
-//        let profileStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-//        let profileVC = profileStoryboard.instantiateViewController(identifier: "")
-//        let delegate = UIApplication.shared.delegate as! AppDelegate
-//        delegate.window?.rootViewController = viewControllers?[4]
         return true
     }
 }

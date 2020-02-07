@@ -43,7 +43,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = ""
         logout.layer.cornerRadius = 24
     }
     

@@ -14,6 +14,15 @@
 		058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058873BC23DB4AA100B1612F /* Assets.xcassets */; };
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
 		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
+		05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */; };
+		05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */; };
+		05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */; };
+		05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */; };
+		05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */; };
+		05A83C4023EBF4180004B38C /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3F23EBF4180004B38C /* Record.storyboard */; };
+		05A83C5123EC107D0004B38C /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C5023EC107D0004B38C /* InfoTableViewCell.swift */; };
+		05A83C5323EC10900004B38C /* OtherInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C5223EC10900004B38C /* OtherInfoTableViewCell.swift */; };
+		05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */; };
 		05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B523E16995009CED63 /* KingFisherWrapper.swift */; };
 		05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */; };
 		05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08BF23E1AB54009CED63 /* Trail.storyboard */; };
@@ -45,6 +54,23 @@
 		05BF090323E6C32D009CED63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090223E6C32D009CED63 /* LoginViewController.swift */; };
 		05BF090523E6DDB5009CED63 /* Campaign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090423E6DDB4009CED63 /* Campaign.swift */; };
 		05BF090823E7CD37009CED63 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090723E7CD37009CED63 /* UITextField+Extension.swift */; };
+		05BF090A23E7E832009CED63 /* PrivateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090923E7E831009CED63 /* PrivateListViewController.swift */; };
+		05BF090C23E7F70E009CED63 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090B23E7F70D009CED63 /* String+Extension.swift */; };
+		05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF090D23E80571009CED63 /* TrailTableViewCell.swift */; };
+		05BF091023E80571009CED63 /* TrailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BF090E23E80571009CED63 /* TrailTableViewCell.xib */; };
+		05BF091223E80C84009CED63 /* TrailObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091123E80C84009CED63 /* TrailObject.swift */; };
+		05BF091423E8116A009CED63 /* TrailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091323E8116A009CED63 /* TrailManager.swift */; };
+		05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091523E960B8009CED63 /* TrailTypeObject.swift */; };
+		05BF091823E96180009CED63 /* TrailTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091723E96180009CED63 /* TrailTypeManager.swift */; };
+		05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091923E976BC009CED63 /* RecordCampaignViewController.swift */; };
+		05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091F23E99B2C009CED63 /* FilterCollectionViewCell.swift */; };
+		05BF092223E99B2C009CED63 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BF092023E99B2C009CED63 /* FilterCollectionViewCell.xib */; };
+		05BF092423E99E85009CED63 /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092323E99E85009CED63 /* FilterItem.swift */; };
+		05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */; };
+		05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092723E9A6FC009CED63 /* FilterItemManager.swift */; };
+		05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EAE60B23ED4DE30033BA6C /* Create.storyboard */; };
+		05EAE60E23ED4E840033BA6C /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60D23ED4E840033BA6C /* CreateViewController.swift */; };
+		05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +84,15 @@
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
+		05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailContentTableViewCell.swift; sourceTree = "<group>"; };
+		05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailContentTableViewCell.xib; sourceTree = "<group>"; };
+		05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailLocationTableViewCell.swift; sourceTree = "<group>"; };
+		05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailLocationTableViewCell.xib; sourceTree = "<group>"; };
+		05A83C3F23EBF4180004B38C /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
+		05A83C5023EC107D0004B38C /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		05A83C5223EC10900004B38C /* OtherInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInfoTableViewCell.swift; sourceTree = "<group>"; };
+		05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewController.swift; sourceTree = "<group>"; };
 		05BF08B523E16995009CED63 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		05BF08BF23E1AB54009CED63 /* Trail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trail.storyboard; sourceTree = "<group>"; };
@@ -89,6 +124,23 @@
 		05BF090223E6C32D009CED63 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05BF090423E6DDB4009CED63 /* Campaign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campaign.swift; sourceTree = "<group>"; };
 		05BF090723E7CD37009CED63 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		05BF090923E7E831009CED63 /* PrivateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateListViewController.swift; sourceTree = "<group>"; };
+		05BF090B23E7F70D009CED63 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		05BF090D23E80571009CED63 /* TrailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTableViewCell.swift; sourceTree = "<group>"; };
+		05BF090E23E80571009CED63 /* TrailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailTableViewCell.xib; sourceTree = "<group>"; };
+		05BF091123E80C84009CED63 /* TrailObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailObject.swift; sourceTree = "<group>"; };
+		05BF091323E8116A009CED63 /* TrailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailManager.swift; sourceTree = "<group>"; };
+		05BF091523E960B8009CED63 /* TrailTypeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTypeObject.swift; sourceTree = "<group>"; };
+		05BF091723E96180009CED63 /* TrailTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTypeManager.swift; sourceTree = "<group>"; };
+		05BF091923E976BC009CED63 /* RecordCampaignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCampaignViewController.swift; sourceTree = "<group>"; };
+		05BF091F23E99B2C009CED63 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		05BF092023E99B2C009CED63 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		05BF092323E99E85009CED63 /* FilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
+		05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocalizedString+Extension.swift"; sourceTree = "<group>"; };
+		05BF092723E9A6FC009CED63 /* FilterItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemManager.swift; sourceTree = "<group>"; };
+		05EAE60B23ED4DE30033BA6C /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
+		05EAE60D23ED4E840033BA6C /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransition.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +192,24 @@
 			path = "Go Hiking";
 			sourceTree = "<group>";
 		};
+		05A83C3E23EBF3C20004B38C /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				05EAE60D23ED4E840033BA6C /* CreateViewController.swift */,
+				05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		05A83C4123EBFB320004B38C /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				05A83C5023EC107D0004B38C /* InfoTableViewCell.swift */,
+				05A83C5223EC10900004B38C /* OtherInfoTableViewCell.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
 		05BF08AF23E0865D009CED63 /* Third Party Wrapper */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +235,7 @@
 		05BF08B123E0868A009CED63 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				05A83C4123EBFB320004B38C /* Create */,
 				05BF08BE23E1AB10009CED63 /* Chat */,
 				05BF08BA23E1AA41009CED63 /* Map */,
 				05BF08BD23E1AA7A009CED63 /* Trail */,
@@ -173,11 +244,13 @@
 				058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */,
 				058873B623DB4A9B00B1612F /* Main.storyboard */,
 				05BF08C123E1AB7F009CED63 /* Auth.storyboard */,
+				05EAE60B23ED4DE30033BA6C /* Create.storyboard */,
 				05BF08C923E1AC2C009CED63 /* Map.storyboard */,
 				05BF08BF23E1AB54009CED63 /* Trail.storyboard */,
 				05BF08C723E1AC16009CED63 /* Campaign.storyboard */,
 				05BF08C523E1ABA4009CED63 /* Chat.storyboard */,
 				05BF08C323E1AB94009CED63 /* Profile.storyboard */,
+				05A83C3F23EBF4180004B38C /* Record.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +258,8 @@
 		05BF08B223E08692009CED63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				05EAE60923ED4D460033BA6C /* Achievement */,
+				05A83C3E23EBF3C20004B38C /* Create */,
 				05BF08D523E1D186009CED63 /* Base */,
 				05BF08CB23E1AC91009CED63 /* Auth */,
 				05BF08CC23E1AC99009CED63 /* Map */,
@@ -240,6 +315,14 @@
 		05BF08BD23E1AA7A009CED63 /* Trail */ = {
 			isa = PBXGroup;
 			children = (
+				05BF090D23E80571009CED63 /* TrailTableViewCell.swift */,
+				05BF090E23E80571009CED63 /* TrailTableViewCell.xib */,
+				05BF091F23E99B2C009CED63 /* FilterCollectionViewCell.swift */,
+				05BF092023E99B2C009CED63 /* FilterCollectionViewCell.xib */,
+				05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */,
+				05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */,
+				05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */,
+				05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */,
 			);
 			path = Trail;
 			sourceTree = "<group>";
@@ -273,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08DF23E20008009CED63 /* TrailViewController.swift */,
+				05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */,
 			);
 			path = Trail;
 			sourceTree = "<group>";
@@ -297,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08E123E2001C009CED63 /* CampaignViewController.swift */,
+				05BF090923E7E831009CED63 /* PrivateListViewController.swift */,
 			);
 			path = Campaign;
 			sourceTree = "<group>";
@@ -322,6 +407,12 @@
 		05BF08D323E1AD26009CED63 /* Trail */ = {
 			isa = PBXGroup;
 			children = (
+				05BF091123E80C84009CED63 /* TrailObject.swift */,
+				05BF091323E8116A009CED63 /* TrailManager.swift */,
+				05BF091523E960B8009CED63 /* TrailTypeObject.swift */,
+				05BF091723E96180009CED63 /* TrailTypeManager.swift */,
+				05BF092323E99E85009CED63 /* FilterItem.swift */,
+				05BF092723E9A6FC009CED63 /* FilterItemManager.swift */,
 			);
 			path = Trail;
 			sourceTree = "<group>";
@@ -350,6 +441,8 @@
 				05BF08F023E32FF1009CED63 /* Bundle+Extension.swift */,
 				05BF090023E5B70D009CED63 /* UIColor+Extension.swift */,
 				05BF090723E7CD37009CED63 /* UITextField+Extension.swift */,
+				05BF090B23E7F70D009CED63 /* String+Extension.swift */,
+				05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -360,6 +453,15 @@
 				05BF08EE23E328F4009CED63 /* GHConstant.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		05EAE60923ED4D460033BA6C /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				05BF091923E976BC009CED63 /* RecordCampaignViewController.swift */,
+				05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */,
+			);
+			path = Achievement;
 			sourceTree = "<group>";
 		};
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
@@ -442,12 +544,18 @@
 			files = (
 				05BF08C223E1AB7F009CED63 /* Auth.storyboard in Resources */,
 				058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */,
+				05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */,
+				05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */,
+				05BF091023E80571009CED63 /* TrailTableViewCell.xib in Resources */,
+				05BF092223E99B2C009CED63 /* FilterCollectionViewCell.xib in Resources */,
 				058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */,
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
+				05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */,
 				05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */,
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
+				05A83C4023EBF4180004B38C /* Record.storyboard in Resources */,
 				05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */,
 				05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */,
 				058873B823DB4A9B00B1612F /* Main.storyboard in Resources */,
@@ -504,29 +612,49 @@
 			buildActionMask = 2147483647;
 			files = (
 				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
+				05BF091223E80C84009CED63 /* TrailObject.swift in Sources */,
+				05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */,
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
+				05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */,
+				05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */,
+				05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
 				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
+				05BF090C23E7F70E009CED63 /* String+Extension.swift in Sources */,
+				05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
+				05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */,
+				05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */,
+				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
+				05EAE60E23ED4E840033BA6C /* CreateViewController.swift in Sources */,
+				05A83C5323EC10900004B38C /* OtherInfoTableViewCell.swift in Sources */,
+				05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */,
 				05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */,
 				05BF090323E6C32D009CED63 /* LoginViewController.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
+				05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */,
+				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
+				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
+				05BF092423E99E85009CED63 /* FilterItem.swift in Sources */,
 				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
+				05BF091823E96180009CED63 /* TrailTypeManager.swift in Sources */,
+				05BF090A23E7E832009CED63 /* PrivateListViewController.swift in Sources */,
 				05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */,
 				05BF08FC23E5A4A9009CED63 /* CampaignTableViewCell.swift in Sources */,
 				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
 				05BF08F723E429F3009CED63 /* UserManager.swift in Sources */,
 				05BF090823E7CD37009CED63 /* UITextField+Extension.swift in Sources */,
+				05A83C5123EC107D0004B38C /* InfoTableViewCell.swift in Sources */,
 				05BF090523E6DDB5009CED63 /* Campaign.swift in Sources */,
 				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
 			);
