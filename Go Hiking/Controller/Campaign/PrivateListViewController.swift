@@ -9,7 +9,9 @@
 import UIKit
 import IQKeyboardManagerSwift
 
-class PrivateListViewController: UIViewController {
+class PrivateListViewController: UIViewController, UIViewControllerTransitioningDelegate {
+    
+    let transition = CreateTransition()
     
     var filteredCampaign = [Campaign]()
     
@@ -48,14 +50,15 @@ class PrivateListViewController: UIViewController {
     
     @objc func toCreateVC(sender: UIButton) {
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
-        guard let createVC = createEvent.instantiateViewController(identifier: "CREATE") as? CreateCampaignViewController else { return }
-        show(createVC, sender: nil)
+        guard let createVC = createEvent.instantiateViewController(identifier: "CREATE") as? CreateViewController else { return }
+        createVC.transitioningDelegate = self
+        createVC.modalPresentationStyle = .custom
+        present(createVC, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.self
    
         navigationItem.searchController = searchController
         
@@ -94,7 +97,27 @@ class PrivateListViewController: UIViewController {
         return searchController.isActive && (!isSearchBarEmpty() || searchBarScopeIsFiltering)
     }
     
+    // MARK: - Transition
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning {
+        
+        transition.transitionMode = .present
+        transition.startingPoint = createBtn.center
+        transition.circleColor = UIColor.orange
+        
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.transitionMode = .dismiss
+        transition.startingPoint = createBtn.center
+        transition.circleColor = UIColor.orange
+        
+        return transition
+    }
+    
 }
+
 extension PrivateListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
