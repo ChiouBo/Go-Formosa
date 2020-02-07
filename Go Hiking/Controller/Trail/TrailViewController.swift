@@ -187,8 +187,6 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         let trail = UIStoryboard(name: "Trail", bundle: nil)
         guard let trailVC = trail.instantiateViewController(identifier: "TrailDetail") as? TrailDetailViewController else { return }
         
-//        var trailDict = ["Name": trailFilter[indexPath.row].trCname]
-//        trailVC.trailDict = trailDict
         let trailInfo = TrailInfo(trailName: trailFilter[indexPath.row].trCname,
                                   trailPosition: trailFilter[indexPath.row].trPosition ?? "",
                                   trailDescrip: trailFilter[indexPath.row].guideContent ?? "")

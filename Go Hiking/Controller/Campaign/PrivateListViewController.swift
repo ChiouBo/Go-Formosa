@@ -38,12 +38,25 @@ class PrivateListViewController: UIViewController {
         return search
     }()
     
+    lazy var createBtn: UIButton = {
+       let create = UIButton()
+        create.translatesAutoresizingMaskIntoConstraints = false
+        create.setImage(UIImage(named: "Icons_48px_Add"), for: .normal)
+        create.addTarget(self, action: #selector(toCreateVC), for: .touchUpInside)
+        return create
+    }()
+    
+    @objc func toCreateVC(sender: UIButton) {
+        let createEvent = UIStoryboard(name: "Create", bundle: nil)
+        guard let createVC = createEvent.instantiateViewController(identifier: "CREATE") as? CreateCampaignViewController else { return }
+        show(createVC, sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationController?.navigationBar.self
-        
-        self.title = "我的活動"
+   
         navigationItem.searchController = searchController
         
         privateTableView.separatorStyle = .none
@@ -137,10 +150,16 @@ extension PrivateListViewController {
     func setupElements() {
         
         view.addSubview(privateTableView)
+        view.addSubview(createBtn)
         
         privateTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         privateTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         privateTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         privateTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        createBtn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        createBtn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        createBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        createBtn.widthAnchor.constraint(equalToConstant: 50).isActive = true
     }
 }
