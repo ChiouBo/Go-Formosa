@@ -37,7 +37,6 @@ class CampaignViewController: UIViewController {
         
         search.searchBar.delegate = self
         
-        
         return search
     }()
     
