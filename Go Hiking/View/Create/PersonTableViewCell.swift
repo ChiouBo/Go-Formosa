@@ -10,6 +10,21 @@ import UIKit
 
 class PersonTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var personTitle: UILabel!
+    
+    @IBOutlet weak var personAmount: UILabel!
+    
+    @IBOutlet weak var switchAmount: UISwitch!
+    
+    @IBAction func switchAmount(_ sender: UISwitch) {
+    }
+    
+    @IBOutlet weak var amountPickerView: UIPickerView!
+    
+    @IBOutlet weak var amountHeight: NSLayoutConstraint!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -10,6 +10,12 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var eventTitle: UILabel!
+    
+    @IBOutlet weak var titleTextField: UITextField!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

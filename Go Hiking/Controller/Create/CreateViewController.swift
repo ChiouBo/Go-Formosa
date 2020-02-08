@@ -94,14 +94,30 @@ class CreateViewController: UIViewController {
 
 extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
             
-        case 0 :
+            
+        case 0:
+            
+            guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
+            
+            
+            return titleCell
+            
+        case 1:
+            
+            guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else { return UITableViewCell() }
+            
+            
+            return descCell
+            
+            
+        case 2 :
             
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
             
@@ -109,7 +125,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             return photoCell
             
-        case 1:
+        case 3:
             
             guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
             
@@ -118,7 +134,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             return startDateCell
             
-        case 2:
+        case 4:
             
             guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else { return UITableViewCell() }
             
@@ -127,6 +143,20 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             return endDateCell
             
+        case 5:
+            
+            guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
+            
+            //            endDateCell.delegate = self
+            //            endDateCell.setupDatePicker(isSelected: isEndDate, date: nowDate)
+            
+            return personCell
+            
+        case 6:
+            
+            guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
+            
+            return personCell
             
         default:
             return UITableViewCell()
@@ -135,12 +165,12 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 1 {
+        if indexPath.row == 3 {
             
             isStartDate = !isStartDate
             isEndDate = false
             
-        } else if indexPath.row == 2 {
+        } else if indexPath.row == 4 {
             
             isEndDate = !isEndDate
             isStartDate = false
