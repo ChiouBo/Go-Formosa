@@ -10,15 +10,36 @@ import UIKit
 
 class PreviewTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var attentionLabel: UILabel!
+    
+    @IBOutlet weak var previewBtn: UIButton!
+    
+    @IBAction func previewBtn(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        setButton()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
+    func setButton() {
+        
+        previewBtn.layer.cornerRadius = 25
+        previewBtn.layer.shadowOffset = CGSize(width: 0, height: 3)
+        previewBtn.layer.shadowOpacity = 0.7
+        previewBtn.layer.shadowRadius = 5
+        previewBtn.layer.shadowColor = UIColor.lightGray.cgColor
+    }
 }

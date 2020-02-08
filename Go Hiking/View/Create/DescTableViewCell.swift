@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import KMPlaceholderTextView
 
 class DescTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var eventDesc: UILabel!
+    
+    @IBOutlet weak var DescTextView: KMPlaceholderTextView!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
