@@ -406,10 +406,10 @@
                                                     </connections>
                                                 </datePicker>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020年2月2日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFl-8n-sCF">
-                                                    <rect key="frame" x="194" y="23" width="200" height="18"/>
+                                                    <rect key="frame" x="144" y="23" width="250" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="Q4J-1x-QXy"/>
-                                                        <constraint firstAttribute="width" constant="200" id="WHT-So-zcw"/>
+                                                        <constraint firstAttribute="width" constant="250" id="WHT-So-zcw"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
@@ -434,11 +434,11 @@
                                             <outlet property="startLabel" destination="8ok-jN-HTR" id="5ZG-xI-3qR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="143" id="ybm-pl-128">
-                                        <rect key="frame" x="0.0" y="860" width="414" height="143"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="End" rowHeight="304" id="ybm-pl-128" customClass="EndTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="860" width="414" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ybm-pl-128" id="XFh-EJ-bGR">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="143"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="結束時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RcC-Kr-TBb">
@@ -451,15 +451,46 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FCT-aH-9j7">
+                                                    <rect key="frame" x="0.0" y="54" width="414" height="240"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="9pD-rt-9dV"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="selectEndDate:" destination="ybm-pl-128" eventType="valueChanged" id="STS-1Q-LTq"/>
+                                                    </connections>
+                                                </datePicker>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020年2月2日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzt-EI-14c">
+                                                    <rect key="frame" x="144" y="23" width="250" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="250" id="Qpe-vg-YBT"/>
+                                                        <constraint firstAttribute="height" constant="20" id="QuN-ht-VSB"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="FCT-aH-9j7" firstAttribute="top" secondItem="RcC-Kr-TBb" secondAttribute="bottom" constant="10" id="10C-q2-VS7"/>
+                                                <constraint firstItem="FCT-aH-9j7" firstAttribute="leading" secondItem="XFh-EJ-bGR" secondAttribute="leading" id="BoV-hx-P75"/>
                                                 <constraint firstItem="RcC-Kr-TBb" firstAttribute="top" secondItem="XFh-EJ-bGR" secondAttribute="top" constant="20" id="Fqy-o2-mOR"/>
+                                                <constraint firstAttribute="trailing" secondItem="Tzt-EI-14c" secondAttribute="trailing" constant="20" id="NQc-RJ-vgR"/>
+                                                <constraint firstAttribute="trailing" secondItem="FCT-aH-9j7" secondAttribute="trailing" id="Q9L-Zv-CtA"/>
+                                                <constraint firstItem="Tzt-EI-14c" firstAttribute="top" secondItem="XFh-EJ-bGR" secondAttribute="top" constant="23" id="pBx-AZ-Ujq"/>
+                                                <constraint firstAttribute="bottom" secondItem="FCT-aH-9j7" secondAttribute="bottom" constant="10" id="uxe-VQ-jRT"/>
                                                 <constraint firstItem="RcC-Kr-TBb" firstAttribute="leading" secondItem="XFh-EJ-bGR" secondAttribute="leading" constant="20" id="vq7-ei-xVy"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="endDate" destination="Tzt-EI-14c" id="4Dk-Hh-R9v"/>
+                                            <outlet property="endDateHeight" destination="9pD-rt-9dV" id="dFt-VH-kGk"/>
+                                            <outlet property="endDatePicker" destination="FCT-aH-9j7" id="N5X-E8-WEB"/>
+                                            <outlet property="endLabel" destination="RcC-Kr-TBb" id="V4F-mh-vWi"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="125" id="AAn-Iy-fUG">
-                                        <rect key="frame" x="0.0" y="1003" width="414" height="125"/>
+                                        <rect key="frame" x="0.0" y="1164" width="414" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AAn-Iy-fUG" id="E6p-BC-Rot">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
