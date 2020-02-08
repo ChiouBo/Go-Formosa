@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		051A862923EE8C8A008865FC /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A862823EE8C8A008865FC /* PhotoCollectionViewCell.swift */; };
 		051A862B23EE8DD3008865FC /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A862A23EE8DD3008865FC /* PhotoTableViewCell.swift */; };
+		051A862D23EE9031008865FC /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A862C23EE9031008865FC /* CreateViewController.swift */; };
+		051A862F23EED7F8008865FC /* StartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A862E23EED7F8008865FC /* StartTableViewCell.swift */; };
+		051A863123EEE35D008865FC /* EndTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863023EEE35D008865FC /* EndTableViewCell.swift */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -77,6 +80,9 @@
 /* Begin PBXFileReference section */
 		051A862823EE8C8A008865FC /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		051A862A23EE8DD3008865FC /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		051A862C23EE9031008865FC /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		051A862E23EED7F8008865FC /* StartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTableViewCell.swift; sourceTree = "<group>"; };
+		051A863023EEE35D008865FC /* EndTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTableViewCell.swift; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */,
+				051A862C23EE9031008865FC /* CreateViewController.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -205,6 +212,8 @@
 			children = (
 				051A862823EE8C8A008865FC /* PhotoCollectionViewCell.swift */,
 				051A862A23EE8DD3008865FC /* PhotoTableViewCell.swift */,
+				051A862E23EED7F8008865FC /* StartTableViewCell.swift */,
+				051A863023EEE35D008865FC /* EndTableViewCell.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -626,6 +635,7 @@
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
 				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
 				05BF090C23E7F70E009CED63 /* String+Extension.swift in Sources */,
+				051A863123EEE35D008865FC /* EndTableViewCell.swift in Sources */,
 				05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
 				05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */,
@@ -640,12 +650,14 @@
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
 				05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */,
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
+				051A862D23EE9031008865FC /* CreateViewController.swift in Sources */,
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
 				05BF092423E99E85009CED63 /* FilterItem.swift in Sources */,
 				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
+				051A862F23EED7F8008865FC /* StartTableViewCell.swift in Sources */,
 				05BF091823E96180009CED63 /* TrailTypeManager.swift in Sources */,
 				05BF090A23E7E832009CED63 /* PrivateListViewController.swift in Sources */,
 				05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */,

@@ -8,6 +8,24 @@
 
 import UIKit
 
+protocol UploadPhotoDelegate: AnyObject {
+    
+    func uploadPhoto(_ collectionViewCell: PhotoCollectionViewCell)
+}
+
+
 class PhotoCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: UploadPhotoDelegate?
+    
+    @IBOutlet weak var photoImage: UIImageView!
+    
+    @IBOutlet weak var uploadBtn: UIButton!
+    
+    @IBAction func uploadBtn(_ sender: UIButton) {
+        
+        self.delegate?.uploadPhoto(self)
+    }
+    
     
 }
