@@ -11,14 +11,18 @@ import FirebaseStorage
 import FirebaseDatabase
 
 class CreateViewController: UIViewController {
-
+    
     let imagePickerController = UIImagePickerController()
     
     var nowDate = ""
     
+    var nowAmount = ""
+    
     var isStartDate = false
     
     var isEndDate = false
+    
+    var isAmount = false
     
     @IBOutlet weak var contentTableView: UITableView!
     
@@ -54,32 +58,32 @@ class CreateViewController: UIViewController {
         
         getNowDate()
     }
-
+    
     func alertAskForUpload() {
         
         let imagePickerAlertController = UIAlertController(title: "上傳圖片", message: "請選擇要上傳的圖片", preferredStyle: .actionSheet)
         
         let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (_) in
             
-          if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            
-            self.imagePickerController.sourceType = .photoLibrary
-            
-            self.present(self.imagePickerController, animated: true, completion: nil)
-          }
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                
+                self.imagePickerController.sourceType = .photoLibrary
+                
+                self.present(self.imagePickerController, animated: true, completion: nil)
+            }
         }
         let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (_) in
             
-          if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            
-            self.imagePickerController.sourceType = .camera
-            
-            self.present(self.imagePickerController, animated: true, completion: nil)
-          }
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                
+                self.imagePickerController.sourceType = .camera
+                
+                self.present(self.imagePickerController, animated: true, completion: nil)
+            }
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
             
-          imagePickerAlertController.dismiss(animated: true, completion: nil)
+            imagePickerAlertController.dismiss(animated: true, completion: nil)
         }
         imagePickerAlertController.addAction(imageFromLibAction)
         
@@ -89,7 +93,6 @@ class CreateViewController: UIViewController {
         
         present(imagePickerAlertController, animated: true, completion: nil)
     }
-
 }
 
 extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
@@ -147,8 +150,8 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
             
-            //            endDateCell.delegate = self
-            //            endDateCell.setupDatePicker(isSelected: isEndDate, date: nowDate)
+            personCell.delegate = self
+            personCell.setupAmountPicker(isSelected: isAmount, amount: nowAmount)
             
             return personCell
             
@@ -169,11 +172,19 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             isStartDate = !isStartDate
             isEndDate = false
+            isAmount = false
             
         } else if indexPath.row == 4 {
             
             isEndDate = !isEndDate
             isStartDate = false
+            isAmount = false
+            
+        } else if indexPath.row == 5 {
+            
+            isAmount = !isAmount
+            isStartDate = false
+            isEndDate = false
         }
         contentTableView.reloadData()
     }
@@ -238,7 +249,7 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
 extension CreateViewController: StartDateisSelectedDelegate {
     
     func selectedStartDate(_ tableViewCell: StartTableViewCell, date: String) {
-    
+        
         self.nowDate = date
         
         contentTableView.reloadData()
@@ -246,13 +257,21 @@ extension CreateViewController: StartDateisSelectedDelegate {
 }
 
 extension CreateViewController: EndDateisSelectedDelegate {
+    
     func selectedEndDate(_ tableViewCell: EndTableViewCell, date: String) {
         
         self.nowDate = date
         
         contentTableView.reloadData()
     }
+}
+
+extension CreateViewController: PersonSelectedDelegate {
     
-    
-    
+    func selectedPerson(_ tableViewCell: PersonTableViewCell, amount: String) {
+        
+        self.nowAmount = amount
+        
+        contentTableView.reloadData()
+    }
 }
