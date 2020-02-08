@@ -16,13 +16,14 @@ class CreateViewController: UIViewController {
     
     var nowDate = ""
     
-    var isChoose = false
+    var isStartDate = false
+    
+    var isEndDate = false
     
     @IBOutlet weak var contentTableView: UITableView!
     
     func getNowDate() {
         
-       
         let nowDate = Date()
         
         let timeInterval = TimeInterval(nowDate.timeIntervalSince1970)
@@ -93,7 +94,7 @@ class CreateViewController: UIViewController {
 
 extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,20 +103,29 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 0 :
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
+            guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
             
-            cell.delegate = self
+            photoCell.delegate = self
             
-            return cell
+            return photoCell
             
         case 1:
             
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
+            guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
             
-            cell.delegate = self
-            cell.setupDatePicker(isSelected: isChoose, date: nowDate)
+            startDateCell.delegate = self
+            startDateCell.setupDatePicker(isSelected: isStartDate, date: nowDate)
             
-            return cell
+            return startDateCell
+            
+        case 2:
+            
+            guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else { return UITableViewCell() }
+            
+            endDateCell.delegate = self
+            endDateCell.setupDatePicker(isSelected: isEndDate, date: nowDate)
+            
+            return endDateCell
             
             
         default:
@@ -123,16 +133,18 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//
-//        return 186
-//    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        isChoose = !isChoose
-        
+        if indexPath.row == 1 {
+            
+            isStartDate = !isStartDate
+            isEndDate = false
+            
+        } else if indexPath.row == 2 {
+            
+            isEndDate = !isEndDate
+            isStartDate = false
+        }
         contentTableView.reloadData()
     }
 }
@@ -201,5 +213,16 @@ extension CreateViewController: StartDateisSelectedDelegate {
         
         contentTableView.reloadData()
     }
+}
+
+extension CreateViewController: EndDateisSelectedDelegate {
+    func selectedEndDate(_ tableViewCell: EndTableViewCell, date: String) {
+        
+        self.nowDate = date
+        
+        contentTableView.reloadData()
+    }
+    
+    
     
 }

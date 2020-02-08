@@ -12,6 +12,10 @@
 		051A862D23EE9031008865FC /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A862C23EE9031008865FC /* CreateViewController.swift */; };
 		051A862F23EED7F8008865FC /* StartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A862E23EED7F8008865FC /* StartTableViewCell.swift */; };
 		051A863123EEE35D008865FC /* EndTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863023EEE35D008865FC /* EndTableViewCell.swift */; };
+		051A863323EEEE21008865FC /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863223EEEE20008865FC /* TitleTableViewCell.swift */; };
+		051A863523EEEE77008865FC /* DescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863423EEEE77008865FC /* DescTableViewCell.swift */; };
+		051A863723EEEECC008865FC /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863623EEEECC008865FC /* PersonTableViewCell.swift */; };
+		051A863923EEEF24008865FC /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863823EEEF24008865FC /* PreviewTableViewCell.swift */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -83,6 +87,10 @@
 		051A862C23EE9031008865FC /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		051A862E23EED7F8008865FC /* StartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTableViewCell.swift; sourceTree = "<group>"; };
 		051A863023EEE35D008865FC /* EndTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndTableViewCell.swift; sourceTree = "<group>"; };
+		051A863223EEEE20008865FC /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		051A863423EEEE77008865FC /* DescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescTableViewCell.swift; sourceTree = "<group>"; };
+		051A863623EEEECC008865FC /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
+		051A863823EEEF24008865FC /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -210,10 +218,14 @@
 		05A83C4123EBFB320004B38C /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				051A863223EEEE20008865FC /* TitleTableViewCell.swift */,
+				051A863423EEEE77008865FC /* DescTableViewCell.swift */,
 				051A862823EE8C8A008865FC /* PhotoCollectionViewCell.swift */,
 				051A862A23EE8DD3008865FC /* PhotoTableViewCell.swift */,
 				051A862E23EED7F8008865FC /* StartTableViewCell.swift */,
 				051A863023EEE35D008865FC /* EndTableViewCell.swift */,
+				051A863623EEEECC008865FC /* PersonTableViewCell.swift */,
+				051A863823EEEF24008865FC /* PreviewTableViewCell.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -620,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051A863323EEEE21008865FC /* TitleTableViewCell.swift in Sources */,
 				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
 				05BF091223E80C84009CED63 /* TrailObject.swift in Sources */,
 				051A862B23EE8DD3008865FC /* PhotoTableViewCell.swift in Sources */,
@@ -633,12 +646,15 @@
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
+				051A863723EEEECC008865FC /* PersonTableViewCell.swift in Sources */,
 				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
+				051A863923EEEF24008865FC /* PreviewTableViewCell.swift in Sources */,
 				05BF090C23E7F70E009CED63 /* String+Extension.swift in Sources */,
 				051A863123EEE35D008865FC /* EndTableViewCell.swift in Sources */,
 				05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
 				05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */,
+				051A863523EEEE77008865FC /* DescTableViewCell.swift in Sources */,
 				05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */,
 				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
