@@ -311,6 +311,7 @@ PODS:
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
+  - KMPlaceholderTextView (1.4.0)
   - leveldb-library (1.22)
   - MJRefresh (3.3.1)
   - nanopb (0.3.9011):
@@ -339,6 +340,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - KeychainAccess
   - Kingfisher
+  - KMPlaceholderTextView
   - MJRefresh
   - Starscream
   - SwiftLint
@@ -376,6 +378,7 @@ SPEC REPOS:
     - JGProgressHUD
     - KeychainAccess
     - Kingfisher
+    - KMPlaceholderTextView
     - leveldb-library
     - MJRefresh
     - nanopb
@@ -414,12 +417,13 @@ SPEC CHECKSUMS:
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  KMPlaceholderTextView: 2206c3df39979e9396e2d96fa9f427a8951121b0
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   MJRefresh: eeda70fbf0ad277f3178cef1cd0c3532591d6237
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Starscream: 04b26f02727e10a002e6b5d21b188ba0d049910b
   SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
 
-PODFILE CHECKSUM: 5e2828561c3dfdfaaf917d4545e6afb1d77da563
+PODFILE CHECKSUM: 47c9ca225e7457adda0bd2817cd9d8bdd8169d1e
 
 COCOAPODS: 1.8.4
