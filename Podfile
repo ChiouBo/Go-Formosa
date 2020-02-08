@@ -36,4 +36,5 @@ target 'Go Hiking' do
   pod 'Alamofire'
   pod 'Starscream'
 
+  pod 'KMPlaceholderTextView'
 end
