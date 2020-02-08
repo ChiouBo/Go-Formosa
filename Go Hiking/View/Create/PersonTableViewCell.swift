@@ -8,7 +8,15 @@
 
 import UIKit
 
+protocol PersonSelectedDelegate: AnyObject {
+    
+    func selectedPerson(_ tableViewCell: PersonTableViewCell, amount: String)
+}
+
+
 class PersonTableViewCell: UITableViewCell {
+    
+    weak var delegate: PersonSelectedDelegate?
 
     @IBOutlet weak var personTitle: UILabel!
     
@@ -17,13 +25,37 @@ class PersonTableViewCell: UITableViewCell {
     @IBOutlet weak var switchAmount: UISwitch!
     
     @IBAction func switchAmount(_ sender: UISwitch) {
+        
+        if sender.isOn == true {
+            
+            setupAmountPicker(isSelected: true, amount: "\(String(describing: personAmount))")
+        } else {
+            
+            setupAmountPicker(isSelected: false, amount: "不限")
+        }
+        
     }
     
     @IBOutlet weak var amountPickerView: UIPickerView!
     
     @IBOutlet weak var amountHeight: NSLayoutConstraint!
     
-    
+
+    func setupAmountPicker(isSelected: Bool, amount: String) {
+        
+        personTitle.text = "參加人數"
+        
+        personAmount.text = amount
+        
+        if switchAmount.isOn == true && isSelected == true {
+            
+            amountHeight.constant = 150
+            
+        } else if switchAmount.isOn == false || isSelected == false {
+            
+            amountHeight.constant = 0
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

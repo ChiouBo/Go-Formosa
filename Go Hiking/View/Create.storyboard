@@ -461,7 +461,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="FCT-aH-9j7">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="FCT-aH-9j7">
                                                     <rect key="frame" x="0.0" y="54" width="414" height="240"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="9pD-rt-9dV"/>
@@ -577,7 +577,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wCD-1M-4D7">
-                                                    <rect key="frame" x="20" y="67" width="374" height="50"/>
+                                                    <rect key="frame" x="40" y="67" width="334" height="50"/>
                                                     <color key="backgroundColor" name="T2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="30c-qF-j2K"/>
@@ -593,11 +593,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="IBk-xF-MOA" firstAttribute="top" secondItem="gol-Of-U5k" secondAttribute="top" constant="20" id="7JK-R7-EEk"/>
-                                                <constraint firstAttribute="trailing" secondItem="wCD-1M-4D7" secondAttribute="trailing" constant="20" id="9jV-NO-dXv"/>
+                                                <constraint firstAttribute="trailing" secondItem="wCD-1M-4D7" secondAttribute="trailing" constant="40" id="9jV-NO-dXv"/>
                                                 <constraint firstAttribute="trailing" secondItem="IBk-xF-MOA" secondAttribute="trailing" constant="20" id="IEd-m8-mMA"/>
-                                                <constraint firstItem="wCD-1M-4D7" firstAttribute="leading" secondItem="gol-Of-U5k" secondAttribute="leading" constant="20" id="Ts5-ov-B9l"/>
+                                                <constraint firstItem="wCD-1M-4D7" firstAttribute="leading" secondItem="gol-Of-U5k" secondAttribute="leading" constant="40" id="Ts5-ov-B9l"/>
                                                 <constraint firstAttribute="bottom" secondItem="wCD-1M-4D7" secondAttribute="bottom" constant="20" id="bTQ-jR-itk"/>
                                                 <constraint firstItem="wCD-1M-4D7" firstAttribute="top" secondItem="IBk-xF-MOA" secondAttribute="bottom" constant="30" id="iEv-iB-zdG"/>
+                                                <constraint firstItem="wCD-1M-4D7" firstAttribute="centerX" secondItem="gol-Of-U5k" secondAttribute="centerX" id="nuE-V0-Sre"/>
                                                 <constraint firstItem="IBk-xF-MOA" firstAttribute="leading" secondItem="gol-Of-U5k" secondAttribute="leading" constant="20" id="zcb-cg-bKP"/>
                                             </constraints>
                                         </tableViewCellContentView>
