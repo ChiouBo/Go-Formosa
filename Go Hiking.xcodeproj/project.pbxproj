@@ -16,6 +16,8 @@
 		051A863523EEEE77008865FC /* DescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863423EEEE77008865FC /* DescTableViewCell.swift */; };
 		051A863723EEEECC008865FC /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863623EEEECC008865FC /* PersonTableViewCell.swift */; };
 		051A863923EEEF24008865FC /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863823EEEF24008865FC /* PreviewTableViewCell.swift */; };
+		051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863A23EFE1AC008865FC /* PreviewViewController.swift */; };
+		051A863E23EFE960008865FC /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863D23EFE960008865FC /* EventObject.swift */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -91,6 +93,8 @@
 		051A863423EEEE77008865FC /* DescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescTableViewCell.swift; sourceTree = "<group>"; };
 		051A863623EEEECC008865FC /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 		051A863823EEEF24008865FC /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
+		051A863A23EFE1AC008865FC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		051A863D23EFE960008865FC /* EventObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		051A863C23EFE932008865FC /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				051A863D23EFE960008865FC /* EventObject.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
 		058873A423DB4A9B00B1612F = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +223,7 @@
 			children = (
 				05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */,
 				051A862C23EE9031008865FC /* CreateViewController.swift */,
+				051A863A23EFE1AC008865FC /* PreviewViewController.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -242,6 +255,7 @@
 		05BF08B023E08680009CED63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				051A863C23EFE932008865FC /* Event */,
 				05BF08D423E1AD37009CED63 /* Profile */,
 				05BF08D323E1AD26009CED63 /* Trail */,
 				05BF08D223E1AD1B009CED63 /* HTTP */,
@@ -658,6 +672,7 @@
 				05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */,
 				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
+				051A863E23EFE960008865FC /* EventObject.swift in Sources */,
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */,
 				05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */,
@@ -685,6 +700,7 @@
 				05BF090823E7CD37009CED63 /* UITextField+Extension.swift in Sources */,
 				05BF090523E6DDB5009CED63 /* Campaign.swift in Sources */,
 				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
+				051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

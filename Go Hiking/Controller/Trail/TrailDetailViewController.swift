@@ -84,6 +84,8 @@ class TrailDetailViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let originOffsetY = -imageOriginHeight
@@ -120,5 +122,23 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         cell.trailDescription.text = trailDict?.trailDescrip
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
+        
+        animator.addAnimations {
+            
+            cell.alpha = 1
+            cell.transform = .identity
+            self.TrailContentTableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.3 * Double(indexPath.item))
     }
 }

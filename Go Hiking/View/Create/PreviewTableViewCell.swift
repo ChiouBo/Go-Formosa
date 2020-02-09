@@ -14,14 +14,6 @@ class PreviewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var previewBtn: UIButton!
     
-    @IBAction func previewBtn(_ sender: UIButton) {
-        
-        
-    }
-    
-    
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

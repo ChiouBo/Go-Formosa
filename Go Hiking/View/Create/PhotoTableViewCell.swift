@@ -22,8 +22,6 @@ class PhotoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
