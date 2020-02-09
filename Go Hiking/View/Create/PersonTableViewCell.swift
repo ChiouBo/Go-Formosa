@@ -48,7 +48,6 @@ class PersonTableViewCell: UITableViewCell {
     
     var counter = 0
     
-
     func setupAmountPicker(counter: Int, isSelected: Bool, amount: String) {
         
         personTitle.text = "參加人數"

@@ -13,8 +13,24 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        createGradientLayer()
+    }
+    
+    func createGradientLayer() {
+        
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.frame = background.bounds
+        
+        gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
+        
+        view.layer.addSublayer(gradientLayer)
+    }
 
 }
