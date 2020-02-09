@@ -14,9 +14,13 @@ class CreateViewController: UIViewController {
     
     let imagePickerController = UIImagePickerController()
     
-    var nowDate = ""
+    var startDate = ""
+    
+    var endDate = ""
     
     var nowAmount = ""
+    
+    var counter = 0
     
     var isStartDate = false
     
@@ -24,25 +28,53 @@ class CreateViewController: UIViewController {
     
     var isAmount = false
     
+    var event = ""
+    
+    var desc = ""
+    
+    var photo: UIImage?
+    
+    var start = ""
+    
+    var end = ""
+    
+
+    
     @IBOutlet weak var contentTableView: UITableView!
     
-    func getNowDate() {
+    func getStartDate() {
         
-        let nowDate = Date()
+        let startDate = Date()
         
-        let timeInterval = TimeInterval(nowDate.timeIntervalSince1970)
+        let timeInterval = TimeInterval(startDate.timeIntervalSince1970)
         
         let date = Date(timeIntervalSince1970: timeInterval)
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy年 mm月 dd日 EE"
+        dateFormatter.dateFormat = "yyyy年 MM月 dd日 EE"
         
         let today = dateFormatter.string(from: date)
         
-        self.nowDate = today
+        self.startDate = today
     }
     
+    func getEndDate() {
+        
+        let endDate = Date()
+        
+        let timeInterval = TimeInterval(endDate.timeIntervalSince1970)
+        
+        let date = Date(timeIntervalSince1970: timeInterval)
+        
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy年 MM月 dd日 EE"
+        
+        let today = dateFormatter.string(from: date)
+        
+        self.endDate = today
+    }
     
     
     override func viewDidLoad() {
@@ -56,7 +88,9 @@ class CreateViewController: UIViewController {
         
         contentTableView.rowHeight = UITableView.automaticDimension
         
-        getNowDate()
+        getStartDate()
+        
+        getEndDate()
     }
     
     func alertAskForUpload() {
@@ -109,14 +143,14 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
             
-            
+            titleCell.delegate = self
             return titleCell
             
         case 1:
             
             guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else { return UITableViewCell() }
             
-            
+            descCell.delegate = self
             return descCell
             
             
@@ -133,7 +167,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
             
             startDateCell.delegate = self
-            startDateCell.setupDatePicker(isSelected: isStartDate, date: nowDate)
+            startDateCell.setupDatePicker(isSelected: isStartDate, date: startDate)
             
             return startDateCell
             
@@ -142,7 +176,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else { return UITableViewCell() }
             
             endDateCell.delegate = self
-            endDateCell.setupDatePicker(isSelected: isEndDate, date: nowDate)
+            endDateCell.setupDatePicker(isSelected: isEndDate, date: endDate)
             
             return endDateCell
             
@@ -151,19 +185,33 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
             
             personCell.delegate = self
-            personCell.setupAmountPicker(isSelected: isAmount, amount: nowAmount)
-            
+            personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: nowAmount)
+            personCell.personAmount.backgroundColor = .red
             return personCell
             
         case 6:
             
             guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
             
+            personCell.previewBtn.addTarget(self, action: #selector(apple), for: .touchUpInside)
             return personCell
             
         default:
             return UITableViewCell()
         }
+    }
+    
+    @objc func apple() {
+        
+        guard let previewVC = storyboard?.instantiateViewController(identifier: "Preview") as? PreviewViewController,
+              let photo =  photo else { return }
+        
+        let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end)
+        
+        previewVC.data = data
+        
+        present(previewVC, animated: true, completion: nil)
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -214,6 +262,7 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
         
         if let selectedImage = selectedImageFromPicker {
             
+            self.photo = selectedImage
             
             let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).png")
             
@@ -238,7 +287,6 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
                 })
             }
             
-            
             print("\(uniqueString), \(selectedImage)")
         }
         
@@ -250,7 +298,9 @@ extension CreateViewController: StartDateisSelectedDelegate {
     
     func selectedStartDate(_ tableViewCell: StartTableViewCell, date: String) {
         
-        self.nowDate = date
+        self.startDate = date
+        
+        self.start = date
         
         contentTableView.reloadData()
     }
@@ -260,7 +310,9 @@ extension CreateViewController: EndDateisSelectedDelegate {
     
     func selectedEndDate(_ tableViewCell: EndTableViewCell, date: String) {
         
-        self.nowDate = date
+        self.endDate = date
+        
+        self.end = date
         
         contentTableView.reloadData()
     }
@@ -268,10 +320,32 @@ extension CreateViewController: EndDateisSelectedDelegate {
 
 extension CreateViewController: PersonSelectedDelegate {
     
+    func didTap(_ tableViewCell: PersonTableViewCell) {
+        
+        self.counter += 1
+        
+        isAmount = !isAmount
+        
+        contentTableView.reloadData()
+    }
+    
     func selectedPerson(_ tableViewCell: PersonTableViewCell, amount: String) {
         
         self.nowAmount = amount
         
         contentTableView.reloadData()
+    }
+}
+
+extension CreateViewController: EventTitleisEdited, EventDESCisEdited {
+    
+    func titleIsEdited(_ tableViewCell: TitleTableViewCell, title: String) {
+        
+        self.event = title
+    }
+    
+    func descIsEdited(_ tableViewCell: DescTableViewCell, desc: String) {
+        
+        self.desc = desc
     }
 }

@@ -11,6 +11,8 @@ import UIKit
 protocol PersonSelectedDelegate: AnyObject {
     
     func selectedPerson(_ tableViewCell: PersonTableViewCell, amount: String)
+    
+    func didTap(_ tableViewCell: PersonTableViewCell)
 }
 
 
@@ -26,13 +28,17 @@ class PersonTableViewCell: UITableViewCell {
     
     @IBAction func switchAmount(_ sender: UISwitch) {
         
+        counter += 1
+        
         if sender.isOn == true {
             
-            setupAmountPicker(isSelected: true, amount: "\(String(describing: personAmount))")
+            setupAmountPicker(counter: counter, isSelected: true, amount: "\(String(describing: personAmount))")
         } else {
             
-            setupAmountPicker(isSelected: false, amount: "不限")
+            setupAmountPicker(counter: counter, isSelected: true, amount: "不限")
         }
+        
+        self.delegate?.didTap(self)
         
     }
     
@@ -40,8 +46,10 @@ class PersonTableViewCell: UITableViewCell {
     
     @IBOutlet weak var amountHeight: NSLayoutConstraint!
     
+    var counter = 0
+    
 
-    func setupAmountPicker(isSelected: Bool, amount: String) {
+    func setupAmountPicker(counter: Int, isSelected: Bool, amount: String) {
         
         personTitle.text = "參加人數"
         
@@ -53,6 +61,12 @@ class PersonTableViewCell: UITableViewCell {
             
         } else if switchAmount.isOn == false || isSelected == false {
             
+            if counter == 0 {
+                
+                personAmount.text = ""
+            } else {
+                personAmount.text = amount
+            }
             amountHeight.constant = 0
         }
     }

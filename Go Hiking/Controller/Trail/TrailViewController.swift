@@ -104,6 +104,8 @@ class TrailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        trailTableView.reloadData()
     }
     
     // MARK: - Filter for Search
@@ -223,6 +225,24 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
         filterCell.layoutCell(title: item.filterButton)
         
         return filterCell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
+        
+        animator.addAnimations {
+            
+            cell.alpha = 1
+            cell.transform = .identity
+            self.trailTableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
 }
 
