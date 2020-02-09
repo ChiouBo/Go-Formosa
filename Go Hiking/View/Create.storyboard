@@ -445,7 +445,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="End" rowHeight="304" id="ybm-pl-128" customClass="EndTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="860" width="414" height="304"/>
+                                        <rect key="frame" x="0.0" y="264" width="414" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ybm-pl-128" id="XFh-EJ-bGR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
@@ -500,7 +500,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Person" rowHeight="213" id="AAn-Iy-fUG" customClass="PersonTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1164" width="414" height="213"/>
+                                        <rect key="frame" x="0.0" y="568" width="414" height="213"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AAn-Iy-fUG" id="E6p-BC-Rot">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="213"/>
@@ -564,7 +564,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Preview" rowHeight="137" id="9Ch-Y9-kZB" customClass="PreviewTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1377" width="414" height="137"/>
+                                        <rect key="frame" x="0.0" y="781" width="414" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ch-Y9-kZB" id="gol-Of-U5k">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="137"/>
