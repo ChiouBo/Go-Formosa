@@ -86,6 +86,8 @@ class CreateViewController: UIViewController {
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
         
+        
+        
         contentTableView.rowHeight = UITableView.automaticDimension
         
         getStartDate()
@@ -186,22 +188,24 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             personCell.delegate = self
             personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: nowAmount)
-            personCell.personAmount.backgroundColor = .red
+            personCell.amountPickerView.delegate = self
+            
             return personCell
             
         case 6:
             
-            guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
+            guard let previewCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
             
-            personCell.previewBtn.addTarget(self, action: #selector(apple), for: .touchUpInside)
-            return personCell
+            previewCell.previewBtn.addTarget(self, action: #selector(passDatatoPreview), for: .touchUpInside)
+            
+            return previewCell
             
         default:
             return UITableViewCell()
         }
     }
     
-    @objc func apple() {
+    @objc func passDatatoPreview() {
         
         guard let previewVC = storyboard?.instantiateViewController(identifier: "Preview") as? PreviewViewController,
               let photo =  photo else { return }
@@ -209,7 +213,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end)
         
         previewVC.data = data
-        
+        previewVC.modalPresentationStyle = .overCurrentContext
         present(previewVC, animated: true, completion: nil)
         
     }
@@ -234,6 +238,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             isStartDate = false
             isEndDate = false
         }
+        
         contentTableView.reloadData()
     }
 }
@@ -335,6 +340,30 @@ extension CreateViewController: PersonSelectedDelegate {
         
         contentTableView.reloadData()
     }
+}
+
+extension CreateViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return 999
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        return "\(row+1) 人"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        nowAmount = "\(row+1) 人"
+    }
+    
 }
 
 extension CreateViewController: EventTitleisEdited, EventDESCisEdited {

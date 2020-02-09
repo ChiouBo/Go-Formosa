@@ -10,7 +10,6 @@ import UIKit
 
 private enum GHColor: String {
 
-    // swiftlint:disable identifier_name
     case G1
 
     case T1
@@ -26,7 +25,6 @@ private enum GHColor: String {
     case Denim
     
     case Facebook
-    
 }
 
 extension UIColor {
@@ -46,8 +44,6 @@ extension UIColor {
     static let Denim = GHColor(.Denim)
 
     static let Facebook = GHColor(.Facebook)
-    
-    // swiftlint:enable identifier_name
     
     private static func GHColor(_ color: GHColor) -> UIColor? {
 

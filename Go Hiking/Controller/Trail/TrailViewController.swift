@@ -99,7 +99,22 @@ class TrailViewController: UIViewController {
         setupElements()
         
         setNavVC()
+        
+//        createGradientLayer()
     }
+    
+//    func createGradientLayer() {
+//        
+//        let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//        
+//        let gradientLayer = CAGradientLayer()
+//        
+//        gradientLayer.frame = background.bounds
+//        
+//        gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
+//        
+//        view.layer.addSublayer(gradientLayer)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         

@@ -51,7 +51,7 @@
                                 <state key="normal" image="Icons_48px_Go_Selected"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="atV-cQ-Y6k" secondAttribute="bottom" constant="20" id="4Mx-Nk-0gt"/>
                             <constraint firstAttribute="bottom" secondItem="1Sj-WM-FhF" secondAttribute="bottom" constant="10" id="814-cQ-aiI"/>
@@ -73,6 +73,7 @@
                     <constraint firstAttribute="trailing" secondItem="q6D-Sh-9qW" secondAttribute="trailing" id="zI3-fo-Buc"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="campaignImage" destination="Ucm-S8-Xwt" id="JIR-9x-hki"/>

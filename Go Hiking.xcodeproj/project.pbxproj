@@ -18,6 +18,8 @@
 		051A863923EEEF24008865FC /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863823EEEF24008865FC /* PreviewTableViewCell.swift */; };
 		051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863A23EFE1AC008865FC /* PreviewViewController.swift */; };
 		051A863E23EFE960008865FC /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863D23EFE960008865FC /* EventObject.swift */; };
+		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
+		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -95,6 +97,8 @@
 		051A863823EEEF24008865FC /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
 		051A863A23EFE1AC008865FC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		051A863D23EFE960008865FC /* EventObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
+		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
+		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				051A863023EEE35D008865FC /* EndTableViewCell.swift */,
 				051A863623EEEECC008865FC /* PersonTableViewCell.swift */,
 				051A863823EEEF24008865FC /* PreviewTableViewCell.swift */,
+				0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 				05BF090B23E7F70D009CED63 /* String+Extension.swift */,
 				05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */,
 				05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */,
+				0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -686,6 +692,7 @@
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
+				0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */,
 				05BF092423E99E85009CED63 /* FilterItem.swift in Sources */,
 				05BF08E623E2003E009CED63 /* ProfileViewController.swift in Sources */,
 				051A862F23EED7F8008865FC /* StartTableViewCell.swift in Sources */,
@@ -699,6 +706,7 @@
 				051A862923EE8C8A008865FC /* PhotoCollectionViewCell.swift in Sources */,
 				05BF090823E7CD37009CED63 /* UITextField+Extension.swift in Sources */,
 				05BF090523E6DDB5009CED63 /* Campaign.swift in Sources */,
+				0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */,
 				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
 				051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */,
 			);
