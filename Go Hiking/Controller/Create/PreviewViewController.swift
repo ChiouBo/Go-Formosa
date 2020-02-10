@@ -80,8 +80,8 @@ extension PreviewViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.eventTitle.text = data?.title
         cell.eventDesc.text = data?.desc
-        cell.eventStart.text = data?.start
-        cell.eventEnd.text = data?.end
+        cell.eventTime.text = "\(data?.start ?? "") - \(data?.end ?? "")"
+        cell.eventAmount.text = data?.amount
         cell.eventImage.image = data?.image
         
         return cell
