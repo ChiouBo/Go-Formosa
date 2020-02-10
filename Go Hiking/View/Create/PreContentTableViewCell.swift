@@ -36,6 +36,8 @@ class PreContentTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        eventTime.numberOfLines = 0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

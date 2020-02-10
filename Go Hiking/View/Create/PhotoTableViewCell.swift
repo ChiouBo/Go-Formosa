@@ -30,18 +30,27 @@ class PhotoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        setUpCollection()
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        setUpCollection()
         photoCollectionView.delegate = self
         photoCollectionView.dataSource = self
     }
-
+    
+    func setUpCollection() {
+        
+        photoCollectionView.layer.cornerRadius = 10
+        photoCollectionView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        photoCollectionView.layer.shadowOpacity = 0.7
+        photoCollectionView.layer.shadowRadius = 5
+        photoCollectionView.layer.shadowColor = UIColor.lightGray.cgColor
+    }
+    
 }
 
 extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -55,6 +64,11 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Photos", for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
         
         cell.delegate = self
+        cell.layer.cornerRadius = 10
+//        photoCollectionView.layer.shadowOffset = CGSize(width: 3, height: 3)
+//        photoCollectionView.layer.shadowOpacity = 0.7
+//        photoCollectionView.layer.shadowRadius = 5
+//        photoCollectionView.layer.shadowColor = UIColor.lightGray.cgColor
         
         if indexPath.row == photoArray.count {
            
