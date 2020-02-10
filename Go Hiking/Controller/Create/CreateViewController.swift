@@ -279,7 +279,6 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
             imageArray.append(pickedImage)
             
             currentImageCount = imageArray.count
-            
         }
         
         let uniqueString = NSUUID().uuidString

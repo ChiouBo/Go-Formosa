@@ -11,7 +11,7 @@ import FirebaseStorage
 import FirebaseFirestore
 
 class PreviewViewController: UIViewController {
-
+    
     @IBOutlet weak var preView: UIView!
     
     @IBOutlet weak var preTableView: UITableView!
@@ -25,13 +25,47 @@ class PreviewViewController: UIViewController {
     
     @IBOutlet weak var eventCancel: UIButton!
     
+    var seletedImage = UIImage()
+    
     @IBAction func eventCancel(_ sender: UIButton) {
         
+        let uniqueString = NSUUID().uuidString
+        
+        guard let uploadData = data?.image.pngData() else { return }
+        
+        LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
+        
+        UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
+            
+            switch result {
+                
+            case .success(let upload):
+                
+                guard let data = self.data else { return }
+                
+                UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
+                
+                LKProgressHUD.dismiss()
+                
+                LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+                print(upload)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
         }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setButton()
         
         setView()
@@ -80,11 +114,11 @@ extension PreviewViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.eventTitle.text = data?.title
         cell.eventDesc.text = data?.desc
-        cell.eventTime.text = "\(data?.start ?? "") - \(data?.end ?? "")"
-        cell.eventAmount.text = data?.amount
+        cell.eventTime.text = "\(data?.start ?? "") \(data?.end ?? "")"
+        cell.eventAmount.text = "隊員 \(data?.amount ?? "")"
         cell.eventImage.image = data?.image
         
         return cell
     }
-
+    
 }

@@ -13,7 +13,6 @@ protocol UploadPhotoDelegate: AnyObject {
     func uploadPhoto(_ collectionViewCell: PhotoCollectionViewCell)
 }
 
-
 class PhotoCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: UploadPhotoDelegate?
@@ -27,5 +26,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         self.delegate?.uploadPhoto(self)
     }
     
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
 }

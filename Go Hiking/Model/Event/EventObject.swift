@@ -27,10 +27,15 @@ struct EventContent {
         
         return [
             "Image": image,
+            
             "Title": title,
+            
             "Desc": desc,
+
             "Start": start,
+
             "End": end,
+
             "Amount": amount
         ]
     }

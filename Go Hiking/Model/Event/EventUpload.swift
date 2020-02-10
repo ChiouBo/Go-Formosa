@@ -21,11 +21,56 @@ class UploadEvent {
     
     let storageReference = Storage.storage().reference()
     
-//    if let data = try? Data(contentsOf: Bundle.main.url(forResource: "", withExtension: <#T##String?#>))
+    let eventDB = Firestore.firestore()
     
+    func uploadEventData(evenContent: EventContent, image: String) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        eventDB.collection("Event").document(uid).setData([
+            
+            "Title": evenContent.title,
+            "Desc": evenContent.desc,
+            "Start": evenContent.start,
+            "End": evenContent.end,
+            "Member": evenContent.amount,
+            "Image": image
+            
+        ]) { (error) in
+            
+            if let error = error {
+                
+                print(error)
+            }
+        }
+    }
     
-    
-    
+    func storage(uniqueString: String, data: Data, complation: @escaping (Result<URL>) -> Void ) {
+        
+        let uploadData = data
+        
+        let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).png")
+        
+        storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+            
+            if error != nil {
+                
+                print("Error: \(error!.localizedDescription)")
+                return
+            }
+            
+            storageRef.downloadURL { (url, error) in
+                
+                guard let downloadURL = url else {
+                    return
+                }
+                
+                complation(.success(downloadURL))
+                
+                print(downloadURL)
+            }
+        })
+    }
     
     
     
