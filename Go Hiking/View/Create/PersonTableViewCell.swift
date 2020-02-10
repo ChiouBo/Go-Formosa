@@ -39,6 +39,7 @@ class PersonTableViewCell: UITableViewCell {
         }
         
         self.delegate?.didTap(self)
+        self.delegate?.selectedPerson(self, amount: "不限")
         
     }
     

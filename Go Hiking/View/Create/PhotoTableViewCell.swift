@@ -18,7 +18,13 @@ class PhotoTableViewCell: UITableViewCell {
 
     weak var delegate: PressToUploadPhoto?
     
-    var photoArray: [UIImage] = []
+    var photoArray: [UIImage] = [] {
+        
+        didSet {
+            
+            photoCollectionView.reloadData()
+        }
+    }
     
     @IBOutlet weak var photoCollectionView: UICollectionView!
     
@@ -81,6 +87,7 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
 
         return UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0, right: 20.0)
     }
+
     
 }
 

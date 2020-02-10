@@ -38,7 +38,17 @@ class CreateViewController: UIViewController {
     
     var end = ""
     
-
+    var currentImageCount = 0
+    
+    var imageArray: [UIImage] = [] {
+        
+        didSet {
+            
+            contentTableView.reloadData()
+        }
+    }
+    
+    var currentImageRow = 0
     
     @IBOutlet weak var contentTableView: UITableView!
     
@@ -132,14 +142,16 @@ class CreateViewController: UIViewController {
 }
 
 extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         switch indexPath.row {
-            
             
         case 0:
             
@@ -161,6 +173,13 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
             
             photoCell.delegate = self
+            
+            if imageArray.count != 0 && currentImageRow <= currentImageCount {
+                
+                photoCell.photoArray.append(imageArray[currentImageCount - 1])
+                
+                currentImageRow += 1
+            }
             
             return photoCell
             
@@ -208,7 +227,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func passDatatoPreview() {
         
         guard let previewVC = storyboard?.instantiateViewController(identifier: "Preview") as? PreviewViewController,
-              let photo =  photo else { return }
+            let photo =  photo else { return }
         
         let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end)
         
@@ -261,6 +280,11 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
             selectedImageFromPicker = pickedImage
+            
+            imageArray.append(pickedImage)
+            
+            currentImageCount = imageArray.count
+            
         }
         
         let uniqueString = NSUUID().uuidString
@@ -287,7 +311,6 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
                             return
                         }
                         print(downloadURL)
-                        
                     }
                 })
             }

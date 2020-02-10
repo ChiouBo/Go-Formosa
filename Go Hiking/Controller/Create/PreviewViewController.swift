@@ -27,10 +27,6 @@ class PreviewViewController: UIViewController {
     
     @IBAction func eventCancel(_ sender: UIButton) {
         
-        
-        
-        
-        
         }
     
     override func viewDidLoad() {
