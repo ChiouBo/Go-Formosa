@@ -160,7 +160,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="P5n-gV-fP8"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aQg-Lq-WAG">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aQg-Lq-WAG">
                                                         <size key="itemSize" width="141" height="113"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>

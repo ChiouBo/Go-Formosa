@@ -19,6 +19,7 @@ target 'Go Hiking' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift'
   
   pod 'Kingfisher'
   pod 'MJRefresh'
