@@ -15,11 +15,10 @@ protocol PersonSelectedDelegate: AnyObject {
     func didTap(_ tableViewCell: PersonTableViewCell)
 }
 
-
 class PersonTableViewCell: UITableViewCell {
     
     weak var delegate: PersonSelectedDelegate?
-
+    
     @IBOutlet weak var personTitle: UILabel!
     
     @IBOutlet weak var personAmount: UILabel!
@@ -29,18 +28,18 @@ class PersonTableViewCell: UITableViewCell {
     @IBAction func switchAmount(_ sender: UISwitch) {
         
         counter += 1
-        
+
         if sender.isOn == true {
-            
-            setupAmountPicker(counter: counter, isSelected: true, amount: "\(String(describing: personAmount))")
+
+            setupAmountPicker(counter: counter, isSelected: true, amount: "")
+            self.delegate?.selectedPerson(self, amount: "")
         } else {
-            
+
             setupAmountPicker(counter: counter, isSelected: true, amount: "不限")
+            self.delegate?.selectedPerson(self, amount: "不限")
         }
-        
+
         self.delegate?.didTap(self)
-        self.delegate?.selectedPerson(self, amount: "不限")
-        
     }
     
     @IBOutlet weak var amountPickerView: UIPickerView!
@@ -52,6 +51,8 @@ class PersonTableViewCell: UITableViewCell {
     func setupAmountPicker(counter: Int, isSelected: Bool, amount: String) {
         
         personTitle.text = "參加人數"
+        
+//        self.amount = amount
         
         personAmount.text = amount
         
@@ -73,13 +74,11 @@ class PersonTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

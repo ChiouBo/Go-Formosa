@@ -38,6 +38,8 @@ class CreateViewController: UIViewController {
     
     var end = ""
     
+    var amount = ""
+    
     var currentImageCount = 0
     
     var imageArray: [UIImage] = [] {
@@ -48,7 +50,7 @@ class CreateViewController: UIViewController {
         }
     }
     
-    var currentImageRow = 0
+//    var currentImageRow = 0
     
     @IBOutlet weak var contentTableView: UITableView!
     
@@ -95,8 +97,6 @@ class CreateViewController: UIViewController {
         
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
-        
-        
         
         contentTableView.rowHeight = UITableView.automaticDimension
         
@@ -174,13 +174,8 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             photoCell.delegate = self
             
-            if imageArray.count != 0 && currentImageRow <= currentImageCount {
+                photoCell.photoArray = imageArray
                 
-                photoCell.photoArray.append(imageArray[currentImageCount - 1])
-                
-                currentImageRow += 1
-            }
-            
             return photoCell
             
         case 3:
@@ -229,7 +224,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         guard let previewVC = storyboard?.instantiateViewController(identifier: "Preview") as? PreviewViewController,
             let photo =  photo else { return }
         
-        let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end)
+        let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end, amount: nowAmount)
         
         previewVC.data = data
         previewVC.modalPresentationStyle = .overCurrentContext
@@ -314,10 +309,8 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
                     }
                 })
             }
-            
             print("\(uniqueString), \(selectedImage)")
         }
-        
         dismiss(animated: true, completion: nil)
     }
 }
@@ -361,6 +354,8 @@ extension CreateViewController: PersonSelectedDelegate {
         
         self.nowAmount = amount
         
+        self.amount = amount
+        
         contentTableView.reloadData()
     }
 }
@@ -386,7 +381,6 @@ extension CreateViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         
         nowAmount = "\(row+1) 人"
     }
-    
 }
 
 extension CreateViewController: EventTitleisEdited, EventDESCisEdited {

@@ -16,19 +16,19 @@ class PreContentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventDesc: UILabel!
     
-    @IBOutlet weak var eventStart: UILabel!
+    @IBOutlet weak var eventTime: UILabel!
     
-    @IBOutlet weak var eventEnd: UILabel!
+    @IBOutlet weak var eventAmount: UILabel!
     
-    func preSetUp(eventTitle: String, eventDesc: String, eventStart: String, eventEnd: String, eventImage: UIImage) {
+    func preSetUp(eventTitle: String, eventDesc: String, eventTime: String, eventAmount: String, eventImage: UIImage) {
                       
         self.eventTitle.text = eventTitle
            
         self.eventDesc.text = eventDesc
            
-        self.eventStart.text = eventStart
+        self.eventTime.text = eventTime
            
-        self.eventEnd.text = eventEnd
+        self.eventAmount.text = eventAmount
            
         self.eventImage.image = eventImage
     }
