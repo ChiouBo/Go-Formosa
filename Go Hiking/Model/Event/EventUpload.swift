@@ -27,14 +27,16 @@ class UploadEvent {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        eventDB.collection("Event").document(uid).setData([
+        eventDB.collection("Event").document().setData([
             
             "Title": evenContent.title,
             "Desc": evenContent.desc,
             "Start": evenContent.start,
             "End": evenContent.end,
             "Member": evenContent.amount,
-            "Image": image
+            "Image": image,
+            "Creater": uid,
+            "EventID": eventDB.collection("Event").document().documentID
             
         ]) { (error) in
             
