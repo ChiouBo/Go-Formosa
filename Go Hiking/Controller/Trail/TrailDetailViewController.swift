@@ -10,6 +10,7 @@ import UIKit
 
 class TrailDetailViewController: UIViewController {
 
+
     
     var trailDict: TrailInfo?
     
@@ -25,11 +26,14 @@ class TrailDetailViewController: UIViewController {
     lazy var TrailContentTableView: UITableView = {
         let tcTV = UITableView()
         let tCell = UINib(nibName: "TrailContentTableViewCell", bundle: nil)
+        let cCell = UINib(nibName: "TrailLocationTableViewCell", bundle: nil)
         tcTV.translatesAutoresizingMaskIntoConstraints = false
         tcTV.delegate = self
         tcTV.dataSource = self
         tcTV.register(tCell, forCellReuseIdentifier: "TrailContent")
+        tcTV.register(cCell, forCellReuseIdentifier: "TrailCreate")
         tcTV.rowHeight = UITableView.automaticDimension
+        tcTV.separatorStyle = .none
         return tcTV
     }()
     
@@ -109,20 +113,51 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
-        TrailContentTableViewCell else { return UITableViewCell() }
-        
-        cell.trailTitle.text = trailDict?.trailName
-        cell.trailLocation.text = trailDict?.trailPosition
-        cell.trailDescription.text = trailDict?.trailDescrip
-        
-        return cell
+        switch indexPath.row {
+            
+        case 0:
+            
+            guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
+            TrailContentTableViewCell else { return UITableViewCell() }
+            
+            contentCell.trailTitle.text = trailDict?.trailName
+            contentCell.trailLocation.text = trailDict?.trailPosition
+            contentCell.trailDescription.text = trailDict?.trailDescrip
+            
+            
+            
+            return contentCell
+            
+        case 1:
+            
+            guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
+            TrailLocationTableViewCell else { return UITableViewCell() }
+            
+            createCell.createTrailEvent.addTarget(self, action: #selector(trailCreate), for: .touchUpInside)
+            
+            return createCell
+            
+        default:
+            return UITableViewCell()
+        }
     }
+    
+    @objc func trailCreate() {
+        
+        let createEvent = UIStoryboard(name: "Create", bundle: nil)
+        guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
+        
+        //        createVC.transitioningDelegate = self
+        createVC.modalPresentationStyle = .custom
+        present(createVC, animated: true, completion: nil)
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         

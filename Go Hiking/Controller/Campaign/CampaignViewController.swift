@@ -210,9 +210,8 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.campaignTitle.text = eventData[indexPath.row].title
         cell.campaignLevel.text = eventData[indexPath.row].member
-        
-        
-//        cell.campaignImage.kf.setImage(with: URL(string: <#T##String#>)) = UIImage(contentsOfFile: eventData[indexPath.row].image)
+        cell.campaignImage.kf.setImage(with: URL(string: eventData[indexPath.row].image))
+
         
         return cell
     }

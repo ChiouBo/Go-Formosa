@@ -50,7 +50,7 @@ class CreateViewController: UIViewController {
         }
     }
     
-//    var currentImageRow = 0
+    var trailDict: TrailInfo?
     
     @IBOutlet weak var contentTableView: UITableView!
     
