@@ -33,7 +33,6 @@ class PreContentTableViewCell: UITableViewCell {
         self.eventImage.image = eventImage
     }
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         

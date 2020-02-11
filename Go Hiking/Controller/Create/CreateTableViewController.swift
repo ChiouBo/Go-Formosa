@@ -17,6 +17,4 @@ class CreateTableViewController: UITableViewController {
 
     }
     
-
-
 }
