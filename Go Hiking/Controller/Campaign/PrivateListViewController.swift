@@ -102,7 +102,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         transition.transitionMode = .present
         transition.startingPoint = createBtn.center
-        transition.circleColor = UIColor.orange
+        transition.circleColor = UIColor.white
         
         return transition
     }
@@ -111,7 +111,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         transition.transitionMode = .dismiss
         transition.startingPoint = createBtn.center
-        transition.circleColor = UIColor.orange
+        transition.circleColor = UIColor.white
         
         return transition
     }
