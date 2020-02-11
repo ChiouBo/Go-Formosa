@@ -158,6 +158,8 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
             
             titleCell.delegate = self
+            
+            titleCell.eventCancel.addTarget(self, action: #selector(eventCancel), for: .touchUpInside)
             return titleCell
             
         case 1:
@@ -219,9 +221,14 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    @objc func eventCancel() {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func passDatatoPreview() {
         
-        guard let previewVC = storyboard?.instantiateViewController(identifier: "Preview") as? PreviewViewController,
+        guard let previewVC = storyboard?.instantiateViewController(withIdentifier: "Preview") as? PreviewViewController,
             let photo =  photo else { return }
         
         let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end, amount: nowAmount)

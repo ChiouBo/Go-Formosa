@@ -35,6 +35,7 @@
 		05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */; };
 		05A83C4023EBF4180004B38C /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3F23EBF4180004B38C /* Record.storyboard */; };
 		05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */; };
+		05AD57E623F1A61E00F11EB5 /* EventDwonload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD57E523F1A61E00F11EB5 /* EventDwonload.swift */; };
 		05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B523E16995009CED63 /* KingFisherWrapper.swift */; };
 		05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */; };
 		05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BF08BF23E1AB54009CED63 /* Trail.storyboard */; };
@@ -117,6 +118,7 @@
 		05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailLocationTableViewCell.xib; sourceTree = "<group>"; };
 		05A83C3F23EBF4180004B38C /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
 		05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewController.swift; sourceTree = "<group>"; };
+		05AD57E523F1A61E00F11EB5 /* EventDwonload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDwonload.swift; sourceTree = "<group>"; };
 		05BF08B523E16995009CED63 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
 		05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGProgressHUDWrapper.swift; sourceTree = "<group>"; };
 		05BF08BF23E1AB54009CED63 /* Trail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Trail.storyboard; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				051A863D23EFE960008865FC /* EventObject.swift */,
 				0551325D23F04BFF008EC8D3 /* EventUpload.swift */,
+				05AD57E523F1A61E00F11EB5 /* EventDwonload.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
 				051A863923EEEF24008865FC /* PreviewTableViewCell.swift in Sources */,
 				05BF090C23E7F70E009CED63 /* String+Extension.swift in Sources */,
+				05AD57E623F1A61E00F11EB5 /* EventDwonload.swift in Sources */,
 				051A863123EEE35D008865FC /* EndTableViewCell.swift in Sources */,
 				05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
@@ -860,6 +864,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4T6NSZK86S;
 				INFOPLIST_FILE = "Go Hiking/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -879,6 +884,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4T6NSZK86S;
 				INFOPLIST_FILE = "Go Hiking/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

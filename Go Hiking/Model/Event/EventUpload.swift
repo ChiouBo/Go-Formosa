@@ -29,14 +29,14 @@ class UploadEvent {
         
         eventDB.collection("Event").document().setData([
             
-            "Title": evenContent.title,
-            "Desc": evenContent.desc,
-            "Start": evenContent.start,
-            "End": evenContent.end,
-            "Member": evenContent.amount,
-            "Image": image,
-            "Creater": uid,
-            "EventID": eventDB.collection("Event").document().documentID
+            "title": evenContent.title,
+            "desc": evenContent.desc,
+            "start": evenContent.start,
+            "end": evenContent.end,
+            "member": evenContent.amount,
+            "image": image,
+            "creater": uid,
+            "eventID": eventDB.collection("Event").document().documentID
             
         ]) { (error) in
             
@@ -47,7 +47,7 @@ class UploadEvent {
         }
     }
     
-    func storage(uniqueString: String, data: Data, complation: @escaping (Result<URL>) -> Void ) {
+    func storage(uniqueString: String, data: Data, completion: @escaping (Result<URL>) -> Void ) {
         
         let uploadData = data
         
@@ -67,14 +67,34 @@ class UploadEvent {
                     return
                 }
                 
-                complation(.success(downloadURL))
+                completion(.success(downloadURL))
                 
                 print(downloadURL)
             }
         })
     }
     
-    
+    func download(completion: @escaping (Result<EventCurrent>) -> Void) {
+        
+        eventDB.collection("Event").getDocuments { (snapshot, error) in
+            
+            if error == nil && snapshot?.documents.count != 0 {
+                
+                for document in snapshot!.documents {
+                    
+                    do {
+                        guard let data = try document.data(as: EventCurrent.self, decoder: Firestore.Decoder()) else { return }
+                        
+                        completion(.success(data))
+                        
+                    } catch {
+                        
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
     
 }
 
