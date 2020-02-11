@@ -21,6 +21,15 @@ class TitleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleTextField: UITextField!
     
+    @IBOutlet weak var eventCancel: UIButton!
+    
+    @IBAction func eventCancel(_ sender: UIButton) {
+        
+        
+    }
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

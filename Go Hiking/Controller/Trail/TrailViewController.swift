@@ -20,6 +20,7 @@ struct TrailInfo {
     
     var trailDescrip: String
 }
+
 class TrailViewController: UIViewController {
     
     var trailResponse = TrailResponse()
@@ -29,6 +30,12 @@ class TrailViewController: UIViewController {
     var trailFilter = [Trail]()
     
     let filter = FilterItemManager()
+    
+    var selectedFilter = false
+    
+    var filterOpen: NSLayoutConstraint?
+    
+    var filterClose: NSLayoutConstraint?
     
     lazy var trailTableView: UITableView = {
         let tTV = UITableView()
@@ -69,8 +76,17 @@ class TrailViewController: UIViewController {
     
     @objc func filterBtn() {
         
-//        let controller = self.navigationController?.storyboard?.instantiateViewController(identifier: "Private")
-//        self.navigationController?.pushViewController(controller!, animated: true)
+        if selectedFilter == false {
+            
+            filterOpen?.isActive = false
+            filterClose?.isActive = true
+            selectedFilter = true
+            
+        } else {
+            selectedFilter = false
+            filterOpen?.isActive = true
+            filterClose?.isActive = false
+        }
     }
     
     func setNavVC() {
@@ -202,7 +218,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let trail = UIStoryboard(name: "Trail", bundle: nil)
-        guard let trailVC = trail.instantiateViewController(identifier: "TrailDetail") as? TrailDetailViewController else { return }
+        guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
         
         let trailInfo = TrailInfo(trailName: trailFilter[indexPath.row].trCname,
                                   trailPosition: trailFilter[indexPath.row].trPosition ?? "",
@@ -345,10 +361,12 @@ extension TrailViewController {
         trailTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         filterView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        filterView.bottomAnchor.constraint(equalTo: trailTableView.topAnchor).isActive = true
         filterView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         filterView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        filterView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        
+        filterClose = filterView.heightAnchor.constraint(equalToConstant: 0)
+        filterOpen = filterView.heightAnchor.constraint(equalToConstant: 110)
+        filterClose?.isActive = true
     }
     
 }

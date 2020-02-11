@@ -67,18 +67,32 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REr-YN-2zg">
+                                                    <rect key="frame" x="370" y="15" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="PpZ-vO-Uuh"/>
+                                                        <constraint firstAttribute="width" constant="24" id="SD2-Oe-Dnd"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Icons_24px_CleanAll"/>
+                                                    <connections>
+                                                        <action selector="eventCancel:" destination="EVa-eP-w95" eventType="touchUpInside" id="aRt-gI-biW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="LsU-yY-Sgu" firstAttribute="leading" secondItem="nST-G4-Som" secondAttribute="leading" constant="20" id="2e7-ad-F53"/>
                                                 <constraint firstItem="5pt-nH-FBb" firstAttribute="top" secondItem="LsU-yY-Sgu" secondAttribute="bottom" constant="10" id="Doq-wB-GHT"/>
+                                                <constraint firstItem="REr-YN-2zg" firstAttribute="top" secondItem="nST-G4-Som" secondAttribute="top" constant="15" id="Fr0-la-2Jg"/>
                                                 <constraint firstItem="5pt-nH-FBb" firstAttribute="leading" secondItem="nST-G4-Som" secondAttribute="leading" constant="20" id="G8f-5A-vjm"/>
                                                 <constraint firstAttribute="bottom" secondItem="5pt-nH-FBb" secondAttribute="bottom" constant="2" id="I6G-CD-jab"/>
+                                                <constraint firstAttribute="trailing" secondItem="REr-YN-2zg" secondAttribute="trailing" constant="20" id="Rwu-De-8Ml"/>
                                                 <constraint firstItem="LsU-yY-Sgu" firstAttribute="top" secondItem="nST-G4-Som" secondAttribute="top" constant="20" id="tzu-cD-zWS"/>
                                                 <constraint firstAttribute="trailing" secondItem="LsU-yY-Sgu" secondAttribute="trailing" constant="100" id="whP-p0-0w0"/>
                                                 <constraint firstAttribute="trailing" secondItem="5pt-nH-FBb" secondAttribute="trailing" constant="20" id="zK8-dP-ico"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="eventCancel" destination="REr-YN-2zg" id="gbw-4A-gMk"/>
                                             <outlet property="eventTitle" destination="LsU-yY-Sgu" id="V7Q-4Z-WJl"/>
                                             <outlet property="titleTextField" destination="5pt-nH-FBb" id="J8i-Vv-iKt"/>
                                         </connections>
@@ -633,6 +647,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icons_24px_CleanAll" width="24" height="24"/>
         <image name="Image_AddImage" width="127" height="100"/>
         <image name="M001" width="850" height="566"/>
         <image name="minus" catalog="system" width="64" height="14"/>

@@ -8,12 +8,15 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import Kingfisher
 
 class CampaignViewController: UIViewController {
 
     var filteredCampaign = [Campaign]()
     
     let campaigns = Campaign.getAllCampaigns()
+    
+    var eventData: [EventCurrent] = []
     
     lazy var publicTableView: UITableView = {
         let pTV = UITableView()
@@ -42,7 +45,7 @@ class CampaignViewController: UIViewController {
     
     @objc func toPrivateList() {
         
-        let controller = self.navigationController?.storyboard?.instantiateViewController(identifier: "Private")
+        let controller = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "Private")
         self.navigationController?.pushViewController(controller!, animated: true)
     }
     
@@ -71,7 +74,48 @@ class CampaignViewController: UIViewController {
         
         setupElements()
         
+//        UploadEvent.shared.download { (result) in
+//            
+//            switch result {
+//                
+//            case .success(let data):
+//                
+//                print(data)
+//                
+//                self.eventData.append(data)
+//                self.publicTableView.reloadData()
+//            case .failure(let error):
+//                
+//                print(error)
+//                
+//            }
+//        }
+        
+        
+        
 //        createGradientLayer()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        eventData = []
+        
+        UploadEvent.shared.download { (result) in
+            
+            switch result {
+                
+            case .success(let data):
+                
+                print(data)
+                
+                self.eventData.append(data)
+                self.publicTableView.reloadData()
+            case .failure(let error):
+                
+                print(error)
+                
+            }
+        }
     }
     
 //        func createGradientLayer() {
@@ -141,7 +185,7 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         
         if isFiltering() { return filteredCampaign.count}
         
-        return campaigns.count
+        return eventData.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -153,18 +197,42 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Campaign", for: indexPath) as?
             CampaignTableViewCell else { return UITableViewCell() }
         
-        let currentCampaign: Campaign
+//        let currentCampaign: Campaign
+//
+//        if isFiltering() {
+//            currentCampaign = filteredCampaign[indexPath.row]
+//        } else {
+//            currentCampaign = campaigns[indexPath.row]
+//        }
         
-        if isFiltering() {
-            currentCampaign = filteredCampaign[indexPath.row]
-        } else {
-            currentCampaign = campaigns[indexPath.row]
-        }
+//        cell.campaignTitle.text = currentCampaign.title
+//        cell.campaignLevel.text = currentCampaign.level
         
-        cell.campaignTitle.text = currentCampaign.title
-        cell.campaignLevel.text = currentCampaign.level
+        cell.campaignTitle.text = eventData[indexPath.row].title
+        cell.campaignLevel.text = eventData[indexPath.row].member
+        
+        
+//        cell.campaignImage.kf.setImage(with: URL(string: <#T##String#>)) = UIImage(contentsOfFile: eventData[indexPath.row].image)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
+        
+        animator.addAnimations {
+            
+            cell.alpha = 1
+            cell.transform = .identity
+            self.publicTableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
 }
 
