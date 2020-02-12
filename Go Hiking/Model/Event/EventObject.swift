@@ -11,17 +11,19 @@ import UIKit
 
 struct EventContent {
     
-    let image: UIImage
+    var image: [UIImage] = []
     
-    let title: String
+    var title: String
     
-    let desc: String
+    var desc: String
     
-    let start: String
+    var start: String
     
-    let end: String
+    var end: String
     
-    let amount: String
+    var amount: String
+    
+    var location: String
     
     var toDict: [String: Any] {
         
@@ -36,7 +38,9 @@ struct EventContent {
 
             "End": end,
 
-            "Amount": amount
+            "Amount": amount,
+            
+            "Location": location
         ]
     }
     

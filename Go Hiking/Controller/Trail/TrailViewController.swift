@@ -13,14 +13,6 @@ struct Buttons {
     var buttons: [String]
 }
 
-struct TrailInfo {
-    var trailName: String
-    
-    var trailPosition: String
-    
-    var trailDescrip: String
-}
-
 class TrailViewController: UIViewController {
     
     var trailResponse = TrailResponse()
@@ -220,10 +212,15 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         let trail = UIStoryboard(name: "Trail", bundle: nil)
         guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
         
-        let trailInfo = TrailInfo(trailName: trailFilter[indexPath.row].trCname,
-                                  trailPosition: trailFilter[indexPath.row].trPosition ?? "",
-                                  trailDescrip: trailFilter[indexPath.row].guideContent ?? "")
-        trailVC.trailDict = trailInfo
+        let data = EventContent(image: [],
+            title: trailFilter[indexPath.row].trCname,
+            desc: trailFilter[indexPath.row].guideContent ?? "",
+            start: "",
+            end: "",
+            amount: "",
+            location: trailFilter[indexPath.row].trPosition ?? "")
+        
+        trailVC.trailDict = data
         
         show(trailVC, sender: nil)
     }
