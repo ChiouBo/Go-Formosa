@@ -10,7 +10,7 @@ import UIKit
 
 class TrailDetailViewController: UIViewController {
 
-    var trailDict: TrailInfo?
+    var trailDict: EventContent?
     
     lazy var trailImage: UIImageView = {
        let trailImage = UIImageView()
@@ -123,9 +123,9 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
             TrailContentTableViewCell else { return UITableViewCell() }
             
-            contentCell.trailTitle.text = trailDict?.trailName
-            contentCell.trailLocation.text = trailDict?.trailPosition
-            contentCell.trailDescription.text = trailDict?.trailDescrip
+            contentCell.trailTitle.text = trailDict?.title
+            contentCell.trailLocation.text = trailDict?.location
+            contentCell.trailDescription.text = trailDict?.desc
             
             return contentCell
             
@@ -148,15 +148,26 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
         guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
         
-        let trailInfo = TrailInfo(trailName: trailDict?.trailName ?? "",
-                                  trailPosition: trailDict?.trailPosition ?? "",
-                                  trailDescrip: trailDict?.trailDescrip ?? "")
-        let currentImage = trailImage.image
+        var currentImage: [UIImage] = []
+        guard let image = trailImage.image else { return }
+        currentImage.append(image)
+        
+        let trailInfo = EventContent(image: currentImage,
+                                     title: trailDict?.title ?? "",
+                                     desc: trailDict?.desc ?? "",
+                                     start: "",
+                                     end: "",
+                                     amount: "",
+                                     location: trailDict?.location ?? "")
+        
+        createVC.data = trailInfo
+        
         createVC.loadViewIfNeeded()
-        createVC.trailEvent = trailInfo
-        createVC.imageArray.append(currentImage!)
-        //        createVC.transitioningDelegate = self
+
+        createVC.imageArray.append(trailImage.image!)
+ 
         createVC.modalPresentationStyle = .custom
+        
         present(createVC, animated: true, completion: nil)
     }
     

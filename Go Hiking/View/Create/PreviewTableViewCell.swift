@@ -7,12 +7,29 @@
 //
 
 import UIKit
+//
+//protocol InputCheckDelegate: AnyObject {
+//
+//    func inputEmpty(_ tableViewCell: PreviewTableViewCell, notice: String )
+//}
 
 class PreviewTableViewCell: UITableViewCell {
 
+//    weak var delegate: InputCheckDelegate?
+    
     @IBOutlet weak var attentionLabel: UILabel!
     
     @IBOutlet weak var previewBtn: UIButton!
+    
+ 
+//    func setupNoticeLabel(notice: String) {
+//
+//
+//    }
+    
+    
+    
+    
     
     
     override func awakeFromNib() {
@@ -25,7 +42,7 @@ class PreviewTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-
+    
     func setButton() {
         
         previewBtn.layer.cornerRadius = 25

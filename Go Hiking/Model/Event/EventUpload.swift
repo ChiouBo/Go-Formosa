@@ -31,6 +31,7 @@ class UploadEvent {
             
             "title": evenContent.title,
             "desc": evenContent.desc,
+            "location": evenContent.location,
             "start": evenContent.start,
             "end": evenContent.end,
             "member": evenContent.amount,

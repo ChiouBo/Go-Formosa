@@ -51,6 +51,9 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
     @objc func toCreateVC(sender: UIButton) {
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
         guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
+        
+        createVC.data = EventContent(image: [], title: "", desc: "", start: "", end: "", amount: "", location: "")
+        
         createVC.transitioningDelegate = self
         createVC.modalPresentationStyle = .custom
         present(createVC, animated: true, completion: nil)

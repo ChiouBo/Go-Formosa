@@ -50,7 +50,7 @@ class PersonTableViewCell: UITableViewCell {
     
     func setupAmountPicker(counter: Int, isSelected: Bool, amount: String) {
         
-        personTitle.text = "參加人數"
+        personTitle.text = "人數上限"
         
 //        self.amount = amount
         
@@ -58,7 +58,7 @@ class PersonTableViewCell: UITableViewCell {
         
         if switchAmount.isOn == true && isSelected == true {
             
-            amountHeight.constant = 150
+            amountHeight.constant = 200
             
         } else if switchAmount.isOn == false || isSelected == false {
             

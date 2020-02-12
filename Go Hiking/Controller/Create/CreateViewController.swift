@@ -28,17 +28,7 @@ class CreateViewController: UIViewController {
     
     var isAmount = false
     
-    var event = ""
-    
-    var desc = ""
-    
     var photo: UIImage?
-    
-    var start = ""
-    
-    var end = ""
-    
-    var amount = ""
     
     var currentImageCount = 0
     
@@ -48,9 +38,7 @@ class CreateViewController: UIViewController {
             contentTableView.reloadData()
         }
     }
-    
-    var trailEvent: TrailInfo?
-    
+
     var trailCurrentImage: UIImage?
     
     var data: EventContent?
@@ -66,35 +54,40 @@ class CreateViewController: UIViewController {
     @IBAction func eventPost(_ sender: UIButton) {
         
         let uniqueString = NSUUID().uuidString
-
-        guard let uploadData = data?.image.pngData() else { return }
-
-        LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
-
-        UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
-
-            switch result {
-
-            case .success(let upload):
-
-                guard let data = self.data else { return }
-
-                UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
-
-                LKProgressHUD.dismiss()
-
-                LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
-
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-
-                    self.dismiss(animated: true, completion: nil)
+        
+        guard let apple = data?.image else { return }
+        
+        apple.map { info in
+            
+            guard let uploadData = info.pngData() else { return }
+            
+            LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
+            
+            UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
+                
+                switch result {
+                    
+                case .success(let upload):
+                    
+                    guard let data = self.data else { return }
+                    
+                    UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
+                    
+                    LKProgressHUD.dismiss()
+                    
+                    LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    
+                    print(upload)
+                    
+                case .failure(let error):
+                    
+                    print(error)
                 }
-
-                print(upload)
-
-            case .failure(let error):
-
-                print(error)
             }
         }
     }
@@ -202,9 +195,8 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             titleCell.delegate = self
             
-            titleCell.titleTextField.text = trailEvent?.trailName
+            titleCell.titleTextField.text = data?.title
             
-//            titleCell.eventCancel.addTarget(self, action: #selector(eventCancel), for: .touchUpInside)
             return titleCell
             
         case 1:
@@ -213,7 +205,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             descCell.delegate = self
             
-            descCell.DescTextView.text = trailEvent?.trailDescrip
+            descCell.DescTextView.text = data?.desc
             
             return descCell
             
@@ -269,29 +261,56 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-//    @objc func eventCancel() {
-//
-//        dismiss(animated: true, completion: nil)
-    //    }
-    
     @objc func passDatatoPreview() {
         
-        guard let previewVC = storyboard?.instantiateViewController(withIdentifier: "Preview") as? PreviewViewController,
-            let photo =  photo else { return }
-        
-        if let info = trailEvent{
+        if data?.image != nil, data?.title != "", data?.desc != "", data?.start != "", data?.end != "", data?.amount != "" {
             
-            let data = EventContent(image: photo, title: info.trailName, desc: info.trailDescrip, start: start, end: end, amount: nowAmount)
+            guard let previewVC = storyboard?.instantiateViewController(withIdentifier: "Preview") as? PreviewViewController,
+                
+                let photo = data?.image else {
+                    
+                    return
+            }
+            data?.image = photo
+            
             previewVC.data = data
+            
+            previewVC.modalPresentationStyle = .overCurrentContext
+            
+            present(previewVC, animated: true, completion: nil)
+            
         } else {
             
-            let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end, amount: nowAmount)
-            previewVC.data = data
+            var errorMessage = ""
+            
+            if data?.image == nil {
+                
+                errorMessage = "請加入活動圖片！"
+            } else if data?.title == "" {
+                
+                errorMessage = "活動名稱不得為空！"
+            } else if data?.desc == "" {
+                
+                errorMessage = "活動規劃不得為空！"
+            } else if data?.start == "" {
+                
+                errorMessage = "請輸入開始時間！"
+            } else if data?.end == "" {
+                
+                errorMessage = "請輸入結束時間！"
+            } else if data?.amount == "" {
+                
+                errorMessage = "請選擇參加人數！"
+            }
+            
+            let alertController = UIAlertController(title: "Notice", message: "\(errorMessage)", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
         }
-        
-        previewVC.modalPresentationStyle = .overCurrentContext
-        present(previewVC, animated: true, completion: nil)
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -340,39 +359,10 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
             
             imageArray.append(pickedImage)
             
+            self.data?.image.append(pickedImage)
+            
             currentImageCount = imageArray.count
         }
-        
-//        let uniqueString = NSUUID().uuidString
-//
-        if let selectedImage = selectedImageFromPicker {
-//
-            self.photo = selectedImage
-//
-//            let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).png")
-//
-//            if let uploadData = selectedImage.pngData() {
-//
-//                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-//
-//                    if error != nil {
-//
-//                        print("Error: \(error!.localizedDescription)")
-//                        return
-//                    }
-//
-//                    storageRef.downloadURL { (url, error) in
-//
-//                        guard let downloadURL = url else {
-//                            return
-//                        }
-//                        print(downloadURL)
-//                    }
-//                })
-//            }
-//            print("\(uniqueString), \(selectedImage)")
-        }
-        contentTableView.reloadData()
         
         dismiss(animated: true, completion: nil)
     }
@@ -384,7 +374,7 @@ extension CreateViewController: StartDateisSelectedDelegate {
         
         self.startDate = date
         
-        self.start = date
+        self.data?.start = date
         
         contentTableView.reloadData()
     }
@@ -396,7 +386,7 @@ extension CreateViewController: EndDateisSelectedDelegate {
         
         self.endDate = date
         
-        self.end = date
+        self.data?.end = date
         
         contentTableView.reloadData()
     }
@@ -417,7 +407,7 @@ extension CreateViewController: PersonSelectedDelegate {
         
         self.nowAmount = amount
         
-        self.amount = amount
+        self.data?.amount = amount
         
         contentTableView.reloadData()
     }
@@ -450,11 +440,11 @@ extension CreateViewController: EventTitleisEdited, EventDESCisEdited {
     
     func titleIsEdited(_ tableViewCell: TitleTableViewCell, title: String) {
         
-        self.event = title
+        self.data?.title = title
     }
     
     func descIsEdited(_ tableViewCell: DescTableViewCell, desc: String) {
         
-        self.desc = desc
+        self.data?.desc = desc
     }
 }
