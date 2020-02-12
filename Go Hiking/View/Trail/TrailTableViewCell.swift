@@ -25,11 +25,23 @@ class TrailTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        setTrailType()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        setTrailType()
     }
     
+    
+    func setTrailType() {
+        
+        trailStatus.layer.cornerRadius = 5
+        trailStatus.layer.borderWidth = 1
+        trailStatus.font = UIFont(name: "PingangTC", size: 16)
+        trailStatus.layer.borderColor = UIColor.red.cgColor
+        trailStatus.tintColor = .red
+        trailStatus.textColor = .red
+    }
 }
