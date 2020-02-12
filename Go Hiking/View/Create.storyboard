@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nlo-fI-ifR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Title" rowHeight="104" id="EVa-eP-w95" customClass="TitleTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
@@ -55,7 +55,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="DbN-2j-dPZ"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -109,7 +109,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="qwY-9B-Gpn"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -154,7 +154,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="j7s-ou-rSN"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -235,11 +235,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="開始時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ok-jN-HTR">
-                                                    <rect key="frame" x="20" y="15" width="82" height="24"/>
+                                                    <rect key="frame" x="20" y="15" width="73.5" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="LGi-Wy-fwt"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -294,7 +294,7 @@
                                                         <constraint firstAttribute="width" constant="120" id="biw-M3-QbG"/>
                                                         <constraint firstAttribute="height" constant="24" id="zgj-Di-SNc"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -349,7 +349,7 @@
                                                         <constraint firstAttribute="width" constant="120" id="0P4-JP-C5E"/>
                                                         <constraint firstAttribute="height" constant="24" id="oHW-I9-cnz"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -443,12 +443,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qup-WM-5oS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YJ-wo-Qrw">
+                                        <rect key="frame" x="357" y="5" width="37" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <state key="normal" title="發佈">
+                                            <color key="titleColor" name="denim"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="eventPost:" destination="2df-LD-Je7" eventType="touchUpInside" id="UdE-tz-TmF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHj-YS-ktu">
+                                        <rect key="frame" x="20" y="-2" width="48" height="48"/>
+                                        <state key="normal" image="Icons_24px_CleanAll"/>
+                                        <connections>
+                                            <action selector="eventCancel:" destination="2df-LD-Je7" eventType="touchUpInside" id="oSn-j4-7jS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="T5"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="7YJ-wo-Qrw" secondAttribute="trailing" constant="20" id="Ji7-e6-YoW"/>
+                                    <constraint firstItem="ZHj-YS-ktu" firstAttribute="leading" secondItem="Qup-WM-5oS" secondAttribute="leading" constant="20" id="THG-Be-uoG"/>
+                                    <constraint firstItem="7YJ-wo-Qrw" firstAttribute="centerY" secondItem="Qup-WM-5oS" secondAttribute="centerY" id="jnV-FN-QHX"/>
+                                    <constraint firstItem="ZHj-YS-ktu" firstAttribute="centerY" secondItem="Qup-WM-5oS" secondAttribute="centerY" id="z3Q-ml-pR4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="fVP-fl-mXg" firstAttribute="trailing" secondItem="Qup-WM-5oS" secondAttribute="trailing" id="CDe-Vl-Hbq"/>
+                            <constraint firstItem="Nlo-fI-ifR" firstAttribute="top" secondItem="Qup-WM-5oS" secondAttribute="bottom" id="MLR-GL-dMF"/>
                             <constraint firstItem="fVP-fl-mXg" firstAttribute="bottom" secondItem="Nlo-fI-ifR" secondAttribute="bottom" id="ODi-GC-W8d"/>
+                            <constraint firstItem="Qup-WM-5oS" firstAttribute="leading" secondItem="fVP-fl-mXg" secondAttribute="leading" id="SiQ-R0-qg4"/>
                             <constraint firstItem="Nlo-fI-ifR" firstAttribute="leading" secondItem="fVP-fl-mXg" secondAttribute="leading" id="ZOc-L1-ByO"/>
-                            <constraint firstItem="Nlo-fI-ifR" firstAttribute="top" secondItem="fVP-fl-mXg" secondAttribute="top" id="urQ-7j-68i"/>
+                            <constraint firstItem="Qup-WM-5oS" firstAttribute="top" secondItem="fVP-fl-mXg" secondAttribute="top" id="pZQ-1j-n8X"/>
+                            <constraint firstItem="Nlo-fI-ifR" firstAttribute="top" secondItem="fVP-fl-mXg" secondAttribute="top" constant="44" id="urQ-7j-68i"/>
                             <constraint firstItem="fVP-fl-mXg" firstAttribute="trailing" secondItem="Nlo-fI-ifR" secondAttribute="trailing" id="weT-SP-HbJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fVP-fl-mXg"/>
@@ -456,6 +489,7 @@
                     <navigationItem key="navigationItem" id="yIF-y5-zKy"/>
                     <connections>
                         <outlet property="contentTableView" destination="Nlo-fI-ifR" id="qrU-oY-D01"/>
+                        <outlet property="titleView" destination="Qup-WM-5oS" id="OOL-WE-rFt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coZ-YK-cxj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -567,7 +601,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="62Q-05-rR7"/>
                                         </constraints>
-                                        <state key="normal" title="送出">
+                                        <state key="normal" title="返回編輯">
                                             <color key="titleColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -656,6 +690,12 @@
         </namedColor>
         <namedColor name="T3">
             <color red="0.4050000011920929" green="0.83700001239776611" blue="0.82200002670288086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="T5">
+            <color red="0.76700001955032349" green="0.96200001239776611" blue="0.95899999141693115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="denim">
+            <color red="0.23529411764705882" green="0.35294117647058826" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

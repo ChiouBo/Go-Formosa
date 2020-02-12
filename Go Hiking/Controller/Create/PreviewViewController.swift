@@ -29,38 +29,40 @@ class PreviewViewController: UIViewController {
     
     @IBAction func eventCancel(_ sender: UIButton) {
         
-        let uniqueString = NSUUID().uuidString
+//        let uniqueString = NSUUID().uuidString
+//
+//        guard let uploadData = data?.image.pngData() else { return }
+//
+//        LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
+//
+//        UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
+//
+//            switch result {
+//
+//            case .success(let upload):
+//
+//                guard let data = self.data else { return }
+//
+//                UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
+//
+//                LKProgressHUD.dismiss()
+//
+//                LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
+//
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//
+//                    self.dismiss(animated: true, completion: nil)
+//                }
+//
+//                print(upload)
+//
+//            case .failure(let error):
+//
+//                print(error)
+//            }
+//        }
         
-        guard let uploadData = data?.image.pngData() else { return }
-        
-        LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
-        
-        UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
-            
-            switch result {
-                
-            case .success(let upload):
-                
-                guard let data = self.data else { return }
-                
-                UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
-                
-                LKProgressHUD.dismiss()
-                
-                LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                    
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-                print(upload)
-                
-            case .failure(let error):
-                
-                print(error)
-            }
-        }
+        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

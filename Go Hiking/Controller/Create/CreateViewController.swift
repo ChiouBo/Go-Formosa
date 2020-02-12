@@ -45,14 +45,59 @@ class CreateViewController: UIViewController {
     var imageArray: [UIImage] = [] {
         
         didSet {
-            
             contentTableView.reloadData()
         }
     }
     
-    var trailDict: TrailInfo?
+    var trailEvent: TrailInfo?
+    
+    var trailCurrentImage: UIImage?
+    
+    var data: EventContent?
     
     @IBOutlet weak var contentTableView: UITableView!
+    
+    @IBOutlet weak var titleView: UIView!
+    
+    @IBAction func eventCancel(_ sender: UIButton) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    @IBAction func eventPost(_ sender: UIButton) {
+        
+        let uniqueString = NSUUID().uuidString
+
+        guard let uploadData = data?.image.pngData() else { return }
+
+        LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
+
+        UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
+
+            switch result {
+
+            case .success(let upload):
+
+                guard let data = self.data else { return }
+
+                UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
+
+                LKProgressHUD.dismiss()
+
+                LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+
+                    self.dismiss(animated: true, completion: nil)
+                }
+
+                print(upload)
+
+            case .failure(let error):
+
+                print(error)
+            }
+        }
+    }
     
     func getStartDate() {
         
@@ -149,8 +194,6 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         switch indexPath.row {
             
         case 0:
@@ -159,7 +202,9 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             titleCell.delegate = self
             
-            titleCell.eventCancel.addTarget(self, action: #selector(eventCancel), for: .touchUpInside)
+            titleCell.titleTextField.text = trailEvent?.trailName
+            
+//            titleCell.eventCancel.addTarget(self, action: #selector(eventCancel), for: .touchUpInside)
             return titleCell
             
         case 1:
@@ -167,6 +212,9 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else { return UITableViewCell() }
             
             descCell.delegate = self
+            
+            descCell.DescTextView.text = trailEvent?.trailDescrip
+            
             return descCell
             
             
@@ -176,8 +224,8 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
             photoCell.delegate = self
             
-                photoCell.photoArray = imageArray
-                
+            photoCell.photoArray = imageArray
+            
             return photoCell
             
         case 3:
@@ -221,19 +269,26 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    @objc func eventCancel() {
-        
-        dismiss(animated: true, completion: nil)
-    }
+//    @objc func eventCancel() {
+//
+//        dismiss(animated: true, completion: nil)
+    //    }
     
     @objc func passDatatoPreview() {
         
         guard let previewVC = storyboard?.instantiateViewController(withIdentifier: "Preview") as? PreviewViewController,
             let photo =  photo else { return }
         
-        let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end, amount: nowAmount)
+        if let info = trailEvent{
+            
+            let data = EventContent(image: photo, title: info.trailName, desc: info.trailDescrip, start: start, end: end, amount: nowAmount)
+            previewVC.data = data
+        } else {
+            
+            let data = EventContent(image: photo, title: event, desc: desc, start: start, end: end, amount: nowAmount)
+            previewVC.data = data
+        }
         
-        previewVC.data = data
         previewVC.modalPresentationStyle = .overCurrentContext
         present(previewVC, animated: true, completion: nil)
         
@@ -288,35 +343,37 @@ extension CreateViewController: UIImagePickerControllerDelegate, UINavigationCon
             currentImageCount = imageArray.count
         }
         
-        let uniqueString = NSUUID().uuidString
-        
+//        let uniqueString = NSUUID().uuidString
+//
         if let selectedImage = selectedImageFromPicker {
-            
+//
             self.photo = selectedImage
-            
-            let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).png")
-            
-            if let uploadData = selectedImage.pngData() {
-                
-                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
-                    
-                    if error != nil {
-                        
-                        print("Error: \(error!.localizedDescription)")
-                        return
-                    }
-                    
-                    storageRef.downloadURL { (url, error) in
-                        
-                        guard let downloadURL = url else {
-                            return
-                        }
-                        print(downloadURL)
-                    }
-                })
-            }
-            print("\(uniqueString), \(selectedImage)")
+//
+//            let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).png")
+//
+//            if let uploadData = selectedImage.pngData() {
+//
+//                storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
+//
+//                    if error != nil {
+//
+//                        print("Error: \(error!.localizedDescription)")
+//                        return
+//                    }
+//
+//                    storageRef.downloadURL { (url, error) in
+//
+//                        guard let downloadURL = url else {
+//                            return
+//                        }
+//                        print(downloadURL)
+//                    }
+//                })
+//            }
+//            print("\(uniqueString), \(selectedImage)")
         }
+        contentTableView.reloadData()
+        
         dismiss(animated: true, completion: nil)
     }
 }

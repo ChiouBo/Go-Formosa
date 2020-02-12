@@ -96,5 +96,11 @@ class UploadEvent {
         }
     }
     
+    func deleteEvent() {
+        
+        
+    }
+    
+    
 }
 

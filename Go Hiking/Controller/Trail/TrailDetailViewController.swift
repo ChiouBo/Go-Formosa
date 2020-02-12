@@ -10,8 +10,6 @@ import UIKit
 
 class TrailDetailViewController: UIViewController {
 
-
-    
     var trailDict: TrailInfo?
     
     lazy var trailImage: UIImageView = {
@@ -129,8 +127,6 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
             contentCell.trailLocation.text = trailDict?.trailPosition
             contentCell.trailDescription.text = trailDict?.trailDescrip
             
-            
-            
             return contentCell
             
         case 1:
@@ -152,6 +148,13 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
         guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
         
+        let trailInfo = TrailInfo(trailName: trailDict?.trailName ?? "",
+                                  trailPosition: trailDict?.trailPosition ?? "",
+                                  trailDescrip: trailDict?.trailDescrip ?? "")
+        let currentImage = trailImage.image
+        createVC.loadViewIfNeeded()
+        createVC.trailEvent = trailInfo
+        createVC.imageArray.append(currentImage!)
         //        createVC.transitioningDelegate = self
         createVC.modalPresentationStyle = .custom
         present(createVC, animated: true, completion: nil)

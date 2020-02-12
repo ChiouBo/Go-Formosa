@@ -19,7 +19,13 @@ class TitleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventTitle: UILabel!
     
-    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var titleTextField: UITextField! {
+        
+        didSet {
+            
+
+        }
+    }
     
     @IBOutlet weak var eventCancel: UIButton!
     
