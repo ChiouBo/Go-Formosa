@@ -27,8 +27,21 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        googleMapView.delegate = self
+        
         let camera = GMSCameraPosition.camera(withLatitude: 25.042614, longitude: 121.564863, zoom: 18.0)
         googleMapView.camera = camera
+        
+        googleMapView.mapType = .normal
+        
+        let marker = GMSMarker()
+        
+        marker.position = CLLocationCoordinate2D(latitude: 25.042614, longitude: 121.564863)
+        marker.map = googleMapView
+        marker.title = "我的位置"
+        marker.snippet = "信義區"
+        marker.icon = GMSMarker.markerImage(with: .blue)
+        
         
         setNavBar()
     }
@@ -65,5 +78,12 @@ extension MapViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         
         filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+}
+
+extension MapViewController: GMSMapViewDelegate {
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        <#code#>
     }
 }
