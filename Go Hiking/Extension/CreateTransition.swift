@@ -111,11 +111,7 @@ extension CreateTransition: UIViewControllerAnimatedTransitioning {
                 })
             }
         }
-        
-        
-        
     }
-    
     
     func frameForCircle (withViewCenter viewCenter: CGPoint, size viewSize: CGSize, startPoint: CGPoint) -> CGRect {
         
@@ -127,6 +123,4 @@ extension CreateTransition: UIViewControllerAnimatedTransitioning {
         
         return CGRect(origin: CGPoint.zero, size: size)
     }
-    
-    
 }

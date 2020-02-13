@@ -9,7 +9,7 @@
 import UIKit
 
 class CampaignTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var campaignTitle: UILabel!
     
     @IBOutlet weak var campaignLevel: UILabel!
@@ -18,11 +18,35 @@ class CampaignTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        setView()
+        setLabel()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        setView()
+        setLabel()
+    }
+    
+    func setLabel() {
+        
+        campaignTitle.textColor = .white
+        campaignLevel.textColor = .white
+        campaignTitle.shadowOffset = CGSize(width: 2, height: 2)
+        campaignTitle.shadowColor = .gray
+//        campaignTitle.layer.shadowRadius = 1
+//        campaignTitle.layer.shadowOpacity = 0.7
+        campaignLevel.shadowOffset = CGSize(width: 1, height: 1)
+        campaignLevel.shadowColor = .gray
+    }
+    
+    
+    func setView() {
+        
+        campaignImage.layer.cornerRadius = 10
+        campaignImage.layer.shadowOffset = CGSize(width: 3, height: 3)
+        campaignImage.layer.shadowOpacity = 0.7
+        campaignImage.layer.shadowRadius = 5
+        campaignImage.layer.shadowColor = UIColor.lightGray.cgColor
     }
 }

@@ -10,8 +10,7 @@ import UIKit
 
 class TrailDetailViewController: UIViewController {
 
-    
-    var trailDict: TrailInfo?
+    var trailDict: EventContent?
     
     lazy var trailImage: UIImageView = {
        let trailImage = UIImageView()
@@ -25,11 +24,14 @@ class TrailDetailViewController: UIViewController {
     lazy var TrailContentTableView: UITableView = {
         let tcTV = UITableView()
         let tCell = UINib(nibName: "TrailContentTableViewCell", bundle: nil)
+        let cCell = UINib(nibName: "TrailLocationTableViewCell", bundle: nil)
         tcTV.translatesAutoresizingMaskIntoConstraints = false
         tcTV.delegate = self
         tcTV.dataSource = self
         tcTV.register(tCell, forCellReuseIdentifier: "TrailContent")
+        tcTV.register(cCell, forCellReuseIdentifier: "TrailCreate")
         tcTV.rowHeight = UITableView.automaticDimension
+        tcTV.separatorStyle = .none
         return tcTV
     }()
     
@@ -84,6 +86,8 @@ class TrailDetailViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
+    
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let originOffsetY = -imageOriginHeight
@@ -107,18 +111,83 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
-        TrailContentTableViewCell else { return UITableViewCell() }
+        switch indexPath.row {
+            
+        case 0:
+            
+            guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
+            TrailContentTableViewCell else { return UITableViewCell() }
+            
+            contentCell.trailTitle.text = trailDict?.title
+            contentCell.trailLocation.text = trailDict?.location
+            contentCell.trailDescription.text = trailDict?.desc
+            
+            return contentCell
+            
+        case 1:
+            
+            guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
+            TrailLocationTableViewCell else { return UITableViewCell() }
+            
+            createCell.createTrailEvent.addTarget(self, action: #selector(trailCreate), for: .touchUpInside)
+            
+            return createCell
+            
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    @objc func trailCreate() {
         
-        cell.trailTitle.text = trailDict?.trailName
-        cell.trailLocation.text = trailDict?.trailPosition
-        cell.trailDescription.text = trailDict?.trailDescrip
+        let createEvent = UIStoryboard(name: "Create", bundle: nil)
+        guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
         
-        return cell
+        var currentImage: [UIImage] = []
+        guard let image = trailImage.image else { return }
+        currentImage.append(image)
+        
+        let trailInfo = EventContent(image: currentImage,
+                                     title: trailDict?.title ?? "",
+                                     desc: trailDict?.desc ?? "",
+                                     start: "",
+                                     end: "",
+                                     amount: "",
+                                     location: trailDict?.location ?? "")
+        
+        createVC.data = trailInfo
+        
+        createVC.loadViewIfNeeded()
+
+        createVC.imageArray.append(trailImage.image!)
+ 
+        createVC.modalPresentationStyle = .custom
+        
+        present(createVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
+        
+        animator.addAnimations {
+            
+            cell.alpha = 1
+            cell.transform = .identity
+            self.TrailContentTableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.3 * Double(indexPath.item))
     }
 }

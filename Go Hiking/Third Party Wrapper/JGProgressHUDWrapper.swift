@@ -68,7 +68,7 @@ class LKProgressHUD {
         
         shared.hud.show(in: viewController.view)
         
-        shared.hud.dismiss(afterDelay: 1)
+//        shared.hud.dismiss(afterDelay: 1)
     }
     
     static func showFailure(text: String = "Failure", viewController: UIViewController) {

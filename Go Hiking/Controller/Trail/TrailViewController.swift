@@ -13,13 +13,6 @@ struct Buttons {
     var buttons: [String]
 }
 
-struct TrailInfo {
-    var trailName: String
-    
-    var trailPosition: String
-    
-    var trailDescrip: String
-}
 class TrailViewController: UIViewController {
     
     var trailResponse = TrailResponse()
@@ -29,6 +22,12 @@ class TrailViewController: UIViewController {
     var trailFilter = [Trail]()
     
     let filter = FilterItemManager()
+    
+    var selectedFilter = false
+    
+    var filterOpen: NSLayoutConstraint?
+    
+    var filterClose: NSLayoutConstraint?
     
     lazy var trailTableView: UITableView = {
         let tTV = UITableView()
@@ -69,8 +68,17 @@ class TrailViewController: UIViewController {
     
     @objc func filterBtn() {
         
-//        let controller = self.navigationController?.storyboard?.instantiateViewController(identifier: "Private")
-//        self.navigationController?.pushViewController(controller!, animated: true)
+        if selectedFilter == false {
+            
+            filterOpen?.isActive = false
+            filterClose?.isActive = true
+            selectedFilter = true
+            
+        } else {
+            selectedFilter = false
+            filterOpen?.isActive = true
+            filterClose?.isActive = false
+        }
     }
     
     func setNavVC() {
@@ -99,11 +107,28 @@ class TrailViewController: UIViewController {
         setupElements()
         
         setNavVC()
+        
+//        createGradientLayer()
     }
+    
+//    func createGradientLayer() {
+//        
+//        let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//        
+//        let gradientLayer = CAGradientLayer()
+//        
+//        gradientLayer.frame = background.bounds
+//        
+//        gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
+//        
+//        view.layer.addSublayer(gradientLayer)
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         
        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        trailTableView.reloadData()
     }
     
     // MARK: - Filter for Search
@@ -185,12 +210,17 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let trail = UIStoryboard(name: "Trail", bundle: nil)
-        guard let trailVC = trail.instantiateViewController(identifier: "TrailDetail") as? TrailDetailViewController else { return }
+        guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
         
-        let trailInfo = TrailInfo(trailName: trailFilter[indexPath.row].trCname,
-                                  trailPosition: trailFilter[indexPath.row].trPosition ?? "",
-                                  trailDescrip: trailFilter[indexPath.row].guideContent ?? "")
-        trailVC.trailDict = trailInfo
+        let data = EventContent(image: [],
+            title: trailFilter[indexPath.row].trCname,
+            desc: trailFilter[indexPath.row].guideContent ?? "",
+            start: "",
+            end: "",
+            amount: "",
+            location: trailFilter[indexPath.row].trPosition ?? "")
+        
+        trailVC.trailDict = data
         
         show(trailVC, sender: nil)
     }
@@ -223,6 +253,24 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
         filterCell.layoutCell(title: item.filterButton)
         
         return filterCell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
+        
+        animator.addAnimations {
+            
+            cell.alpha = 1
+            cell.transform = .identity
+            self.trailTableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
 }
 
@@ -310,12 +358,14 @@ extension TrailViewController {
         trailTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         filterView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-//        filterView.bottomAnchor.constraint(equalTo: trailTableView.topAnchor).isActive = true
         filterView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         filterView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        filterView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        
+        filterClose = filterView.heightAnchor.constraint(equalToConstant: 0)
+        filterOpen = filterView.heightAnchor.constraint(equalToConstant: 110)
+        filterClose?.isActive = true
     }
     
 }
 
-// 收起filter, filter功能, 按鈕變色
+// 收起filter動畫, filter功能, 按鈕變色, 路況JSON, 有時間再統整資料做Firebase

@@ -64,15 +64,6 @@ class AuthViewController: UIViewController {
         
         manager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
             
-//            switch result {
-//
-//                case .success(let grants, let declined, let token):
-//                    print(grants)
-//                    print(declined)
-//                    print(token)
-//                default: break
-//            }
-            
             if case LoginResult.success(granted: _, declined: _, token: _) = result {
                 
                 print("Login Success")
