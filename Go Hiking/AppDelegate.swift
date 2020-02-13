@@ -13,6 +13,7 @@ import Firebase
 import FacebookCore
 import FacebookLogin
 import FBSDKLoginKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
+        GMSServices.provideAPIKey("AIzaSyD9Sjc_momutj99pkja3PfeVAJbrqbuKAw")
+        
         IQKeyboardManager.shared.enable = true
         
         FirebaseApp.configure()

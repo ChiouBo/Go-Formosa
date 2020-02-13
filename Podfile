@@ -38,4 +38,7 @@ target 'Go Hiking' do
   pod 'Starscream'
 
   pod 'KMPlaceholderTextView'
+  
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end

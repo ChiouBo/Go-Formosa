@@ -18,8 +18,6 @@ class CreateViewController: UIViewController {
     
     var endDate = ""
     
-    var nowAmount = ""
-    
     var counter = 0
     
     var isStartDate = false
@@ -243,7 +241,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
             
             personCell.delegate = self
-            personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: nowAmount)
+            personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: data!.amount)
             personCell.amountPickerView.delegate = self
             
             return personCell
@@ -405,8 +403,6 @@ extension CreateViewController: PersonSelectedDelegate {
     
     func selectedPerson(_ tableViewCell: PersonTableViewCell, amount: String) {
         
-        self.nowAmount = amount
-        
         self.data?.amount = amount
         
         contentTableView.reloadData()
@@ -432,7 +428,8 @@ extension CreateViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        nowAmount = "\(row+1) 人"
+        data?.amount = "\(row+1) 人"
+        
     }
 }
 
