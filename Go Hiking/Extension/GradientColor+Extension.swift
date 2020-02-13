@@ -37,3 +37,16 @@ struct Gradient {
 //      gradientLayer.frame = self.view.frame
 //      self.view.layer.insertSublayer(gradientLayer, at: 0)
 //  }
+
+//func createGradientLayer() {
+//    
+//    let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//    
+//    let gradientLayer = CAGradientLayer()
+//    
+//    gradientLayer.frame = background.bounds
+//    
+//    gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
+//    
+//    view.layer.addSublayer(gradientLayer)
+//}

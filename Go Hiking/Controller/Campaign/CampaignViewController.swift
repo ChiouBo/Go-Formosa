@@ -36,7 +36,7 @@ class CampaignViewController: UIViewController {
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Easy", "Medium", "Hard"]
+        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         
         search.searchBar.delegate = self
         
@@ -51,7 +51,7 @@ class CampaignViewController: UIViewController {
     
     func setNavVC() {
         
-        navigationController?.navigationBar.self
+//        navigationController?.navigationBar.self
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(toPrivateList))
@@ -135,14 +135,14 @@ class CampaignViewController: UIViewController {
         
         filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
         
-            let doesCategoryMatch = (scope == "All") || (campaign.level == scope)
+            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
             
             if isSearchBarEmpty() {
                 
                 return doesCategoryMatch
             } else {
                 
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.level.lowercased().contains(searchText.lowercased()))
+                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
             }
         })
         

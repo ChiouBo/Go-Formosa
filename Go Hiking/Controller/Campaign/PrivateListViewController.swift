@@ -35,7 +35,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Easy", "Medium", "Hard"]
+        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
@@ -74,14 +74,14 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
             
-            let doesCategoryMatch = (scope == "All") || (campaign.level == scope)
+            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
             
             if isSearchBarEmpty() {
                 
                 return doesCategoryMatch
             } else {
                 
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.level.lowercased().contains(searchText.lowercased()))
+                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
             }
         })
         
@@ -165,7 +165,7 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         cell.campaignTitle.text = currentCampaign.title
-        cell.campaignLevel.text = currentCampaign.level
+        cell.campaignLevel.text = currentCampaign.type
         
         return cell
     }
