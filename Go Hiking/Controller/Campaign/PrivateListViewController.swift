@@ -35,7 +35,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Easy", "Medium", "Hard"]
+        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
@@ -50,7 +50,10 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
     
     @objc func toCreateVC(sender: UIButton) {
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
-        guard let createVC = createEvent.instantiateViewController(identifier: "CREATE") as? CreateViewController else { return }
+        guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
+        
+        createVC.data = EventContent(image: [], title: "", desc: "", start: "", end: "", amount: "", location: "")
+        
         createVC.transitioningDelegate = self
         createVC.modalPresentationStyle = .custom
         present(createVC, animated: true, completion: nil)
@@ -71,14 +74,14 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
             
-            let doesCategoryMatch = (scope == "All") || (campaign.level == scope)
+            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
             
             if isSearchBarEmpty() {
                 
                 return doesCategoryMatch
             } else {
                 
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.level.lowercased().contains(searchText.lowercased()))
+                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
             }
         })
         
@@ -102,7 +105,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         transition.transitionMode = .present
         transition.startingPoint = createBtn.center
-        transition.circleColor = UIColor.orange
+        transition.circleColor = UIColor.white
         
         return transition
     }
@@ -111,7 +114,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         transition.transitionMode = .dismiss
         transition.startingPoint = createBtn.center
-        transition.circleColor = UIColor.orange
+        transition.circleColor = UIColor.white
         
         return transition
     }
@@ -162,7 +165,7 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         }
         
         cell.campaignTitle.text = currentCampaign.title
-        cell.campaignLevel.text = currentCampaign.level
+        cell.campaignLevel.text = currentCampaign.type
         
         return cell
     }

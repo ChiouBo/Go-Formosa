@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
         let mainStoryboard = UIStoryboard.main
         
         guard let mainVC = mainStoryboard.instantiateViewController(
-            identifier: "mainVC") as? GHTabBarViewController else {
+            withIdentifier: "mainVC") as? GHTabBarViewController else {
                 return
         }
         

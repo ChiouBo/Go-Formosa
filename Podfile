@@ -19,6 +19,7 @@ target 'Go Hiking' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift'
   
   pod 'Kingfisher'
   pod 'MJRefresh'
@@ -36,4 +37,8 @@ target 'Go Hiking' do
   pod 'Alamofire'
   pod 'Starscream'
 
+  pod 'KMPlaceholderTextView'
+  
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end
