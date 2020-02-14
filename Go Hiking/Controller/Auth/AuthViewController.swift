@@ -93,13 +93,11 @@ class AuthViewController: UIViewController {
                     case .failure:
                         
                         LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
-                        
                     }
                 }
                     print("\(credential)")
                     
                     self.dismiss(animated: true, completion: nil)
-                
             } else {
                 
                 print("Login Fail")

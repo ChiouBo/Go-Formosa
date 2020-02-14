@@ -84,6 +84,6 @@ extension MapViewController: UISearchResultsUpdating {
 extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        <#code#>
+        
     }
 }

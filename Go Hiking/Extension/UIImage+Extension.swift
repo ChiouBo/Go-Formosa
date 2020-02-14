@@ -17,6 +17,8 @@ enum ImageAsset: String {
     case Icons_36px_Chat_Normal
     case Icons_36px_Chat_Selected
     case Icons_36px_Map_Normal
+    case Icons_24px_Map_Normal
+    case Icons_32px_Map_Normal
     case Icons_36px_Map_Selected
     case Icons_36px_Private_Normal
     case Icons_36px_Private_Selected

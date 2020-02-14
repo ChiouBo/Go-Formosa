@@ -57,7 +57,7 @@ private enum Tab {
         case .earth:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Map_Normal),
+                image: UIImage.asset(.Icons_32px_Map_Normal),
                 selectedImage: UIImage.asset(.Icons_36px_Map_Selected)
             )
             
@@ -81,7 +81,7 @@ private enum Tab {
                 image: UIImage.asset(.Icons_36px_Chat_Normal),
                 selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
             )
-            
+
         case .profile:
             return UITabBarItem(
                 title: nil,
