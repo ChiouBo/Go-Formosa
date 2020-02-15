@@ -45,7 +45,7 @@ private enum Tab {
         
         controller.tabBarItem = tabBarItem()
         
-        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 8.0, left: 0.0, bottom: -8.0, right: 0.0)
+        controller.tabBarItem.imageInsets = UIEdgeInsets(top: 6.0, left: 0.0, bottom: -6.0, right: 0.0)
         
         return controller
     }
@@ -57,7 +57,7 @@ private enum Tab {
         case .earth:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_32px_Map_Normal),
+                image: UIImage.asset(.Icons_24px_Map_Normal),
                 selectedImage: UIImage.asset(.Icons_36px_Map_Selected)
             )
             

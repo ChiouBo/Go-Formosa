@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,23 +24,68 @@
                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map001" translatesAutoresizingMaskIntoConstraints="NO" id="099-OS-gCv">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TK-qL-W4Q">
+                                <rect key="frame" x="157" y="722" width="100" height="100"/>
+                                <color key="backgroundColor" name="denim"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="YYd-cx-xcv"/>
+                                    <constraint firstAttribute="width" constant="100" id="eGW-cH-Iu9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="startExplore:" destination="Xy9-G2-Eza" eventType="touchUpInside" id="RHm-Uc-8yT"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kNF-P8-pwp">
+                                <rect key="frame" x="285" y="778" width="54" height="54"/>
+                                <color key="backgroundColor" name="denim"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="feD-1M-Cud"/>
+                                    <constraint firstAttribute="width" constant="54" id="gAg-22-XBx"/>
+                                </constraints>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piI-2r-gWc">
+                                <rect key="frame" x="75" y="778" width="54" height="54"/>
+                                <color key="backgroundColor" name="denim"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="Qc9-zO-1jE"/>
+                                    <constraint firstAttribute="height" constant="54" id="qOS-dM-Cth"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="mapSetting:" destination="Xy9-G2-Eza" eventType="touchUpInside" id="dKv-bv-uT4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6TK-qL-W4Q" firstAttribute="leading" secondItem="piI-2r-gWc" secondAttribute="trailing" constant="28" id="59U-hY-hwx"/>
                             <constraint firstAttribute="bottom" secondItem="099-OS-gCv" secondAttribute="bottom" id="IxO-hT-5jc"/>
                             <constraint firstItem="Kp6-yC-xEK" firstAttribute="trailing" secondItem="1dX-kw-eQ6" secondAttribute="trailing" id="J2u-mC-IR5"/>
                             <constraint firstItem="Kp6-yC-xEK" firstAttribute="trailing" secondItem="099-OS-gCv" secondAttribute="trailing" id="OrA-jE-Ab7"/>
+                            <constraint firstItem="Kp6-yC-xEK" firstAttribute="bottom" secondItem="piI-2r-gWc" secondAttribute="bottom" constant="30" id="R7w-NK-mGa"/>
+                            <constraint firstItem="kNF-P8-pwp" firstAttribute="leading" secondItem="6TK-qL-W4Q" secondAttribute="trailing" constant="28" id="RP0-TO-ELB"/>
                             <constraint firstAttribute="bottom" secondItem="1dX-kw-eQ6" secondAttribute="bottom" id="SV4-iS-b1X"/>
                             <constraint firstItem="1dX-kw-eQ6" firstAttribute="top" secondItem="z4G-of-RcC" secondAttribute="top" id="T9o-Ej-LXc"/>
                             <constraint firstItem="099-OS-gCv" firstAttribute="leading" secondItem="Kp6-yC-xEK" secondAttribute="leading" id="a5t-CN-aZY"/>
+                            <constraint firstItem="6TK-qL-W4Q" firstAttribute="centerX" secondItem="z4G-of-RcC" secondAttribute="centerX" id="dir-jo-L2L"/>
+                            <constraint firstItem="Kp6-yC-xEK" firstAttribute="bottom" secondItem="kNF-P8-pwp" secondAttribute="bottom" constant="30" id="eQm-ev-iAJ"/>
                             <constraint firstItem="1dX-kw-eQ6" firstAttribute="leading" secondItem="Kp6-yC-xEK" secondAttribute="leading" id="fL6-mG-B3j"/>
                             <constraint firstItem="099-OS-gCv" firstAttribute="top" secondItem="Kp6-yC-xEK" secondAttribute="top" id="j45-dj-H8W"/>
+                            <constraint firstItem="Kp6-yC-xEK" firstAttribute="bottom" secondItem="6TK-qL-W4Q" secondAttribute="bottom" constant="40" id="wZH-5j-rZf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kp6-yC-xEK"/>
                     </view>
                     <navigationItem key="navigationItem" id="XLo-s7-xFk"/>
                     <connections>
                         <outlet property="googleMapView" destination="1dX-kw-eQ6" id="W63-A2-o7w"/>
+                        <outlet property="mapSetting" destination="piI-2r-gWc" id="xkp-YN-Bnu"/>
+                        <outlet property="startExplore" destination="6TK-qL-W4Q" id="tfg-ui-L8U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r93-8I-jFW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -67,5 +113,8 @@
     </scenes>
     <resources>
         <image name="Map001" width="1386" height="936"/>
+        <namedColor name="denim">
+            <color red="0.23529411764705882" green="0.35294117647058826" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

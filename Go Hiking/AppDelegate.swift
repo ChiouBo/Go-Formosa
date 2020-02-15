@@ -14,6 +14,8 @@ import FacebookCore
 import FacebookLogin
 import FBSDKLoginKit
 import GoogleMaps
+import GooglePlaces
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     static let shared = UIApplication.shared.delegate as? AppDelegate
     
+    let locationManager = CLLocationManager()
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         ApplicationDelegate.shared.application(app, open: url, options: options)
         return true
@@ -29,7 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
+        locationManager.requestWhenInUseAuthorization()
+        
         GMSServices.provideAPIKey("AIzaSyD9Sjc_momutj99pkja3PfeVAJbrqbuKAw")
+        GMSPlacesClient.provideAPIKey("AIzaSyD9Sjc_momutj99pkja3PfeVAJbrqbuKAw")
         
         IQKeyboardManager.shared.enable = true
         

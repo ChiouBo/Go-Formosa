@@ -45,8 +45,20 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>location</string>
+		<string>voip</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

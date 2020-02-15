@@ -17,6 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M001" translatesAutoresizingMaskIntoConstraints="NO" id="tdh-It-tAe">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7Y-l5-egS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="C01-g9-0HS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVW-XR-rAA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
@@ -83,7 +94,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="SCQ-Tf-zTp" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="1dY-hP-cKd"/>
                                     <constraint firstItem="Oqb-vh-Ez7" firstAttribute="top" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="16" id="MrJ-tv-fWi"/>
@@ -105,12 +116,20 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="h7Y-l5-egS" secondAttribute="bottom" id="4BD-xN-iIS"/>
                             <constraint firstItem="jVW-XR-rAA" firstAttribute="centerX" secondItem="N7V-ec-ZfY" secondAttribute="centerX" id="5Ot-AG-roB"/>
                             <constraint firstAttribute="bottom" secondItem="jVW-XR-rAA" secondAttribute="bottom" id="MYm-Y2-D12"/>
+                            <constraint firstItem="tdh-It-tAe" firstAttribute="top" secondItem="N7V-ec-ZfY" secondAttribute="top" id="Nj3-gI-bwe"/>
+                            <constraint firstItem="h7Y-l5-egS" firstAttribute="top" secondItem="N7V-ec-ZfY" secondAttribute="top" id="OK5-PO-AYo"/>
+                            <constraint firstAttribute="bottom" secondItem="tdh-It-tAe" secondAttribute="bottom" id="Pmi-ya-gf6"/>
+                            <constraint firstItem="h7Y-l5-egS" firstAttribute="leading" secondItem="AiM-ao-EDv" secondAttribute="leading" id="Wg3-re-4f5"/>
+                            <constraint firstItem="AiM-ao-EDv" firstAttribute="trailing" secondItem="h7Y-l5-egS" secondAttribute="trailing" id="cXY-rw-P6t"/>
                             <constraint firstItem="jVW-XR-rAA" firstAttribute="top" secondItem="N7V-ec-ZfY" secondAttribute="top" id="dgA-wX-3Be"/>
                             <constraint firstItem="jVW-XR-rAA" firstAttribute="leading" secondItem="AiM-ao-EDv" secondAttribute="leading" id="rjI-T8-uqE"/>
                             <constraint firstItem="jVW-XR-rAA" firstAttribute="trailing" secondItem="AiM-ao-EDv" secondAttribute="trailing" id="wXa-Cw-qdj"/>
                             <constraint firstItem="jVW-XR-rAA" firstAttribute="centerY" secondItem="N7V-ec-ZfY" secondAttribute="centerY" id="wcc-US-6Ih"/>
+                            <constraint firstItem="AiM-ao-EDv" firstAttribute="trailing" secondItem="tdh-It-tAe" secondAttribute="trailing" id="xyB-RT-Ni1"/>
+                            <constraint firstItem="tdh-It-tAe" firstAttribute="leading" secondItem="AiM-ao-EDv" secondAttribute="leading" id="z5b-U7-hoN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AiM-ao-EDv"/>
                     </view>
@@ -379,6 +398,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="M001" width="850" height="566"/>
         <namedColor name="Facebook">
             <color red="0.25900000333786011" green="0.4050000011920929" blue="0.69900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
