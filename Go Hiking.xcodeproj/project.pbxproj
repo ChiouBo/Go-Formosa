@@ -29,6 +29,8 @@
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
 		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
 		0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593572F23F959CD00BE89F2 /* UserContentViewController.swift */; };
+		0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573123F9632300BE89F2 /* HistoryViewController.swift */; };
+		0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573323F9633600BE89F2 /* AchievementViewController.swift */; };
 		05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */; };
 		05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */; };
 		05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */; };
@@ -117,6 +119,8 @@
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0593572F23F959CD00BE89F2 /* UserContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentViewController.swift; sourceTree = "<group>"; };
+		0593573123F9632300BE89F2 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		0593573323F9633600BE89F2 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
 		05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailContentTableViewCell.swift; sourceTree = "<group>"; };
 		05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -425,6 +429,8 @@
 			children = (
 				05BF08E523E2003E009CED63 /* ProfileViewController.swift */,
 				0593572F23F959CD00BE89F2 /* UserContentViewController.swift */,
+				0593573123F9632300BE89F2 /* HistoryViewController.swift */,
+				0593573323F9633600BE89F2 /* AchievementViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -734,6 +740,8 @@
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */,
 				05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */,
+				0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */,
+				0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */,
 				05E56EDB23F81FC400FFD804 /* LocationManager.swift in Sources */,
 				05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */,
 				05BF090323E6C32D009CED63 /* LoginViewController.swift in Sources */,

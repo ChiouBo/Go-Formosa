@@ -113,13 +113,13 @@ class ProfileViewController: UIViewController {
         switch type {
             
         case .history:
-            indicator.isHidden = false
+            userHistory.isHidden = false
             
         case .achievement:
-            indicator.isHidden = false
+            userAchievement.isHidden = false
             
         case .level:
-            indicator.isHidden = false
+            userLevel.isHidden = false
         }
     }
     

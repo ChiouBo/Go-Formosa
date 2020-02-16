@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M001" translatesAutoresizingMaskIntoConstraints="NO" id="aBO-L1-Eqb">
-                                        <rect key="frame" x="0.0" y="0.0" width="414.00000000000023" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="gAS-jS-uKV"/>
                                         </constraints>
@@ -57,7 +57,7 @@
                                                             <action selector="toChangeContent:" destination="92m-jc-d8A" eventType="touchUpInside" id="2ed-z4-K9u"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhN-cO-dzd">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JhN-cO-dzd">
                                                         <rect key="frame" x="138" y="0.0" width="138" height="50"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="ACHIEVEMENT">
@@ -67,7 +67,7 @@
                                                             <action selector="toChangeContent:" destination="92m-jc-d8A" eventType="touchUpInside" id="SvE-gT-7Zc"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peT-65-z1R">
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peT-65-z1R">
                                                         <rect key="frame" x="276" y="0.0" width="138" height="50"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="LEVEL">
@@ -92,6 +92,33 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umA-jX-cpy">
+                                                <rect key="frame" x="293" y="166" width="414" height="481"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="414" id="dWQ-gy-0Rg"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="4Pz-gR-jHy" kind="embed" id="nX9-iC-eKW"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnA-QO-UMh">
+                                                <rect key="frame" x="293" y="166" width="414" height="481"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="414" id="lz0-uH-XTi"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="JZW-go-Sd8" kind="embed" id="cMj-V8-5jf"/>
+                                                </connections>
+                                            </containerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-2u-QDx">
+                                                <rect key="frame" x="293" y="166" width="414" height="481"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="414" id="rNv-5W-Gyl"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="CPX-aq-BNe" kind="embed" id="VrM-dk-lGA"/>
+                                                </connections>
+                                            </containerView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naW-z5-Qx0">
                                                 <rect key="frame" x="293" y="166" width="414" height="1"/>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,33 +134,6 @@
                                                     <constraint firstAttribute="height" constant="2" id="uun-lL-RUH"/>
                                                 </constraints>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umA-jX-cpy">
-                                                <rect key="frame" x="293" y="166" width="414" height="481"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="414" id="dWQ-gy-0Rg"/>
-                                                </constraints>
-                                                <connections>
-                                                    <segue destination="4Pz-gR-jHy" kind="embed" id="nX9-iC-eKW"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PDJ-2u-QDx">
-                                                <rect key="frame" x="293" y="166" width="414" height="481"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="414" id="rNv-5W-Gyl"/>
-                                                </constraints>
-                                                <connections>
-                                                    <segue destination="CPX-aq-BNe" kind="embed" id="VrM-dk-lGA"/>
-                                                </connections>
-                                            </containerView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnA-QO-UMh">
-                                                <rect key="frame" x="293" y="166" width="414" height="481"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="414" id="lz0-uH-XTi"/>
-                                                </constraints>
-                                                <connections>
-                                                    <segue destination="JZW-go-Sd8" kind="embed" id="cMj-V8-5jf"/>
-                                                </connections>
-                                            </containerView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -142,13 +142,11 @@
                                             <constraint firstItem="PDJ-2u-QDx" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="5wq-5I-kXv"/>
                                             <constraint firstItem="naW-z5-Qx0" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="81d-PW-9Ru"/>
                                             <constraint firstAttribute="width" constant="1000" id="9Pq-5a-Br3"/>
-                                            <constraint firstItem="PDJ-2u-QDx" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="Dff-0Y-ALB"/>
                                             <constraint firstItem="nhm-a1-ogu" firstAttribute="width" secondItem="mhJ-9S-KXG" secondAttribute="width" id="DyE-Fm-Hjq"/>
                                             <constraint firstItem="ocd-UA-ye6" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="Kyi-uE-Hve"/>
                                             <constraint firstItem="2Ap-Qt-CfZ" firstAttribute="top" secondItem="jsb-bf-FqK" secondAttribute="bottom" constant="12" id="POn-hE-6Io"/>
                                             <constraint firstItem="2Ap-Qt-CfZ" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="PqM-TV-LBw"/>
                                             <constraint firstItem="umA-jX-cpy" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="PrA-k8-MYu"/>
-                                            <constraint firstItem="DnA-QO-UMh" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="Q0V-Kz-jOf"/>
                                             <constraint firstAttribute="height" constant="1000" id="Rve-gx-9aA"/>
                                             <constraint firstItem="PDJ-2u-QDx" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="WIs-HJ-KBJ"/>
                                             <constraint firstItem="jsb-bf-FqK" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="WN0-eG-hsR"/>
@@ -161,7 +159,6 @@
                                             <constraint firstAttribute="bottom" secondItem="PDJ-2u-QDx" secondAttribute="bottom" constant="353" id="lI2-WQ-9ve"/>
                                             <constraint firstItem="naW-z5-Qx0" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="mgi-eZ-fqU"/>
                                             <constraint firstItem="heQ-IF-qp9" firstAttribute="top" secondItem="D9x-11-RJc" secondAttribute="top" constant="23" id="nzK-ug-C9X"/>
-                                            <constraint firstItem="umA-jX-cpy" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="tkV-J4-b9G"/>
                                             <constraint firstAttribute="bottom" secondItem="umA-jX-cpy" secondAttribute="bottom" constant="353" id="uBF-NY-Fx9"/>
                                             <constraint firstItem="ocd-UA-ye6" firstAttribute="top" secondItem="2Ap-Qt-CfZ" secondAttribute="bottom" constant="30" id="yFr-GC-zlz"/>
                                             <constraint firstItem="DnA-QO-UMh" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="zoh-0A-LOJ"/>
