@@ -81,9 +81,12 @@
 		05BF092423E99E85009CED63 /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092323E99E85009CED63 /* FilterItem.swift */; };
 		05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */; };
 		05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092723E9A6FC009CED63 /* FilterItemManager.swift */; };
+		05E56EDB23F81FC400FFD804 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E56EDA23F81FC400FFD804 /* LocationManager.swift */; };
 		05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EAE60B23ED4DE30033BA6C /* Create.storyboard */; };
 		05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */; };
 		05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */; };
+		05F4E03C23F8EBA400D0B778 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4E03B23F8EBA400D0B778 /* TestViewController.swift */; };
+		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -164,9 +167,12 @@
 		05BF092323E99E85009CED63 /* FilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
 		05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLocalizedString+Extension.swift"; sourceTree = "<group>"; };
 		05BF092723E9A6FC009CED63 /* FilterItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemManager.swift; sourceTree = "<group>"; };
+		05E56EDA23F81FC400FFD804 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		05EAE60B23ED4DE30033BA6C /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
 		05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewController.swift; sourceTree = "<group>"; };
 		05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransition.swift; sourceTree = "<group>"; };
+		05F4E03B23F8EBA400D0B778 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +271,7 @@
 		05BF08B023E08680009CED63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				05E56ED923F81FAC00FFD804 /* Map */,
 				051A863C23EFE932008865FC /* Event */,
 				05BF08D423E1AD37009CED63 /* Profile */,
 				05BF08D323E1AD26009CED63 /* Trail */,
@@ -322,6 +329,7 @@
 				058873BC23DB4AA100B1612F /* Assets.xcassets */,
 				058873C723DB4DE200B1612F /* GoogleService-Info.plist */,
 				058873C123DB4AA100B1612F /* Info.plist */,
+				05F4E03D23F8F82A00D0B778 /* GoogleMap.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -393,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08DD23E1FF40009CED63 /* MapViewController.swift */,
+				05F4E03B23F8EBA400D0B778 /* TestViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -502,6 +511,14 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		05E56ED923F81FAC00FFD804 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				05E56EDA23F81FC400FFD804 /* LocationManager.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		05EAE60923ED4D460033BA6C /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +622,7 @@
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
 				05A83C4023EBF4180004B38C /* Record.storyboard in Resources */,
 				05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */,
+				05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */,
 				05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */,
 				058873B823DB4A9B00B1612F /* Main.storyboard in Resources */,
 			);
@@ -676,6 +694,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F4E03C23F8EBA400D0B778 /* TestViewController.swift in Sources */,
 				051A863323EEEE21008865FC /* TitleTableViewCell.swift in Sources */,
 				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
 				05BF091223E80C84009CED63 /* TrailObject.swift in Sources */,
@@ -708,6 +727,7 @@
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */,
 				05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */,
+				05E56EDB23F81FC400FFD804 /* LocationManager.swift in Sources */,
 				05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */,
 				05BF090323E6C32D009CED63 /* LoginViewController.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
