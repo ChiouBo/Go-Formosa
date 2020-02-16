@@ -28,6 +28,7 @@
 		058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058873BC23DB4AA100B1612F /* Assets.xcassets */; };
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
 		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
+		0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593572F23F959CD00BE89F2 /* UserContentViewController.swift */; };
 		05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */; };
 		05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */; };
 		05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */; };
@@ -115,6 +116,7 @@
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0593572F23F959CD00BE89F2 /* UserContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentViewController.swift; sourceTree = "<group>"; };
 		05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
 		05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailContentTableViewCell.swift; sourceTree = "<group>"; };
 		05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08E523E2003E009CED63 /* ProfileViewController.swift */,
+				0593572F23F959CD00BE89F2 /* UserContentViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
 				051A862D23EE9031008865FC /* CreateViewController.swift in Sources */,
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
+				0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,

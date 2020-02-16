@@ -77,16 +77,29 @@ class LocationStepsManager: NSObject {
          return inputDouble * Double.pi/180.0
     }
     
+    func markerView() -> UIImage {
+        
+        guard let marker = UIImage(named: "Icon_Map_LightBG")?.withRenderingMode(.alwaysTemplate) else { return UIImage() }
+        let markerView = UIImageView(image: marker)
+        markerView.tintColor = UIColor.T4
+        
+        return marker
+    }
+    
     func getDistance(lat1: Double, lng1: Double, lat2: Double, lng2: Double) -> Double {
+        
         let earthRadius: Double = 6378137.0
+        
         let radLat1: Double = self.radian(inputDouble: lat1)
         let radLat2: Double = self.radian(inputDouble: lat2)
         let radLng1: Double = self.radian(inputDouble: lng1)
         let radLng2: Double = self.radian(inputDouble: lng2)
+        
         let latDifference: Double = radLat1 - radLat2
         let longDifference: Double = radLng1 - radLng2
         var distance: Double = 2 * asin(sqrt(pow(sin(latDifference/2), 2) + cos(radLat1) * cos(radLat2) * pow(sin(longDifference/2), 2)))
-        distance = (distance * earthRadius) / 1000
+        
+        distance = (distance * earthRadius) / 1
        return distance
     }
 }

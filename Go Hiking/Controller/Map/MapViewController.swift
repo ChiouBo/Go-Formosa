@@ -76,7 +76,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         
         tableDataSource = GMSAutocompleteTableDataSource()
         tableDataSource?.delegate = self
-
+        
         userLocationManager.delegate = self
         
         setUserLocation()
@@ -131,7 +131,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
         marker.title = "1"
-        marker.icon = UIImage(named: "Icon_Map_BG")
+        //        marker.icon = UIImage(named: "Icon_Map_BG")
+        marker.icon = LocationStepsManager.shared.markerView()
         marker.map = googleMapView
     }
     
@@ -185,22 +186,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last
-//
-//        let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
-//
-//        self.googleMapView.animate(to: camera)
+        //
+        //        let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
+        //
+        //        self.googleMapView.animate(to: camera)
         
         print("didUpdateLocations: \(location)")
         
         let marker = GMSMarker()
-
+        
         marker.map = googleMapView
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         
         let marker = GMSMarker()
-
+        
         marker.map = googleMapView
     }
     
@@ -231,18 +232,19 @@ extension MapViewController: GMSMapViewDelegate {
         print(position)
         if outCome > 0.00001 {
             
-          self.currentPosition = position.target
+            self.currentPosition = position.target
             
-          self.userLocation.append(position.target)
+            self.userLocation.append(position.target)
             
-          let marker = GMSMarker()
+            let marker = GMSMarker()
             
-          marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
-          marker.title = "1"
-            marker.icon = UIImage(named: "Icon_Map_BG")
-          marker.map = googleMapView
+            marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
+            marker.title = "1"
+            //            marker.icon = UIImage(named: "Icon_Map_BG")
+            marker.icon = LocationStepsManager.shared.markerView()
+            marker.map = googleMapView
         } else {
-          return
+            return
         }
     }
 }
