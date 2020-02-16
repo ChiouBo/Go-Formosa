@@ -131,7 +131,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
         marker.title = "1"
-        marker.icon = UIImage(named: "Icon_Map_RedDot")
+        marker.icon = UIImage(named: "Icon_Map_BG")
         marker.map = googleMapView
     }
     
@@ -176,7 +176,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         
         googleMapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 64)
         
-        if let mapStyleURL = Bundle.main.url(forResource: "GoogleMap", withExtension: "json") {
+        if let mapStyleURL = Bundle.main.url(forResource: "MapDarkMode", withExtension: "json") {
             
             googleMapView.mapStyle = try? GMSMapStyle(contentsOfFileURL: mapStyleURL)
         }
@@ -239,7 +239,7 @@ extension MapViewController: GMSMapViewDelegate {
             
           marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
           marker.title = "1"
-            marker.icon = UIImage(named: "Icon_Map_RedDot")
+            marker.icon = UIImage(named: "Icon_Map_BG")
           marker.map = googleMapView
         } else {
           return

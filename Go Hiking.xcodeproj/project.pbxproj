@@ -87,6 +87,7 @@
 		05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */; };
 		05F4E03C23F8EBA400D0B778 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4E03B23F8EBA400D0B778 /* TestViewController.swift */; };
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
+		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -173,6 +174,7 @@
 		05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransition.swift; sourceTree = "<group>"; };
 		05F4E03B23F8EBA400D0B778 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
+		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				058873C723DB4DE200B1612F /* GoogleService-Info.plist */,
 				058873C123DB4AA100B1612F /* Info.plist */,
 				05F4E03D23F8F82A00D0B778 /* GoogleMap.json */,
+				05F4E04223F92DCB00D0B778 /* MapDarkMode.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */,
 				05BF08C223E1AB7F009CED63 /* Auth.storyboard in Resources */,
 				058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */,
 				05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */,
