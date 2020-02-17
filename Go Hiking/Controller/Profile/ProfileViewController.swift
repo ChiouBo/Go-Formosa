@@ -28,7 +28,21 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var userPhoto: UIImageView!
     
+    @IBOutlet weak var userName: UILabel!
+    
+    @IBOutlet weak var userIntroduction: UILabel!
+    
     //
+    @IBAction func editUserInfo(_ sender: UIButton) {
+        
+        let editInfo = UIStoryboard(name: "Profile", bundle: nil)
+        guard let editVC = editInfo.instantiateViewController(withIdentifier: "ProfileEdit") as? ProfileEditViewController else { return }
+        editVC.modalPresentationStyle = .overCurrentContext
+        present(editVC, animated: true, completion: nil)
+        
+    }
+    
+    
     @IBOutlet weak var indicator: UIView!
     
     @IBOutlet weak var indicatorConstaint: NSLayoutConstraint!
@@ -100,7 +114,7 @@ class ProfileViewController: UIViewController {
 
         indicatorConstaint.isActive = true
         
-        UIView.animate(withDuration: 0.1, animations: { [weak self] in
+        UIView.animate(withDuration: 0.15, animations: { [weak self] in
             
             self?.view.layoutIfNeeded()
         })
@@ -114,18 +128,27 @@ class ProfileViewController: UIViewController {
             
         case .history:
             userHistory.isHidden = false
+            contentChange[0].setTitleColor(.black, for: .normal)
+            contentChange[1].setTitleColor(.lightGray, for: .normal)
+            contentChange[2].setTitleColor(.lightGray, for: .normal)
             
         case .achievement:
             userAchievement.isHidden = false
+            contentChange[0].setTitleColor(.lightGray, for: .normal)
+            contentChange[1].setTitleColor(.black, for: .normal)
+            contentChange[2].setTitleColor(.lightGray, for: .normal)
             
         case .level:
             userLevel.isHidden = false
+            contentChange[0].setTitleColor(.lightGray, for: .normal)
+            contentChange[1].setTitleColor(.lightGray, for: .normal)
+            contentChange[2].setTitleColor(.black, for: .normal)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        updateContainer(type: .achievement)
         setProfileUI()
     }
     

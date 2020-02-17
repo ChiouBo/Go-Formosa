@@ -10,6 +10,7 @@ import Foundation
 import FBSDKLoginKit
 import Firebase
 import FirebaseFirestore
+import FirebaseAuth
 
 class UserManager {
     
@@ -24,7 +25,10 @@ class UserManager {
         guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
             let email = Auth.auth().currentUser?.email,
-            let picture = Auth.auth().currentUser?.photoURL else { return }
+            let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
+                return
+                
+        }
         
         let pictureString = "\(picture)"
         

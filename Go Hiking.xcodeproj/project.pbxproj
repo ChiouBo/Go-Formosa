@@ -31,6 +31,8 @@
 		0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593572F23F959CD00BE89F2 /* UserContentViewController.swift */; };
 		0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573123F9632300BE89F2 /* HistoryViewController.swift */; };
 		0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573323F9633600BE89F2 /* AchievementViewController.swift */; };
+		0593573623F982EF00BE89F2 /* UIGesture+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */; };
+		0593573823F98AD700BE89F2 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573723F98AD700BE89F2 /* ProfileEditViewController.swift */; };
 		05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */; };
 		05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */; };
 		05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */; };
@@ -121,6 +123,8 @@
 		0593572F23F959CD00BE89F2 /* UserContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentViewController.swift; sourceTree = "<group>"; };
 		0593573123F9632300BE89F2 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0593573323F9633600BE89F2 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
+		0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGesture+Extension.swift"; sourceTree = "<group>"; };
+		0593573723F98AD700BE89F2 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		05A83C3423EA986E0004B38C /* TrailDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailDetailViewController.swift; sourceTree = "<group>"; };
 		05A83C3623EAA7910004B38C /* TrailContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailContentTableViewCell.swift; sourceTree = "<group>"; };
 		05A83C3723EAA7910004B38C /* TrailContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailContentTableViewCell.xib; sourceTree = "<group>"; };
@@ -428,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08E523E2003E009CED63 /* ProfileViewController.swift */,
+				0593573723F98AD700BE89F2 /* ProfileEditViewController.swift */,
 				0593572F23F959CD00BE89F2 /* UserContentViewController.swift */,
 				0593573123F9632300BE89F2 /* HistoryViewController.swift */,
 				0593573323F9633600BE89F2 /* AchievementViewController.swift */,
@@ -511,6 +516,7 @@
 				05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */,
 				05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */,
 				0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */,
+				0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
+				0593573823F98AD700BE89F2 /* ProfileEditViewController.swift in Sources */,
 				05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */,
 				05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */,
 				05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */,
@@ -739,6 +746,7 @@
 				051A863E23EFE960008865FC /* EventObject.swift in Sources */,
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */,
+				0593573623F982EF00BE89F2 /* UIGesture+Extension.swift in Sources */,
 				05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */,
 				0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */,
 				0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */,
