@@ -22,6 +22,11 @@ class ProfileViewController: UIViewController {
         case level = 2
     }
     
+    var userInfo: User?
+    
+    var userPic = ""
+    var coverPic = ""
+    
     @IBOutlet weak var userBackground: UIImageView!
     
     @IBOutlet weak var profileContent: UIView!
@@ -36,7 +41,22 @@ class ProfileViewController: UIViewController {
     @IBAction func editUserInfo(_ sender: UIButton) {
         
         let editInfo = UIStoryboard(name: "Profile", bundle: nil)
-        guard let editVC = editInfo.instantiateViewController(withIdentifier: "ProfileEdit") as? ProfileEditViewController else { return }
+        
+        guard let editVC = editInfo.instantiateViewController(withIdentifier: "ProfileEdit") as? ProfileEditViewController else {
+            return
+        }
+        
+        let userProfileInfo = User(id: "",
+                                   name: userName.text ?? "",
+                                   email: "",
+                                   picture: userPic,
+                                   introduction: userIntroduction.text ?? "",
+                                   coverImage: coverPic,
+                                   userLocation: "")
+        
+        editVC.editUserInfo = userProfileInfo
+        editVC.backgroundImage = userProfileInfo.coverImage!
+        editVC.delegate = self
         editVC.modalPresentationStyle = .overCurrentContext
         present(editVC, animated: true, completion: nil)
         
@@ -86,10 +106,10 @@ class ProfileViewController: UIViewController {
         
         do{
             try Auth.auth().signOut()
-          
+            
         } catch let logOutError {
-          
-          print(logOutError)
+            
+            print(logOutError)
         }
         
         let mainStoryboard = UIStoryboard.main
@@ -109,9 +129,9 @@ class ProfileViewController: UIViewController {
         self.view.layoutIfNeeded()
         
         indicatorConstaint.isActive = false
-
+        
         indicatorConstaint = indicator.centerXAnchor.constraint(equalTo: reference.centerXAnchor)
-
+        
         indicatorConstaint.isActive = true
         
         UIView.animate(withDuration: 0.15, animations: { [weak self] in
@@ -146,10 +166,38 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func getUserInfo() {
+        
+        UserManager.share.loadUserInfo { (userInfo) in
+            
+            switch userInfo {
+                
+            case .success(let user):
+                self.userName.text = user.name
+                self.userPhoto.loadImage(user.picture)
+                self.userPic = user.picture
+                self.userBackground.loadImage(user.coverImage, placeHolder: UIImage(named: "M001"))
+                guard let photo = user.coverImage else { return }
+                self.coverPic = photo
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
         updateContainer(type: .achievement)
         setProfileUI()
+        getUserInfo()
+    }
+    
+    @objc func reload() {
+        getUserInfo()
     }
     
     override func viewWillLayoutSubviews() {
@@ -157,13 +205,25 @@ class ProfileViewController: UIViewController {
     }
     
     func setProfileUI() {
-        //        logout.layer.cornerRadius = 24
-
+        
         profileContent.layer.cornerRadius = 500
         
         userPhoto.layer.cornerRadius = 50
         userPhoto.layer.borderWidth = 3
         userPhoto.layer.borderColor = UIColor.white.cgColor
-       }
+        userPhoto.contentMode = .scaleAspectFill
+    }
+}
+
+extension ProfileViewController: ProfileEditViewControllerDelegate {
     
+    func infoEditedBacktoProfileVC(_ profileEditViewController: ProfileEditViewController,
+                                   name: String, from: String, intro: String, cover: UIImage, picture: UIImage) {
+        
+        userName.text = name
+        userIntroduction.text = intro
+        userPhoto.image = picture
+        userBackground.image = cover
+        
+    }
 }

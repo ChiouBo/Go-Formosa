@@ -30,6 +30,12 @@ struct User: Codable {
     
     let picture: String
     
+    var introduction: String?
+    
+    var coverImage: String?
+    
+    var userLocation: String?
+    
     var todict: [String: Any] {
         
         return [
@@ -39,7 +45,13 @@ struct User: Codable {
             
             "email": email,
             
-            "picture": picture
+            "picture": picture,
+            
+            "introduction": introduction ?? "",
+            
+            "coverImage": coverImage ?? "",
+            
+            "userLocation": userLocation ?? ""
         ]
     }
 }

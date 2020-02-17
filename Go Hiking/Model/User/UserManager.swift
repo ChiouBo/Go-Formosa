@@ -20,6 +20,8 @@ class UserManager {
     
     let userDB = Firestore.firestore()
     
+    var userInfo: User?
+    
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
         guard let name = Auth.auth().currentUser?.displayName,
@@ -27,12 +29,12 @@ class UserManager {
             let email = Auth.auth().currentUser?.email,
             let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
                 return
-                
         }
+        let image = "?width=400&height=400"
         
-        let pictureString = "\(picture)"
+        let pictureString = "\(picture + image)"
         
-        let userInfo = User(id: id, name: name, email: email, picture: pictureString)
+        let userInfo = User(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "")
         
         self.userDB.collection("users").document(id).setData(userInfo.todict){ (error) in
             
@@ -57,14 +59,47 @@ class UserManager {
                 print("Login error: \(error.localizedDescription)")
                 
             }
-            
-//            print(authResult?.user.email)
-            
             completion(.success("SigninUserData"))
         }
-        
     }
     
+    func loadUserInfo(completion: @escaping (Result<User>) -> Void ) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        userDB.collection("users").document(uid).getDocument { (user, error) in
+            
+            guard let user = user, error == nil else {
+                return
+            }
+            
+            do {
+                guard let info = try user.data(as: User.self, decoder: Firestore.Decoder()) else {
+                    return
+                }
+                completion(.success(info))
+            } catch {
+                
+                print("\(error.localizedDescription)")
+                
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func uploadUserData(userInfo: User, completion: @escaping (Result<String>) -> Void ) {
+        
+        userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success("success"))
+            }
+        }
+    }
 }
 
 
