@@ -17,16 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M001" translatesAutoresizingMaskIntoConstraints="NO" id="tdh-It-tAe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-1551301622-6fa51afe75a9" translatesAutoresizingMaskIntoConstraints="NO" id="tdh-It-tAe">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7Y-l5-egS">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7Y-l5-egS">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="C01-g9-0HS">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
-                                <blurEffect style="light"/>
+                                <blurEffect style="systemThickMaterialDark"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jVW-XR-rAA">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -74,7 +74,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqb-vh-Ez7">
                                         <rect key="frame" x="190.5" y="812" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="訪客"/>
+                                        <state key="normal" title="訪客">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="guestUser:" destination="2yc-L0-X9R" eventType="touchUpInside" id="ByJ-KE-GsN"/>
                                         </connections>
@@ -156,23 +158,26 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8i-XP-cD2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-1569243963117-78bb6e7ff948" translatesAutoresizingMaskIntoConstraints="NO" id="b5H-TE-nle">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-3B-aJU">
-                                        <rect key="frame" x="100" y="100" width="214" height="50"/>
+                                        <rect key="frame" x="100" y="188" width="214" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="rnZ-Xf-GZ0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                        <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to explore Formosa with Go Hiking！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oJ-mY-iWD">
-                                        <rect key="frame" x="40" y="170" width="334" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="40" y="258" width="334" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-67-2gf" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="291" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="381" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XUG-nU-Lpd"/>
                                         </constraints>
@@ -180,7 +185,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-3j-kqG" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="361" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="451" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KPC-0D-qe4"/>
                                         </constraints>
@@ -188,40 +193,46 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oel-6c-lIL">
-                                        <rect key="frame" x="40" y="471" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="561" width="334" height="50"/>
                                         <color key="backgroundColor" name="T2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="QHo-mA-5Pj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="LOGIN"/>
                                         <connections>
                                             <action selector="userLoginBtn:" destination="8XQ-aU-gtH" eventType="touchUpInside" id="Lag-wS-biX"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edR-6U-3wu">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edR-6U-3wu">
                                         <rect key="frame" x="184" y="784" width="46" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="0.90096830989999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="b5H-TE-nle" firstAttribute="top" secondItem="r8i-XP-cD2" secondAttribute="top" id="3cE-M7-Jxl"/>
                                     <constraint firstItem="1oJ-mY-iWD" firstAttribute="leading" secondItem="r8i-XP-cD2" secondAttribute="leading" constant="40" id="533-iW-kPY"/>
                                     <constraint firstItem="k7j-3j-kqG" firstAttribute="top" secondItem="ad9-67-2gf" secondAttribute="bottom" constant="20" id="7FF-us-n7B"/>
                                     <constraint firstItem="xwK-3B-aJU" firstAttribute="centerX" secondItem="r8i-XP-cD2" secondAttribute="centerX" id="7dR-LH-3Av"/>
                                     <constraint firstAttribute="trailing" secondItem="1oJ-mY-iWD" secondAttribute="trailing" constant="40" id="9yj-5i-73h"/>
                                     <constraint firstItem="Oel-6c-lIL" firstAttribute="centerX" secondItem="r8i-XP-cD2" secondAttribute="centerX" id="GId-Zx-TqW"/>
                                     <constraint firstItem="k7j-3j-kqG" firstAttribute="centerX" secondItem="r8i-XP-cD2" secondAttribute="centerX" id="Ggg-PX-eqS"/>
+                                    <constraint firstItem="b5H-TE-nle" firstAttribute="leading" secondItem="r8i-XP-cD2" secondAttribute="leading" id="Hq7-La-d2F"/>
                                     <constraint firstItem="ad9-67-2gf" firstAttribute="leading" secondItem="r8i-XP-cD2" secondAttribute="leading" constant="40" id="Mer-8Q-iv5"/>
                                     <constraint firstItem="1oJ-mY-iWD" firstAttribute="centerX" secondItem="r8i-XP-cD2" secondAttribute="centerX" id="OTi-kw-ycj"/>
                                     <constraint firstItem="Oel-6c-lIL" firstAttribute="leading" secondItem="r8i-XP-cD2" secondAttribute="leading" constant="40" id="Re8-3m-YKP"/>
                                     <constraint firstAttribute="trailing" secondItem="Oel-6c-lIL" secondAttribute="trailing" constant="40" id="RuK-xq-tnU"/>
                                     <constraint firstItem="xwK-3B-aJU" firstAttribute="leading" secondItem="r8i-XP-cD2" secondAttribute="leading" constant="100" id="SgB-5l-AsF"/>
                                     <constraint firstAttribute="trailing" secondItem="ad9-67-2gf" secondAttribute="trailing" constant="40" id="Z68-TS-WQY"/>
-                                    <constraint firstItem="xwK-3B-aJU" firstAttribute="top" secondItem="r8i-XP-cD2" secondAttribute="top" constant="100" id="a10-97-I3a"/>
+                                    <constraint firstItem="xwK-3B-aJU" firstAttribute="top" secondItem="r8i-XP-cD2" secondAttribute="top" constant="188" id="a10-97-I3a"/>
                                     <constraint firstItem="k7j-3j-kqG" firstAttribute="leading" secondItem="r8i-XP-cD2" secondAttribute="leading" constant="40" id="bB7-we-62O"/>
+                                    <constraint firstAttribute="bottom" secondItem="b5H-TE-nle" secondAttribute="bottom" id="h86-0X-bKH"/>
+                                    <constraint firstAttribute="trailing" secondItem="b5H-TE-nle" secondAttribute="trailing" id="hBz-Q1-JOk"/>
                                     <constraint firstItem="ad9-67-2gf" firstAttribute="top" secondItem="1oJ-mY-iWD" secondAttribute="bottom" constant="80" id="lVp-0h-dEJ"/>
                                     <constraint firstItem="Oel-6c-lIL" firstAttribute="top" secondItem="k7j-3j-kqG" secondAttribute="bottom" constant="60" id="ov8-N7-Wjb"/>
                                     <constraint firstAttribute="trailing" secondItem="xwK-3B-aJU" secondAttribute="trailing" constant="100" id="php-cd-wej"/>
@@ -249,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqa-x8-skQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="368"/>
+            <point key="canvasLocation" x="1728.985507246377" y="367.63392857142856"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="fzf-Em-C3j">
@@ -259,23 +270,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="photo-1563303042-b9fe51ff7227" translatesAutoresizingMaskIntoConstraints="NO" id="G8W-QI-93a">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbM-ko-Tjn">
                                 <rect key="frame" x="100" y="188" width="214" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VAt-4R-AmA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address to create an account on Go Hiking" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tm-PR-Qwr">
-                                <rect key="frame" x="40" y="258" width="334" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="40" y="258" width="334" height="43"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-2M-wgN" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
-                                <rect key="frame" x="40" y="379" width="334" height="50"/>
+                                <rect key="frame" x="40" y="381" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2tX-83-Bfx"/>
                                 </constraints>
@@ -283,14 +298,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsk-b1-92h">
-                                <rect key="frame" x="40" y="429" width="334" height="1"/>
+                                <rect key="frame" x="40" y="431" width="334" height="1"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="kTu-kS-u7z"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qkw-cO-euO" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
-                                <rect key="frame" x="40" y="450" width="334" height="50"/>
+                                <rect key="frame" x="40" y="452" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VTk-ZX-MMH"/>
                                 </constraints>
@@ -298,7 +313,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-zo-aJC" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
-                                <rect key="frame" x="40" y="520" width="334" height="50"/>
+                                <rect key="frame" x="40" y="522" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kJC-5X-LNm"/>
                                 </constraints>
@@ -306,7 +321,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOx-x0-2w6" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
-                                <rect key="frame" x="40" y="590" width="334" height="50"/>
+                                <rect key="frame" x="40" y="592" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="J68-Bd-Rkt"/>
                                 </constraints>
@@ -314,14 +329,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2f6-mI-LBY">
-                                <rect key="frame" x="40" y="740" width="334" height="50"/>
+                                <rect key="frame" x="40" y="742" width="334" height="50"/>
                                 <color key="backgroundColor" name="T1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Rqi-lb-Uxp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Submit">
+                                <state key="normal" title="SUBMIT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -398,7 +413,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="M001" width="850" height="566"/>
+        <image name="photo-1551301622-6fa51afe75a9" width="3300" height="2200"/>
+        <image name="photo-1563303042-b9fe51ff7227" width="1900" height="3040"/>
+        <image name="photo-1569243963117-78bb6e7ff948" width="934" height="1401"/>
         <namedColor name="Facebook">
             <color red="0.25900000333786011" green="0.4050000011920929" blue="0.69900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

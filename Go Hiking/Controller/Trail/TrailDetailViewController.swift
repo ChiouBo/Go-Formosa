@@ -181,7 +181,7 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.alpha = 0
         cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
-        
+        cell.backgroundColor = .black
         animator.addAnimations {
             
             cell.alpha = 1

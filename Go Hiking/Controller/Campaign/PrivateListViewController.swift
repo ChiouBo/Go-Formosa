@@ -166,7 +166,7 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.campaignTitle.text = currentCampaign.title
         cell.campaignLevel.text = currentCampaign.type
-        
+        cell.backgroundColor = .black
         return cell
     }
 }

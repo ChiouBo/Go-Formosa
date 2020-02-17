@@ -9,11 +9,18 @@
 import UIKit
 
 class ChatViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setNavBar()
+    }
     
+    func setNavBar() {
+        navigationController?.navigationBar.barStyle = .black
+        let navBarNude = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(navBarNude, for: .default)
+        self.navigationController?.navigationBar.shadowImage = navBarNude
     }
     
 }

@@ -86,7 +86,7 @@ class TrailViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(filterBtn))
-        navigationController?.navigationBar.barTintColor = UIColor.T4
+        navigationController?.navigationBar.barTintColor = UIColor.black
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
@@ -96,7 +96,7 @@ class TrailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationController?.navigationBar.barStyle = .black
         navigationItem.searchController = searchController
         
         trailResponse.delegate = self
@@ -351,7 +351,7 @@ extension TrailViewController {
         
         view.addSubview(trailTableView)
         view.addSubview(filterView)
-        
+        trailTableView.backgroundColor = .black
         trailTableView.topAnchor.constraint(equalTo: filterView.bottomAnchor).isActive = true
         trailTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         trailTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

@@ -102,7 +102,11 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.tabBar.barTintColor = UIColor.black
+        self.tabBar.unselectedItemTintColor = UIColor.gray
+        self.tabBar.tintColor = UIColor.T3
+        
         viewControllers = tabs.map({ $0.controller() })
         
         delegate = self

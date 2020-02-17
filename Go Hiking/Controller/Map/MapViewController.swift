@@ -56,7 +56,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.barStyle = .black
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
         

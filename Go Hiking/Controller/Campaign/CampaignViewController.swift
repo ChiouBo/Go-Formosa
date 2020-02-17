@@ -51,11 +51,11 @@ class CampaignViewController: UIViewController {
     
     func setNavVC() {
         
-//        navigationController?.navigationBar.self
+        navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(toPrivateList))
-        navigationController?.navigationBar.barTintColor = UIColor.T4
+        navigationController?.navigationBar.barTintColor = UIColor.black
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
@@ -211,7 +211,7 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         cell.campaignTitle.text = eventData[indexPath.row].title
         cell.campaignLevel.text = eventData[indexPath.row].member
         cell.campaignImage.kf.setImage(with: URL(string: eventData[indexPath.row].image))
-
+        cell.backgroundColor = .black
         
         return cell
     }
@@ -240,7 +240,7 @@ extension CampaignViewController {
     func setupElements() {
         
         view.addSubview(publicTableView)
-        
+        publicTableView.backgroundColor = .black
         publicTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         publicTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         publicTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
