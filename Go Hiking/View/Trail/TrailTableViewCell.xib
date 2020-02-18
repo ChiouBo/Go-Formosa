@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M001" translatesAutoresizingMaskIntoConstraints="NO" id="Sv0-Xy-dP2">
-                        <rect key="frame" x="20" y="15" width="130.00000000000023" height="100"/>
+                        <rect key="frame" x="20" y="15" width="130" height="100"/>
                         <color key="backgroundColor" name="T5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="0Cr-Hh-DEC"/>
