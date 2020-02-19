@@ -46,6 +46,20 @@ enum ImageAsset: String {
     
     // Circle Back
     case Icons_44px_Back01
+    
+    // Level
+    case Icon_Goal_Normal_1
+    case Icon_Goal_Normal_2
+    case Icon_Goal_Normal_3
+    case Icon_Goal_Normal_4
+    case Icon_Goal_Normal_5
+    
+    // Achieve
+    case Icon_Goal_Color_1
+    case Icon_Goal_Color_2
+    case Icon_Goal_Color_3
+    case Icon_Goal_Color_4
+    case Icon_Goal_Color_5
 }
 
 extension UIImage {

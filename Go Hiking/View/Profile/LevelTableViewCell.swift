@@ -10,6 +10,13 @@ import UIKit
 
 class LevelTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var levelImage: UIImageView!
+    
+    @IBOutlet weak var levelTitle: UILabel!
+    
+    @IBOutlet weak var levelPoint: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

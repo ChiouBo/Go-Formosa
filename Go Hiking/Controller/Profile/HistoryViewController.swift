@@ -15,13 +15,18 @@ class HistoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setTableView()
+    }
+    
+    func setTableView() {
+        
         historyTableView.dataSource = self
         historyTableView.delegate = self
         historyTableView.register(UINib(nibName: "HistoryHeadTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryHEAD")
         historyTableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "HISTORY")
         historyTableView.rowHeight = UITableView.automaticDimension
+        historyTableView.separatorStyle = .none
     }
-    
 
   
 }
