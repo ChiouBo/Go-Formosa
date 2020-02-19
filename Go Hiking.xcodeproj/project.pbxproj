@@ -19,6 +19,18 @@
 		051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863A23EFE1AC008865FC /* PreviewViewController.swift */; };
 		051A863E23EFE960008865FC /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863D23EFE960008865FC /* EventObject.swift */; };
 		051E6AAD23FC0E9A000D942D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 051E6AAC23FC0E9A000D942D /* GoogleService-Info.plist */; };
+		051E6AB023FCF353000D942D /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AAE23FCF353000D942D /* HistoryTableViewCell.swift */; };
+		051E6AB123FCF353000D942D /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051E6AAF23FCF353000D942D /* HistoryTableViewCell.xib */; };
+		051E6AB423FD0BD1000D942D /* HistoryHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AB223FD0BD1000D942D /* HistoryHeadTableViewCell.swift */; };
+		051E6AB523FD0BD1000D942D /* HistoryHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051E6AB323FD0BD1000D942D /* HistoryHeadTableViewCell.xib */; };
+		051E6AB823FD0C00000D942D /* AchieveHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AB623FD0C00000D942D /* AchieveHeadTableViewCell.swift */; };
+		051E6AB923FD0C00000D942D /* AchieveHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051E6AB723FD0C00000D942D /* AchieveHeadTableViewCell.xib */; };
+		051E6ABC23FD0C21000D942D /* LevelHeadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ABA23FD0C21000D942D /* LevelHeadTableViewCell.swift */; };
+		051E6ABD23FD0C21000D942D /* LevelHeadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051E6ABB23FD0C21000D942D /* LevelHeadTableViewCell.xib */; };
+		051E6AC023FD0C37000D942D /* LevelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ABE23FD0C37000D942D /* LevelTableViewCell.swift */; };
+		051E6AC123FD0C37000D942D /* LevelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051E6ABF23FD0C37000D942D /* LevelTableViewCell.xib */; };
+		051E6AC423FD0C53000D942D /* AchieveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AC223FD0C53000D942D /* AchieveCollectionViewCell.swift */; };
+		051E6AC523FD0C53000D942D /* AchieveCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 051E6AC323FD0C53000D942D /* AchieveCollectionViewCell.xib */; };
 		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
 		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
@@ -28,7 +40,7 @@
 		058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 058873B923DB4A9B00B1612F /* Go_Hiking.xcdatamodeld */; };
 		058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058873BC23DB4AA100B1612F /* Assets.xcassets */; };
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
-		0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593572F23F959CD00BE89F2 /* UserContentViewController.swift */; };
+		0593573023F959CD00BE89F2 /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593572F23F959CD00BE89F2 /* LevelViewController.swift */; };
 		0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573123F9632300BE89F2 /* HistoryViewController.swift */; };
 		0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573323F9633600BE89F2 /* AchievementViewController.swift */; };
 		0593573623F982EF00BE89F2 /* UIGesture+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */; };
@@ -110,6 +122,18 @@
 		051A863A23EFE1AC008865FC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		051A863D23EFE960008865FC /* EventObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
 		051E6AAC23FC0E9A000D942D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		051E6AAE23FCF353000D942D /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		051E6AAF23FCF353000D942D /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
+		051E6AB223FD0BD1000D942D /* HistoryHeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryHeadTableViewCell.swift; sourceTree = "<group>"; };
+		051E6AB323FD0BD1000D942D /* HistoryHeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryHeadTableViewCell.xib; sourceTree = "<group>"; };
+		051E6AB623FD0C00000D942D /* AchieveHeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveHeadTableViewCell.swift; sourceTree = "<group>"; };
+		051E6AB723FD0C00000D942D /* AchieveHeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchieveHeadTableViewCell.xib; sourceTree = "<group>"; };
+		051E6ABA23FD0C21000D942D /* LevelHeadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelHeadTableViewCell.swift; sourceTree = "<group>"; };
+		051E6ABB23FD0C21000D942D /* LevelHeadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelHeadTableViewCell.xib; sourceTree = "<group>"; };
+		051E6ABE23FD0C37000D942D /* LevelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelTableViewCell.swift; sourceTree = "<group>"; };
+		051E6ABF23FD0C37000D942D /* LevelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelTableViewCell.xib; sourceTree = "<group>"; };
+		051E6AC223FD0C53000D942D /* AchieveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCollectionViewCell.swift; sourceTree = "<group>"; };
+		051E6AC323FD0C53000D942D /* AchieveCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchieveCollectionViewCell.xib; sourceTree = "<group>"; };
 		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
 		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
@@ -121,7 +145,7 @@
 		058873BC23DB4AA100B1612F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0593572F23F959CD00BE89F2 /* UserContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentViewController.swift; sourceTree = "<group>"; };
+		0593572F23F959CD00BE89F2 /* LevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		0593573123F9632300BE89F2 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0593573323F9633600BE89F2 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
 		0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGesture+Extension.swift"; sourceTree = "<group>"; };
@@ -376,6 +400,18 @@
 		05BF08BC23E1AA51009CED63 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				051E6AB223FD0BD1000D942D /* HistoryHeadTableViewCell.swift */,
+				051E6AB323FD0BD1000D942D /* HistoryHeadTableViewCell.xib */,
+				051E6AAE23FCF353000D942D /* HistoryTableViewCell.swift */,
+				051E6AAF23FCF353000D942D /* HistoryTableViewCell.xib */,
+				051E6AB623FD0C00000D942D /* AchieveHeadTableViewCell.swift */,
+				051E6AB723FD0C00000D942D /* AchieveHeadTableViewCell.xib */,
+				051E6AC223FD0C53000D942D /* AchieveCollectionViewCell.swift */,
+				051E6AC323FD0C53000D942D /* AchieveCollectionViewCell.xib */,
+				051E6ABA23FD0C21000D942D /* LevelHeadTableViewCell.swift */,
+				051E6ABB23FD0C21000D942D /* LevelHeadTableViewCell.xib */,
+				051E6ABE23FD0C37000D942D /* LevelTableViewCell.swift */,
+				051E6ABF23FD0C37000D942D /* LevelTableViewCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -435,9 +471,9 @@
 			children = (
 				05BF08E523E2003E009CED63 /* ProfileViewController.swift */,
 				0593573723F98AD700BE89F2 /* ProfileEditViewController.swift */,
-				0593572F23F959CD00BE89F2 /* UserContentViewController.swift */,
 				0593573123F9632300BE89F2 /* HistoryViewController.swift */,
 				0593573323F9633600BE89F2 /* AchievementViewController.swift */,
+				0593572F23F959CD00BE89F2 /* LevelViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -629,12 +665,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */,
+				051E6AB923FD0C00000D942D /* AchieveHeadTableViewCell.xib in Resources */,
 				05BF08C223E1AB7F009CED63 /* Auth.storyboard in Resources */,
 				058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */,
 				05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */,
 				05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */,
+				051E6AC523FD0C53000D942D /* AchieveCollectionViewCell.xib in Resources */,
 				05BF091023E80571009CED63 /* TrailTableViewCell.xib in Resources */,
+				051E6AB123FCF353000D942D /* HistoryTableViewCell.xib in Resources */,
+				051E6ABD23FD0C21000D942D /* LevelHeadTableViewCell.xib in Resources */,
 				05BF092223E99B2C009CED63 /* FilterCollectionViewCell.xib in Resources */,
+				051E6AC123FD0C37000D942D /* LevelTableViewCell.xib in Resources */,
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
@@ -643,6 +684,7 @@
 				05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */,
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
 				05A83C4023EBF4180004B38C /* Record.storyboard in Resources */,
+				051E6AB523FD0BD1000D942D /* HistoryHeadTableViewCell.xib in Resources */,
 				05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */,
 				05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */,
 				05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */,
@@ -725,10 +767,12 @@
 				05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */,
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
+				051E6AB823FD0C00000D942D /* AchieveHeadTableViewCell.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
 				0593573823F98AD700BE89F2 /* ProfileEditViewController.swift in Sources */,
 				05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */,
 				05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */,
+				051E6AC023FD0C37000D942D /* LevelTableViewCell.swift in Sources */,
 				05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
@@ -742,7 +786,9 @@
 				05A83C3823EAA7910004B38C /* TrailContentTableViewCell.swift in Sources */,
 				05BF08DE23E1FF40009CED63 /* MapViewController.swift in Sources */,
 				05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */,
+				051E6AB023FCF353000D942D /* HistoryTableViewCell.swift in Sources */,
 				051A863523EEEE77008865FC /* DescTableViewCell.swift in Sources */,
+				051E6AB423FD0BD1000D942D /* HistoryHeadTableViewCell.swift in Sources */,
 				05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */,
 				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
@@ -755,6 +801,7 @@
 				0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */,
 				05E56EDB23F81FC400FFD804 /* LocationManager.swift in Sources */,
 				05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */,
+				051E6AC423FD0C53000D942D /* AchieveCollectionViewCell.swift in Sources */,
 				05BF090323E6C32D009CED63 /* LoginViewController.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
 				05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */,
@@ -762,7 +809,7 @@
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
 				051A862D23EE9031008865FC /* CreateViewController.swift in Sources */,
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
-				0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */,
+				0593573023F959CD00BE89F2 /* LevelViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
@@ -778,6 +825,7 @@
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
 				05BF08F723E429F3009CED63 /* UserManager.swift in Sources */,
 				051A862923EE8C8A008865FC /* PhotoCollectionViewCell.swift in Sources */,
+				051E6ABC23FD0C21000D942D /* LevelHeadTableViewCell.swift in Sources */,
 				05BF090823E7CD37009CED63 /* UITextField+Extension.swift in Sources */,
 				05BF090523E6DDB5009CED63 /* Campaign.swift in Sources */,
 				0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */,

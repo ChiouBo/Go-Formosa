@@ -108,15 +108,11 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                                             print("error")
                                         }
                                     }
-                                    
                                 } else {
                                     print("error")
                                 }
-                                
                             }
-                            
                         }
-                        
                     case .failure:
                         
                         LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
@@ -126,10 +122,7 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                 
                 self.dismiss(animated: true, completion: nil)
             } else {
-                
-                print("Login Fail")
-//
-//                LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
+                print("No Login")
             }
         }
     }
@@ -166,7 +159,6 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
         
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
-        
         Auth.auth().signIn(with: credential) { (result, error) in
             
             UserManager.share.signinUserData(credential: credential) { (result) in
@@ -200,7 +192,6 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                                         print("error")
                                     }
                                 }
-                                
                             } else {
                                 
                                 print("error")

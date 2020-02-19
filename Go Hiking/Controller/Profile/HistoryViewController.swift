@@ -10,21 +10,43 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+    @IBOutlet weak var historyTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        historyTableView.dataSource = self
+        historyTableView.delegate = self
+        historyTableView.register(UINib(nibName: "HistoryHeadTableViewCell", bundle: nil), forCellReuseIdentifier: "HistoryHEAD")
+        historyTableView.register(UINib(nibName: "HistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "HISTORY")
+        historyTableView.rowHeight = UITableView.automaticDimension
     }
     
 
-    /*
-    // MARK: - Navigation
+  
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    
+
+func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    
+    return 10
+}
+
+func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    if indexPath.row == 0 {
+        
+        guard let headCell = tableView.dequeueReusableCell(withIdentifier: "HistoryHEAD", for: indexPath) as? HistoryHeadTableViewCell else { return UITableViewCell() }
+        
+        return headCell
+    } else {
+        guard let historyCell = tableView.dequeueReusableCell(withIdentifier: "HISTORY", for: indexPath) as? HistoryTableViewCell else { return UITableViewCell() }
+        
+        return historyCell
+        }
     }
-    */
-
+    
 }

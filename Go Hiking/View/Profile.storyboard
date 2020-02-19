@@ -149,15 +149,15 @@
                                                 </connections>
                                             </containerView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naW-z5-Qx0">
-                                                <rect key="frame" x="293" y="186.5" width="414" height="1"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <rect key="frame" x="293" y="184.5" width="414" height="1"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="414" id="6YJ-Qo-5Ww"/>
                                                     <constraint firstAttribute="height" constant="1" id="jRd-oW-CBM"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhm-a1-ogu">
-                                                <rect key="frame" x="431" y="186.5" width="138" height="1"/>
+                                                <rect key="frame" x="431" y="184.5" width="138" height="1"/>
                                                 <color key="backgroundColor" name="denim"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="uun-lL-RUH"/>
@@ -183,14 +183,14 @@
                                             <constraint firstItem="PDJ-2u-QDx" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="WIs-HJ-KBJ"/>
                                             <constraint firstItem="jsb-bf-FqK" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="WN0-eG-hsR"/>
                                             <constraint firstItem="umA-jX-cpy" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="X1c-5e-TTu"/>
-                                            <constraint firstItem="nhm-a1-ogu" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="ZIE-qG-jTF"/>
+                                            <constraint firstItem="nhm-a1-ogu" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" constant="-2" id="ZIE-qG-jTF"/>
                                             <constraint firstItem="ocd-UA-ye6" firstAttribute="top" secondItem="nQI-OP-fAv" secondAttribute="bottom" constant="20" id="ace-lq-5ZO"/>
                                             <constraint firstItem="DnA-QO-UMh" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="bon-px-HAE"/>
                                             <constraint firstAttribute="bottom" secondItem="DnA-QO-UMh" secondAttribute="bottom" constant="353" id="idF-CJ-kYr"/>
                                             <constraint firstItem="naW-z5-Qx0" firstAttribute="centerX" secondItem="D9x-11-RJc" secondAttribute="centerX" id="k2w-ea-Nvx"/>
                                             <constraint firstItem="nhm-a1-ogu" firstAttribute="centerX" secondItem="ocd-UA-ye6" secondAttribute="centerX" id="kKL-Sy-suF"/>
                                             <constraint firstAttribute="bottom" secondItem="PDJ-2u-QDx" secondAttribute="bottom" constant="353" id="lI2-WQ-9ve"/>
-                                            <constraint firstItem="naW-z5-Qx0" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" id="mgi-eZ-fqU"/>
+                                            <constraint firstItem="naW-z5-Qx0" firstAttribute="top" secondItem="ocd-UA-ye6" secondAttribute="bottom" constant="-2" id="mgi-eZ-fqU"/>
                                             <constraint firstItem="heQ-IF-qp9" firstAttribute="top" secondItem="D9x-11-RJc" secondAttribute="top" constant="23" id="nzK-ug-C9X"/>
                                             <constraint firstItem="jsb-bf-FqK" firstAttribute="leading" secondItem="dtO-9P-4nh" secondAttribute="trailing" constant="22" id="pSM-cD-k4M"/>
                                             <constraint firstAttribute="bottom" secondItem="umA-jX-cpy" secondAttribute="bottom" constant="353" id="uBF-NY-Fx9"/>
@@ -457,25 +457,40 @@
             </objects>
             <point key="canvasLocation" x="1008.6956521739131" y="646.875"/>
         </scene>
-        <!--User Content View Controller-->
+        <!--History View Controller-->
         <scene sceneID="J4k-kn-bt8">
             <objects>
-                <viewController id="4Pz-gR-jHy" customClass="UserContentViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Pz-gR-jHy" customClass="HistoryViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MuV-Ye-Tw4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="460.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p3z-t3-n1U">
+                                <rect key="frame" x="0.0" y="44" width="414" height="416.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p3z-t3-n1U" firstAttribute="leading" secondItem="a1V-y0-5SG" secondAttribute="leading" id="9Ys-Oh-Qw2"/>
+                            <constraint firstItem="p3z-t3-n1U" firstAttribute="top" secondItem="a1V-y0-5SG" secondAttribute="top" id="bHY-bb-7Ll"/>
+                            <constraint firstItem="a1V-y0-5SG" firstAttribute="bottom" secondItem="p3z-t3-n1U" secondAttribute="bottom" id="gXn-hL-UKq"/>
+                            <constraint firstItem="a1V-y0-5SG" firstAttribute="trailing" secondItem="p3z-t3-n1U" secondAttribute="trailing" id="sKg-vg-lCr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="a1V-y0-5SG"/>
                     </view>
+                    <connections>
+                        <outlet property="historyTableView" destination="p3z-t3-n1U" id="Pbz-5d-hJ6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzA-Uv-Xmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1770" y="-499"/>
         </scene>
-        <!--User Content View Controller-->
+        <!--Achievement View Controller-->
         <scene sceneID="SLk-0L-pDB">
             <objects>
-                <viewController id="CPX-aq-BNe" customClass="UserContentViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CPX-aq-BNe" customClass="AchievementViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7GX-a6-OcB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="460.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -487,10 +502,10 @@
             </objects>
             <point key="canvasLocation" x="1770" y="-138"/>
         </scene>
-        <!--User Content View Controller-->
+        <!--Level View Controller-->
         <scene sceneID="KTg-jr-jF1">
             <objects>
-                <viewController id="JZW-go-Sd8" customClass="UserContentViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JZW-go-Sd8" customClass="LevelViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KY2-wY-Cy6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="460.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
