@@ -120,7 +120,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             navVC.viewControllers.first is ProfileViewController || navVC.viewControllers.first is ChatViewController else {
                 return true
         }
-        guard AccessToken.current?.tokenString != nil || Auth.auth().currentUser != nil else {
+        guard Auth.auth().currentUser != nil else {
         
                     if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
         

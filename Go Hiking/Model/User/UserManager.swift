@@ -12,6 +12,11 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
+enum FirebaseLogin: Error {
+    
+    case noneLogin
+}
+
 class UserManager {
     
     private init () { }
@@ -24,7 +29,7 @@ class UserManager {
     
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
-        guard let name = Auth.auth().currentUser?.displayName,
+      guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
             let email = Auth.auth().currentUser?.email,
             let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
@@ -48,9 +53,8 @@ class UserManager {
         
     }
     
-    let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current?.tokenString ?? "")
     
-    func signinUserData(completion: @escaping (Result<String>) -> Void) {
+    func signinUserData(credential: AuthCredential, completion: @escaping (Result<String>) -> Void) {
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
             
@@ -63,11 +67,11 @@ class UserManager {
         }
     }
     
-    func loadUserInfo(completion: @escaping (Result<User>) -> Void ) {
+    func loadUserInfo(completion: @escaping (Swift.Result<User, Error>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        userDB.collection("users").document(uid).getDocument { (user, error) in
+       userDB.collection("users").document(uid).getDocument { (user, error) in
             
             guard let user = user, error == nil else {
                 return
@@ -82,7 +86,7 @@ class UserManager {
                 
                 print("\(error.localizedDescription)")
                 
-                completion(.failure(error))
+                completion(.failure(FirebaseLogin.noneLogin))
             }
         }
     }

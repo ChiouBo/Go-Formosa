@@ -18,6 +18,7 @@
 		051A863923EEEF24008865FC /* PreviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863823EEEF24008865FC /* PreviewTableViewCell.swift */; };
 		051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863A23EFE1AC008865FC /* PreviewViewController.swift */; };
 		051A863E23EFE960008865FC /* EventObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A863D23EFE960008865FC /* EventObject.swift */; };
+		051E6AAD23FC0E9A000D942D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 051E6AAC23FC0E9A000D942D /* GoogleService-Info.plist */; };
 		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
 		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
@@ -27,7 +28,6 @@
 		058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 058873B923DB4A9B00B1612F /* Go_Hiking.xcdatamodeld */; };
 		058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058873BC23DB4AA100B1612F /* Assets.xcassets */; };
 		058873C023DB4AA100B1612F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873BE23DB4AA100B1612F /* LaunchScreen.storyboard */; };
-		058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058873C723DB4DE200B1612F /* GoogleService-Info.plist */; };
 		0593573023F959CD00BE89F2 /* UserContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593572F23F959CD00BE89F2 /* UserContentViewController.swift */; };
 		0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573123F9632300BE89F2 /* HistoryViewController.swift */; };
 		0593573423F9633600BE89F2 /* AchievementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593573323F9633600BE89F2 /* AchievementViewController.swift */; };
@@ -109,6 +109,7 @@
 		051A863823EEEF24008865FC /* PreviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTableViewCell.swift; sourceTree = "<group>"; };
 		051A863A23EFE1AC008865FC /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		051A863D23EFE960008865FC /* EventObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventObject.swift; sourceTree = "<group>"; };
+		051E6AAC23FC0E9A000D942D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
 		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		058873BC23DB4AA100B1612F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		058873C723DB4DE200B1612F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0593572F23F959CD00BE89F2 /* UserContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentViewController.swift; sourceTree = "<group>"; };
 		0593573123F9632300BE89F2 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0593573323F9633600BE89F2 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
@@ -341,8 +341,8 @@
 			children = (
 				05BF08ED23E328D4009CED63 /* Constant */,
 				058873BC23DB4AA100B1612F /* Assets.xcassets */,
-				058873C723DB4DE200B1612F /* GoogleService-Info.plist */,
 				058873C123DB4AA100B1612F /* Info.plist */,
+				051E6AAC23FC0E9A000D942D /* GoogleService-Info.plist */,
 				05F4E03D23F8F82A00D0B778 /* GoogleMap.json */,
 				05F4E04223F92DCB00D0B778 /* MapDarkMode.json */,
 			);
@@ -635,11 +635,11 @@
 				05A83C3923EAA7910004B38C /* TrailContentTableViewCell.xib in Resources */,
 				05BF091023E80571009CED63 /* TrailTableViewCell.xib in Resources */,
 				05BF092223E99B2C009CED63 /* FilterCollectionViewCell.xib in Resources */,
-				058873C823DB4DE200B1612F /* GoogleService-Info.plist in Resources */,
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
 				05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */,
+				051E6AAD23FC0E9A000D942D /* GoogleService-Info.plist in Resources */,
 				05BF08C423E1AB94009CED63 /* Profile.storyboard in Resources */,
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
 				05A83C4023EBF4180004B38C /* Record.storyboard in Resources */,

@@ -10,11 +10,12 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 import FBSDKLoginKit
+import GoogleSignIn
 import Firebase
 import FirebaseFirestore
 import JGProgressHUD
 
-class AuthViewController: UIViewController {
+class AuthViewController: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var ghSignUp: UIButton!
     
@@ -22,7 +23,7 @@ class AuthViewController: UIViewController {
     
     @IBOutlet weak var ghAppleLogin: UIButton!
     
-    @IBOutlet weak var ghLogin: UIButton!
+    @IBOutlet weak var ghGoogleSignIn: UIButton!
     
     func setNavVC() {
         
@@ -44,7 +45,10 @@ class AuthViewController: UIViewController {
         setButtonUI(button: ghSignUp)
         setButtonUI(button: ghFacebookLogin)
         setButtonUI(button: ghAppleLogin)
-        setButtonUI(button: ghLogin)
+        setButtonUI(button: ghGoogleSignIn)
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
         
         if let token = AccessToken.current {
             
@@ -72,22 +76,45 @@ class AuthViewController: UIViewController {
                 
                 let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current?.tokenString ?? "")
                 
-                UserManager.share.signinUserData { (result) in
+                UserManager.share.signinUserData(credential: credential) { (result) in
+                    
                     switch result {
                         
                     case .success:
                         
-                        UserManager.share.saveUserData { result in
+                        UserManager.share.loadUserInfo { result in
                             
                             switch result {
                                 
-                            case .success(let ya):
-                                print(ya)
+                            case .success:
                                 
-                            case .failure:
+                                print("ya")
                                 
-                                print("error")
+                            case .failure(let error):
+                                
+                                let fbLogin = error.localizedDescription.components(separatedBy: "noneLogin")
+                                
+                                if fbLogin.count > 1 {
+                                    
+                                    UserManager.share.saveUserData { result in
+                                        
+                                        switch result {
+                                            
+                                        case .success(let ya):
+                                            print(ya)
+                                            
+                                        case .failure:
+                                            
+                                            print("error")
+                                        }
+                                    }
+                                    
+                                } else {
+                                    print("error")
+                                }
+                                
                             }
+                            
                         }
                         
                     case .failure:
@@ -95,14 +122,14 @@ class AuthViewController: UIViewController {
                         LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
                     }
                 }
-                    print("\(credential)")
-                    
-                    self.dismiss(animated: true, completion: nil)
+                print("\(credential)")
+                
+                self.dismiss(animated: true, completion: nil)
             } else {
                 
                 print("Login Fail")
-                
-                LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
+//
+//                LKProgressHUD.showFailure(text: "Facebook 登入錯誤！", viewController: self)
             }
         }
     }
@@ -110,9 +137,9 @@ class AuthViewController: UIViewController {
     @IBAction func ghAppleLogin(_ sender: UIButton) {
     }
     
-    @IBAction func ghLogin(_ sender: UIButton) {
+    @IBAction func ghGoogleSignIn(_ sender: UIButton) {
         
-        
+        GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func guestUser(_ sender: UIButton) {
@@ -129,4 +156,67 @@ class AuthViewController: UIViewController {
         button.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let authentication = user.authentication else { return }
+        
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        
+        Auth.auth().signIn(with: credential) { (result, error) in
+            
+            UserManager.share.signinUserData(credential: credential) { (result) in
+                switch result {
+                    
+                case .success:
+                    
+                    UserManager.share.loadUserInfo { result in
+                        
+                        switch result {
+                            
+                        case .success:
+                            
+                            print("Google Sign In Success")
+                            
+                        case .failure(let error):
+                            
+                            let googleLogin = error.localizedDescription.components(separatedBy: "noneLogin")
+                            
+                            if googleLogin.count > 1 {
+                                
+                                UserManager.share.saveUserData { result in
+                                    
+                                    switch result {
+                                        
+                                    case .success(let ya):
+                                        print(ya)
+                                        
+                                    case .failure:
+                                        
+                                        print("error")
+                                    }
+                                }
+                                
+                            } else {
+                                
+                                print("error")
+                            }
+                        }
+                    }
+                case .failure:
+                    
+                    LKProgressHUD.showFailure(text: "Google 登入錯誤！", viewController: self)
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+            print("Success!!")
+        }
+    }
 }
