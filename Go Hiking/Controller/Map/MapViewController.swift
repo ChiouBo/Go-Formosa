@@ -53,14 +53,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
 //        currentPosition = location
 //
 //        setTimer()
+        navigationController?.navigationBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
+        
         if self.fadeOutView.alpha == 0.0 {
             
-            UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
                 self.fadeOutView.alpha = 1.0
             })
         } else {
             
-            UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
                 self.fadeOutView.alpha = 0.0
             })
         }
@@ -134,6 +137,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         setAlert()
     }
     
+    //
     func keepTrackUserLocation() {
         
         userLocationManager.allowsBackgroundLocationUpdates = true
@@ -163,6 +167,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         navigationController?.navigationBar.isTranslucent = true
     }
     
+    //
     func trackingUserLocation() {
         
         guard let center = userLocationManager.location?.coordinate else { return }

@@ -31,6 +31,8 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     var currentPosition: [CLLocationCoordinate2D] = []
     
+    var path = GMSMutablePath()
+    
     var timer = Timer()
     var isTimerRunning = false
     var counter = 0.0
@@ -44,6 +46,12 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         presentingViewController?.navigationController?.navigationBar.isHidden = true
         
         presentingViewController?.tabBarController?.tabBar.isHidden = true
+    
+        var bounds: GMSCoordinateBounds = GMSCoordinateBounds()
+        for index in 0 ..< path.count() {
+            bounds = bounds.includingCoordinate(path.coordinate(at: index))
+        }
+        self.trackMap.animate(with: GMSCameraUpdate.fit(bounds))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -67,8 +75,6 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         
         centerViewOnUserLocation()
     }
-    
-    
     
     @IBAction func pauseBtn(_ sender: UIButton) {
         
@@ -113,6 +119,43 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         if !isTimerRunning {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
             isTimerRunning = true
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+                
+                print("2")
+                
+                guard let cord = self.userLocationManager.location?.coordinate,
+                      let userPosition = self.userPosition else { return }
+                
+                let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude, lng1: userPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
+                
+                print("3")
+                
+                if outCome > 0.0001 {
+                    
+                    self.userPosition = cord
+                    
+                    self.currentPosition.append(cord)
+                    
+                    let marker = GMSMarker()
+                    
+                    marker.position = CLLocationCoordinate2D(latitude: cord.latitude, longitude: cord.longitude)
+                    
+                    marker.icon = LocationStepsManager.shared.markerView()
+                    marker.map = self.trackMap
+                    
+                    self.path.add(CLLocationCoordinate2D(latitude: userPosition.latitude, longitude: userPosition.longitude))
+                    self.path.add(CLLocationCoordinate2D(latitude: cord.latitude, longitude: cord.longitude))
+                    
+                    let line = GMSPolyline(path: self.path)
+                    line.strokeWidth = 10
+                    line.strokeColor = .white
+                    line.geodesic = true
+                    line.map = self.trackMap
+                } else {
+                    return
+                }
+            }
         }
     }
     
@@ -141,6 +184,9 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     func getCurrentLocation() {
         
+        trackMap.delegate = self
+        userLocationManager.delegate = self
+        userLocationManager.startUpdatingLocation()
         trackMap.isMyLocationEnabled = true
         trackMap.settings.myLocationButton = true
         trackMap.settings.rotateGestures = false
@@ -154,18 +200,18 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     func setUserLocationTrack() {
         
-        trackMap.delegate = self
-        userLocationManager.delegate = self
-        userLocationManager.startUpdatingLocation()
         userLocationManager.desiredAccuracy = kCLLocationAccuracyBest
         userLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+        userLocationManager.allowsBackgroundLocationUpdates = true
+        userLocationManager.pausesLocationUpdatesAutomatically = false
+        userLocationManager.requestAlwaysAuthorization()
     }
     
     func centerViewOnUserLocation() {
         
         guard let center = userLocationManager.location?.coordinate else { return }
         
-        let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 18)
+        let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 18.0)
         
         trackMap.camera = myArrange
         userPosition = center
@@ -178,39 +224,39 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
 
 extension TrackViewController: GMSMapViewDelegate {
     
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        
-        guard let apple = userPosition else { return }
-        
-        let outCome = LocationStepsManager.shared.getDistance(lat1: apple.latitude, lng1: apple.longitude, lat2: position.target.latitude, lng2: position.target.longitude)
-        
-        print(position)
-        
-        if outCome > 0.00001 {
-            
-            self.userPosition = position.target
-            self.currentPosition.append(position.target)
-            
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
-            marker.title = "1"
-            marker.map = trackMap
-            
-        } else {
-            return
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let location = locations.last
-        
-        let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
-        self.trackMap.animate(to: camera)
-        
-        //    print("didUpdateLocations: \(location)")
-        
-        let marker = GMSMarker()
-        marker.map = trackMap
-    }
+//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+//
+//        guard let apple = userPosition else { return }
+//
+//        let outCome = LocationStepsManager.shared.getDistance(lat1: apple.latitude, lng1: apple.longitude, lat2: position.target.latitude, lng2: position.target.longitude)
+//
+//        print(position)
+//
+//        if outCome > 0.00001 {
+//
+//            self.userPosition = position.target
+//            self.currentPosition.append(position.target)
+//
+//            let marker = GMSMarker()
+//            marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
+//            marker.title = "1"
+//            marker.map = trackMap
+//
+//        } else {
+//            return
+//        }
+//    }
+//
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//
+//        let location = locations.last
+//
+//        let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
+//        self.trackMap.animate(to: camera)
+//
+//        //    print("didUpdateLocations: \(location)")
+//
+//        let marker = GMSMarker()
+//        marker.map = trackMap
+//    }
 }
