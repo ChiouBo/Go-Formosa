@@ -12,6 +12,8 @@ class LevelHeadTableViewCell: UITableViewCell {
 
     @IBOutlet weak var currentLevelImage: UIImageView!
     
+    @IBOutlet weak var currentLevelTitle: UILabel!
+    
     @IBOutlet weak var nextLevelTitle: UILabel!
     
     

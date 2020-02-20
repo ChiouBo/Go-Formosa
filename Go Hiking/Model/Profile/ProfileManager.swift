@@ -13,25 +13,25 @@ class ProfileManager {
     let achieveGroup = ProfileGroup(
         
         items: [
-            AchievementItem.longestDistance,
-            AchievementItem.longestTime,
-            AchievementItem.mostExplore
+            achieveItem.longestDistance,
+            achieveItem.longestTime,
+            achieveItem.mostExplore
         ]
     )
     
     let mountainGroup = ProfileGroup(
         
         items: [
-            AchievementItem.typeEasy,
-            AchievementItem.typeMedium,
-            AchievementItem.typeHard
+            mountainItem.typeEasy,
+            mountainItem.typeMedium,
+            mountainItem.typeHard
         ]
     )
     
     let leaderGroup = ProfileGroup(
     
         items: [
-            AchievementItem.leading
+            LeaderItem.leading
         ]
     )
     

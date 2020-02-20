@@ -53,6 +53,8 @@ enum ImageAsset: String {
     case Icon_Goal_Normal_3
     case Icon_Goal_Normal_4
     case Icon_Goal_Normal_5
+    case Icon_Goal_Normal_6
+    case Icon_Goal_Normal_7
     
     // Achieve
     case Icon_Goal_Color_1
@@ -60,6 +62,27 @@ enum ImageAsset: String {
     case Icon_Goal_Color_3
     case Icon_Goal_Color_4
     case Icon_Goal_Color_5
+    case Icon_Goal_Color_6
+    case Icon_Goal_Color_7
+    
+    // Gray
+    case Icon_Goal_Gray_1
+    case Icon_Goal_Gray_2
+    case Icon_Goal_Gray_3
+    case Icon_Goal_Gray_4
+    case Icon_Goal_Gray_5
+    case Icon_Goal_Gray_6
+    case Icon_Goal_Gray_7
+    
+    case Icon_Goal_Color_Easy
+    case Icon_Goal_Color_Medium
+    case Icon_Goal_Color_Hard
+    case Icon_Goal_Normal_Easy
+    case Icon_Goal_Normal_Medium
+    case Icon_Goal_Normal_Hard
+    case Icon_Goal_Gray_Easy
+    case Icon_Goal_Gray_Medium
+    case Icon_Goal_Gray_Hard
 }
 
 extension UIImage {

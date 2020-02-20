@@ -74,13 +74,13 @@ extension AchieveTableViewCell: UICollectionViewDelegateFlowLayout {
         
         if indexPath.section == 0 {
             
-            return CGSize(width: UIScreen.main.bounds.width / 3.0, height: 220.0)
+            return CGSize(width: UIScreen.main.bounds.width / 3.0, height: 150.0)
             
         } else if indexPath.section == 1 {
             
-            return CGSize(width: UIScreen.main.bounds.width / 3.0, height: 220.0)
+            return CGSize(width: UIScreen.main.bounds.width / 3.0, height: 150.0)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width, height: 220.0)
+            return CGSize(width: UIScreen.main.bounds.width, height: 150.0)
         }
     }
     
@@ -88,14 +88,14 @@ extension AchieveTableViewCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0.0, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 10.0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        return 0.0
+        return 10.0
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -108,6 +108,6 @@ extension AchieveTableViewCell: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        return CGSize(width: UIScreen.main.bounds.width, height: 0.0)
+        return CGSize(width: UIScreen.main.bounds.width, height: 20.0)
     }
 }

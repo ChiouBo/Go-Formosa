@@ -10,6 +10,8 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+    let record = Record.getAllRecords()
+    
     @IBOutlet weak var historyTableView: UITableView!
     
     override func viewDidLoad() {
@@ -36,8 +38,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
 
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
-    
-    return 10
+    return record.count
 }
 
 func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -49,6 +50,9 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         return headCell
     } else {
         guard let historyCell = tableView.dequeueReusableCell(withIdentifier: "HISTORY", for: indexPath) as? HistoryTableViewCell else { return UITableViewCell() }
+        
+        historyCell.exploreTitle.text = record[indexPath.row].title
+        historyCell.exploreDate.text = record[indexPath.row].time
         
         return historyCell
         }
