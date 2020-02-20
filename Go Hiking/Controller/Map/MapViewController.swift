@@ -14,6 +14,8 @@ import CoreLocation
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDisplayDelegate {
     
+    @IBOutlet weak var fadeOutView: UIView!
+    
     var path: GMSMutablePath!
     
     var userLocationManager = CLLocationManager()
@@ -42,11 +44,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     
     @IBAction func startExplore(_ sender: UIButton) {
         
-        setAlert()
-        keepTrackUserLocation()
-        trackingUserLocation()
-        
-        mapSetting.isHidden = false
+//        setAlert()
+//        keepTrackUserLocation()
+//        trackingUserLocation()
+//
+//        guard let location = userLocationManager.location?.coordinate else { return }
+//
+//        currentPosition = location
+//
+//        setTimer()
+        if self.fadeOutView.alpha == 0.0 {
+            
+            UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseOut, animations: {
+                self.fadeOutView.alpha = 1.0
+            })
+        } else {
+            
+            UIView.animate(withDuration: 1, delay: 0.1, options: .curveEaseOut, animations: {
+                self.fadeOutView.alpha = 0.0
+            })
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+            
+            let track = UIStoryboard(name: "Map", bundle: nil)
+            guard let trackVC = track.instantiateViewController(withIdentifier: "trackVC") as? TrackViewController else { return }
+            trackVC.modalPresentationStyle = .overCurrentContext
+            self.present(trackVC, animated: true, completion: nil)
+            
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        self.fadeOutView.alpha = 0.0
+        }
+//        mapSetting.isHidden = false
     }
     
     @IBAction func mapSetting(_ sender: UIButton) {
@@ -54,8 +83,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         googleMapView.clear()
     }
     
+    func setAnimate() {
+        
+        fadeOutView.alpha = 0.0
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        setAnimate()
+        
+        guard let center = userLocationManager.location?.coordinate else { return }
+               
+               let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 16.0)
+        
+        googleMapView.animate(to: myArrange)
         navigationController?.navigationBar.barStyle = .black
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -220,32 +263,65 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         mapSetting.layer.shadowRadius = 5
         mapSetting.layer.shadowColor = UIColor.gray.cgColor
     }
+    
+    func setTimer() {
+        
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+            
+            print("2")
+            
+            guard let cord = self.userLocationManager.location?.coordinate,
+                  let currentPosition = self.currentPosition else { return }
+            
+            let outCome = LocationStepsManager.shared.getDistance(lat1: currentPosition.latitude, lng1: currentPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
+            
+            print("3")
+            
+            if outCome > 0.001 {
+                
+                self.currentPosition = cord
+                
+                self.userLocation.append(cord)
+                
+                let marker = GMSMarker()
+                
+                marker.position = CLLocationCoordinate2D(latitude: cord.latitude, longitude: cord.longitude)
+                marker.title = "1"
+                //            marker.icon = UIImage(named: "Icon_Map_BG")
+                marker.icon = LocationStepsManager.shared.markerView()
+                marker.map = self.googleMapView
+            } else {
+                return
+            }
+        }
+    }
 }
 
 extension MapViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         
-        guard let apple = currentPosition else { return }
-        
-        let outCome = LocationStepsManager.shared.getDistance(lat1: apple.latitude, lng1: apple.longitude, lat2: position.target.latitude, lng2: position.target.longitude)
-        print(position)
-        if outCome > 0.00001 {
-            
-            self.currentPosition = position.target
-            
-            self.userLocation.append(position.target)
-            
-            let marker = GMSMarker()
-            
-            marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
-            marker.title = "1"
-            //            marker.icon = UIImage(named: "Icon_Map_BG")
-            marker.icon = LocationStepsManager.shared.markerView()
-            marker.map = googleMapView
-        } else {
-            return
-        }
+//        guard let apple = currentPosition else { return }
+//        
+//        let outCome = LocationStepsManager.shared.getDistance(lat1: apple.latitude, lng1: apple.longitude, lat2: position.target.latitude, lng2: position.target.longitude)
+//        print(position)
+//        if outCome > 0.00001 {
+//            
+//            self.currentPosition = position.target
+//            
+//            self.userLocation.append(position.target)
+//            
+//            let marker = GMSMarker()
+//            
+//            marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
+//            marker.title = "1"
+//            //            marker.icon = UIImage(named: "Icon_Map_BG")
+//            marker.icon = LocationStepsManager.shared.markerView()
+//            marker.map = googleMapView
+//        } else {
+//            return
+//        }
     }
 }
 
