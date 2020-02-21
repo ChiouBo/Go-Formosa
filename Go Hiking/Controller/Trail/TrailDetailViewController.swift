@@ -123,6 +123,7 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
             TrailContentTableViewCell else { return UITableViewCell() }
             
+            contentCell.selectionStyle = .none
             contentCell.trailTitle.text = trailDict?.title
             contentCell.trailLocation.text = trailDict?.location
             contentCell.trailDescription.text = trailDict?.desc
@@ -134,6 +135,7 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
             TrailLocationTableViewCell else { return UITableViewCell() }
             
+            createCell.selectionStyle = .none
             createCell.createTrailEvent.addTarget(self, action: #selector(trailCreate), for: .touchUpInside)
             
             return createCell

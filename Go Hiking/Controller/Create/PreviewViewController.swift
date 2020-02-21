@@ -80,7 +80,7 @@ extension PreviewViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: "PreContent", for: indexPath) as? PreContentTableViewCell else {
                 return UITableViewCell()
         }
-        
+        cell.selectionStyle = .none
         cell.eventTitle.text = data?.title
         cell.eventDesc.text = data?.desc
         cell.eventTime.text = "\(data?.start ?? "") \(data?.end ?? "")"

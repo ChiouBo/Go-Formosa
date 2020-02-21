@@ -49,12 +49,13 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     if indexPath.row == 0 {
         
         guard let headCell = tableView.dequeueReusableCell(withIdentifier: "LevelHEAD", for: indexPath) as? LevelHeadTableViewCell else { return UITableViewCell() }
-        
+        headCell.selectionStyle = .none
         return headCell
     } else {
         
         guard let levelCell = tableView.dequeueReusableCell(withIdentifier: "LEVEL", for: indexPath) as? LevelTableViewCell else { return UITableViewCell() }
         
+        levelCell.selectionStyle = .none
         levelCell.levelImage.image = icon.userLevelGroup.items[indexPath.row - 1].image
         levelCell.levelTitle.text = icon.userLevelGroup.items[indexPath.row - 1].title
         levelCell.levelPoint.text = icon.userLevelGroup.items[indexPath.row - 1].desc

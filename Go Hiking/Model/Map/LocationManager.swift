@@ -78,10 +78,12 @@ class LocationStepsManager: NSObject {
     }
     
     func markerView() -> UIImage {
+
+//        guard let marker = UIImage(named: "Icon_Map_RedDot")?.withRenderingMode(.alwaysTemplate) else { return UIImage() }
         
-        guard let marker = UIImage(named: "Icon_Map_LightBG")?.withRenderingMode(.alwaysTemplate) else { return UIImage() }
+        let marker = UIImage()
         let markerView = UIImageView(image: marker)
-        markerView.tintColor = UIColor.T4
+        markerView.tintColor = UIColor.clear
         
         return marker
     }

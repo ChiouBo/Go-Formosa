@@ -190,7 +190,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             
             guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
-            
+            titleCell.selectionStyle = .none
             titleCell.delegate = self
             
             titleCell.titleTextField.text = data?.title
@@ -200,7 +200,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 1:
             
             guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else { return UITableViewCell() }
-            
+            descCell.selectionStyle = .none
             descCell.delegate = self
             
             descCell.DescTextView.text = data?.desc
@@ -211,7 +211,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 2 :
             
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
-            
+            photoCell.selectionStyle = .none
             photoCell.delegate = self
             
             photoCell.photoArray = imageArray
@@ -221,7 +221,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 3:
             
             guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
-            
+            startDateCell.selectionStyle = .none
             startDateCell.delegate = self
             startDateCell.setupDatePicker(isSelected: isStartDate, date: startDate)
             
@@ -230,7 +230,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 4:
             
             guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else { return UITableViewCell() }
-            
+            endDateCell.selectionStyle = .none
             endDateCell.delegate = self
             endDateCell.setupDatePicker(isSelected: isEndDate, date: endDate)
             
@@ -239,7 +239,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 5:
             
             guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
-            
+            personCell.selectionStyle = .none
             personCell.delegate = self
             personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: data!.amount)
             personCell.amountPickerView.delegate = self
@@ -249,7 +249,7 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
         case 6:
             
             guard let previewCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
-            
+            previewCell.selectionStyle = .none
             previewCell.previewBtn.addTarget(self, action: #selector(passDatatoPreview), for: .touchUpInside)
             
             return previewCell

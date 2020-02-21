@@ -197,7 +197,9 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Trail", for: indexPath) as?
             TrailTableViewCell else { return UITableViewCell() }
-
+        
+        cell.selectionStyle = .none
+        
         if trailFilter[indexPath.row].trPosition != nil {
         cell.trailTitle.text = trailFilter[indexPath.row].trCname
         cell.trailPosition.text = trailFilter[indexPath.row].trPosition

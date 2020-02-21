@@ -47,10 +47,14 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         guard let headCell = tableView.dequeueReusableCell(withIdentifier: "HistoryHEAD", for: indexPath) as? HistoryHeadTableViewCell else { return UITableViewCell() }
         
+        headCell.selectionStyle = .none
+        
         return headCell
     } else {
+        
         guard let historyCell = tableView.dequeueReusableCell(withIdentifier: "HISTORY", for: indexPath) as? HistoryTableViewCell else { return UITableViewCell() }
         
+        historyCell.selectionStyle = .none
         historyCell.exploreTitle.text = record[indexPath.row].title
         historyCell.exploreDate.text = record[indexPath.row].time
         

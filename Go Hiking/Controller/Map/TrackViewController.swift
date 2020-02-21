@@ -36,6 +36,7 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     var timer = Timer()
     var isTimerRunning = false
     var counter = 0.0
+    var distance = 0.0
     
     var pause = false
     var stop = false
@@ -128,7 +129,7 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                       let userPosition = self.userPosition else { return }
                 
                 let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude, lng1: userPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
-                
+                print(outCome)
                 print("3")
                 
                 if outCome > 0.0001 {
@@ -151,11 +152,25 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     line.strokeWidth = 10
                     line.strokeColor = .white
                     line.geodesic = true
+                    let redYellow =
+                        GMSStrokeStyle.gradient(from: .red, to: .yellow)
+                    let yellowRed = GMSStrokeStyle.gradient(from: .yellow, to: .red)
+                    line.spans = [GMSStyleSpan(style: redYellow),
+                                  GMSStyleSpan(style: redYellow),
+                                  GMSStyleSpan(style: yellowRed)]
+                    
                     line.map = self.trackMap
+                    
+                    self.distance += Double(Int(outCome)) / 1000
+                    self.distanceLabel.text = "\(self.distance)"
+                    print(self.distanceLabel.text ?? "")
+                    
                 } else {
                     return
                 }
             }
+            
+            
         }
     }
     
@@ -200,7 +215,7 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     func setUserLocationTrack() {
         
-        userLocationManager.desiredAccuracy = kCLLocationAccuracyBest
+        userLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         userLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
         userLocationManager.allowsBackgroundLocationUpdates = true
         userLocationManager.pausesLocationUpdatesAutomatically = false
