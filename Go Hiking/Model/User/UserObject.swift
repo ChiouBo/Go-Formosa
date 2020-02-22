@@ -55,3 +55,41 @@ struct User: Codable {
         ]
     }
 }
+
+struct UserRecord: Codable {
+    
+    let id: String
+    
+    let date: String
+    
+    let distance: String
+    
+    let time: String
+     
+    let markerLat: [Double]
+    
+    let markerLong: [Double]
+    
+    let lineImage: String
+    
+    var recordDict: [String: Any] {
+
+        return [
+
+            "id": id,
+
+            "date": date,
+
+            "distance": distance,
+
+            "time": time,
+
+            "markerLat": markerLat,
+            
+            "markerLong": markerLong,
+
+            "lineImage": lineImage
+        ]
+    }
+    
+}

@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import UIKit
 import FBSDKLoginKit
 import Firebase
+import FirebaseStorage
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import FirebaseAuth
 
 enum FirebaseLogin: Error {
@@ -104,6 +107,48 @@ class UserManager {
             }
         }
     }
+    
+    func saveRecordData(userRecord: UserRecord, completion: @escaping (Result<String>) -> Void ) {
+        
+        let pathID = userDB.collection("users").document(userRecord.id).collection("Path").document().documentID
+        
+        do{
+           try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
+            
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+    }
+    
+    func loadRecordData(completion: @escaping (Result<[UserRecord]>) -> Void ) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        userDB.collection("users").document(uid).collection("Path").getDocuments { (snapshot, error) in
+            
+            var recordData: [UserRecord] = []
+            
+            if error == nil && snapshot?.documents.count != 0 {
+                
+                for document in snapshot!.documents {
+                    
+                    do {
+                        guard let data = try document.data(as: UserRecord.self, decoder: Firestore.Decoder()) else { return }
+                        
+                        recordData.append(data)
+                        
+                    } catch {
+
+                        print(error)
+                    }
+                }
+                completion(.success(recordData))
+            }
+            
+        }
+    }
+    
 }
 
 

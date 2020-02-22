@@ -10,6 +10,26 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
+import Firebase
+import FirebaseStorage
+import FirebaseDatabase
+
+struct histroy {
+    
+    let lat: Double
+    
+    let long: Double
+    
+    var toDict: [String: Any] {
+        
+        return [
+            
+            "lat": lat,
+            "long": long
+            
+        ]
+    }
+}
 
 class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -31,14 +51,26 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     var currentPosition: [CLLocationCoordinate2D] = []
     
+    var pathLine: [[String: Any]] = []
+    
+    var pathLat: [Double] = []
+    
+    var pathLong: [Double] = []
+    
     var path = GMSMutablePath()
     
+    var date = ""
+    
     var timer = Timer()
+    
     var isTimerRunning = false
+    
     var counter = 0.0
-    var distance = 0.0
+    
+    var distance = 0.00
     
     var pause = false
+    
     var stop = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +79,7 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         presentingViewController?.navigationController?.navigationBar.isHidden = true
         
         presentingViewController?.tabBarController?.tabBar.isHidden = true
-    
+        
         var bounds: GMSCoordinateBounds = GMSCoordinateBounds()
         for index in 0 ..< path.count() {
             bounds = bounds.includingCoordinate(path.coordinate(at: index))
@@ -59,12 +91,14 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         super.viewWillDisappear(true)
         
         presentingViewController?.navigationController?.navigationBar.isHidden = false
-               
+        
         presentingViewController?.tabBarController?.tabBar.isHidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateToday()
         
         setTimer()
         
@@ -95,7 +129,40 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func stopBtn(_ sender: UIButton) {
         
-        dismiss(animated: true, completion: nil)
+        guard let id = Auth.auth().currentUser?.uid,
+            let distance = distanceLabel.text,
+            let time = timeLabel.text else { return }
+        
+        let path = UserRecord(id: id, date: date, distance: distance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
+        
+        UserManager.share.saveRecordData(userRecord: path) { (result) in
+            
+            switch result {
+                
+            case .success(let data):
+                print(data)
+                
+                
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func dateToday() {
+        
+        let today = Date()
+        let timeInterval = TimeInterval(today.timeIntervalSince1970)
+        let date = Date(timeIntervalSince1970: timeInterval)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/ MM/ dd"
+        let nowDay = dateFormatter.string(from: date)
+        self.date = nowDay
     }
     
     func setupBtns() {
@@ -123,14 +190,12 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
                 
-                print("2")
-                
                 guard let cord = self.userLocationManager.location?.coordinate,
-                      let userPosition = self.userPosition else { return }
+                    let userPosition = self.userPosition else { return }
                 
                 let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude, lng1: userPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
+                
                 print(outCome)
-                print("3")
                 
                 if outCome > 0.0001 {
                     
@@ -148,6 +213,14 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     self.path.add(CLLocationCoordinate2D(latitude: userPosition.latitude, longitude: userPosition.longitude))
                     self.path.add(CLLocationCoordinate2D(latitude: cord.latitude, longitude: cord.longitude))
                     
+//                    let newPath = histroy(lat: cord.latitude, long: cord.longitude)
+//                    self.pathLine.append(newPath.toDict)
+                    
+                    self.pathLat.append(cord.latitude)
+                    self.pathLong.append(cord.longitude)
+                    
+                    print(self.pathLine)
+                    
                     let line = GMSPolyline(path: self.path)
                     line.strokeWidth = 10
                     line.strokeColor = .white
@@ -162,15 +235,14 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     line.map = self.trackMap
                     
                     self.distance += Double(Int(outCome)) / 1000
-                    self.distanceLabel.text = "\(self.distance)"
+                    let setDistance = String(format: "%.2f", self.distance)
+                    self.distanceLabel.text = "\(setDistance)"
                     print(self.distanceLabel.text ?? "")
                     
                 } else {
                     return
                 }
             }
-            
-            
         }
     }
     
@@ -206,6 +278,15 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         trackMap.settings.myLocationButton = true
         trackMap.settings.rotateGestures = false
         trackMap.padding = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 64)
+        
+        guard let location = userLocationManager.location?.coordinate else { return }
+        
+        pathLat.append(location.latitude)
+        pathLong.append(location.longitude)
+        
+//        let origin = histroy(lat: location.latitude, long: location.longitude)
+//        pathLine.append(origin.toDict)
+        
         
         if let mapStyleURL = Bundle.main.url(forResource: "MapDarkMode", withExtension: "json") {
             trackMap.mapStyle = try? GMSMapStyle(contentsOfFileURL: mapStyleURL)
