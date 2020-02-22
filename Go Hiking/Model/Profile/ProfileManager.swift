@@ -53,3 +53,4 @@ class ProfileManager {
     
     lazy var levelGroup: [ProfileGroup] = [userLevelGroup]
 }
+

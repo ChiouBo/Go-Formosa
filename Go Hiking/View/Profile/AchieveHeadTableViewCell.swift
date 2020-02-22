@@ -10,6 +10,13 @@ import UIKit
 
 class AchieveHeadTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var achieveIcon: UIImageView!
+    
+    @IBOutlet weak var achieveTitle: UILabel!
+    
+    @IBOutlet weak var achieveDesc: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

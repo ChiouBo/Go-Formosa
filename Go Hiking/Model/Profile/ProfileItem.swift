@@ -243,9 +243,9 @@ enum UserLevelItem: ProfileItem {
         
         switch self {
             
-        case .rookie: return UIImage.asset(.Icon_Goal_Color_1)
+        case .rookie: return UIImage.asset(.Icon_Goal_Gray_1)
             
-        case .beginner: return UIImage.asset(.Icon_Goal_Color_2)
+        case .beginner: return UIImage.asset(.Icon_Goal_Gray_2)
             
         case .beginnerIntermidiate: return UIImage.asset(.Icon_Goal_Gray_3)
             

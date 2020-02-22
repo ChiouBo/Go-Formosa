@@ -10,6 +10,8 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+    var loadRecord = [UserRecord]()
+    
     let record = Record.getAllRecords()
     
     var userRecord: [UserRecord] = [] {
@@ -62,13 +64,16 @@ class HistoryViewController: UIViewController {
             }
         }
     }
+    
+    func sumData() {
+        
+        
+    }
 }
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
-
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
 
        return userRecord.count + 1
 }
@@ -80,6 +85,9 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         guard let headCell = tableView.dequeueReusableCell(withIdentifier: "HistoryHEAD", for: indexPath) as? HistoryHeadTableViewCell else { return UITableViewCell() }
         
         headCell.selectionStyle = .none
+        headCell.exploreTimes.text = "\(userRecord.count)"
+        headCell.exploreKM.text = ""
+        headCell.exploreHR.text = ""
         
         return headCell
     } else {
@@ -89,10 +97,13 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         historyCell.selectionStyle = .none
         
         
-        guard let asd = Double(userRecord[indexPath.row - 1].distance) else { return UITableViewCell() }
+        guard let distance = Double(userRecord[indexPath.row - 1].distance) else { return UITableViewCell() }
        
+        var sumDistance = 0.0
+        sumDistance += distance
+        print(sumDistance)
 
-        historyCell.exploreTitle.text = "\(asd.roundTo(places: 2))"
+        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
         
@@ -102,7 +113,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     
 }
 
-extension Double{
+extension Double {
     
     public func roundTo(places: Int) -> Double {
         let divisor = pow(10.0, Double(places))

@@ -10,15 +10,22 @@ import UIKit
 
 class AchievementViewController: UIViewController {
 
+    var userRecord: [UserRecord] = [] {
+        
+        didSet {
+            
+            achieveTableView.reloadData()
+        }
+    }
+    
     @IBOutlet weak var achieveTableView: UITableView!
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setTableview()
+        
+        getHistoryData()
     }
     
     func setTableview() {
@@ -29,6 +36,23 @@ class AchievementViewController: UIViewController {
         achieveTableView.register(UINib(nibName: "AchieveTableViewCell", bundle: nil), forCellReuseIdentifier: "ACHIEVE")
         achieveTableView.rowHeight = UITableView.automaticDimension
         achieveTableView.separatorStyle = .none
+    }
+    
+    func getHistoryData() {
+        
+        UserManager.share.loadRecordData { (userRecord) in
+            
+            switch userRecord {
+                
+            case .success(let record):
+                
+                self.userRecord = record
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
     }
 
 }

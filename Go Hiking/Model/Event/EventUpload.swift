@@ -77,7 +77,7 @@ class UploadEvent {
     
     func download(completion: @escaping (Result<EventCurrent>) -> Void) {
         
-        eventDB.collection("Event").getDocuments { (snapshot, error) in
+        eventDB.collection("Event").order(by: "start", descending: true).getDocuments { (snapshot, error) in
             
             if error == nil && snapshot?.documents.count != 0 {
                 

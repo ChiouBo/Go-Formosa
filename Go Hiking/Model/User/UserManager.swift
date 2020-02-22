@@ -125,7 +125,7 @@ class UserManager {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        userDB.collection("users").document(uid).collection("Path").getDocuments { (snapshot, error) in
+        userDB.collection("users").document(uid).collection("Path").order(by: "date", descending: true).getDocuments { (snapshot, error) in
             
             var recordData: [UserRecord] = []
             

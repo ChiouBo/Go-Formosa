@@ -95,6 +95,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="achieveDesc" destination="G2Q-nW-WmW" id="mdR-hq-SG0"/>
+                <outlet property="achieveIcon" destination="hFA-Jb-Ms4" id="vSK-93-ves"/>
+                <outlet property="achieveTitle" destination="idm-kt-grw" id="8gp-MN-2R3"/>
+            </connections>
             <point key="canvasLocation" x="131.15942028985509" y="153.01339285714286"/>
         </tableViewCell>
     </objects>
