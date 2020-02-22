@@ -12,11 +12,19 @@ import Kingfisher
 
 class CampaignViewController: UIViewController {
 
-    var filteredCampaign = [Campaign]()
+//    var filteredCampaign = [Campaign]()
+//
+//    let campaigns = Campaign.getAllCampaigns()
     
-    let campaigns = Campaign.getAllCampaigns()
+    var filteredEvent = [EventCurrent]()
     
-    var eventData: [EventCurrent] = []
+    var eventData: [EventCurrent] = [] {
+        
+        didSet {
+            
+            publicTableView.reloadData()
+        }
+    }
     
     lazy var publicTableView: UITableView = {
         let pTV = UITableView()
@@ -73,32 +81,18 @@ class CampaignViewController: UIViewController {
         publicTableView.separatorStyle = .none
         
         setupElements()
-        
-//        UploadEvent.shared.download { (result) in
-//            
-//            switch result {
-//                
-//            case .success(let data):
-//                
-//                print(data)
-//                
-//                self.eventData.append(data)
-//                self.publicTableView.reloadData()
-//            case .failure(let error):
-//                
-//                print(error)
-//                
-//            }
-//        }
-        
-        
-        
-//        createGradientLayer()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         eventData = []
+    
+        getEventData()
+    }
+
+    func getEventData() {
         
         UploadEvent.shared.download { (result) in
             
@@ -110,39 +104,30 @@ class CampaignViewController: UIViewController {
                 
                 self.eventData.append(data)
                 self.publicTableView.reloadData()
+                
             case .failure(let error):
                 
                 print(error)
-                
             }
         }
     }
     
-//        func createGradientLayer() {
-//    
-//            let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//    
-//            let gradientLayer = CAGradientLayer()
-//    
-//            gradientLayer.frame = background.bounds
-//    
-//            gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
-//    
-//            view.layer.addSublayer(gradientLayer)
-//        }
-
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
-        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
+        filteredEvent = filteredEvent.filter({ (campaign: EventCurrent) -> Bool in
         
-            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
+            let doesCategoryMatch = (scope == "All")
+//                || (campaign.type == scope)
             
             if isSearchBarEmpty() {
                 
                 return doesCategoryMatch
             } else {
                 
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+                return doesCategoryMatch &&
+                    (campaign.title.lowercased().contains(searchText.lowercased())
+//                    || campaign.type.lowercased().contains(searchText.lowercased())
+                )
             }
         })
         
@@ -189,7 +174,7 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 240
+        return UIScreen.main.bounds.height / 4.5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

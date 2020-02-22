@@ -36,6 +36,7 @@
 		051E6ACB23FD4C37000D942D /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ACA23FD4C37000D942D /* ProfileItem.swift */; };
 		051E6ACD23FD59FC000D942D /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ACC23FD59FC000D942D /* ProfileManager.swift */; };
 		051E6ACF23FE67A0000D942D /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ACE23FE67A0000D942D /* TrackViewController.swift */; };
+		051E6AD124017A81000D942D /* TrailPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AD024017A81000D942D /* TrailPhoto.swift */; };
 		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
 		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
@@ -144,6 +145,7 @@
 		051E6ACA23FD4C37000D942D /* ProfileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		051E6ACC23FD59FC000D942D /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		051E6ACE23FE67A0000D942D /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
+		051E6AD024017A81000D942D /* TrailPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailPhoto.swift; sourceTree = "<group>"; };
 		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
 		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF091123E80C84009CED63 /* TrailObject.swift */,
+				051E6AD024017A81000D942D /* TrailPhoto.swift */,
 				05BF091323E8116A009CED63 /* TrailManager.swift */,
 				05BF091523E960B8009CED63 /* TrailTypeObject.swift */,
 				05BF091723E96180009CED63 /* TrailTypeManager.swift */,
@@ -825,6 +828,7 @@
 				0593573A23FA748200BE89F2 /* UIAlert+Extension.swift in Sources */,
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
 				051A862D23EE9031008865FC /* CreateViewController.swift in Sources */,
+				051E6AD124017A81000D942D /* TrailPhoto.swift in Sources */,
 				051E6ACF23FE67A0000D942D /* TrackViewController.swift in Sources */,
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
 				0593573023F959CD00BE89F2 /* LevelViewController.swift in Sources */,

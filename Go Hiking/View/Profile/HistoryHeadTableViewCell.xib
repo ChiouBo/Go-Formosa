@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj6-sP-Xwy">
-                                <rect key="frame" x="285.5" y="207" width="43" height="16"/>
+                                <rect key="frame" x="345.5" y="207" width="43" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="9o5-gh-6nk"/>
                                 </constraints>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總里程" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="am1-Rv-FgT">
-                                <rect key="frame" x="123" y="207" width="43" height="16"/>
+                                <rect key="frame" x="63" y="207" width="43" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="dCV-yr-08U"/>
                                 </constraints>
@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80.0 公里" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-gL-WF6">
-                                <rect key="frame" x="100" y="178" width="89" height="24"/>
+                                <rect key="frame" x="40" y="178" width="89" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="TdT-MT-y2n"/>
                                 </constraints>
@@ -66,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.0 小時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-qz-E4S">
-                                <rect key="frame" x="263" y="178" width="88" height="24"/>
+                                <rect key="frame" x="323" y="178" width="88" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Q7y-Ag-pjx"/>
                                 </constraints>
@@ -93,13 +93,13 @@
                             <constraint firstAttribute="bottom" secondItem="dgv-oW-UXn" secondAttribute="bottom" id="QJm-qN-g2D"/>
                             <constraint firstItem="y7c-8d-yLv" firstAttribute="centerX" secondItem="YtD-WK-XKd" secondAttribute="centerX" id="ReB-5x-a3f"/>
                             <constraint firstItem="dgv-oW-UXn" firstAttribute="leading" secondItem="YtD-WK-XKd" secondAttribute="leading" id="Tc0-K3-MZz"/>
-                            <constraint firstAttribute="trailing" secondItem="Fad-qz-E4S" secondAttribute="trailing" constant="100" id="UIT-u2-dmM"/>
+                            <constraint firstAttribute="trailing" secondItem="Fad-qz-E4S" secondAttribute="trailing" constant="40" id="UIT-u2-dmM"/>
                             <constraint firstItem="y7c-8d-yLv" firstAttribute="top" secondItem="YtD-WK-XKd" secondAttribute="top" constant="40" id="XbF-Wn-aOh"/>
                             <constraint firstItem="Xyc-cc-w0F" firstAttribute="top" secondItem="y7c-8d-yLv" secondAttribute="bottom" id="XcH-gm-VAT"/>
                             <constraint firstAttribute="trailing" secondItem="dgv-oW-UXn" secondAttribute="trailing" id="cFI-SM-kFO"/>
                             <constraint firstItem="am1-Rv-FgT" firstAttribute="top" secondItem="Ix1-gL-WF6" secondAttribute="bottom" constant="5" id="caq-kp-Fw2"/>
                             <constraint firstAttribute="trailing" secondItem="y7c-8d-yLv" secondAttribute="trailing" constant="100" id="eaU-ZO-690"/>
-                            <constraint firstItem="Ix1-gL-WF6" firstAttribute="leading" secondItem="YtD-WK-XKd" secondAttribute="leading" constant="100" id="lng-He-I5u"/>
+                            <constraint firstItem="Ix1-gL-WF6" firstAttribute="leading" secondItem="YtD-WK-XKd" secondAttribute="leading" constant="40" id="lng-He-I5u"/>
                             <constraint firstItem="y7c-8d-yLv" firstAttribute="leading" secondItem="YtD-WK-XKd" secondAttribute="leading" constant="100" id="nwv-oI-y6Y"/>
                             <constraint firstItem="am1-Rv-FgT" firstAttribute="centerX" secondItem="Ix1-gL-WF6" secondAttribute="centerX" id="oBh-Rx-eGw"/>
                             <constraint firstItem="Ix1-gL-WF6" firstAttribute="top" secondItem="Xyc-cc-w0F" secondAttribute="bottom" constant="30" id="owz-qJ-kdT"/>

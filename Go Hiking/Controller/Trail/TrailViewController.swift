@@ -23,6 +23,8 @@ class TrailViewController: UIViewController {
     
     let filter = FilterItemManager()
     
+    var trailPhoto = PhotoURL()
+    
     var selectedFilter = false
     
     var filterOpen: NSLayoutConstraint?
@@ -93,6 +95,14 @@ class TrailViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
+    
+//    func getTrailListPhoto() {
+//        
+//        let address = "http://recreation.forest.gov.tw/Files/RT/"
+//        
+//        guard let url = URL(string: address + "\(id)" + "/01/" + "\(id)" + ".jpg") else { return }
+//        
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -186,11 +196,17 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return trailFilter.count
+//        return trailFilter.count
+        if trailFilter.count == 0 {
+            return 0
+        } else {
+
+            return trailFilter.count
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return UIScreen.main.bounds.height / 8
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -198,13 +214,16 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Trail", for: indexPath) as?
             TrailTableViewCell else { return UITableViewCell() }
         
+//        let address = "http://recreation.forest.gov.tw/Files/RT/Photo/"
+         
         cell.selectionStyle = .none
         
         if trailFilter[indexPath.row].trPosition != nil {
-        cell.trailTitle.text = trailFilter[indexPath.row].trCname
-        cell.trailPosition.text = trailFilter[indexPath.row].trPosition
-        cell.trailLevel.text = "難易度：\(trailFilter[indexPath.row].trDIFClass ?? "")"
-        cell.trailLength.text = "全程約 \(trailFilter[indexPath.row].trLength) "
+            cell.trailTitle.text = trailFilter[indexPath.row].trCname
+            cell.trailPosition.text = trailFilter[indexPath.row].trPosition
+            cell.trailLevel.text = "難易度：\(trailFilter[indexPath.row].trDIFClass ?? "")"
+            cell.trailLength.text = "全程約 \(trailFilter[indexPath.row].trLength) "
+            cell.trailImage.loadImage(trailPhoto.place[indexPath.row])
         }
         return cell
     }
@@ -226,6 +245,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         
         show(trailVC, sender: nil)
     }
+
 }
 
 // MARK: - CollectionViewDelegate, CollectionViewDataSource

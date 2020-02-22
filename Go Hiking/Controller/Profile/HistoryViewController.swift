@@ -12,7 +12,7 @@ class HistoryViewController: UIViewController {
 
     var loadRecord = [UserRecord]()
     
-    let record = Record.getAllRecords()
+//    let record = Record.getAllRecords()
     
     var userRecord: [UserRecord] = [] {
         
@@ -21,6 +21,8 @@ class HistoryViewController: UIViewController {
             historyTableView.reloadData()
         }
     }
+    
+    var sumDistance = 0.0
     
     @IBOutlet weak var historyTableView: UITableView!
     
@@ -34,7 +36,7 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
 
         setTableView()
-        
+    
         getHistoryData()
     }
     
@@ -57,17 +59,19 @@ class HistoryViewController: UIViewController {
             case .success(let record):
                 
                 self.userRecord = record
+        
+                self.sumDistance = 0.0
+                
+                record.map { distance in
+                    
+                    self.sumDistance += distance.distance
+                }
                 
             case .failure(let error):
                 
                 print(error)
             }
         }
-    }
-    
-    func sumData() {
-        
-        
     }
 }
 
@@ -86,7 +90,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         headCell.selectionStyle = .none
         headCell.exploreTimes.text = "\(userRecord.count)"
-        headCell.exploreKM.text = ""
+        headCell.exploreKM.text = "\(sumDistance) 公里"
         headCell.exploreHR.text = ""
         
         return headCell
@@ -97,13 +101,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         historyCell.selectionStyle = .none
         
         
-        guard let distance = Double(userRecord[indexPath.row - 1].distance) else { return UITableViewCell() }
+//        guard let distance = userRecord[indexPath.row - 1].distance else { return UITableViewCell() }
        
-        var sumDistance = 0.0
-        sumDistance += distance
-        print(sumDistance)
+//        var sumDistance = 0.0
+//        sumDistance += distance
+//        print(sumDistance)
 
-        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
+//        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
+        
+        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance)"
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
         

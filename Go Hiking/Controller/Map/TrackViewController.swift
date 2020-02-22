@@ -23,10 +23,8 @@ struct histroy {
     var toDict: [String: Any] {
         
         return [
-            
             "lat": lat,
             "long": long
-            
         ]
     }
 }
@@ -133,7 +131,9 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
             let distance = distanceLabel.text,
             let time = timeLabel.text else { return }
         
-        let path = UserRecord(id: id, date: date, distance: distance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
+        guard let sumDistance = Double(distance) else { return }
+        
+        let path = UserRecord(id: id, date: date, distance: sumDistance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
         
         UserManager.share.saveRecordData(userRecord: path) { (result) in
             

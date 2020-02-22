@@ -62,7 +62,7 @@ struct UserRecord: Codable {
     
     let date: String
     
-    let distance: String
+    let distance: Double
     
     let time: String
      
