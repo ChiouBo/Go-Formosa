@@ -25,6 +25,10 @@ class TrailViewController: UIViewController {
     
     var trailPhoto = PhotoURL()
     
+    var typeResponse = TrailTypeResponse()
+    
+    var trailType = [TrailType]()
+    
     var selectedFilter = false
     
     var filterOpen: NSLayoutConstraint?
@@ -85,24 +89,21 @@ class TrailViewController: UIViewController {
     
     func setNavVC() {
         
+        let image = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        navigationController?.navigationBar.shadowImage = image
+        navigationController?.navigationBar.isTranslucent = true
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(filterBtn))
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.barTintColor = .clear
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
-    
-//    func getTrailListPhoto() {
-//        
-//        let address = "http://recreation.forest.gov.tw/Files/RT/"
-//        
-//        guard let url = URL(string: address + "\(id)" + "/01/" + "\(id)" + ".jpg") else { return }
-//        
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +112,8 @@ class TrailViewController: UIViewController {
         
         trailResponse.delegate = self
         trailResponse.getTrailListData()
+        typeResponse.delegate = self
+        typeResponse.getTrailTypeData()
         
         trailTableView.separatorStyle = .none
         
@@ -118,21 +121,26 @@ class TrailViewController: UIViewController {
         
         setNavVC()
         
-//        createGradientLayer()
+        customizebackgroundView()
     }
     
-//    func createGradientLayer() {
-//        
-//        let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//        
-//        let gradientLayer = CAGradientLayer()
-//        
-//        gradientLayer.frame = background.bounds
-//        
-//        gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
-//        
-//        view.layer.addSublayer(gradientLayer)
-//    }
+    func customizebackgroundView() {
+        
+        let topColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+        let buttomColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+        let gradientColors = [topColor.cgColor, buttomColor.cgColor]
+        
+        let gradientLocations:[NSNumber] = [0.4, 1.0]
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        gradientLayer.frame = self.view.frame
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -207,24 +215,50 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 110
+        return 135
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Trail", for: indexPath) as?
             TrailTableViewCell else { return UITableViewCell() }
-        
-//        let address = "http://recreation.forest.gov.tw/Files/RT/Photo/"
-         
+ 
         cell.selectionStyle = .none
         
         if trailFilter[indexPath.row].trPosition != nil {
-            cell.trailTitle.text = trailFilter[indexPath.row].trCname
+            cell.trailTitle.text = "  \(trailFilter[indexPath.row].trCname)"
             cell.trailPosition.text = trailFilter[indexPath.row].trPosition
-            cell.trailLevel.text = "難易度：\(trailFilter[indexPath.row].trDIFClass ?? "")"
+            cell.trailLevel.text = "難易度：\(trailFilter[indexPath.row].trDIFClass ?? "") 級"
             cell.trailLength.text = "全程約 \(trailFilter[indexPath.row].trLength) "
             cell.trailImage.loadImage(trailPhoto.place[indexPath.row])
+            
+            var container: TrTyp?
+            var containers = ""
+            
+            
+            for typeCount in 0 ..< trailType.count {
+                if trailType[typeCount].trailid == trailFilter[indexPath.row].trailid {
+                    container = trailType[typeCount].trTyp
+                }
+            }
+            guard let apple = container else {
+                cell.trailStatus.text = ""
+                return cell
+            }
+            
+            switch apple {
+                
+            case .暫停開放:
+                containers = " 暫停開放 "
+                
+            case .注意:
+                containers = "  注意  "
+            case .部分封閉:
+                containers = " 部分封閉 "
+            default:
+                containers = ""
+            }
+            cell.setTrailType(content: containers)
         }
         return cell
     }
@@ -235,13 +269,15 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
         
         let data = EventContent(image: [],
-            title: trailFilter[indexPath.row].trCname,
-            desc: trailFilter[indexPath.row].guideContent ?? "",
-            start: "",
-            end: "",
-            amount: "",
-            location: trailFilter[indexPath.row].trPosition ?? "")
+                                title: trailFilter[indexPath.row].trCname,
+                                desc: trailFilter[indexPath.row].guideContent ?? "",
+                                start: "",
+                                end: "",
+                                amount: "",
+                                location: trailFilter[indexPath.row].trPosition ?? "")
         
+        let photo = trailPhoto.place[indexPath.row]
+        trailVC.trailPhoto = photo
         trailVC.trailDict = data
         
         show(trailVC, sender: nil)
@@ -367,6 +403,21 @@ extension TrailViewController: TrailResponseDelegate {
     }
 }
 
+extension TrailViewController: TrailTypeResponseDelegate {
+    func response(_ response: TrailTypeResponse, get trailListData: [TrailType]) {
+        
+        self.trailType = trailListData
+        
+        DispatchQueue.main.async {
+            
+            self.trailTableView.reloadData()
+        }
+    }
+    
+    
+    
+}
+
 // MARK: - ViewConstrants
 extension TrailViewController {
     
@@ -374,7 +425,7 @@ extension TrailViewController {
         
         view.addSubview(trailTableView)
         view.addSubview(filterView)
-        trailTableView.backgroundColor = .black
+        trailTableView.backgroundColor = .DarkPurple
         trailTableView.topAnchor.constraint(equalTo: filterView.bottomAnchor).isActive = true
         trailTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         trailTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -391,4 +442,13 @@ extension TrailViewController {
     
 }
 
-// 收起filter動畫, filter功能, 按鈕變色, 路況JSON, 有時間再統整資料做Firebase
+
+extension String {
+    func toImage() -> UIImage? {
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+            return UIImage(data: data)
+        }
+        return nil
+    }
+}
+

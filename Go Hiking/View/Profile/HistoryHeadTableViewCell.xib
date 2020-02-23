@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="總時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pj6-sP-Xwy">
-                                <rect key="frame" x="345.5" y="207" width="43" height="16"/>
+                                <rect key="frame" x="345" y="207" width="43" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="9o5-gh-6nk"/>
                                 </constraints>
@@ -66,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.0 小時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-qz-E4S">
-                                <rect key="frame" x="323" y="178" width="88" height="24"/>
+                                <rect key="frame" x="322" y="178" width="89" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Q7y-Ag-pjx"/>
                                 </constraints>
@@ -87,6 +87,7 @@
                             <constraint firstItem="Pj6-sP-Xwy" firstAttribute="centerX" secondItem="Fad-qz-E4S" secondAttribute="centerX" id="5pl-3p-I3V"/>
                             <constraint firstItem="Fad-qz-E4S" firstAttribute="top" secondItem="Xyc-cc-w0F" secondAttribute="bottom" constant="30" id="6kQ-G9-qhs"/>
                             <constraint firstItem="Xyc-cc-w0F" firstAttribute="centerX" secondItem="YtD-WK-XKd" secondAttribute="centerX" id="Gf5-MV-IZy"/>
+                            <constraint firstAttribute="trailing" secondItem="Pj6-sP-Xwy" secondAttribute="trailing" constant="63" id="INk-9v-H0W"/>
                             <constraint firstItem="Pj6-sP-Xwy" firstAttribute="top" secondItem="Fad-qz-E4S" secondAttribute="bottom" constant="5" id="L35-h8-lHP"/>
                             <constraint firstItem="Xyc-cc-w0F" firstAttribute="leading" secondItem="YtD-WK-XKd" secondAttribute="leading" constant="100" id="N2b-iP-wjK"/>
                             <constraint firstAttribute="bottom" secondItem="am1-Rv-FgT" secondAttribute="bottom" constant="30" id="PpL-PM-Pxm"/>
@@ -104,6 +105,7 @@
                             <constraint firstItem="am1-Rv-FgT" firstAttribute="centerX" secondItem="Ix1-gL-WF6" secondAttribute="centerX" id="oBh-Rx-eGw"/>
                             <constraint firstItem="Ix1-gL-WF6" firstAttribute="top" secondItem="Xyc-cc-w0F" secondAttribute="bottom" constant="30" id="owz-qJ-kdT"/>
                             <constraint firstAttribute="bottom" secondItem="Pj6-sP-Xwy" secondAttribute="bottom" constant="30" id="weF-ZJ-qYh"/>
+                            <constraint firstItem="am1-Rv-FgT" firstAttribute="leading" secondItem="YtD-WK-XKd" secondAttribute="leading" constant="63" id="wtq-WF-eQy"/>
                             <constraint firstAttribute="trailing" secondItem="Xyc-cc-w0F" secondAttribute="trailing" constant="100" id="yjy-2W-Kd0"/>
                         </constraints>
                     </view>

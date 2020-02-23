@@ -105,7 +105,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         self.tabBar.barTintColor = UIColor.black
         self.tabBar.unselectedItemTintColor = UIColor.gray
-        self.tabBar.tintColor = UIColor.T3
+        self.tabBar.tintColor = UIColor.LightGrayBlue
         
         viewControllers = tabs.map({ $0.controller() })
         

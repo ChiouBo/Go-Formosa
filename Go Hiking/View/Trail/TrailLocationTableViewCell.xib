@@ -39,7 +39,7 @@
                         <state key="normal" title="按這裡看看誰也想去"/>
                     </button>
                 </subviews>
-                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" name="DarkPurple"/>
                 <constraints>
                     <constraint firstItem="VsF-XL-JFL" firstAttribute="top" secondItem="XeZ-PV-CsB" secondAttribute="bottom" constant="20" id="2l2-Je-1GQ"/>
                     <constraint firstItem="MI0-by-NdK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6Cc-rY-sW5"/>
@@ -55,6 +55,7 @@
                     <constraint firstItem="VsF-XL-JFL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wGv-9O-HoV"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="DarkPurple"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="createTrailEvent" destination="XeZ-PV-CsB" id="iKk-Iz-ppQ"/>
@@ -66,6 +67,9 @@
     </objects>
     <resources>
         <image name="Map001" width="1386" height="936"/>
+        <namedColor name="DarkPurple">
+            <color red="0.073850311340000002" green="0.079999558629999995" blue="0.17127054929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="T2">
             <color red="0.21899999678134918" green="0.77399998903274536" blue="0.75999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

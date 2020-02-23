@@ -90,7 +90,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         headCell.selectionStyle = .none
         headCell.exploreTimes.text = "\(userRecord.count)"
-        headCell.exploreKM.text = "\(sumDistance) 公里"
+        headCell.exploreKM.text = "\(sumDistance.roundTo(places: 2)) 公里"
         headCell.exploreHR.text = ""
         
         return headCell
@@ -109,7 +109,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 //        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
         
-        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance)"
+        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2))"
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
         
