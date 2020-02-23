@@ -37,8 +37,8 @@ class TrailTableViewCell: UITableViewCell {
     
     func setTrailType() {
         
-        trailStatus.layer.cornerRadius = 5
-        trailStatus.layer.borderWidth = 1
+        trailStatus.layer.cornerRadius = 3
+        trailStatus.layer.borderWidth = 1.5
         trailStatus.font = UIFont(name: "PingangTC", size: 16)
         trailStatus.layer.borderColor = UIColor.red.cgColor
         trailStatus.tintColor = .red
