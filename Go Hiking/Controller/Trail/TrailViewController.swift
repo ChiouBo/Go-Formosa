@@ -107,6 +107,7 @@ class TrailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.barStyle = .black
         navigationItem.searchController = searchController
         
@@ -126,21 +127,20 @@ class TrailViewController: UIViewController {
     
     func customizebackgroundView() {
         
-        let topColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-        let buttomColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-        let gradientColors = [topColor.cgColor, buttomColor.cgColor]
+        let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+        let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+        let gradientColors = [bottomColor.cgColor, topColor.cgColor]
         
-        let gradientLocations:[NSNumber] = [0.4, 1.0]
+        let gradientLocations:[NSNumber] = [0.3, 1.0]
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradientColors
         gradientLayer.locations = gradientLocations
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+//        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         gradientLayer.frame = self.view.frame
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -425,7 +425,7 @@ extension TrailViewController {
         
         view.addSubview(trailTableView)
         view.addSubview(filterView)
-        trailTableView.backgroundColor = .DarkPurple
+        trailTableView.backgroundColor = .clear
         trailTableView.topAnchor.constraint(equalTo: filterView.bottomAnchor).isActive = true
         trailTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         trailTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -439,9 +439,7 @@ extension TrailViewController {
         filterOpen = filterView.heightAnchor.constraint(equalToConstant: 110)
         filterClose?.isActive = true
     }
-    
 }
-
 
 extension String {
     func toImage() -> UIImage? {

@@ -20,6 +20,12 @@ class AchievementViewController: UIViewController {
     
     @IBOutlet weak var achieveTableView: UITableView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        getHistoryData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,13 +46,13 @@ class AchievementViewController: UIViewController {
     
     func getHistoryData() {
         
-        UserManager.share.loadRecordData { (userRecord) in
+        UserManager.share.loadRecordData { [weak self] (userRecord) in
             
             switch userRecord {
                 
             case .success(let record):
                 
-                self.userRecord = record
+                self?.userRecord = record
                 
             case .failure(let error):
                 
