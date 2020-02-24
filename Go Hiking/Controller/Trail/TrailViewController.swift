@@ -94,9 +94,9 @@ class TrailViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = image
         navigationController?.navigationBar.isTranslucent = true
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
-            style: .done, target: self, action: #selector(filterBtn))
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(
+//            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
+//            style: .done, target: self, action: #selector(filterBtn))
         navigationController?.navigationBar.barTintColor = .clear
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)

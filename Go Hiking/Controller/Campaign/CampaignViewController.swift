@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import IQKeyboardManagerSwift
 import Kingfisher
 
@@ -49,8 +50,32 @@ class CampaignViewController: UIViewController {
     
     @objc func toPrivateList() {
         
-        let controller = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "Private")
-        self.navigationController?.pushViewController(controller!, animated: true)
+        if Auth.auth().currentUser != nil {
+            
+            let controller = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "Private")
+            self.navigationController?.pushViewController(controller!, animated: true)
+        } else {
+            
+            let alertController = UIAlertController(title: "您尚未登入", message: "是否登入以繼續？", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "登入", style: .default) { (_) in
+                
+                if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                    
+                    authVC.modalPresentationStyle = .overCurrentContext
+                    
+                    self.present(authVC, animated: false, completion: nil)
+                }
+            }
+            
+            alertController.addAction(okAction)
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     func setNavVC() {
@@ -229,6 +254,14 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
             self.publicTableView.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let content = UIStoryboard(name: "Campaign", bundle: nil)
+        guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
+        
+        show(contentVC, sender: nil)
     }
 }
 

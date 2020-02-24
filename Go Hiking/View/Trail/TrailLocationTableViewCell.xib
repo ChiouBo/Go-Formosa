@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="378"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map001" translatesAutoresizingMaskIntoConstraints="NO" id="MI0-by-NdK">
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map001" translatesAutoresizingMaskIntoConstraints="NO" id="MI0-by-NdK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="200" id="7af-Uj-QWz"/>
@@ -39,7 +39,7 @@
                         <state key="normal" title="按這裡看看誰也想去"/>
                     </button>
                 </subviews>
-                <color key="backgroundColor" name="DarkPurple"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="VsF-XL-JFL" firstAttribute="top" secondItem="XeZ-PV-CsB" secondAttribute="bottom" constant="20" id="2l2-Je-1GQ"/>
                     <constraint firstItem="MI0-by-NdK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6Cc-rY-sW5"/>
@@ -55,7 +55,7 @@
                     <constraint firstItem="VsF-XL-JFL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wGv-9O-HoV"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="DarkPurple"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="createTrailEvent" destination="XeZ-PV-CsB" id="iKk-Iz-ppQ"/>
@@ -67,9 +67,6 @@
     </objects>
     <resources>
         <image name="Map001" width="1386" height="936"/>
-        <namedColor name="DarkPurple">
-            <color red="0.074000000953674316" green="0.079999998211860657" blue="0.17100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="T2">
             <color red="0.21899999678134918" green="0.77399998903274536" blue="0.75999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

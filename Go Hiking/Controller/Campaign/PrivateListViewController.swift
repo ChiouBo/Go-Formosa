@@ -60,12 +60,31 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
     }
     
+    func customizebackgroundView() {
+              
+              let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+              let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+              let gradientColors = [bottomColor.cgColor, topColor.cgColor]
+              
+              let gradientLocations:[NSNumber] = [0.3, 1.0]
+              
+              let gradientLayer = CAGradientLayer()
+              gradientLayer.colors = gradientColors
+              gradientLayer.locations = gradientLocations
+    //          gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+    //          gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+              gradientLayer.frame = self.view.frame
+              self.view.layer.insertSublayer(gradientLayer, at: 0)
+          }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    
         navigationItem.searchController = searchController
         
         privateTableView.separatorStyle = .none
+        
+        customizebackgroundView()
         
         setupElements()
     }
@@ -168,7 +187,8 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.campaignTitle.text = currentCampaign.title
         cell.campaignLevel.text = currentCampaign.type
-        cell.backgroundColor = .black
+        cell.backgroundColor = .clear
+        
         return cell
     }
 }
@@ -180,6 +200,7 @@ extension PrivateListViewController {
         view.addSubview(privateTableView)
         view.addSubview(createBtn)
         
+        privateTableView.backgroundColor = .clear
         privateTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         privateTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         privateTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true

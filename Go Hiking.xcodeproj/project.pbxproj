@@ -40,6 +40,8 @@
 		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
 		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
+		056FDC902403FCAC0015198A /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC8F2403FCAC0015198A /* ContentViewController.swift */; };
+		056FDC92240414B30015198A /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC91240414B30015198A /* ContentTableViewCell.swift */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -149,6 +151,8 @@
 		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
 		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
+		056FDC8F2403FCAC0015198A /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		056FDC91240414B30015198A /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 			children = (
 				05BF08FA23E5A4A9009CED63 /* CampaignTableViewCell.swift */,
 				05BF08FB23E5A4A9009CED63 /* CampaignTableViewCell.xib */,
+				056FDC91240414B30015198A /* ContentTableViewCell.swift */,
 			);
 			path = Campaign;
 			sourceTree = "<group>";
@@ -508,6 +513,7 @@
 			children = (
 				05BF08E123E2001C009CED63 /* CampaignViewController.swift */,
 				05BF090923E7E831009CED63 /* PrivateListViewController.swift */,
+				056FDC8F2403FCAC0015198A /* ContentViewController.swift */,
 			);
 			path = Campaign;
 			sourceTree = "<group>";
@@ -798,6 +804,7 @@
 				05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
+				056FDC92240414B30015198A /* ContentTableViewCell.swift in Sources */,
 				05BF08DC23E1E55E009CED63 /* UIImage+Extension.swift in Sources */,
 				051A863723EEEECC008865FC /* PersonTableViewCell.swift in Sources */,
 				05BF08EA23E325D0009CED63 /* UserProvider.swift in Sources */,
@@ -846,6 +853,7 @@
 				05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */,
 				05BF08FC23E5A4A9009CED63 /* CampaignTableViewCell.swift in Sources */,
 				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
+				056FDC902403FCAC0015198A /* ContentViewController.swift in Sources */,
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
 				05BF08F723E429F3009CED63 /* UserManager.swift in Sources */,
 				051A862923EE8C8A008865FC /* PhotoCollectionViewCell.swift in Sources */,
