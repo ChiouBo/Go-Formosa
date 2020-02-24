@@ -48,7 +48,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bE1-2K-ZG2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo-1416169607655-0c2b3ce2e1cc" translatesAutoresizingMaskIntoConstraints="NO" id="bE1-2K-ZG2">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <constraints>
@@ -57,7 +57,7 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tRS-VQ-sF4">
                                 <rect key="frame" x="0.0" y="300" width="414" height="562"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Content" rowHeight="584" id="hbS-mw-Ele" customClass="ContentTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="584"/>
@@ -72,7 +72,7 @@
                                                         <constraint firstAttribute="height" constant="18" id="ZMI-Wu-c8M"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Uk-oY-FTN">
@@ -88,7 +88,7 @@
                                                         <constraint firstAttribute="height" constant="18" id="dEi-te-GFe"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tTn-4F-G6o">
@@ -104,7 +104,7 @@
                                                         <constraint firstAttribute="height" constant="18" id="itd-dd-55p"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 人想去" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0d-wt-qFD">
@@ -113,7 +113,7 @@
                                                         <constraint firstAttribute="height" constant="16" id="u3p-ve-qFc"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="14d-qb-2ic">
@@ -140,12 +140,12 @@ oh~愛情　原來的開始是陪伴
 只是心又飄到了哪裡　就連自己看也看不清
 我想我不僅僅是失去妳</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFE-0P-ZZ9">
                                                     <rect key="frame" x="40" y="474" width="334" height="50"/>
-                                                    <color key="backgroundColor" name="T3"/>
+                                                    <color key="backgroundColor" name="T2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="6ye-9j-EAG"/>
                                                     </constraints>
@@ -198,6 +198,7 @@ oh~愛情　原來的開始是陪伴
                                                 <constraint firstAttribute="trailing" secondItem="14d-qb-2ic" secondAttribute="trailing" constant="10" id="zba-7F-Wqx"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="contentDate" destination="luU-Sz-Esq" id="kqt-Va-n5W"/>
                                             <outlet property="contentDesc" destination="4YW-81-w9f" id="oee-Ie-ShB"/>
@@ -225,11 +226,12 @@ oh~愛情　原來的開始是陪伴
                     <connections>
                         <outlet property="contentImage" destination="bE1-2K-ZG2" id="xfe-Ty-5f7"/>
                         <outlet property="contentTableView" destination="tRS-VQ-sF4" id="yf3-Lw-82I"/>
+                        <outlet property="imageHeightConstraint" destination="xA4-YY-lEm" id="YQl-4w-VeX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnb-8d-gsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2940.579710144928" y="-95.089285714285708"/>
+            <point key="canvasLocation" x="2810" y="-154"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDO-Iu-LA3">
@@ -251,8 +253,9 @@ oh~愛情　原來的開始是陪伴
         </scene>
     </scenes>
     <resources>
-        <namedColor name="T3">
-            <color red="0.4050000011920929" green="0.83700001239776611" blue="0.82200002670288086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="photo-1416169607655-0c2b3ce2e1cc" width="3264" height="2448"/>
+        <namedColor name="T2">
+            <color red="0.21899999678134918" green="0.77399998903274536" blue="0.75999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

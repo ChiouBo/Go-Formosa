@@ -47,5 +47,8 @@ class ContentTableViewCell: UITableViewCell {
         contentJoin.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
-    
+    func btnType(text: String) {
+        
+        contentJoin.setTitle(text, for: .normal)
+    }
 }
