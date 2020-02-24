@@ -105,7 +105,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
         
         self.tabBar.barTintColor = UIColor.black
         self.tabBar.unselectedItemTintColor = UIColor.gray
-        self.tabBar.tintColor = UIColor.T3
+        self.tabBar.tintColor = UIColor.LightGrayBlue
         
         viewControllers = tabs.map({ $0.controller() })
         
@@ -120,7 +120,7 @@ class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
             navVC.viewControllers.first is ProfileViewController || navVC.viewControllers.first is ChatViewController else {
                 return true
         }
-        guard AccessToken.current?.tokenString != nil || Auth.auth().currentUser != nil else {
+        guard Auth.auth().currentUser != nil else {
         
                     if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
         

@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwA-eL-reJ">
-                                        <rect key="frame" x="40" y="612" width="334" height="48"/>
+                                        <rect key="frame" x="40" y="550" width="334" height="48"/>
                                         <color key="backgroundColor" name="Facebook"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="WfQ-Y8-RPg"/>
@@ -44,35 +44,21 @@
                                             <action selector="ghFacebookLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="fkK-S0-pJD"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOw-7E-UUC">
-                                        <rect key="frame" x="40" y="680" width="334" height="48"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Qiw-Pe-zs5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Apple 登入"/>
-                                        <connections>
-                                            <action selector="ghAppleLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="vWo-3b-xP5"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCQ-Tf-zTp">
-                                        <rect key="frame" x="40" y="748" width="334" height="48"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="40" y="628" width="334" height="48"/>
+                                        <color key="backgroundColor" red="0.85202008490000003" green="0.28212803600000003" blue="0.18907120820000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="aSZ-Bh-bHy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="登入"/>
+                                        <state key="normal" title="Google 登入"/>
                                         <connections>
-                                            <action selector="ghLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="pz6-rh-ejV"/>
-                                            <segue destination="8XQ-aU-gtH" kind="show" id="mVK-gE-1Jj"/>
+                                            <action selector="ghGoogleSignIn:" destination="2yc-L0-X9R" eventType="touchUpInside" id="pz6-rh-ejV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqb-vh-Ez7">
-                                        <rect key="frame" x="190.5" y="812" width="33" height="32"/>
+                                        <rect key="frame" x="190.5" y="784" width="33" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="訪客">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,8 +67,8 @@
                                             <action selector="guestUser:" destination="2yc-L0-X9R" eventType="touchUpInside" id="ByJ-KE-GsN"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBg-pW-vrM">
-                                        <rect key="frame" x="40" y="544" width="334" height="48"/>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBg-pW-vrM">
+                                        <rect key="frame" x="40" y="424" width="334" height="48"/>
                                         <color key="backgroundColor" name="T1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="XVW-qa-jPi"/>
@@ -95,24 +81,31 @@
                                             <segue destination="XHr-Y6-7Am" kind="show" id="nJf-fI-8nZ"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msh-wB-Q0r">
+                                        <rect key="frame" x="40" y="706" width="334" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="I6n-pF-3mY"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="1dY-hP-cKd"/>
-                                    <constraint firstItem="Oqb-vh-Ez7" firstAttribute="top" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="16" id="MrJ-tv-fWi"/>
-                                    <constraint firstAttribute="bottom" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="100" id="N42-Mw-nEl"/>
-                                    <constraint firstAttribute="trailing" secondItem="SCQ-Tf-zTp" secondAttribute="trailing" constant="40" id="NRP-Co-Azr"/>
-                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="top" secondItem="FOw-7E-UUC" secondAttribute="bottom" constant="20" id="OVN-z6-I1P"/>
+                                    <constraint firstAttribute="trailing" secondItem="SCQ-Tf-zTp" secondAttribute="trailing" constant="40" id="1G9-P1-QnA"/>
+                                    <constraint firstItem="KBg-pW-vrM" firstAttribute="centerY" secondItem="jVW-XR-rAA" secondAttribute="centerY" id="4Ub-73-s7j"/>
+                                    <constraint firstAttribute="trailing" secondItem="Msh-wB-Q0r" secondAttribute="trailing" constant="40" id="DBm-0f-Ubg"/>
+                                    <constraint firstItem="Msh-wB-Q0r" firstAttribute="top" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="30" id="KvW-bz-fuH"/>
                                     <constraint firstAttribute="trailing" secondItem="KBg-pW-vrM" secondAttribute="trailing" constant="40" id="W6z-Bk-zwQ"/>
-                                    <constraint firstItem="FOw-7E-UUC" firstAttribute="top" secondItem="fwA-eL-reJ" secondAttribute="bottom" constant="20" id="hf7-Ts-zIM"/>
+                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="WjL-uc-tAP"/>
+                                    <constraint firstAttribute="bottom" secondItem="Oqb-vh-Ez7" secondAttribute="bottom" constant="80" id="hFz-Lc-h9x"/>
                                     <constraint firstAttribute="trailing" secondItem="fwA-eL-reJ" secondAttribute="trailing" constant="40" id="iFZ-4p-dqH"/>
-                                    <constraint firstAttribute="trailing" secondItem="FOw-7E-UUC" secondAttribute="trailing" constant="40" id="jNx-1A-8QF"/>
+                                    <constraint firstItem="Msh-wB-Q0r" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="lQi-rH-q3f"/>
                                     <constraint firstItem="Oqb-vh-Ez7" firstAttribute="centerX" secondItem="jVW-XR-rAA" secondAttribute="centerX" id="n4d-cn-I9d"/>
-                                    <constraint firstItem="FOw-7E-UUC" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="st3-nx-Mft"/>
+                                    <constraint firstItem="Oqb-vh-Ez7" firstAttribute="top" secondItem="Msh-wB-Q0r" secondAttribute="bottom" constant="30" id="qX4-ri-oBv"/>
+                                    <constraint firstItem="SCQ-Tf-zTp" firstAttribute="top" secondItem="fwA-eL-reJ" secondAttribute="bottom" constant="30" id="raz-vb-McL"/>
                                     <constraint firstItem="SCQ-Tf-zTp" firstAttribute="centerX" secondItem="jVW-XR-rAA" secondAttribute="centerX" id="ty5-NQ-0x7"/>
                                     <constraint firstItem="fwA-eL-reJ" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="u0a-jZ-FsC"/>
                                     <constraint firstItem="KBg-pW-vrM" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="uda-FC-bYR"/>
-                                    <constraint firstItem="fwA-eL-reJ" firstAttribute="top" secondItem="KBg-pW-vrM" secondAttribute="bottom" constant="20" id="xiT-da-q15"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -137,9 +130,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="cOD-R2-leO"/>
                     <connections>
-                        <outlet property="ghAppleLogin" destination="FOw-7E-UUC" id="LoC-gn-z9r"/>
+                        <outlet property="ghAppleSignIn" destination="Msh-wB-Q0r" id="6vZ-sS-PfM"/>
                         <outlet property="ghFacebookLogin" destination="fwA-eL-reJ" id="KA8-Cy-E1v"/>
-                        <outlet property="ghLogin" destination="SCQ-Tf-zTp" id="tHq-gA-nnW"/>
+                        <outlet property="ghGoogleSignIn" destination="SCQ-Tf-zTp" id="tHq-gA-nnW"/>
                         <outlet property="ghSignUp" destination="KBg-pW-vrM" id="frm-ns-oMG"/>
                     </connections>
                 </viewController>
@@ -260,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqa-x8-skQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.985507246377" y="367.63392857142856"/>
+            <point key="canvasLocation" x="2523" y="-360"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="fzf-Em-C3j">
@@ -409,7 +402,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xX0-Ju-AG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.579710144927539" y="-360.26785714285711"/>
+            <point key="canvasLocation" x="148" y="-360"/>
         </scene>
     </scenes>
     <resources>

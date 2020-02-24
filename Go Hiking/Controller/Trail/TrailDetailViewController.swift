@@ -12,10 +12,11 @@ class TrailDetailViewController: UIViewController {
 
     var trailDict: EventContent?
     
+    var trailPhoto: String?
+    
     lazy var trailImage: UIImageView = {
        let trailImage = UIImageView()
         trailImage.translatesAutoresizingMaskIntoConstraints = false
-        trailImage.image = UIImage(named: "M001")
         trailImage.contentMode = .scaleAspectFill
         trailImage.clipsToBounds = true
         return trailImage
@@ -66,6 +67,7 @@ class TrailDetailViewController: UIViewController {
         imageHeight = trailImage.heightAnchor.constraint(equalToConstant: 400)
         imageHeight?.isActive = true
         
+        TrailContentTableView.backgroundColor = .DarkPurple
         TrailContentTableView.contentInset = UIEdgeInsets(top: imageOriginHeight, left: 0, bottom: 0, right: 0)
         TrailContentTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         TrailContentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -81,12 +83,20 @@ class TrailDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleImage()
+        
         setupElement()
         
+        navigationController?.navigationBar.barStyle = .black
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
-    
+    func titleImage() {
+        
+        guard let photo = trailPhoto else { return }
+        
+        trailImage.loadImage(photo)
+    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -123,6 +133,7 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
             TrailContentTableViewCell else { return UITableViewCell() }
             
+            contentCell.selectionStyle = .none
             contentCell.trailTitle.text = trailDict?.title
             contentCell.trailLocation.text = trailDict?.location
             contentCell.trailDescription.text = trailDict?.desc
@@ -134,6 +145,7 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
             guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
             TrailLocationTableViewCell else { return UITableViewCell() }
             
+            createCell.selectionStyle = .none
             createCell.createTrailEvent.addTarget(self, action: #selector(trailCreate), for: .touchUpInside)
             
             return createCell

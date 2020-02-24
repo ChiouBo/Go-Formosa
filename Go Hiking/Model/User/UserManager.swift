@@ -7,10 +7,18 @@
 //
 
 import Foundation
+import UIKit
 import FBSDKLoginKit
 import Firebase
+import FirebaseStorage
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import FirebaseAuth
+
+enum FirebaseLogin: Error {
+    
+    case noneLogin
+}
 
 class UserManager {
     
@@ -24,7 +32,7 @@ class UserManager {
     
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
-        guard let name = Auth.auth().currentUser?.displayName,
+      guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
             let email = Auth.auth().currentUser?.email,
             let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
@@ -48,9 +56,8 @@ class UserManager {
         
     }
     
-    let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current?.tokenString ?? "")
     
-    func signinUserData(completion: @escaping (Result<String>) -> Void) {
+    func signinUserData(credential: AuthCredential, completion: @escaping (Result<String>) -> Void) {
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
             
@@ -63,11 +70,11 @@ class UserManager {
         }
     }
     
-    func loadUserInfo(completion: @escaping (Result<User>) -> Void ) {
+    func loadUserInfo(completion: @escaping (Swift.Result<User, Error>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        userDB.collection("users").document(uid).getDocument { (user, error) in
+       userDB.collection("users").document(uid).getDocument { (user, error) in
             
             guard let user = user, error == nil else {
                 return
@@ -82,7 +89,7 @@ class UserManager {
                 
                 print("\(error.localizedDescription)")
                 
-                completion(.failure(error))
+                completion(.failure(FirebaseLogin.noneLogin))
             }
         }
     }
@@ -100,6 +107,48 @@ class UserManager {
             }
         }
     }
+    
+    func saveRecordData(userRecord: UserRecord, completion: @escaping (Result<String>) -> Void ) {
+        
+        let pathID = userDB.collection("users").document(userRecord.id).collection("Path").document().documentID
+        
+        do{
+           try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
+            
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+    }
+    
+    func loadRecordData(completion: @escaping (Result<[UserRecord]>) -> Void ) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        userDB.collection("users").document(uid).collection("Path").order(by: "date", descending: true).getDocuments { (snapshot, error) in
+            
+            var recordData: [UserRecord] = []
+            
+            if error == nil && snapshot?.documents.count != 0 {
+                
+                for document in snapshot!.documents {
+                    
+                    do {
+                        guard let data = try document.data(as: UserRecord.self, decoder: Firestore.Decoder()) else { return }
+                        
+                        recordData.append(data)
+                        
+                    } catch {
+
+                        print(error)
+                    }
+                }
+                completion(.success(recordData))
+            }
+            
+        }
+    }
+    
 }
 
 

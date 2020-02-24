@@ -55,4 +55,5 @@ class TrailResponse {
         }
         task.resume()
     }
+
 }
