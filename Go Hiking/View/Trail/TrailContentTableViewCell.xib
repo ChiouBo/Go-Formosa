@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,16 +24,16 @@
                             <constraint firstAttribute="height" constant="40" id="ydM-Jl-h67"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北市信義區" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cho-yt-byP">
                         <rect key="frame" x="243.5" y="66" width="110.5" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2v-U7-bFJ">
+                    <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2v-U7-bFJ">
                         <rect key="frame" x="370" y="64" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="24" id="UKc-U8-e3Q"/>
@@ -57,11 +58,11 @@
 藏不住的是那過往的青澀回憶
 於是我再次尋求著同樣的日子</string>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" name="DarkPurple"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="jN9-J9-kHD" secondAttribute="trailing" constant="20" id="09f-l7-3EH"/>
                     <constraint firstItem="sNY-d2-sR3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="178-SL-0nx"/>
@@ -76,6 +77,7 @@
                     <constraint firstItem="k2v-U7-bFJ" firstAttribute="leading" secondItem="cho-yt-byP" secondAttribute="trailing" constant="16" id="wgg-8l-j4q"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="DarkPurple"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="trailDescription" destination="jN9-J9-kHD" id="sOw-Pr-cYi"/>
@@ -88,5 +90,8 @@
     </objects>
     <resources>
         <image name="Icons_24px_Heart_Normal" width="24" height="24"/>
+        <namedColor name="DarkPurple">
+            <color red="0.073850311340000002" green="0.079999558629999995" blue="0.17127054929999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

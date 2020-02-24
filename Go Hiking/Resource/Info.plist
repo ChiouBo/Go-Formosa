@@ -26,6 +26,14 @@
 				<string>fb554466721947676</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.325248599032-v095vd9hg0imbrsgc206m5ceq9luos01</string>
+			</array>
+		</dict>
 		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
@@ -45,11 +53,11 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string></string>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>

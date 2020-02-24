@@ -10,6 +10,8 @@ import UIKit
 
 class TrailTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cellImage: UIView!
+    
     @IBOutlet weak var trailImage: UIImageView!
     
     @IBOutlet weak var trailTitle: UILabel!
@@ -24,24 +26,31 @@ class TrailTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        setTrailType()
+        setCellType()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        setTrailType()
+        setCellType()
     }
     
     
-    func setTrailType() {
+    func setTrailType(content: String) {
         
-        trailStatus.layer.cornerRadius = 5
-        trailStatus.layer.borderWidth = 1
+        trailStatus.text = content
+        trailStatus.layer.cornerRadius = 3
+        trailStatus.layer.borderWidth = 1.5
         trailStatus.font = UIFont(name: "PingangTC", size: 16)
         trailStatus.layer.borderColor = UIColor.red.cgColor
         trailStatus.tintColor = .red
         trailStatus.textColor = .red
+    }
+    
+    func setCellType() {
+        
+        cellImage.layer.cornerRadius = 5
+        trailImage.clipsToBounds = true
+        trailImage.layer.cornerRadius = 5
+        trailImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 struct UserObject: Codable {
 
@@ -53,5 +54,76 @@ struct User: Codable {
             
             "userLocation": userLocation ?? ""
         ]
+    }
+}
+
+struct UserRecord: Codable {
+    
+    let id: String
+    
+    let date: String
+    
+    let distance: Double
+    
+    let time: String
+     
+    let markerLat: [Double]
+    
+    let markerLong: [Double]
+    
+    let lineImage: String
+    
+    var recordDict: [String: Any] {
+
+        return [
+
+            "id": id,
+
+            "date": date,
+
+            "distance": distance,
+
+            "time": time,
+
+            "markerLat": markerLat,
+            
+            "markerLong": markerLong,
+
+            "lineImage": lineImage
+        ]
+    }
+    
+}
+
+
+struct AppleUser {
+    
+    let id: String
+    
+    let firstName: String
+    
+    let LastName: String
+    
+    let email: String
+    
+    @available(iOS 13.0, *)
+    init(credentials: ASAuthorizationAppleIDCredential) {
+        
+        self.id = credentials.user
+        self.firstName = credentials.fullName?.givenName ?? ""
+        self.LastName = credentials.fullName?.familyName ?? ""
+        self.email = credentials.email ?? ""
+    }
+}
+
+extension AppleUser: CustomDebugStringConvertible {
+    
+    var debugDescription: String {
+        return """
+        ID: \(id)
+        First Name: \(firstName)
+        Last Name: \(LastName)
+        Email: \(email)
+        """
     }
 }

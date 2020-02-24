@@ -34,8 +34,6 @@ class CampaignTableViewCell: UITableViewCell {
         campaignLevel.textColor = .white
         campaignTitle.shadowOffset = CGSize(width: 2, height: 2)
         campaignTitle.shadowColor = .gray
-//        campaignTitle.layer.shadowRadius = 1
-//        campaignTitle.layer.shadowOpacity = 0.7
         campaignLevel.shadowOffset = CGSize(width: 1, height: 1)
         campaignLevel.shadowColor = .gray
     }

@@ -41,4 +41,5 @@ target 'Go Hiking' do
   
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GoogleSignIn'
 end

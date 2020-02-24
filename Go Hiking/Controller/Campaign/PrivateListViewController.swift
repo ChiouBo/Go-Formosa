@@ -156,6 +156,8 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Campaign", for: indexPath) as?
             CampaignTableViewCell else { return UITableViewCell() }
         
+        cell.selectionStyle = .none
+        
         let currentCampaign: Campaign
         
         if isFiltering() {

@@ -100,10 +100,6 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logout(_ sender: UIButton) {
         
-        let manager = LoginManager()
-        
-        manager.logOut()
-        
         do{
             try Auth.auth().signOut()
             

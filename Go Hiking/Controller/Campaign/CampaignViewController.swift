@@ -12,11 +12,17 @@ import Kingfisher
 
 class CampaignViewController: UIViewController {
 
-    var filteredCampaign = [Campaign]()
+    var eventList = [EventCurrent]()
     
-    let campaigns = Campaign.getAllCampaigns()
+    var eventData = [EventCurrent]()
     
-    var eventData: [EventCurrent] = []
+    var filteredEvent: [EventCurrent] = [] {
+        
+        didSet {
+            
+            publicTableView.reloadData()
+        }
+    }
     
     lazy var publicTableView: UITableView = {
         let pTV = UITableView()
@@ -37,9 +43,7 @@ class CampaignViewController: UIViewController {
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
         search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
-        
         search.searchBar.delegate = self
-        
         return search
     }()
     
@@ -50,6 +54,11 @@ class CampaignViewController: UIViewController {
     }
     
     func setNavVC() {
+        
+        let image = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        navigationController?.navigationBar.shadowImage = image
+        navigationController?.navigationBar.isTranslucent = true
         
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -63,42 +72,48 @@ class CampaignViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
+    func customizebackgroundView() {
+          
+          let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+          let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+          let gradientColors = [bottomColor.cgColor, topColor.cgColor]
+          
+          let gradientLocations:[NSNumber] = [0.3, 1.0]
+          
+          let gradientLayer = CAGradientLayer()
+          gradientLayer.colors = gradientColors
+          gradientLayer.locations = gradientLocations
+//          gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+//          gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+          gradientLayer.frame = self.view.frame
+          self.view.layer.insertSublayer(gradientLayer, at: 0)
+      }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavVC()
+        
+        customizebackgroundView()
         
         navigationItem.searchController = searchController
         
         publicTableView.separatorStyle = .none
         
         setupElements()
-        
-//        UploadEvent.shared.download { (result) in
-//            
-//            switch result {
-//                
-//            case .success(let data):
-//                
-//                print(data)
-//                
-//                self.eventData.append(data)
-//                self.publicTableView.reloadData()
-//            case .failure(let error):
-//                
-//                print(error)
-//                
-//            }
-//        }
-        
-        
-        
-//        createGradientLayer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         eventData = []
+    
+        getEventData()
+        
+        publicTableView.reloadData()
+    }
+
+    func getEventData() {
         
         UploadEvent.shared.download { (result) in
             
@@ -108,41 +123,33 @@ class CampaignViewController: UIViewController {
                 
                 print(data)
                 
+                self.filteredEvent.append(data)
                 self.eventData.append(data)
-                self.publicTableView.reloadData()
+
+                
             case .failure(let error):
                 
                 print(error)
-                
             }
         }
     }
     
-//        func createGradientLayer() {
-//    
-//            let background = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//    
-//            let gradientLayer = CAGradientLayer()
-//    
-//            gradientLayer.frame = background.bounds
-//    
-//            gradientLayer.colors = [UIColor.orange.cgColor, UIColor.blue.cgColor]
-//    
-//            view.layer.addSublayer(gradientLayer)
-//        }
-
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
-        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
+        filteredEvent = []
         
-            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
+        filteredEvent = eventData.filter({ (event: EventCurrent) -> Bool in
+        
             
-            if isSearchBarEmpty() {
+            let doesCategoryMatch = (scope == "All")
+
+            if searchText.isEmpty {
                 
                 return doesCategoryMatch
             } else {
-                
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+            
+                return doesCategoryMatch &&
+                    event.title.lowercased().contains(searchText.lowercased())
             }
         })
         
@@ -183,13 +190,13 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isFiltering() { return eventData.count}
+//        if isFiltering() { return filteredEvent.count}
         
-        return eventData.count
+        return filteredEvent.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 240
+        return UIScreen.main.bounds.height / 4.5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -197,21 +204,11 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Campaign", for: indexPath) as?
             CampaignTableViewCell else { return UITableViewCell() }
         
-//        let currentCampaign: Campaign
-//
-//        if isFiltering() {
-//            currentCampaign = filteredCampaign[indexPath.row]
-//        } else {
-//            currentCampaign = campaigns[indexPath.row]
-//        }
-        
-//        cell.campaignTitle.text = currentCampaign.title
-//        cell.campaignLevel.text = currentCampaign.level
-        
-        cell.campaignTitle.text = eventData[indexPath.row].title
-        cell.campaignLevel.text = eventData[indexPath.row].member
-        cell.campaignImage.kf.setImage(with: URL(string: eventData[indexPath.row].image))
-        cell.backgroundColor = .black
+        cell.selectionStyle = .none
+
+        cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
+        cell.campaignLevel.text = filteredEvent[indexPath.row].member
+        cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
         
         return cell
     }
@@ -240,7 +237,7 @@ extension CampaignViewController {
     func setupElements() {
         
         view.addSubview(publicTableView)
-        publicTableView.backgroundColor = .black
+        publicTableView.backgroundColor = .clear
         publicTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         publicTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         publicTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
