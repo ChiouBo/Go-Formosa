@@ -14,16 +14,21 @@ import GoogleSignIn
 import Firebase
 import FirebaseFirestore
 import JGProgressHUD
+import AuthenticationServices
+import CryptoKit
 
 class AuthViewController: UIViewController, GIDSignInDelegate {
+    
+    fileprivate var currentNonce: String?
     
     @IBOutlet weak var ghSignUp: UIButton!
     
     @IBOutlet weak var ghFacebookLogin: UIButton!
     
-    @IBOutlet weak var ghAppleLogin: UIButton!
-    
     @IBOutlet weak var ghGoogleSignIn: UIButton!
+    
+    @IBOutlet weak var ghAppleSignIn: UIView!
+    
     
     func setNavVC() {
         
@@ -37,14 +42,34 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        presentingViewController?.navigationController?.navigationBar.isHidden = true
+        
+        presentingViewController?.tabBarController?.tabBar.isHidden = true
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        presentingViewController?.navigationController?.navigationBar.isHidden = false
+        
+        presentingViewController?.tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavVC()
         
+        if #available(iOS 13.0, *) {
+            startSignInWithAppleFlow()
+        }
+        
         setButtonUI(button: ghSignUp)
         setButtonUI(button: ghFacebookLogin)
-        setButtonUI(button: ghAppleLogin)
         setButtonUI(button: ghGoogleSignIn)
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
@@ -127,9 +152,6 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
         }
     }
     
-    @IBAction func ghAppleLogin(_ sender: UIButton) {
-    }
-    
     @IBAction func ghGoogleSignIn(_ sender: UIButton) {
         
         GIDSignIn.sharedInstance().signIn()
@@ -147,6 +169,12 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 7
         button.layer.shadowColor = UIColor.lightGray.cgColor
+        
+        ghAppleSignIn.layer.cornerRadius = 24
+        ghAppleSignIn.layer.shadowOffset = CGSize(width: 3, height: 3)
+        ghAppleSignIn.layer.shadowOpacity = 0.7
+        ghAppleSignIn.layer.shadowRadius = 7
+        ghAppleSignIn.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
@@ -209,5 +237,149 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
             }
             print("Success!!")
         }
+    }
+    
+    private func randomNonceString(length: Int = 32) -> String {
+      precondition(length > 0)
+      let charset: Array<Character> =
+          Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+      var result = ""
+      var remainingLength = length
+
+      while remainingLength > 0 {
+        let randoms: [UInt8] = (0 ..< 16).map { _ in
+          var random: UInt8 = 0
+          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+          if errorCode != errSecSuccess {
+            fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+          }
+          return random
+        }
+
+        randoms.forEach { random in
+          if remainingLength == 0 {
+            return
+          }
+
+          if random < charset.count {
+            result.append(charset[Int(random)])
+            remainingLength -= 1
+          }
+        }
+      }
+
+      return result
+    }
+    
+    @available(iOS 13.0, *)
+    func startSignInWithAppleFlow() {
+        
+            let appleBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+            
+            appleBtn.translatesAutoresizingMaskIntoConstraints = false
+            appleBtn.addTarget(self, action: #selector(didTapAppleBtn), for: .touchUpInside)
+            
+            appleBtn.cornerRadius = 24
+            
+            appleBtn.frame = ghAppleSignIn.bounds
+            
+            ghAppleSignIn.addSubview(appleBtn)
+            NSLayoutConstraint.activate([
+                appleBtn.leadingAnchor.constraint(equalTo: ghAppleSignIn.leadingAnchor, constant: 0),
+                appleBtn.trailingAnchor.constraint(equalTo: ghAppleSignIn.trailingAnchor, constant: 0),
+                appleBtn.topAnchor.constraint(equalTo: ghAppleSignIn.topAnchor, constant: 0),
+                appleBtn.bottomAnchor.constraint(equalTo: ghAppleSignIn.bottomAnchor, constant: 0)
+            ])
+      
+    }
+    
+    @objc func didTapAppleBtn() {
+        
+        if #available(iOS 13.0, *) {
+            
+            let nonce = randomNonceString()
+            currentNonce = nonce
+            
+            let provider = ASAuthorizationAppleIDProvider()
+            let request = provider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            request.nonce = sha256(nonce)
+            
+            let controller = ASAuthorizationController(authorizationRequests: [request])
+            
+            controller.delegate = self
+            
+            controller.presentationContextProvider = self
+            
+            controller.performRequests()
+        }
+    }
+    
+    @available(iOS 13, *)
+    private func sha256(_ input: String) -> String {
+        
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            return String(format: "%02x", $0)
+        }.joined()
+       
+      return hashString
+    }
+}
+
+extension AuthViewController: ASAuthorizationControllerDelegate {
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            
+            guard let nonce = currentNonce else {
+                
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+            
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            
+            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+        
+                if (error != nil) {
+                    
+                    print(error?.localizedDescription)
+                } else {
+                    
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    return
+                }
+            }
+        }
+    }
+    
+    @available(iOS 13.0, *)
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        
+        print("Sign in with Apple errored: \(error)")
+    }
+}
+
+extension AuthViewController: ASAuthorizationControllerPresentationContextProviding {
+    
+    @available(iOS 13.0, *)
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        
+        return view.window!
     }
 }

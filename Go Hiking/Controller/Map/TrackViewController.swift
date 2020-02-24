@@ -17,7 +17,6 @@ import FirebaseDatabase
 struct histroy {
     
     let lat: Double
-    
     let long: Double
     
     var toDict: [String: Any] {
@@ -133,26 +132,29 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         
         guard let sumDistance = Double(distance) else { return }
         
-        let path = UserRecord(id: id, date: date, distance: sumDistance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
-        
-        UserManager.share.saveRecordData(userRecord: path) { (result) in
+            let path = UserRecord(id: id, date: date, distance: sumDistance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
             
-            switch result {
+            LKProgressHUD.showWaitingList(text: "路徑紀錄中..", viewController: self)
+            
+            LKProgressHUD.showSuccess(text: "紀錄完成", viewController: self)
+            
+            UserManager.share.saveRecordData(userRecord: path) { (result) in
                 
-            case .success(let data):
-                print(data)
+                switch result {
+                    
+                case .success(let data):
+                    print(data)
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 
-                
-            case .failure(let error):
-                print(error)
-                
+                self.dismiss(animated: true, completion: nil)
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+        
     
     func dateToday() {
         
@@ -212,9 +214,6 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     
                     self.path.add(CLLocationCoordinate2D(latitude: userPosition.latitude, longitude: userPosition.longitude))
                     self.path.add(CLLocationCoordinate2D(latitude: cord.latitude, longitude: cord.longitude))
-                    
-//                    let newPath = histroy(lat: cord.latitude, long: cord.longitude)
-//                    self.pathLine.append(newPath.toDict)
                     
                     self.pathLat.append(cord.latitude)
                     self.pathLong.append(cord.longitude)
@@ -320,39 +319,4 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
 
 extension TrackViewController: GMSMapViewDelegate {
     
-//    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-//
-//        guard let apple = userPosition else { return }
-//
-//        let outCome = LocationStepsManager.shared.getDistance(lat1: apple.latitude, lng1: apple.longitude, lat2: position.target.latitude, lng2: position.target.longitude)
-//
-//        print(position)
-//
-//        if outCome > 0.00001 {
-//
-//            self.userPosition = position.target
-//            self.currentPosition.append(position.target)
-//
-//            let marker = GMSMarker()
-//            marker.position = CLLocationCoordinate2D(latitude: position.target.latitude, longitude: position.target.longitude)
-//            marker.title = "1"
-//            marker.map = trackMap
-//
-//        } else {
-//            return
-//        }
-//    }
-//
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//
-//        let location = locations.last
-//
-//        let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
-//        self.trackMap.animate(to: camera)
-//
-//        //    print("didUpdateLocations: \(location)")
-//
-//        let marker = GMSMarker()
-//        marker.map = trackMap
-//    }
 }

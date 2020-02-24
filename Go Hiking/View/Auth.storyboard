@@ -67,7 +67,7 @@
                                             <action selector="guestUser:" destination="2yc-L0-X9R" eventType="touchUpInside" id="ByJ-KE-GsN"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBg-pW-vrM">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KBg-pW-vrM">
                                         <rect key="frame" x="40" y="424" width="334" height="48"/>
                                         <color key="backgroundColor" name="T1"/>
                                         <constraints>
@@ -81,33 +81,28 @@
                                             <segue destination="XHr-Y6-7Am" kind="show" id="nJf-fI-8nZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOw-7E-UUC">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msh-wB-Q0r">
                                         <rect key="frame" x="40" y="706" width="334" height="48"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="Qiw-Pe-zs5"/>
+                                            <constraint firstAttribute="height" constant="48" id="I6n-pF-3mY"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="Apple 登入"/>
-                                        <connections>
-                                            <action selector="ghAppleLogin:" destination="2yc-L0-X9R" eventType="touchUpInside" id="vWo-3b-xP5"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="SCQ-Tf-zTp" secondAttribute="trailing" constant="40" id="1G9-P1-QnA"/>
-                                    <constraint firstItem="Oqb-vh-Ez7" firstAttribute="top" secondItem="FOw-7E-UUC" secondAttribute="bottom" constant="30" id="S3g-uR-2XG"/>
+                                    <constraint firstItem="KBg-pW-vrM" firstAttribute="centerY" secondItem="jVW-XR-rAA" secondAttribute="centerY" id="4Ub-73-s7j"/>
+                                    <constraint firstAttribute="trailing" secondItem="Msh-wB-Q0r" secondAttribute="trailing" constant="40" id="DBm-0f-Ubg"/>
+                                    <constraint firstItem="Msh-wB-Q0r" firstAttribute="top" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="30" id="KvW-bz-fuH"/>
                                     <constraint firstAttribute="trailing" secondItem="KBg-pW-vrM" secondAttribute="trailing" constant="40" id="W6z-Bk-zwQ"/>
                                     <constraint firstItem="SCQ-Tf-zTp" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="WjL-uc-tAP"/>
-                                    <constraint firstItem="FOw-7E-UUC" firstAttribute="top" secondItem="SCQ-Tf-zTp" secondAttribute="bottom" constant="30" id="aw5-XJ-oRg"/>
                                     <constraint firstAttribute="bottom" secondItem="Oqb-vh-Ez7" secondAttribute="bottom" constant="80" id="hFz-Lc-h9x"/>
                                     <constraint firstAttribute="trailing" secondItem="fwA-eL-reJ" secondAttribute="trailing" constant="40" id="iFZ-4p-dqH"/>
-                                    <constraint firstAttribute="trailing" secondItem="FOw-7E-UUC" secondAttribute="trailing" constant="40" id="jNx-1A-8QF"/>
+                                    <constraint firstItem="Msh-wB-Q0r" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="lQi-rH-q3f"/>
                                     <constraint firstItem="Oqb-vh-Ez7" firstAttribute="centerX" secondItem="jVW-XR-rAA" secondAttribute="centerX" id="n4d-cn-I9d"/>
+                                    <constraint firstItem="Oqb-vh-Ez7" firstAttribute="top" secondItem="Msh-wB-Q0r" secondAttribute="bottom" constant="30" id="qX4-ri-oBv"/>
                                     <constraint firstItem="SCQ-Tf-zTp" firstAttribute="top" secondItem="fwA-eL-reJ" secondAttribute="bottom" constant="30" id="raz-vb-McL"/>
-                                    <constraint firstItem="FOw-7E-UUC" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="st3-nx-Mft"/>
                                     <constraint firstItem="SCQ-Tf-zTp" firstAttribute="centerX" secondItem="jVW-XR-rAA" secondAttribute="centerX" id="ty5-NQ-0x7"/>
                                     <constraint firstItem="fwA-eL-reJ" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="u0a-jZ-FsC"/>
                                     <constraint firstItem="KBg-pW-vrM" firstAttribute="leading" secondItem="jVW-XR-rAA" secondAttribute="leading" constant="40" id="uda-FC-bYR"/>
@@ -135,7 +130,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="cOD-R2-leO"/>
                     <connections>
-                        <outlet property="ghAppleLogin" destination="FOw-7E-UUC" id="LoC-gn-z9r"/>
+                        <outlet property="ghAppleSignIn" destination="Msh-wB-Q0r" id="6vZ-sS-PfM"/>
                         <outlet property="ghFacebookLogin" destination="fwA-eL-reJ" id="KA8-Cy-E1v"/>
                         <outlet property="ghGoogleSignIn" destination="SCQ-Tf-zTp" id="tHq-gA-nnW"/>
                         <outlet property="ghSignUp" destination="KBg-pW-vrM" id="frm-ns-oMG"/>
@@ -258,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mqa-x8-skQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.985507246377" y="367.63392857142856"/>
+            <point key="canvasLocation" x="2523" y="-360"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="fzf-Em-C3j">
@@ -407,7 +402,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xX0-Ju-AG6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.579710144927539" y="-360.26785714285711"/>
+            <point key="canvasLocation" x="148" y="-360"/>
         </scene>
     </scenes>
     <resources>
