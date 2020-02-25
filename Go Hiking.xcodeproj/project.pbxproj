@@ -42,6 +42,8 @@
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
 		056FDC902403FCAC0015198A /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC8F2403FCAC0015198A /* ContentViewController.swift */; };
 		056FDC92240414B30015198A /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC91240414B30015198A /* ContentTableViewCell.swift */; };
+		056FDC9524056C120015198A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC9324056C120015198A /* RequestTableViewCell.swift */; };
+		056FDC9624056C120015198A /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FDC9424056C120015198A /* RequestTableViewCell.xib */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -153,6 +155,8 @@
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
 		056FDC8F2403FCAC0015198A /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		056FDC91240414B30015198A /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		056FDC9324056C120015198A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		056FDC9424056C120015198A /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -405,6 +409,8 @@
 				05BF08FA23E5A4A9009CED63 /* CampaignTableViewCell.swift */,
 				05BF08FB23E5A4A9009CED63 /* CampaignTableViewCell.xib */,
 				056FDC91240414B30015198A /* ContentTableViewCell.swift */,
+				056FDC9324056C120015198A /* RequestTableViewCell.swift */,
+				056FDC9424056C120015198A /* RequestTableViewCell.xib */,
 			);
 			path = Campaign;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				05BF08CA23E1AC2C009CED63 /* Map.storyboard in Resources */,
 				05A83C4023EBF4180004B38C /* Record.storyboard in Resources */,
 				051E6AB523FD0BD1000D942D /* HistoryHeadTableViewCell.xib in Resources */,
+				056FDC9624056C120015198A /* RequestTableViewCell.xib in Resources */,
 				05BF08FD23E5A4A9009CED63 /* CampaignTableViewCell.xib in Resources */,
 				05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */,
 				05BF08C623E1ABA4009CED63 /* Chat.storyboard in Resources */,
@@ -835,6 +842,7 @@
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
 				05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */,
 				0593573A23FA748200BE89F2 /* UIAlert+Extension.swift in Sources */,
+				056FDC9524056C120015198A /* RequestTableViewCell.swift in Sources */,
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
 				051A862D23EE9031008865FC /* CreateViewController.swift in Sources */,
 				051E6AD124017A81000D942D /* TrailPhoto.swift in Sources */,

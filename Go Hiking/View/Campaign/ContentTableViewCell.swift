@@ -10,7 +10,6 @@ import UIKit
 
 class ContentTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var contentTitle: UILabel!
     
     @IBOutlet weak var contentDate: UILabel!
@@ -24,8 +23,12 @@ class ContentTableViewCell: UITableViewCell {
     @IBOutlet weak var contentJoin: UIButton!
     
     @IBAction func joinEvent(_ sender: UIButton) {
+        
+        contentJoin.backgroundColor = .gray
+        contentJoin.setTitle("申請已送出", for: .normal)
+        sender.isEnabled = false
+
     }
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +47,7 @@ class ContentTableViewCell: UITableViewCell {
         contentJoin.layer.shadowOffset = CGSize(width: 0, height: 3)
         contentJoin.layer.shadowOpacity = 0.7
         contentJoin.layer.shadowRadius = 5
-        contentJoin.layer.shadowColor = UIColor.lightGray.cgColor
+        contentJoin.layer.shadowColor = UIColor.gray.cgColor
     }
     
     func btnType(text: String) {

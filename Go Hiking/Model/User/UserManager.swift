@@ -30,9 +30,10 @@ class UserManager {
     
     var userInfo: User?
     
+    // MARK: - Save User Info in Database
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
-      guard let name = Auth.auth().currentUser?.displayName,
+        guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
             let email = Auth.auth().currentUser?.email,
             let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
@@ -56,7 +57,7 @@ class UserManager {
         
     }
     
-    
+    // MARK: - Save Users Auth
     func signinUserData(credential: AuthCredential, completion: @escaping (Result<String>) -> Void) {
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
@@ -70,11 +71,12 @@ class UserManager {
         }
     }
     
+    // MARK: - Download Users Info
     func loadUserInfo(completion: @escaping (Swift.Result<User, Error>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-       userDB.collection("users").document(uid).getDocument { (user, error) in
+        userDB.collection("users").document(uid).getDocument { (user, error) in
             
             guard let user = user, error == nil else {
                 return
@@ -94,6 +96,7 @@ class UserManager {
         }
     }
     
+    // MARK: - Upload Users Data
     func uploadUserData(userInfo: User, completion: @escaping (Result<String>) -> Void ) {
         
         userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
@@ -108,12 +111,13 @@ class UserManager {
         }
     }
     
+    // MARK: - Upload Record Data
     func saveRecordData(userRecord: UserRecord, completion: @escaping (Result<String>) -> Void ) {
         
         let pathID = userDB.collection("users").document(userRecord.id).collection("Path").document().documentID
         
         do{
-           try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
+            try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
             
         } catch {
             
@@ -121,6 +125,7 @@ class UserManager {
         }
     }
     
+    // MARK: - Download Record Data
     func loadRecordData(completion: @escaping (Result<[UserRecord]>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -139,16 +144,14 @@ class UserManager {
                         recordData.append(data)
                         
                     } catch {
-
+                        
                         print(error)
                     }
                 }
                 completion(.success(recordData))
             }
-            
         }
     }
-    
 }
 
 

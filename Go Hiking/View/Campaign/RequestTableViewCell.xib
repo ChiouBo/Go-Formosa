@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Request" rowHeight="73" id="KGk-i7-Jjw" customClass="RequestTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="422" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AI5-uX-JpK">
+                        <rect key="frame" x="20" y="10" width="50" height="50"/>
+                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Ld3-qk-pDc"/>
+                            <constraint firstAttribute="width" constant="50" id="ZaK-6N-R0J"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="詹姆士小龐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLJ-Ds-xYW">
+                        <rect key="frame" x="90" y="25" width="87" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="UfE-3N-PeX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSJ-TH-mIp">
+                        <rect key="frame" x="371" y="20" width="31" height="30"/>
+                        <state key="normal" title="確認"/>
+                        <connections>
+                            <action selector="acceptBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zOv-Js-rF8"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIo-MQ-rZS">
+                        <rect key="frame" x="320" y="20" width="31" height="30"/>
+                        <state key="normal" title="拒絕"/>
+                        <connections>
+                            <action selector="rejectBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="5b8-Eo-fm9"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="AI5-uX-JpK" secondAttribute="bottom" constant="10" id="2aa-06-abU"/>
+                    <constraint firstItem="AI5-uX-JpK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Grg-wd-aaW"/>
+                    <constraint firstItem="AI5-uX-JpK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ITb-91-hBw"/>
+                    <constraint firstItem="gSJ-TH-mIp" firstAttribute="leading" secondItem="NIo-MQ-rZS" secondAttribute="trailing" constant="20" id="If1-eC-kya"/>
+                    <constraint firstItem="AI5-uX-JpK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="SyG-KX-T05"/>
+                    <constraint firstItem="TLJ-Ds-xYW" firstAttribute="leading" secondItem="AI5-uX-JpK" secondAttribute="trailing" constant="20" id="Un2-46-28r"/>
+                    <constraint firstAttribute="trailing" secondItem="gSJ-TH-mIp" secondAttribute="trailing" constant="20" id="eKA-nv-GUn"/>
+                    <constraint firstItem="TLJ-Ds-xYW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kH7-ES-7XX"/>
+                    <constraint firstItem="NIo-MQ-rZS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qd5-Gc-vCG"/>
+                    <constraint firstItem="gSJ-TH-mIp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vJU-6p-xEl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="reqAcceptBtn" destination="gSJ-TH-mIp" id="sZG-Dd-Kvc"/>
+                <outlet property="reqRejectBtn" destination="NIo-MQ-rZS" id="a0y-H5-dtX"/>
+                <outlet property="reqUserImage" destination="AI5-uX-JpK" id="iQA-PP-163"/>
+                <outlet property="reqUserName" destination="TLJ-Ds-xYW" id="JtO-rz-g84"/>
+            </connections>
+            <point key="canvasLocation" x="205.79710144927537" y="116.18303571428571"/>
+        </tableViewCell>
+    </objects>
+</document>

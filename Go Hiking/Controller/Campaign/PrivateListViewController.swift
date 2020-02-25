@@ -71,8 +71,6 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
               let gradientLayer = CAGradientLayer()
               gradientLayer.colors = gradientColors
               gradientLayer.locations = gradientLocations
-    //          gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-    //          gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
               gradientLayer.frame = self.view.frame
               self.view.layer.insertSublayer(gradientLayer, at: 0)
           }
@@ -163,7 +161,8 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         
         if isFiltering() { return filteredCampaign.count}
         
-        return campaigns.count
+//        return campaigns.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -185,8 +184,8 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
             currentCampaign = campaigns[indexPath.row]
         }
         
-        cell.campaignTitle.text = currentCampaign.title
-        cell.campaignLevel.text = currentCampaign.type
+//        cell.campaignTitle.text = currentCampaign.title
+//        cell.campaignLevel.text = currentCampaign.type
         cell.backgroundColor = .clear
         
         return cell

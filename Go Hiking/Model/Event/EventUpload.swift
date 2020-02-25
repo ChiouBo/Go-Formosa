@@ -23,11 +23,14 @@ class UploadEvent {
     
     let eventDB = Firestore.firestore()
     
+    // MARK: - Upload Event Data
     func uploadEventData(evenContent: EventContent, image: String) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        eventDB.collection("Event").document().setData([
+        let documentID = eventDB.collection("Event").document().documentID
+        
+        eventDB.collection("Event").document(documentID).setData([
             
             "title": evenContent.title,
             "desc": evenContent.desc,
@@ -37,7 +40,10 @@ class UploadEvent {
             "member": evenContent.amount,
             "image": image,
             "creater": uid,
-            "eventID": eventDB.collection("Event").document().documentID
+            "eventID": documentID,
+            "waitingList": [],
+            "memberList": [],
+            "requestList": []
             
         ]) { (error) in
             
@@ -48,6 +54,7 @@ class UploadEvent {
         }
     }
     
+    // MARK: - Download Photo URL
     func storage(uniqueString: String, data: Data, completion: @escaping (Result<URL>) -> Void ) {
         
         let uploadData = data
@@ -75,6 +82,7 @@ class UploadEvent {
         })
     }
     
+    // MARK: - Download Event Data
     func download(completion: @escaping (Result<EventCurrent>) -> Void) {
         
         eventDB.collection("Event").order(by: "start", descending: true).getDocuments { (snapshot, error) in
@@ -97,11 +105,57 @@ class UploadEvent {
         }
     }
     
+    // MARK: - Remove Event Data
     func removePost() {
         
         
     }
     
+    // MARK: - Request Event
+    func requestEvent(userRequest: User, event: EventCurrent, completion: @escaping (Result<String>) -> Void ) {
+
+        guard let userUid = Auth.auth().currentUser?.uid else { return }
+        
+        let ref: DocumentReference = eventDB.collection("Event").document(userUid)
+        
+        do{
+            try eventDB.collection("Event").document(event.eventID).collection("Request").document(userUid).setData(from: userRequest)
+
+            eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayUnion([ref])])
+            
+            eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayUnion([userUid])])
+        } catch {
+            
+            print(error.localizedDescription)
+        }
+    }
+    
+    // MARK: - Upload Request to Event
+    func loadRequestUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<User, Error>) -> Void) {
+
+        eventDB.collection("Event").document(event.eventID).collection("Request").getDocuments { (snapshots, error) in
+            
+            guard let snapShots = snapshots else { return }
+            
+            for req in snapShots.documents {
+                
+                do {
+                    guard let users = try req.data(as: User.self, decoder: Firestore.Decoder()) else { return }
+  
+                    completion(.success(users))
+                    
+                } catch {
+                    
+                    print(error)
+                    
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+
+    // MARK: - Bring User to Event Mamber
     
 }
 

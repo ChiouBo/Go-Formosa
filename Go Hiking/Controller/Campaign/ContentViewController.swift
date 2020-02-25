@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ContentViewController: UIViewController {
 
@@ -20,6 +21,10 @@ class ContentViewController: UIViewController {
     
     var eventDict: EventCurrent?
     
+    var userDict: User?
+    
+    var pressed = false
+    
     func customizebackgroundView() {
               
               let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
@@ -31,11 +36,27 @@ class ContentViewController: UIViewController {
               let gradientLayer = CAGradientLayer()
               gradientLayer.colors = gradientColors
               gradientLayer.locations = gradientLocations
-    //          gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-    //          gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+
               gradientLayer.frame = self.view.frame
               self.view.layer.insertSublayer(gradientLayer, at: 0)
           }
+    
+    func loadUserInfo() {
+        
+        UserManager.share.loadUserInfo { (result) in
+            
+            switch result {
+                
+            case .success(let user):
+                
+                self.userDict = user
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +64,8 @@ class ContentViewController: UIViewController {
         titleImage()
         
         setElement()
+        
+        loadUserInfo()
         
         customizebackgroundView()
     }
@@ -56,12 +79,13 @@ class ContentViewController: UIViewController {
     
     func setElement() {
         
-        view.addSubview(contentImage)
         view.addSubview(contentTableView)
+        contentTableView.addSubview(contentImage)
         
         contentTableView.backgroundColor = .clear
         contentTableView.delegate = self
         contentTableView.dataSource = self
+        contentTableView.register(UINib(nibName: "RequestTableViewCell", bundle: nil), forCellReuseIdentifier: "Request")
         contentTableView.rowHeight = UITableView.automaticDimension
         contentTableView.contentInset = UIEdgeInsets(top: imageOriginHeight, left: 0, bottom: 0, right: 0)
         contentTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -97,26 +121,111 @@ class ContentViewController: UIViewController {
 }
 
 extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        if eventDict?.waitingList.count == 0 {
+            
+            return 1
+        } else {
+            
+            return (eventDict?.waitingList.count ?? 0) + 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as? ContentTableViewCell else { return UITableViewCell() }
+        if indexPath.row == 0 {
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as? ContentTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
+            guard let eventData = eventDict else { return UITableViewCell()}
+            
+            cell.selectionStyle = .none
+            
+            cell.contentTitle.text = eventDict?.title
+            cell.contentLocation.text = ""
+            cell.contentDate.text = "\(eventDict?.start ?? "") - \(eventDict?.end ?? "")"
+            cell.contentDesc.text = eventDict?.desc
+            cell.contentMember.text = eventDict?.member
+            
+            cell.contentJoin.addTarget(self, action: #selector(requestEvent), for: .touchUpInside)
+            
+            guard let user = Auth.auth().currentUser?.uid else { return UITableViewCell() }
+            
+            if Auth.auth().currentUser?.uid != eventDict?.creater {
+                
+                cell.contentJoin.isHidden = false
+                
+                if (eventData.requestList.contains(user)) {
+                    
+                    cell.contentJoin.backgroundColor = .gray
+                    cell.contentJoin.setTitle("申請已送出", for: .normal)
+                    cell.contentJoin.isEnabled = false
+                }
+                
+            } else {
+                cell.contentJoin.isHidden = true
+            }
+            
+            return cell
+        } else {
+            
+            guard let reqCell = tableView.dequeueReusableCell(withIdentifier: "Request", for: indexPath) as? RequestTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
+            guard let eventData = eventDict else { return UITableViewCell()}
+            
+            if Auth.auth().currentUser?.uid == eventData.creater {
+                
+                UploadEvent.shared.loadRequestUserInfo(event: eventData) { (result) in
+                    
+                    switch result {
+                        
+                    case .success(let users):
+                        
+                        print(users)
+                        
+                        reqCell.reqUserImage.loadImage(users.picture)
+                        
+                        reqCell.reqUserName.text = users.name
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                }
+            }
+            return reqCell
+        }
         
-        cell.selectionStyle = .none
         
-        cell.contentTitle.text = eventDict?.title
-        cell.contentLocation.text = ""
-        cell.contentDate.text = "\(eventDict?.start ?? "") - \(eventDict?.end ?? "")"
-        cell.contentDesc.text = eventDict?.desc
-        cell.contentMember.text = eventDict?.member
-        
-        
-        return cell
     }
     
-
-    
+    @objc func requestEvent() {
+        
+        guard let currentEvent = eventDict,
+            let currentUser = userDict else {
+                return
+        }
+        
+        UploadEvent.shared.requestEvent(userRequest: currentUser, event: currentEvent) { (result) in
+            
+            switch result {
+                
+            case .success(let userData):
+                
+                print(userData)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
 }

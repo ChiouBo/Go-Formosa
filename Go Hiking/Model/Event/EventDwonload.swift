@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 struct EventCurrent: Codable {
     
@@ -27,6 +28,12 @@ struct EventCurrent: Codable {
     
     let creater: String
     
+    let waitingList: [DocumentReference]
+    
+    let memberList: [DocumentReference]
+    
+    let requestList: [String]
+    
     var toDict: [String: Any] {
         
         return [
@@ -44,8 +51,13 @@ struct EventCurrent: Codable {
             
             "EventID": eventID,
             
-            "Creater": creater
+            "Creater": creater,
+            
+            "waitingList": waitingList,
+            
+            "memberList": memberList,
+            
+            "requestList": requestList
         ]
     }
-    
 }

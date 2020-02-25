@@ -124,7 +124,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YW-81-w9f">
-                                                    <rect key="frame" x="20" y="145" width="374" height="289"/>
+                                                    <rect key="frame" x="20" y="145" width="374" height="319"/>
                                                     <string key="text">葉子　是不會飛翔的翅膀
 翅膀　是落在天上的葉子
 天堂　原來應該不是妄想
@@ -144,7 +144,7 @@ oh~愛情　原來的開始是陪伴
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFE-0P-ZZ9">
-                                                    <rect key="frame" x="40" y="474" width="334" height="50"/>
+                                                    <rect key="frame" x="40" y="504" width="334" height="50"/>
                                                     <color key="backgroundColor" name="T2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="6ye-9j-EAG"/>
@@ -158,7 +158,7 @@ oh~愛情　原來的開始是陪伴
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lt8-iu-VYA">
-                                                    <rect key="frame" x="10" y="444" width="394" height="1"/>
+                                                    <rect key="frame" x="10" y="474" width="394" height="1"/>
                                                     <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="NTI-8P-RrH"/>
@@ -176,7 +176,7 @@ oh~愛情　原來的開始是陪伴
                                                 <constraint firstItem="4YW-81-w9f" firstAttribute="top" secondItem="14d-qb-2ic" secondAttribute="bottom" constant="20" id="OJD-53-BKC"/>
                                                 <constraint firstItem="J6E-jZ-qZo" firstAttribute="leading" secondItem="crl-fA-k7g" secondAttribute="leading" constant="20" id="OQB-l0-SZf"/>
                                                 <constraint firstItem="Lt8-iu-VYA" firstAttribute="leading" secondItem="crl-fA-k7g" secondAttribute="leading" constant="10" id="RN2-Uo-Txh"/>
-                                                <constraint firstAttribute="bottom" secondItem="pFE-0P-ZZ9" secondAttribute="bottom" constant="60" id="S2v-IX-9fA"/>
+                                                <constraint firstAttribute="bottom" secondItem="pFE-0P-ZZ9" secondAttribute="bottom" constant="30" id="S2v-IX-9fA"/>
                                                 <constraint firstItem="J6E-jZ-qZo" firstAttribute="top" secondItem="crl-fA-k7g" secondAttribute="top" constant="20" id="SJX-5y-76C"/>
                                                 <constraint firstAttribute="trailing" secondItem="tTn-4F-G6o" secondAttribute="trailing" constant="10" id="Upm-WU-oyz"/>
                                                 <constraint firstItem="v0d-wt-qFD" firstAttribute="top" secondItem="tTn-4F-G6o" secondAttribute="bottom" constant="10" id="Wps-Gc-6YY"/>
@@ -231,7 +231,7 @@ oh~愛情　原來的開始是陪伴
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnb-8d-gsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2810" y="-154"/>
+            <point key="canvasLocation" x="2875" y="-95"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDO-Iu-LA3">

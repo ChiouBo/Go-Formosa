@@ -261,14 +261,7 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         let content = UIStoryboard(name: "Campaign", bundle: nil)
         guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
         
-        let data = EventCurrent(image: filteredEvent[indexPath.row].image,
-                                title: filteredEvent[indexPath.row].title,
-                                desc: filteredEvent[indexPath.row].desc,
-                                start: filteredEvent[indexPath.row].start,
-                                end: filteredEvent[indexPath.row].end,
-                                member: filteredEvent[indexPath.row].member,
-                                eventID: filteredEvent[indexPath.row].eventID,
-                                creater: filteredEvent[indexPath.row].creater)
+        let data = filteredEvent[indexPath.row]
         
         contentVC.eventDict = data
         

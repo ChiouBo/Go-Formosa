@@ -95,7 +95,6 @@ struct UserRecord: Codable {
     
 }
 
-
 struct AppleUser {
     
     let id: String
@@ -125,5 +124,34 @@ extension AppleUser: CustomDebugStringConvertible {
         Last Name: \(LastName)
         Email: \(email)
         """
+    }
+}
+
+struct UserRequest: Codable {
+    
+    let id: String
+    
+    let name: String
+    
+    let email: String
+    
+    let photo: String
+    
+    let respond: Bool
+    
+    var requestDict: [String: Any] {
+        
+        return [
+            
+            "id": id,
+            
+            "name": name,
+            
+            "email": email,
+            
+            "photo": photo,
+            
+            "respond": respond
+        ]
     }
 }
