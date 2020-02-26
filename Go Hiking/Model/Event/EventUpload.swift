@@ -92,7 +92,8 @@ class UploadEvent {
                 for document in snapshot!.documents {
                     
                     do {
-                        guard let data = try document.data(as: EventCurrent.self, decoder: Firestore.Decoder()) else { return }
+                        
+                        guard let data = try document.data(as: EventCurrent.self) else { return }
                         
                         completion(.success(data))
                         
@@ -153,9 +154,30 @@ class UploadEvent {
             }
         }
     }
-
-
-    // MARK: - Bring User to Event Mamber
     
+    
+    // MARK: - Bring User to Event Mamber
+    func acceptRequestUser(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
+        
+        let ref = eventDB.collection("Event").document(uid)
+        
+        do {
+            try
+            eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayRemove([ref])])
+            
+            eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayRemove([ref])])
+            
+            eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayUnion([ref])])
+            
+            eventDB.collection("Event").document(event.eventID).collection("Request").document(uid).delete()
+            
+            completion(.success(()))
+        } catch {
+            
+            print(error)
+            
+            completion(.failure(error))
+        }
+    }
 }
 

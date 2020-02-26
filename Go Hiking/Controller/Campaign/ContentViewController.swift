@@ -23,7 +23,7 @@ class ContentViewController: UIViewController {
     
     var userDict: User?
     
-    var pressed = false
+    var reqDict: [User] = []
     
     func customizebackgroundView() {
               
@@ -65,6 +65,8 @@ class ContentViewController: UIViewController {
         
         setElement()
         
+        loadReqUsers()
+        
         loadUserInfo()
         
         customizebackgroundView()
@@ -75,6 +77,29 @@ class ContentViewController: UIViewController {
         guard let photo = eventDict?.image else { return }
         
         contentImage.loadImage(photo)
+    }
+    
+    func loadReqUsers() {
+        
+        guard let eventData = eventDict else { return }
+        
+        UploadEvent.shared.loadRequestUserInfo(event: eventData) { (result) in
+            
+            switch result {
+                
+            case .success(let users):
+                
+                print(users)
+                
+                self.reqDict.append(users)
+                
+                self.contentTableView.reloadData()
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
     }
     
     func setElement() {
@@ -98,6 +123,8 @@ class ContentViewController: UIViewController {
         contentImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         contentImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         contentImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        contentTableView.separatorStyle = .none
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -124,12 +151,17 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if eventDict?.waitingList.count == 0 {
-            
-            return 1
-        } else {
+        if Auth.auth().currentUser?.uid == eventDict?.creater, reqDict.count != 0 {
             
             return (eventDict?.waitingList.count ?? 0) + 1
+            
+        } else if eventDict?.waitingList.count == 0 {
+            
+            return 1
+            
+         } else {
+            
+            return 1
         }
     }
     
@@ -172,6 +204,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
+            
         } else {
             
             guard let reqCell = tableView.dequeueReusableCell(withIdentifier: "Request", for: indexPath) as? RequestTableViewCell else {
@@ -179,21 +212,38 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                 
             }
             
-            guard let eventData = eventDict else { return UITableViewCell()}
+            reqCell.selectionStyle = .none
+            
+            guard let eventData = eventDict else {
+                return UITableViewCell()
+                
+            }
             
             if Auth.auth().currentUser?.uid == eventData.creater {
                 
-                UploadEvent.shared.loadRequestUserInfo(event: eventData) { (result) in
+                
+                
+                reqCell.reqUserImage.loadImage(reqDict[indexPath.row - 1].picture)
+                
+                reqCell.reqUserName.text = "\(reqDict[indexPath.row - 1].name) 想要加入活動"
+                        
+                }
+            
+            reqCell.currentCell = {
+                
+                let reqUid = self.reqDict[indexPath.row - 1].id
+                
+                UploadEvent.shared.acceptRequestUser(event: eventData, uid: reqUid) { (result) in
                     
                     switch result {
                         
-                    case .success(let users):
+                    case .success:
                         
-                        print(users)
+                        self.reqDict.remove(at: indexPath.row - 1)
                         
-                        reqCell.reqUserImage.loadImage(users.picture)
+                        self.contentTableView.deleteRows(at: [indexPath], with: .right)
                         
-                        reqCell.reqUserName.text = users.name
+                        self.contentTableView.reloadData()
                         
                     case .failure(let error):
                         
@@ -203,8 +253,6 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             }
             return reqCell
         }
-        
-        
     }
     
     @objc func requestEvent() {
@@ -213,7 +261,6 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             let currentUser = userDict else {
                 return
         }
-        
         UploadEvent.shared.requestEvent(userRequest: currentUser, event: currentEvent) { (result) in
             
             switch result {
@@ -228,4 +275,6 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+    
 }

@@ -19,10 +19,15 @@ class RequestTableViewCell: UITableViewCell {
     @IBOutlet weak var reqAcceptBtn: UIButton!
     
     @IBAction func rejectBtn(_ sender: UIButton) {
+        
     }
     
     @IBAction func acceptBtn(_ sender: UIButton) {
+        currentCell?()
+        
     }
+    
+    var currentCell: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,6 +45,6 @@ class RequestTableViewCell: UITableViewCell {
         reqUserImage.layer.cornerRadius = 25
         reqUserImage.layer.borderWidth = 1.5
         reqUserImage.layer.borderColor = UIColor.white.cgColor
-        
+
     }
 }
