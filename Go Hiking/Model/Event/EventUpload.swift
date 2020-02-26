@@ -106,6 +106,32 @@ class UploadEvent {
         }
     }
     
+    // MARK: - Download Private Event Data
+    func loadPrivate(completion: @escaping (Result<EventCurrent>) -> Void ) {
+        
+        guard let currentUser = Auth.auth().currentUser?.uid else { return }
+        
+        eventDB.collection("Event").whereField("creater", isEqualTo: currentUser).order(by: "start", descending: true).getDocuments { (snapshot, error) in
+            
+            if error == nil && snapshot?.documents.count != 0 {
+                
+                for document in snapshot!.documents {
+                    
+                    do {
+                        
+                        guard let data = try document.data(as: EventCurrent.self) else { return }
+                        
+                        completion(.success(data))
+                        
+                    } catch {
+                        
+                        print(error)
+                    }
+                }
+            }
+        }
+    }
+    
     // MARK: - Remove Event Data
     func removePost() {
         

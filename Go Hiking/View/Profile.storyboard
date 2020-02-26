@@ -157,7 +157,7 @@
                                             </containerView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="naW-z5-Qx0">
                                                 <rect key="frame" x="293" y="184.5" width="414" height="1"/>
-                                                <color key="backgroundColor" name="denim"/>
+                                                <color key="backgroundColor" name="DarkBlue"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="414" id="6YJ-Qo-5Ww"/>
                                                     <constraint firstAttribute="height" constant="1" id="jRd-oW-CBM"/>
@@ -171,7 +171,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.034000001847743988" green="0.12700000405311584" blue="0.1995748178639882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.034000001850000003" green="0.050443005860563384" blue="0.080461701702816912" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="heQ-IF-qp9" firstAttribute="leading" secondItem="jsb-bf-FqK" secondAttribute="trailing" constant="22" id="3FQ-ZT-zij"/>
                                             <constraint firstItem="jsb-bf-FqK" firstAttribute="top" secondItem="D9x-11-RJc" secondAttribute="top" constant="-50" id="3dR-rF-LCt"/>
@@ -476,7 +476,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="p3z-t3-n1U">
                                 <rect key="frame" x="0.0" y="44" width="414" height="366.5"/>
-                                <color key="backgroundColor" red="0.034000001850000003" green="0.12700000410000001" blue="0.19957481790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.034000001850000003" green="0.050443005860000001" blue="0.080461701699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -506,7 +506,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Y0-NG-lI2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="366.5"/>
-                                <color key="backgroundColor" red="0.034000001850000003" green="0.12700000410000001" blue="0.19957481790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.034000001850000003" green="0.050443005860000001" blue="0.080461701699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGrayColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -536,7 +536,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uAg-hl-SwG">
                                 <rect key="frame" x="0.0" y="44" width="414" height="366.5"/>
-                                <color key="backgroundColor" red="0.034000001850000003" green="0.12700000410000001" blue="0.19957481790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.034000001850000003" green="0.050443005860000001" blue="0.080461701699999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
@@ -560,8 +560,8 @@
     <resources>
         <image name="Icon_Profile_Edit_Gray" width="128" height="128"/>
         <image name="Icon_Profile_Exit_Gray" width="90" height="90"/>
-        <namedColor name="denim">
-            <color red="0.23529411764705882" green="0.35294117647058826" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="DarkBlue">
+            <color red="0.034000001847743988" green="0.12700000405311584" blue="0.24699999392032623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

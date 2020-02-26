@@ -130,7 +130,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Photo" rowHeight="184" id="55l-HF-Lig" customClass="PhotoTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="378" width="414" height="184"/>
+                                        <rect key="frame" x="0.0" y="176" width="414" height="184"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="55l-HF-Lig" id="Iox-zv-Utw">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="184"/>
@@ -215,7 +215,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Start" rowHeight="330" id="9Ax-Tn-MYG" customClass="StartTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="562" width="414" height="330"/>
+                                        <rect key="frame" x="0.0" y="360" width="414" height="330"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Ax-Tn-MYG" id="POb-m8-7aI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="330"/>
@@ -235,11 +235,15 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="120" id="i7U-iH-F87"/>
                                                     </constraints>
+                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="599569200">
+                                                        <!--2020-01-01 11:00:00 +0000-->
+                                                    </date>
+                                                    <locale key="locale" localeIdentifier="en"/>
                                                     <connections>
                                                         <action selector="selectStartDate:" destination="9Ax-Tn-MYG" eventType="valueChanged" id="hym-Ej-Baz"/>
                                                     </connections>
                                                 </datePicker>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020年2月2日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFl-8n-sCF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFl-8n-sCF">
                                                     <rect key="frame" x="144" y="17" width="250" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="Q4J-1x-QXy"/>
@@ -269,7 +273,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="End" rowHeight="304" id="ybm-pl-128" customClass="EndTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="892" width="414" height="304"/>
+                                        <rect key="frame" x="0.0" y="690" width="414" height="304"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ybm-pl-128" id="XFh-EJ-bGR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
@@ -294,7 +298,7 @@
                                                         <action selector="selectEndDate:" destination="ybm-pl-128" eventType="valueChanged" id="STS-1Q-LTq"/>
                                                     </connections>
                                                 </datePicker>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020年2月2日" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzt-EI-14c">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzt-EI-14c">
                                                     <rect key="frame" x="144" y="17" width="250" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="250" id="Qpe-vg-YBT"/>

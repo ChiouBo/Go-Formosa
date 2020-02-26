@@ -98,7 +98,8 @@ class TrailViewController: UIViewController {
 //            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
 //            style: .done, target: self, action: #selector(filterBtn))
         navigationController?.navigationBar.barTintColor = .clear
-        
+        navigationItem.title = "臺灣步道資訊"
+        navigationController?.navigationBar.tintColor = .white
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
@@ -136,8 +137,6 @@ class TrailViewController: UIViewController {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradientColors
         gradientLayer.locations = gradientLocations
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-//        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         gradientLayer.frame = self.view.frame
         self.view.layer.insertSublayer(gradientLayer, at: 0)
     }

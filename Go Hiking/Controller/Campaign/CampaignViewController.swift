@@ -85,11 +85,14 @@ class CampaignViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = image
         navigationController?.navigationBar.isTranslucent = true
         
+        navigationItem.title = "活動"
+        navigationController?.navigationBar.tintColor = .white
+        
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(toPrivateList))
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.barTintColor = .clear
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
@@ -136,6 +139,8 @@ class CampaignViewController: UIViewController {
         filteredEvent = []
         
         getEventData()
+        
+//        navigationController?.setNavigationBarHidden(false, animated: false)
         
         publicTableView.reloadData()
     }
@@ -231,6 +236,12 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
 
+//        let dateformat = DateFormatter()
+//        
+//        dateformat.dateFormat = "yyyy年 MM月 dd日 EE"
+//        
+//        let monthDay = dateformat.date(from: filteredEvent[indexPath.row].start)
+        
         cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
         cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
         cell.campaignLevel.text = filteredEvent[indexPath.row].start
@@ -274,9 +285,10 @@ extension CampaignViewController {
     
     func setupElements() {
         
+
         view.addSubview(publicTableView)
         publicTableView.backgroundColor = .clear
-        publicTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        publicTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         publicTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         publicTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         publicTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

@@ -210,14 +210,26 @@ oh~愛情　原來的開始是陪伴
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdd-4N-K4X">
+                                <rect key="frame" x="334" y="220" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="157-Rq-tRh"/>
+                                    <constraint firstAttribute="width" constant="50" id="4v3-eQ-hOv"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="createrInfo:" destination="wOm-XH-3vS" eventType="touchUpInside" id="lAh-Zq-xvm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Dk0-pf-AFY" firstAttribute="trailing" secondItem="tRS-VQ-sF4" secondAttribute="trailing" id="8M9-xb-oah"/>
                             <constraint firstItem="Dk0-pf-AFY" firstAttribute="trailing" secondItem="bE1-2K-ZG2" secondAttribute="trailing" id="FF5-w3-F6l"/>
                             <constraint firstItem="tRS-VQ-sF4" firstAttribute="top" secondItem="bE1-2K-ZG2" secondAttribute="bottom" id="FhG-bM-Msj"/>
+                            <constraint firstItem="Dk0-pf-AFY" firstAttribute="trailing" secondItem="cdd-4N-K4X" secondAttribute="trailing" constant="30" id="FzZ-cL-Fo8"/>
                             <constraint firstItem="bE1-2K-ZG2" firstAttribute="top" secondItem="X2B-0Q-mH5" secondAttribute="top" id="IrK-hQ-My1"/>
                             <constraint firstItem="tRS-VQ-sF4" firstAttribute="leading" secondItem="Dk0-pf-AFY" secondAttribute="leading" id="cWV-XK-oZN"/>
+                            <constraint firstItem="tRS-VQ-sF4" firstAttribute="top" secondItem="cdd-4N-K4X" secondAttribute="bottom" constant="30" id="eNC-ui-8G0"/>
                             <constraint firstItem="bE1-2K-ZG2" firstAttribute="leading" secondItem="Dk0-pf-AFY" secondAttribute="leading" id="qtV-UN-etz"/>
                             <constraint firstItem="Dk0-pf-AFY" firstAttribute="bottom" secondItem="tRS-VQ-sF4" secondAttribute="bottom" id="sbG-Z8-nEb"/>
                         </constraints>
@@ -226,12 +238,13 @@ oh~愛情　原來的開始是陪伴
                     <connections>
                         <outlet property="contentImage" destination="bE1-2K-ZG2" id="xfe-Ty-5f7"/>
                         <outlet property="contentTableView" destination="tRS-VQ-sF4" id="yf3-Lw-82I"/>
+                        <outlet property="createrInfo" destination="cdd-4N-K4X" id="eDY-Mu-83L"/>
                         <outlet property="imageHeightConstraint" destination="xA4-YY-lEm" id="YQl-4w-VeX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnb-8d-gsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2875" y="-95"/>
+            <point key="canvasLocation" x="2873.913043478261" y="-95.089285714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sDO-Iu-LA3">

@@ -70,7 +70,7 @@ class CreateViewController: UIViewController {
                   
                   apple.map { info in
                       
-                      guard let uploadData = info.pngData() else { return }
+                    guard let uploadData = info.jpegData(compressionQuality: 0.5) else { return }
                       
                       LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
                       
@@ -160,7 +160,7 @@ class CreateViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy.MM.dd EE"
+        dateFormatter.dateFormat = "yyyy-MM-dd EE"
         
         let today = dateFormatter.string(from: date)
         
@@ -177,7 +177,7 @@ class CreateViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy.MM.dd EE"
+        dateFormatter.dateFormat = "yyyy-MM-dd EE"
         
         let today = dateFormatter.string(from: date)
         

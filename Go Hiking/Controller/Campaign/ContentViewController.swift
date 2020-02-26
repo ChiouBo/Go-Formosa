@@ -11,11 +11,18 @@ import Firebase
 
 class ContentViewController: UIViewController {
 
+    @IBOutlet weak var createrInfo: UIButton!
+    
     @IBOutlet weak var contentImage: UIImageView!
     
     @IBOutlet weak var contentTableView: UITableView!
     
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    
+    @IBAction func createrInfo(_ sender: UIButton) {
+        
+        
+    }
     
     let imageOriginHeight: CGFloat = 300
     
@@ -125,6 +132,11 @@ class ContentViewController: UIViewController {
         contentImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         contentTableView.separatorStyle = .none
+        
+        createrInfo.layer.cornerRadius = 25
+        createrInfo.layer.borderWidth = 2
+        createrInfo.layer.borderColor = UIColor.white.cgColor
+//        createrInfo.setImage(eventDict?., for: )
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -182,7 +194,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             cell.contentLocation.text = ""
             cell.contentDate.text = "\(eventDict?.start ?? "") - \(eventDict?.end ?? "")"
             cell.contentDesc.text = eventDict?.desc
-            cell.contentMember.text = eventDict?.member
+            cell.contentMember.text = "夥伴 \(eventDict?.member ?? "")"
             
             cell.contentJoin.addTarget(self, action: #selector(requestEvent), for: .touchUpInside)
             

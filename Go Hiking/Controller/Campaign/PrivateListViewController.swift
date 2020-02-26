@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import Firebase
 import IQKeyboardManagerSwift
 
 class PrivateListViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     let transition = CreateTransition()
+//
+//    var filteredCampaign = [Campaign]()
+//
+//    let campaigns = Campaign.getAllCampaigns()
     
-    var filteredCampaign = [Campaign]()
+    var eventList = [EventCurrent]()
     
-    let campaigns = Campaign.getAllCampaigns()
+    var eventData = [EventCurrent]()
+    
+    var filteredEvent: [EventCurrent] = [] {
+        
+        didSet {
+            
+            privateTableView.reloadData()
+        }
+    }
     
     lazy var privateTableView: UITableView = {
         let pTV = UITableView()
@@ -60,6 +73,25 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
     }
     
+    func setNavVC() {
+        
+        let image = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        navigationController?.navigationBar.shadowImage = image
+        navigationController?.navigationBar.isTranslucent = true
+        
+        navigationItem.title = "我的活動"
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = .clear
+        
+        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
     func customizebackgroundView() {
               
               let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
@@ -85,20 +117,73 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         customizebackgroundView()
         
         setupElements()
+        
+        setNavVC()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        eventData = []
+        
+        filteredEvent = []
+        
+        getEventData()
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        privateTableView.reloadData()
+    }
+    
+    func getEventData() {
+        
+        UploadEvent.shared.loadPrivate { (result) in
+            
+            switch result {
+                
+            case .success(let data):
+                
+                print(data)
+                
+                self.filteredEvent.append(data)
+                self.eventData.append(data)
+
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
-        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
-            
-            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
-            
-            if isSearchBarEmpty() {
+//        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
+//
+//            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
+//
+//            if isSearchBarEmpty() {
+//
+//                return doesCategoryMatch
+//            } else {
+//
+//                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+//            }
+//        })
+        
+        filteredEvent = []
+        
+        filteredEvent = eventData.filter({ (event: EventCurrent) -> Bool in
+        
+            let doesCategoryMatch = (scope == "All")
+
+            if searchText.isEmpty {
                 
                 return doesCategoryMatch
             } else {
-                
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+            
+                return doesCategoryMatch &&
+                    event.title.lowercased().contains(searchText.lowercased())
             }
         })
         
@@ -159,14 +244,16 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isFiltering() { return filteredCampaign.count}
+//        if isFiltering() { return filteredCampaign.count}
         
 //        return campaigns.count
-        return 0
+        
+        return filteredEvent.count
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return UIScreen.main.bounds.height / 4.5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -175,20 +262,36 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
             CampaignTableViewCell else { return UITableViewCell() }
         
         cell.selectionStyle = .none
-        
-        let currentCampaign: Campaign
-        
-        if isFiltering() {
-            currentCampaign = filteredCampaign[indexPath.row]
-        } else {
-            currentCampaign = campaigns[indexPath.row]
-        }
+        cell.backgroundColor = .clear
+//        let currentCampaign: Campaign
+//
+//        if isFiltering() {
+//            currentCampaign = filteredCampaign[indexPath.row]
+//        } else {
+//            currentCampaign = campaigns[indexPath.row]
+//        }
         
 //        cell.campaignTitle.text = currentCampaign.title
 //        cell.campaignLevel.text = currentCampaign.type
-        cell.backgroundColor = .clear
         
+            cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
+            cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
+            cell.campaignLevel.text = filteredEvent[indexPath.row].start
+            cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
+
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let content = UIStoryboard(name: "Campaign", bundle: nil)
+        guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
+        
+        let data = filteredEvent[indexPath.row]
+        
+        contentVC.eventDict = data
+        
+        show(contentVC, sender: nil)
     }
 }
 
