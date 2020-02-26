@@ -62,42 +62,79 @@ class CreateViewController: UIViewController {
     }
     @IBAction func eventPost(_ sender: UIButton) {
         
-        let uniqueString = NSUUID().uuidString
-        
-        guard let apple = data?.image else { return }
-        
-        apple.map { info in
+        if data?.image != nil, data?.title != "", data?.desc != "", data?.start != "", data?.end != "", data?.amount != "", checkText == true {
             
-            guard let uploadData = info.pngData() else { return }
+           let uniqueString = NSUUID().uuidString
+                  
+                  guard let apple = data?.image else { return }
+                  
+                  apple.map { info in
+                      
+                      guard let uploadData = info.pngData() else { return }
+                      
+                      LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
+                      
+                      UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
+                          
+                          switch result {
+                              
+                          case .success(let upload):
+                              
+                              guard let data = self.data else { return }
+                              
+                              UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
+                              
+                              LKProgressHUD.dismiss()
+                              
+                              LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
+                              
+                              DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                  
+                                  self.dismiss(animated: true, completion: nil)
+                              }
+                              
+                              print(upload)
+                              
+                          case .failure(let error):
+                              
+                              print(error)
+                          }
+                      }
+                  }
+        } else {
             
-            LKProgressHUD.showWaitingList(text: "正在建立活動", viewController: self)
+            var errorMessage = ""
             
-            UploadEvent.shared.storage(uniqueString: uniqueString, data: uploadData) { (result) in
+            if data?.image == nil {
                 
-                switch result {
-                    
-                case .success(let upload):
-                    
-                    guard let data = self.data else { return }
-                    
-                    UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
-                    
-                    LKProgressHUD.dismiss()
-                    
-                    LKProgressHUD.showSuccess(text: "開團成功！", viewController: self)
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                    
-                    print(upload)
-                    
-                case .failure(let error):
-                    
-                    print(error)
-                }
+                errorMessage = "請加入活動圖片！"
+            } else if data?.title == "" {
+                
+                errorMessage = "活動名稱不得為空！"
+            } else if data?.desc == "" {
+                
+                errorMessage = "活動規劃不得為空！"
+            } else if data?.start == "" {
+                
+                errorMessage = "請輸入開始時間！"
+            } else if data?.end == "" {
+                
+                errorMessage = "請輸入結束時間！"
+            } else if data?.amount == "" {
+                
+                errorMessage = "請選擇參加人數！"
+            } else if checkText == false {
+                
+                errorMessage = "結束時間必須大於開始時間！"
             }
+            
+            let alertController = UIAlertController(title: "注意", message: "\(errorMessage)", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            
+            alertController.addAction(defaultAction)
+            
+            present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -123,7 +160,7 @@ class CreateViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy年 MM月 dd日 EE"
+        dateFormatter.dateFormat = "yyyy.MM.dd EE"
         
         let today = dateFormatter.string(from: date)
         
@@ -140,7 +177,7 @@ class CreateViewController: UIViewController {
         
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateFormat = "yyyy年 MM月 dd日 EE"
+        dateFormatter.dateFormat = "yyyy.MM.dd EE"
         
         let today = dateFormatter.string(from: date)
         

@@ -22,83 +22,6 @@ struct ProfileGroup {
     let items: [ProfileItem]
 }
 
-//enum AchievementItem: ProfileItem {
-//
-//    case longestDistance
-//
-//    case longestTime
-//
-//    case mostExplore
-//
-//    case typeEasy
-//
-//    case typeMedium
-//
-//    case typeHard
-//
-//    case leading
-//
-//    var image: UIImage? {
-//
-//        switch self {
-//
-//        case .longestDistance: return UIImage.asset(.Icon_Goal_Color_2)
-//
-//        case .longestTime: return UIImage.asset(.Icon_Goal_Color_2)
-//
-//        case .mostExplore: return UIImage.asset(.Icon_Goal_Color_2)
-//
-//        case .typeEasy: return UIImage.asset(.Icon_Goal_Color_2)
-//
-//        case .typeMedium: return UIImage.asset(.Icon_Goal_Color_2)
-//
-//        case .typeHard: return UIImage.asset(.Icon_Goal_Color_2)
-//
-//        case .leading: return UIImage.asset(.Icon_Goal_Color_2)
-//        }
-//    }
-//
-//    var title: String {
-//
-//        switch self {
-//
-//        case .longestDistance: return NSLocalizedString("最長距離紀錄")
-//
-//        case .longestTime: return NSLocalizedString("最長時間紀錄")
-//
-//        case .mostExplore: return NSLocalizedString("最多探索紀錄")
-//
-//        case .typeEasy: return NSLocalizedString("郊山")
-//
-//        case .typeMedium: return NSLocalizedString("中級山")
-//
-//        case .typeHard: return NSLocalizedString("百岳")
-//
-//        case .leading: return NSLocalizedString("領隊")
-//        }
-//    }
-//
-//    var desc: String {
-//
-//        switch self {
-//
-//        case .longestDistance: return NSLocalizedString("公里")
-//
-//        case .longestTime: return NSLocalizedString("小時")
-//
-//        case .mostExplore: return NSLocalizedString("次")
-//
-//        case .typeEasy: return NSLocalizedString("座")
-//
-//        case .typeMedium: return NSLocalizedString("座")
-//
-//        case .typeHard: return NSLocalizedString("座")
-//
-//        case .leading: return NSLocalizedString("次")
-//        }
-//    }
-//}
-
 enum achieveItem: ProfileItem {
     
     case longestDistance
@@ -111,11 +34,11 @@ enum achieveItem: ProfileItem {
         
         switch self {
             
-        case .longestDistance: return UIImage.asset(.Icon_Goal_Color_1)
+        case .longestDistance: return UIImage.asset(.Icon_Goal_Gray_1)
             
-        case .longestTime: return UIImage.asset(.Icon_Goal_Color_2)
+        case .longestTime: return UIImage.asset(.Icon_Goal_Gray_2)
             
-        case .mostExplore: return UIImage.asset(.Icon_Goal_Color_3)
+        case .mostExplore: return UIImage.asset(.Icon_Goal_Gray_3)
             
         }
     }
@@ -137,11 +60,11 @@ enum achieveItem: ProfileItem {
         
         switch self {
             
-        case .longestDistance: return NSLocalizedString("36.0公里")
+        case .longestDistance: return NSLocalizedString("0.0公里")
             
-        case .longestTime: return NSLocalizedString("12.2 小時")
+        case .longestTime: return NSLocalizedString("0.0 小時")
             
-        case .mostExplore: return NSLocalizedString("3952.0 公尺")
+        case .mostExplore: return NSLocalizedString("0.0 公尺")
         }
     }
     
@@ -159,11 +82,11 @@ enum mountainItem: ProfileItem {
         
         switch self {
             
-        case .typeEasy: return UIImage.asset(.Icon_Goal_Color_Easy)
+        case .typeEasy: return UIImage.asset(.Icon_Goal_Gray_Easy)
             
-        case .typeMedium: return UIImage.asset(.Icon_Goal_Color_Medium)
+        case .typeMedium: return UIImage.asset(.Icon_Goal_Gray_Medium)
             
-        case .typeHard: return UIImage.asset(.Icon_Goal_Color_Hard)
+        case .typeHard: return UIImage.asset(.Icon_Goal_Gray_Hard)
             
         }
     }

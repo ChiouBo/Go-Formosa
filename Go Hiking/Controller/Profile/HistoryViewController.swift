@@ -109,7 +109,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 //        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
         
-        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2))"
+        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2)) 公里"
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
         

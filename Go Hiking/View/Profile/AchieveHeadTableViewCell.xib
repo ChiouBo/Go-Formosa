@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,19 +21,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JT-ta-dh5">
                         <rect key="frame" x="0.0" y="0.0" width="451" height="253"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_Goal_Color_1" translatesAutoresizingMaskIntoConstraints="NO" id="hFA-Jb-Ms4">
-                                <rect key="frame" x="170" y="50" width="111" height="136"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon_Goal_Gray_1" translatesAutoresizingMaskIntoConstraints="NO" id="hFA-Jb-Ms4">
+                                <rect key="frame" x="120" y="45" width="211" height="136"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="136" id="tyg-Ck-OKy"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最長距離紀錄" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idm-kt-grw">
-                                <rect key="frame" x="152.5" y="186" width="146" height="24"/>
+                                <rect key="frame" x="152.5" y="181" width="146" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ZNy-Pp-dve"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-3Q-1bn">
@@ -42,48 +43,48 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36.0公里" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2Q-nW-WmW">
-                                <rect key="frame" x="192.5" y="215" width="66" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0公里" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G2Q-nW-WmW">
+                                <rect key="frame" x="198" y="210" width="55.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="O3B-r8-4M0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新成就達成" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRD-e6-I93">
-                                <rect key="frame" x="164" y="30" width="123" height="20"/>
+                                <rect key="frame" x="164" y="25" width="123" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="s7N-jK-vuJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nU-v4-mJD">
                                 <rect key="frame" x="0.0" y="252" width="451" height="1"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" name="denim"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="epd-c8-vMa"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="1nU-v4-mJD" secondAttribute="bottom" id="0Yd-c5-Rno"/>
                             <constraint firstItem="G2Q-nW-WmW" firstAttribute="top" secondItem="idm-kt-grw" secondAttribute="bottom" constant="5" id="0cY-mh-PnX"/>
                             <constraint firstItem="zRD-e6-I93" firstAttribute="centerX" secondItem="9JT-ta-dh5" secondAttribute="centerX" id="0e8-hT-bVJ"/>
                             <constraint firstItem="idm-kt-grw" firstAttribute="centerX" secondItem="9JT-ta-dh5" secondAttribute="centerX" id="4Ct-fd-n4d"/>
                             <constraint firstItem="hFA-Jb-Ms4" firstAttribute="centerX" secondItem="9JT-ta-dh5" secondAttribute="centerX" id="5SV-B5-BJ4"/>
-                            <constraint firstAttribute="trailing" secondItem="hFA-Jb-Ms4" secondAttribute="trailing" constant="170" id="68q-iT-wSj"/>
+                            <constraint firstAttribute="trailing" secondItem="hFA-Jb-Ms4" secondAttribute="trailing" constant="120" id="68q-iT-wSj"/>
                             <constraint firstItem="idm-kt-grw" firstAttribute="top" secondItem="hFA-Jb-Ms4" secondAttribute="bottom" id="AG5-FM-4cv"/>
                             <constraint firstItem="hFA-Jb-Ms4" firstAttribute="top" secondItem="zRD-e6-I93" secondAttribute="bottom" id="BAj-ce-a1E"/>
                             <constraint firstItem="1nU-v4-mJD" firstAttribute="leading" secondItem="9JT-ta-dh5" secondAttribute="leading" id="EXN-5C-N1c"/>
                             <constraint firstAttribute="trailing" secondItem="1nU-v4-mJD" secondAttribute="trailing" id="G8v-th-NQz"/>
-                            <constraint firstItem="zRD-e6-I93" firstAttribute="top" secondItem="9JT-ta-dh5" secondAttribute="top" constant="30" id="M8F-v4-cZW"/>
+                            <constraint firstItem="zRD-e6-I93" firstAttribute="top" secondItem="9JT-ta-dh5" secondAttribute="top" constant="25" id="M8F-v4-cZW"/>
                             <constraint firstItem="G2Q-nW-WmW" firstAttribute="centerX" secondItem="9JT-ta-dh5" secondAttribute="centerX" id="W7P-yG-TvZ"/>
-                            <constraint firstAttribute="bottom" secondItem="G2Q-nW-WmW" secondAttribute="bottom" constant="20" id="Wa4-PO-8E9"/>
-                            <constraint firstItem="hFA-Jb-Ms4" firstAttribute="leading" secondItem="9JT-ta-dh5" secondAttribute="leading" constant="170" id="dD0-DT-dmv"/>
+                            <constraint firstAttribute="bottom" secondItem="G2Q-nW-WmW" secondAttribute="bottom" constant="25" id="Wa4-PO-8E9"/>
+                            <constraint firstItem="hFA-Jb-Ms4" firstAttribute="leading" secondItem="9JT-ta-dh5" secondAttribute="leading" constant="120" id="dD0-DT-dmv"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -94,6 +95,7 @@
                     <constraint firstItem="9JT-ta-dh5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tbq-oM-LYU"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="achieveDesc" destination="G2Q-nW-WmW" id="mdR-hq-SG0"/>
@@ -104,6 +106,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Icon_Goal_Color_1" width="128" height="128"/>
+        <image name="Icon_Goal_Gray_1" width="128" height="117"/>
+        <namedColor name="denim">
+            <color red="0.23529411764705882" green="0.35294117647058826" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -28,12 +28,12 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="專家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pv-x1-4FA">
-                                <rect key="frame" x="200" y="30" width="126" height="20"/>
+                                <rect key="frame" x="200" y="30" width="186" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Jcf-eF-ysG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000 點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4G-Kz-XlU">
@@ -42,16 +42,16 @@
                                     <constraint firstAttribute="height" constant="20" id="cOc-yD-wMA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="0.27449348569999998" green="0.27452111239999999" blue="0.2744704187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EBK-NB-Fot" firstAttribute="top" secondItem="EFr-qe-YqA" secondAttribute="top" constant="10" id="CQ0-4l-xiM"/>
                             <constraint firstAttribute="bottom" secondItem="EBK-NB-Fot" secondAttribute="bottom" constant="20" id="Fbz-rN-gU6"/>
                             <constraint firstItem="z4G-Kz-XlU" firstAttribute="leading" secondItem="EBK-NB-Fot" secondAttribute="trailing" constant="20" id="MCc-TY-3j3"/>
-                            <constraint firstAttribute="trailing" secondItem="9Pv-x1-4FA" secondAttribute="trailing" constant="100" id="Rfd-fL-f97"/>
+                            <constraint firstAttribute="trailing" secondItem="9Pv-x1-4FA" secondAttribute="trailing" constant="40" id="Rfd-fL-f97"/>
                             <constraint firstItem="EBK-NB-Fot" firstAttribute="leading" secondItem="EFr-qe-YqA" secondAttribute="leading" constant="100" id="W1I-P4-5jH"/>
                             <constraint firstItem="9Pv-x1-4FA" firstAttribute="leading" secondItem="EBK-NB-Fot" secondAttribute="trailing" constant="20" id="bWw-ek-qkW"/>
                             <constraint firstAttribute="bottom" secondItem="z4G-Kz-XlU" secondAttribute="bottom" constant="25" id="mk9-Kk-eJ6"/>
@@ -59,6 +59,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="EFr-qe-YqA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KOE-LY-Bia"/>
                     <constraint firstAttribute="trailing" secondItem="EFr-qe-YqA" secondAttribute="trailing" id="TgG-r9-69Y"/>
@@ -66,6 +67,7 @@
                     <constraint firstAttribute="bottom" secondItem="EFr-qe-YqA" secondAttribute="bottom" id="rHh-Mo-iNJ"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="levelImage" destination="EBK-NB-Fot" id="9Yn-Kd-1Dh"/>

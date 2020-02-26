@@ -59,7 +59,7 @@ class UploadEvent {
         
         let uploadData = data
         
-        let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).png")
+        let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).jpg")
         
         storageRef.putData(uploadData, metadata: nil, completion: { (data, error) in
             

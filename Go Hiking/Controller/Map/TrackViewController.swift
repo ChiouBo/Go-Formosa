@@ -134,7 +134,7 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         
             let path = UserRecord(id: id, date: date, distance: sumDistance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
             
-            LKProgressHUD.showWaitingList(text: "路徑紀錄中..", viewController: self)
+            LKProgressHUD.showWaitingList(text: "", viewController: self)
             
             LKProgressHUD.showSuccess(text: "紀錄完成", viewController: self)
             

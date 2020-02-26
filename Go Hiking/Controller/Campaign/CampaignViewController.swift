@@ -232,7 +232,8 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
 
         cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
-        cell.campaignLevel.text = filteredEvent[indexPath.row].member
+        cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
+        cell.campaignLevel.text = filteredEvent[indexPath.row].start
         cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
         
         return cell
