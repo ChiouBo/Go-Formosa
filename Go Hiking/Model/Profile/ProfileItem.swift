@@ -108,11 +108,11 @@ enum mountainItem: ProfileItem {
         
         switch self {
             
-        case .typeEasy: return NSLocalizedString("5座")
+        case .typeEasy: return NSLocalizedString("0 座")
             
-        case .typeMedium: return NSLocalizedString("3座")
+        case .typeMedium: return NSLocalizedString("0 座")
             
-        case .typeHard: return NSLocalizedString("2座")
+        case .typeHard: return NSLocalizedString("0 座")
         }
     }
 }
@@ -141,7 +141,7 @@ enum LeaderItem: ProfileItem {
         
         switch self {
             
-        case .leading: return NSLocalizedString("0次")
+        case .leading: return NSLocalizedString("0 次")
         }
     }
 }

@@ -65,6 +65,8 @@ class ContentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        print(eventDict)
         titleImage()
         
         setElement()
@@ -228,9 +230,44 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let headerView = UIView()
+        
+        headerView.backgroundColor = UIColor.clear
+        
+        let titleLabel = UILabel(frame: CGRect(x: headerView.center.x, y: headerView.center.y, width: 140, height: 30))
+        titleLabel.font = UIFont(name: "PingFangTC", size: 18)
+        titleLabel.textColor = .white
+        titleLabel.textAlignment = .center
+        headerView.addSubview(titleLabel)
+        
+        if Auth.auth().currentUser?.uid == eventDict?.creater {
+
+            if section == 1 {
+
+                titleLabel.text = "目前成員 \(eventDict?.memberList.count ?? 0) 人"
+            } else if section == 2 {
+
+                titleLabel.text = "等候加入 \(eventDict?.waitingList.count ?? 0) 人"
+            } else {
+                return nil
+            }
+        } else {
+
+            if section == 1 {
+
+                titleLabel.text = "目前成員 \(eventDict?.memberList.count ?? 0) 人"
+            }
+        }
+
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+
+        return 30
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -242,11 +279,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
                 
             }
-            
-            guard let eventData = eventDict else { return UITableViewCell()}
-            
             cell.selectionStyle = .none
-            
+
             cell.contentTitle.text = eventDict?.title
             cell.contentLocation.text = ""
             cell.contentDate.text = "\(eventDict?.start ?? "") - \(eventDict?.end ?? "")"
@@ -255,11 +289,18 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.contentJoin.addTarget(self, action: #selector(requestEvent), for: .touchUpInside)
             
-            guard let user = Auth.auth().currentUser?.uid else { return UITableViewCell() }
+            guard let user = Auth.auth().currentUser?.uid else {
+                
+                cell.contentJoin.isHidden = true
+                
+                return cell
+            }
             
-            if Auth.auth().currentUser?.uid != eventDict?.creater {
+            if Auth.auth().currentUser?.uid != eventDict?.creater || Auth.auth().currentUser?.uid == nil {
                 
                 cell.contentJoin.isHidden = false
+                
+                guard let eventData = eventDict else { return UITableViewCell()}
                 
                 if (eventData.requestList.contains(user)) {
                     
@@ -282,13 +323,20 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             guard let eventData = eventDict else {
-                
                 return UITableViewCell()
             }
             
             guard let memberList = eventDict?.memberListUser[indexPath.row] else {
                 return UITableViewCell()
                 
+            }
+            
+            if Auth.auth().currentUser?.uid != eventDict?.creater {
+                
+                memberCell.deleteBtn.isHidden = true
+            } else {
+                
+                memberCell.deleteBtn.isHidden = false
             }
             
             memberCell.selectionStyle = .none
@@ -310,6 +358,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                         self.eventDict?.memberListUser.remove(at: indexPath.row)
                         
                         self.contentTableView.deleteRows(at: [indexPath], with: .right)
+                        
+//                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
                         
                         self.contentTableView.reloadData()
                         
@@ -359,6 +409,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         self.eventDict?.memberListUser.append(object)
 
+//                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
+                        
                         self.contentTableView.reloadData()
                         
                     case .failure(let error):
@@ -382,6 +434,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         self.contentTableView.deleteRows(at: [indexPath], with: .right)
                         
+//                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
+                        
                         self.contentTableView.reloadData()
                         
                     case .failure(let error):
@@ -390,7 +444,6 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
-            
             return reqCell
         }
     }
@@ -414,29 +467,5 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                 print(error)
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        if Auth.auth().currentUser?.uid == eventDict?.creater {
-            
-            if section == 1 {
-                
-                return "Member"
-            } else if section == 2 {
-                
-                return "Waiting List"
-            } else {
-                
-                return ""
-            }
-        } else {
-            
-            if section == 1 {
-                
-                return "Member"
-            }
-        }
-        return ""
     }
 }

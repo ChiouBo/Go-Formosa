@@ -285,6 +285,8 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         
         contentVC.eventDict = data
         
+        print(contentVC.eventDict)
+        
         show(contentVC, sender: nil)
     }
 }

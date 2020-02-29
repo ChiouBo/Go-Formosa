@@ -246,6 +246,8 @@ class UploadEvent {
         
         let ref = eventDB.collection("users").document(uid)
         
+        eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayRemove([ref.documentID])])
+        
         eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayRemove([ref])]) { (error) in
             
             if let error = error {
