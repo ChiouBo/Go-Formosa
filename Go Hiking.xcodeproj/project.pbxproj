@@ -37,6 +37,8 @@
 		051E6ACD23FD59FC000D942D /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ACC23FD59FC000D942D /* ProfileManager.swift */; };
 		051E6ACF23FE67A0000D942D /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6ACE23FE67A0000D942D /* TrackViewController.swift */; };
 		051E6AD124017A81000D942D /* TrailPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AD024017A81000D942D /* TrailPhoto.swift */; };
+		053441E0240A37BE0021CFA8 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053441DE240A37BE0021CFA8 /* MemberTableViewCell.swift */; };
+		053441E1240A37BE0021CFA8 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053441DF240A37BE0021CFA8 /* MemberTableViewCell.xib */; };
 		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
 		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
@@ -150,6 +152,8 @@
 		051E6ACC23FD59FC000D942D /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
 		051E6ACE23FE67A0000D942D /* TrackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		051E6AD024017A81000D942D /* TrailPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailPhoto.swift; sourceTree = "<group>"; };
+		053441DE240A37BE0021CFA8 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		053441DF240A37BE0021CFA8 /* MemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberTableViewCell.xib; sourceTree = "<group>"; };
 		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
 		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
@@ -254,8 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				051A863D23EFE960008865FC /* EventObject.swift */,
-				0551325D23F04BFF008EC8D3 /* EventUpload.swift */,
 				05AD57E523F1A61E00F11EB5 /* EventDwonload.swift */,
+				0551325D23F04BFF008EC8D3 /* EventUpload.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -411,6 +415,8 @@
 				056FDC91240414B30015198A /* ContentTableViewCell.swift */,
 				056FDC9324056C120015198A /* RequestTableViewCell.swift */,
 				056FDC9424056C120015198A /* RequestTableViewCell.xib */,
+				053441DE240A37BE0021CFA8 /* MemberTableViewCell.swift */,
+				053441DF240A37BE0021CFA8 /* MemberTableViewCell.xib */,
 			);
 			path = Campaign;
 			sourceTree = "<group>";
@@ -711,6 +717,7 @@
 				051E6AC123FD0C37000D942D /* LevelTableViewCell.xib in Resources */,
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
+				053441E1240A37BE0021CFA8 /* MemberTableViewCell.xib in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
 				05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */,
 				051E6AAD23FC0E9A000D942D /* GoogleService-Info.plist in Resources */,
@@ -845,6 +852,7 @@
 				056FDC9524056C120015198A /* RequestTableViewCell.swift in Sources */,
 				05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */,
 				051A862D23EE9031008865FC /* CreateViewController.swift in Sources */,
+				053441E0240A37BE0021CFA8 /* MemberTableViewCell.swift in Sources */,
 				051E6AD124017A81000D942D /* TrailPhoto.swift in Sources */,
 				051E6ACF23FE67A0000D942D /* TrackViewController.swift in Sources */,
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,

@@ -43,7 +43,7 @@ class CampaignViewController: UIViewController {
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
+//        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
@@ -128,6 +128,8 @@ class CampaignViewController: UIViewController {
         
         publicTableView.separatorStyle = .none
         
+        publicTableView.backgroundColor = .red
+        
         setupElements()
     }
     
@@ -143,6 +145,10 @@ class CampaignViewController: UIViewController {
 //        navigationController?.setNavigationBarHidden(false, animated: false)
         
         publicTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     func getEventData() {
@@ -202,17 +208,19 @@ class CampaignViewController: UIViewController {
 extension CampaignViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        filterContentForSearchText(searchText: searchBar.text!)
+//            , scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
 extension CampaignViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+//        let searchBar = searchController.searchBar
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
-        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//            , scope: scope)
     }
 }
 
@@ -285,10 +293,9 @@ extension CampaignViewController {
     
     func setupElements() {
         
-
         view.addSubview(publicTableView)
         publicTableView.backgroundColor = .clear
-        publicTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        publicTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         publicTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         publicTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         publicTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

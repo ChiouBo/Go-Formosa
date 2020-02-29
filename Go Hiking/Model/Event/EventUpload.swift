@@ -140,69 +140,138 @@ class UploadEvent {
     
     // MARK: - Request Event
     func requestEvent(userRequest: User, event: EventCurrent, completion: @escaping (Result<String>) -> Void ) {
-
+        
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
-        let ref: DocumentReference = eventDB.collection("Event").document(userUid)
+        let ref: DocumentReference = eventDB.collection("users").document(userUid)
         
-        do{
-            try eventDB.collection("Event").document(event.eventID).collection("Request").document(userUid).setData(from: userRequest)
-
+//        do{
+            //            try eventDB.collection("Event").document(event.eventID).collection("Request").document(userUid).setData(from: userRequest)
             eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayUnion([ref])])
             
             eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayUnion([userUid])])
-        } catch {
+//        } catch {
             
-            print(error.localizedDescription)
-        }
+//            print(error.localizedDescription)
+//        }
     }
     
     // MARK: - Upload Request to Event
-    func loadRequestUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<User, Error>) -> Void) {
+    func loadRequestUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[User], Error>) -> Void) {
 
-        eventDB.collection("Event").document(event.eventID).collection("Request").getDocuments { (snapshots, error) in
+        print(event.eventID)
+        
+        var waitingMembers: [User] = []
+        
+        for count in 0 ..< event.waitingList.count {
             
-            guard let snapShots = snapshots else { return }
-            
-            for req in snapShots.documents {
+            event.waitingList[count].getDocument { userinfo, error in
                 
-                do {
-                    guard let users = try req.data(as: User.self, decoder: Firestore.Decoder()) else { return }
-  
-                    completion(.success(users))
+                if error == nil {
                     
-                } catch {
+                    guard let data = userinfo else { return }
                     
-                    print(error)
-                    
-                    completion(.failure(error))
+                    do {
+                        guard let userData = try data.data(as: User.self, decoder: Firestore.Decoder()) else { return }
+                       
+                        waitingMembers.append(userData)
+                        
+                        if waitingMembers.count == event.waitingList.count {
+ 
+                            completion(.success(waitingMembers))
+                        }
+                        
+                    } catch {
+                        completion(.failure(error))
+                    }
                 }
             }
         }
     }
     
+  
+    
+    // MARK: - Load Member to Event
+    func loadMemberUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[User], Error>) -> Void) {
+
+          print(event.eventID)
+                 
+                 var acceptMembers: [User] = []
+                 
+                 for count in 0 ..< event.memberList.count {
+                     
+                     event.memberList[count].getDocument { userinfo, error in
+                         
+                         if error == nil {
+                             
+                             guard let data = userinfo else { return }
+                             
+                             do {
+                                 guard let userData = try data.data(as: User.self, decoder: Firestore.Decoder()) else { return }
+                                
+                                 acceptMembers.append(userData)
+                                 
+                                 if acceptMembers.count == event.memberList.count {
+          
+                                     completion(.success(acceptMembers))
+                                 }
+                                 
+                             } catch {
+                                 completion(.failure(error))
+                             }
+                         }
+                     }
+                 }
+      }
     
     // MARK: - Bring User to Event Mamber
     func acceptRequestUser(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        let ref = eventDB.collection("Event").document(uid)
+        let ref = eventDB.collection("users").document(uid)
         
-        do {
-            try
             eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayRemove([ref])])
             
             eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayRemove([ref])])
             
             eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayUnion([ref])])
-            
-            eventDB.collection("Event").document(event.eventID).collection("Request").document(uid).delete()
-            
+        
+        // Request id
+        
+
             completion(.success(()))
-        } catch {
+    }
+    
+    // MARK: - Delete Member
+    func deleteMember(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
+        
+        let ref = eventDB.collection("users").document(uid)
+        
+        eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayRemove([ref])]) { (error) in
             
-            print(error)
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success(()))
+            }
+        }
+    }
+    
+    // MARK: - Delete Request
+    func deleteRequest(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
+        
+        let ref = eventDB.collection("users").document(uid)
+        
+        eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayRemove([ref])]) { (error) in
             
-            completion(.failure(error))
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success(()))
+            }
         }
     }
 }

@@ -19,15 +19,17 @@ class RequestTableViewCell: UITableViewCell {
     @IBOutlet weak var reqAcceptBtn: UIButton!
     
     @IBAction func rejectBtn(_ sender: UIButton) {
-        
+        deleteHandler?()
     }
     
     @IBAction func acceptBtn(_ sender: UIButton) {
-        currentCell?()
+        requestHandler?()
         
     }
     
-    var currentCell: (() -> Void)?
+    var requestHandler: (() -> Void)?
+    
+    var deleteHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()

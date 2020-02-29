@@ -48,7 +48,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
+//        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
@@ -226,17 +226,19 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
 extension PrivateListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        filterContentForSearchText(searchText: searchBar.text!)
+//            , scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
 extension PrivateListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+//        let searchBar = searchController.searchBar
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
-        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//            , scope: scope)
     }
 }
 
@@ -303,7 +305,7 @@ extension PrivateListViewController {
         view.addSubview(createBtn)
         
         privateTableView.backgroundColor = .clear
-        privateTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        privateTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         privateTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         privateTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         privateTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

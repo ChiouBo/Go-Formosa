@@ -139,48 +139,48 @@ class CreateViewController: UIViewController {
     }
     
     func checkDate() {
-        
+
         if endText > startText {
-            
+
             checkText = true
-            
+
         } else {
-            
+
             checkText = false
         }
     }
-    
+
     func getStartDate() {
-        
+
         let startDate = Date()
-        
+
         let timeInterval = TimeInterval(startDate.timeIntervalSince1970)
-        
+
         let date = Date(timeIntervalSince1970: timeInterval)
-        
+
         let dateFormatter = DateFormatter()
-        
+
         dateFormatter.dateFormat = "yyyy-MM-dd EE"
-        
+
         let today = dateFormatter.string(from: date)
-        
+
         self.startDate = today
     }
-    
+
     func getEndDate() {
-        
+
         let endDate = Date()
-        
+
         let timeInterval = TimeInterval(endDate.timeIntervalSince1970)
-        
+
         let date = Date(timeIntervalSince1970: timeInterval)
-        
+
         let dateFormatter = DateFormatter()
-        
+
         dateFormatter.dateFormat = "yyyy-MM-dd EE"
-        
+
         let today = dateFormatter.string(from: date)
-        
+
         self.endDate = today
     }
     
@@ -195,44 +195,44 @@ class CreateViewController: UIViewController {
         imagePickerController.allowsEditing = true
         
         contentTableView.rowHeight = UITableView.automaticDimension
-        
+
         getStartDate()
-        
+
         getEndDate()
     }
-    
+
     func alertAskForUpload() {
-        
+
         let imagePickerAlertController = UIAlertController(title: "上傳圖片", message: "請選擇要上傳的圖片", preferredStyle: .actionSheet)
-        
+
         let imageFromLibAction = UIAlertAction(title: "照片圖庫", style: .default) { (_) in
-            
+
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                
+
                 self.imagePickerController.sourceType = .photoLibrary
-                
+
                 self.present(self.imagePickerController, animated: true, completion: nil)
             }
         }
         let imageFromCameraAction = UIAlertAction(title: "相機", style: .default) { (_) in
-            
+
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                
+
                 self.imagePickerController.sourceType = .camera
-                
+
                 self.present(self.imagePickerController, animated: true, completion: nil)
             }
         }
         let cancelAction = UIAlertAction(title: "取消", style: .cancel) { (_) in
-            
+
             imagePickerAlertController.dismiss(animated: true, completion: nil)
         }
         imagePickerAlertController.addAction(imageFromLibAction)
-        
+
         imagePickerAlertController.addAction(imageFromCameraAction)
-        
+
         imagePickerAlertController.addAction(cancelAction)
-        
+
         present(imagePickerAlertController, animated: true, completion: nil)
     }
 }
@@ -246,40 +246,40 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
-            
+
         case 0:
             
             guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
             titleCell.selectionStyle = .none
             titleCell.delegate = self
-            
+
             titleCell.titleTextField.text = data?.title
             
             return titleCell
             
         case 1:
-            
+
             guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else { return UITableViewCell() }
             descCell.selectionStyle = .none
             descCell.delegate = self
-            
+
             descCell.DescTextView.text = data?.desc
-            
+
             return descCell
-            
-            
+
+
         case 2 :
-            
+
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
             photoCell.selectionStyle = .none
             photoCell.delegate = self
-            
+
             photoCell.photoArray = imageArray
-            
+
             return photoCell
-            
+
         case 3:
-            
+
             guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
             startDateCell.selectionStyle = .none
             startDateCell.delegate = self
@@ -287,9 +287,9 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             startText = startDateCell.startDatePicker.date
             checkDate()
             return startDateCell
-            
+
         case 4:
-            
+
             guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else { return UITableViewCell() }
             endDateCell.selectionStyle = .none
             endDateCell.delegate = self
@@ -297,25 +297,25 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             endText = endDateCell.endDatePicker.date
             checkDate()
             return endDateCell
-            
+
         case 5:
-            
+
             guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
             personCell.selectionStyle = .none
             personCell.delegate = self
             personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: data!.amount)
             personCell.amountPickerView.delegate = self
-            
+
             return personCell
-            
+
         case 6:
-            
+
             guard let previewCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
             previewCell.selectionStyle = .none
             previewCell.previewBtn.addTarget(self, action: #selector(passDatatoPreview), for: .touchUpInside)
-            
+
             return previewCell
-            
+
         default:
             return UITableViewCell()
         }
@@ -324,54 +324,54 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     @objc func passDatatoPreview() {
         
         if data?.image != nil, data?.title != "", data?.desc != "", data?.start != "", data?.end != "", data?.amount != "", checkText == true {
-            
+
             guard let previewVC = storyboard?.instantiateViewController(withIdentifier: "Preview") as? PreviewViewController,
-                
+
                 let photo = data?.image else {
-                    
+
                     return
             }
             data?.image = photo
-            
+
             previewVC.data = data
-            
+
             previewVC.modalPresentationStyle = .overCurrentContext
-            
+
             present(previewVC, animated: true, completion: nil)
-            
+
         } else {
-            
+
             var errorMessage = ""
-            
+
             if data?.image == nil {
-                
+
                 errorMessage = "請加入活動圖片！"
             } else if data?.title == "" {
-                
+
                 errorMessage = "活動名稱不得為空！"
             } else if data?.desc == "" {
-                
+
                 errorMessage = "活動規劃不得為空！"
             } else if data?.start == "" {
-                
+
                 errorMessage = "請輸入開始時間！"
             } else if data?.end == "" {
-                
+
                 errorMessage = "請輸入結束時間！"
             } else if data?.amount == "" {
-                
+
                 errorMessage = "請選擇參加人數！"
             } else if checkText == false {
-                
+
                 errorMessage = "結束時間必須大於開始時間！"
             }
-            
+
             let alertController = UIAlertController(title: "注意", message: "\(errorMessage)", preferredStyle: .alert)
-            
+
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            
+
             alertController.addAction(defaultAction)
-            
+
             present(alertController, animated: true, completion: nil)
         }
     }

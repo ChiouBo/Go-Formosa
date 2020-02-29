@@ -21,7 +21,6 @@ class ContentViewController: UIViewController {
     
     @IBAction func createrInfo(_ sender: UIButton) {
         
-        
     }
     
     let imageOriginHeight: CGFloat = 300
@@ -29,8 +28,6 @@ class ContentViewController: UIViewController {
     var eventDict: EventCurrent?
     
     var userDict: User?
-    
-    var reqDict: [User] = []
     
     func customizebackgroundView() {
               
@@ -74,6 +71,8 @@ class ContentViewController: UIViewController {
         
         loadReqUsers()
         
+        loadMemberUsers()
+        
         loadUserInfo()
         
         customizebackgroundView()
@@ -88,7 +87,10 @@ class ContentViewController: UIViewController {
     
     func loadReqUsers() {
         
-        guard let eventData = eventDict else { return }
+        guard let eventData = eventDict else {
+            
+            return
+        }
         
         UploadEvent.shared.loadRequestUserInfo(event: eventData) { (result) in
             
@@ -98,7 +100,33 @@ class ContentViewController: UIViewController {
                 
                 print(users)
                 
-                self.reqDict.append(users)
+                self.eventDict?.waitingListUser = users
+                
+                self.contentTableView.reloadData()
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
+    func loadMemberUsers() {
+        
+        guard let eventData = eventDict else {
+            
+            return
+        }
+        
+        UploadEvent.shared.loadMemberUserInfo(event: eventData) { (result) in
+            
+            switch result {
+                
+            case .success(let users):
+                
+                print(users)
+                
+                self.eventDict?.memberListUser = users
                 
                 self.contentTableView.reloadData()
                 
@@ -118,13 +146,14 @@ class ContentViewController: UIViewController {
         contentTableView.delegate = self
         contentTableView.dataSource = self
         contentTableView.register(UINib(nibName: "RequestTableViewCell", bundle: nil), forCellReuseIdentifier: "Request")
+        contentTableView.register(UINib(nibName: "MemberTableViewCell", bundle: nil), forCellReuseIdentifier: "Member")
         contentTableView.rowHeight = UITableView.automaticDimension
         contentTableView.contentInset = UIEdgeInsets(top: imageOriginHeight, left: 0, bottom: 0, right: 0)
         contentTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         contentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         contentTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         contentTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-
+        
         imageHeightConstraint = contentImage.heightAnchor.constraint(equalToConstant: 300)
         imageHeightConstraint?.isActive = true
         contentImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -136,7 +165,7 @@ class ContentViewController: UIViewController {
         createrInfo.layer.cornerRadius = 25
         createrInfo.layer.borderWidth = 2
         createrInfo.layer.borderColor = UIColor.white.cgColor
-//        createrInfo.setImage(eventDict?., for: )
+
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -163,23 +192,51 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if Auth.auth().currentUser?.uid == eventDict?.creater, reqDict.count != 0 {
-            
-            return (eventDict?.waitingList.count ?? 0) + 1
-            
-        } else if eventDict?.waitingList.count == 0 {
-            
-            return 1
-            
-         } else {
+        guard let requestCount = eventDict?.waitingListUser.count else { return 0 }
+        
+        guard let memberCount = eventDict?.memberListUser.count else { return 0 }
+        
+        if section == 0 {
             
             return 1
+            
+        } else if section == 1 {
+            
+            if memberCount != 0 {
+                
+                return memberCount
+            } else {
+                
+                return 0
+            }
+            
+        } else {
+            
+            if Auth.auth().currentUser?.uid == eventDict?.creater, requestCount != 0 {
+                
+                return requestCount
+                
+            } else {
+                
+                return 0
+            }
         }
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 3
+    }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
+        guard let event = eventDict else { return UITableViewCell() }
+        
+        if indexPath.section == 0 {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Content", for: indexPath) as? ContentTableViewCell else {
                 return UITableViewCell()
@@ -217,41 +274,40 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cell
             
-        } else {
+        } else if indexPath.section == 1 {
             
-            guard let reqCell = tableView.dequeueReusableCell(withIdentifier: "Request", for: indexPath) as? RequestTableViewCell else {
+            guard let memberCell = tableView.dequeueReusableCell(withIdentifier: "Member", for: indexPath) as? MemberTableViewCell else {
                 return UITableViewCell()
                 
             }
-            
-            reqCell.selectionStyle = .none
             
             guard let eventData = eventDict else {
+                
+                return UITableViewCell()
+            }
+            
+            guard let memberList = eventDict?.memberListUser[indexPath.row] else {
                 return UITableViewCell()
                 
             }
             
-            if Auth.auth().currentUser?.uid == eventData.creater {
-                
-                
-                
-                reqCell.reqUserImage.loadImage(reqDict[indexPath.row - 1].picture)
-                
-                reqCell.reqUserName.text = "\(reqDict[indexPath.row - 1].name) 想要加入活動"
-                        
-                }
+            memberCell.selectionStyle = .none
+
+            memberCell.memberName.text = memberList.name
             
-            reqCell.currentCell = {
+            memberCell.memberImage.loadImage(memberList.picture)
+            
+            memberCell.memberHandler = {
                 
-                let reqUid = self.reqDict[indexPath.row - 1].id
+                let memberUid = event.memberListUser[indexPath.row].id
                 
-                UploadEvent.shared.acceptRequestUser(event: eventData, uid: reqUid) { (result) in
+                UploadEvent.shared.deleteMember(event: eventData, uid: memberUid) { (result) in
                     
                     switch result {
                         
                     case .success:
                         
-                        self.reqDict.remove(at: indexPath.row - 1)
+                        self.eventDict?.memberListUser.remove(at: indexPath.row)
                         
                         self.contentTableView.deleteRows(at: [indexPath], with: .right)
                         
@@ -263,6 +319,78 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
+            
+        return memberCell
+        
+        } else {
+            
+            guard let reqCell = tableView.dequeueReusableCell(withIdentifier: "Request", for: indexPath) as? RequestTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
+            reqCell.selectionStyle = .none
+            
+            guard let eventData = eventDict else {
+                
+                return UITableViewCell()
+            }
+            
+            if Auth.auth().currentUser?.uid == eventData.creater {
+            
+                reqCell.reqUserImage.loadImage(event.waitingListUser[indexPath.row].picture)
+                    
+                    reqCell.reqUserName.text = "\(event.waitingListUser[indexPath.row].name) 想要加入活動"
+            }
+            
+            reqCell.requestHandler = {
+                
+                let reqUid = event.waitingListUser[indexPath.row].id
+
+                UploadEvent.shared.acceptRequestUser(event: eventData, uid: reqUid) { (result) in
+                    
+                    switch result {
+                        
+                    case .success:
+                        
+                        guard let object = self.eventDict?.waitingListUser.remove(at: indexPath.row) else { return }
+                        
+                        self.contentTableView.deleteRows(at: [indexPath], with: .right)
+                        
+                        self.eventDict?.memberListUser.append(object)
+
+                        self.contentTableView.reloadData()
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                }
+            }
+            
+            reqCell.deleteHandler = {
+                
+                let reqUid = event.waitingListUser[indexPath.row].id
+                
+                UploadEvent.shared.deleteRequest(event: eventData, uid: reqUid) { (result) in
+                    
+                    switch result {
+                        
+                    case .success:
+                        
+                        self.eventDict?.waitingListUser.remove(at: indexPath.row)
+                        
+                        self.contentTableView.deleteRows(at: [indexPath], with: .right)
+                        
+                        self.contentTableView.reloadData()
+                        
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                }
+            }
+            
             return reqCell
         }
     }
@@ -288,5 +416,27 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if Auth.auth().currentUser?.uid == eventDict?.creater {
+            
+            if section == 1 {
+                
+                return "Member"
+            } else if section == 2 {
+                
+                return "Waiting List"
+            } else {
+                
+                return ""
+            }
+        } else {
+            
+            if section == 1 {
+                
+                return "Member"
+            }
+        }
+        return ""
+    }
 }

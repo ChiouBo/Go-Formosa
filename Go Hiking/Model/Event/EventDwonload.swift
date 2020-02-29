@@ -28,11 +28,20 @@ struct EventCurrent: Codable {
     
     let creater: String
     
-    let waitingList: [DocumentReference]
+    var waitingList: [DocumentReference]
     
-    let memberList: [DocumentReference]
+    var memberList: [DocumentReference]
+    
+    var waitingListUser: [User] = []
+    
+    var memberListUser: [User] = []
     
     let requestList: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case image, title, desc, start, end, member, eventID, creater, requestList, waitingList, memberList
+    }
     
     var toDict: [String: Any] {
         
