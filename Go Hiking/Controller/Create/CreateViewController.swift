@@ -66,6 +66,9 @@ class CreateViewController: UIViewController {
             
            let uniqueString = NSUUID().uuidString
                   
+            //Chat
+            let chatroomID = UUID().uuidString
+            
                   guard let apple = data?.image else { return }
                   
                   apple.map { info in
@@ -82,7 +85,8 @@ class CreateViewController: UIViewController {
                               
                               guard let data = self.data else { return }
                               
-                              UploadEvent.shared.uploadEventData(evenContent: data, image: upload.absoluteString)
+                              
+                              UploadEvent.shared.uploadEventData(chatroomID: chatroomID, evenContent: data, image: upload.absoluteString)
                               
                               LKProgressHUD.dismiss()
                               

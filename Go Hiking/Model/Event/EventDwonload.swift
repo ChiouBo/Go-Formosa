@@ -32,15 +32,17 @@ struct EventCurrent: Codable {
     
     var memberList: [DocumentReference]
     
-    var waitingListUser: [User] = []
+    var waitingListUser: [UserInfo] = []
     
-    var memberListUser: [User] = []
+    var memberListUser: [UserInfo] = []
     
     let requestList: [String]
     
+    let chatroomID: String
+    
     enum CodingKeys: String, CodingKey {
         
-        case image, title, desc, start, end, member, eventID, creater, requestList, waitingList, memberList
+        case image, title, desc, start, end, member, eventID, creater, requestList, waitingList, memberList, chatroomID
     }
     
     var toDict: [String: Any] {
@@ -66,7 +68,9 @@ struct EventCurrent: Codable {
             
             "memberList": memberList,
             
-            "requestList": requestList
+            "requestList": requestList,
+            
+            "chatroomID": chatroomID
         ]
     }
 }

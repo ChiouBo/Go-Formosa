@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Firebase
 import AuthenticationServices
 
 struct UserObject: Codable {
 
     let accessToken: String
     
-    let user: User
+    let user: UserInfo
     
     enum CodingKeys: String, CodingKey {
         case user
@@ -21,7 +22,7 @@ struct UserObject: Codable {
     }
 }
 
-struct User: Codable {
+struct UserInfo: Codable {
     
     let id: String
     
@@ -36,6 +37,10 @@ struct User: Codable {
     var coverImage: String?
     
     var userLocation: String?
+    
+    var eventCreate: [DocumentReference]
+    
+    var event: [DocumentReference]
     
     var todict: [String: Any] {
         
@@ -52,7 +57,11 @@ struct User: Codable {
             
             "coverImage": coverImage ?? "",
             
-            "userLocation": userLocation ?? ""
+            "userLocation": userLocation ?? "",
+            
+            "eventCreate": eventCreate,
+            
+            "event": event
         ]
     }
 }

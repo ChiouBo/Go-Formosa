@@ -56,7 +56,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
     lazy var createBtn: UIButton = {
        let create = UIButton()
         create.translatesAutoresizingMaskIntoConstraints = false
-        create.setImage(UIImage(named: "Icons_48px_Add"), for: .normal)
+        create.setImage(UIImage(named: "Icon_Plus"), for: .normal)
         create.addTarget(self, action: #selector(toCreateVC), for: .touchUpInside)
         return create
     }()

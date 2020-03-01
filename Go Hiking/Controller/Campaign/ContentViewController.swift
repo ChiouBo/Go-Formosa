@@ -27,7 +27,7 @@ class ContentViewController: UIViewController {
     
     var eventDict: EventCurrent?
     
-    var userDict: User?
+    var userDict: UserInfo?
     
     func customizebackgroundView() {
               

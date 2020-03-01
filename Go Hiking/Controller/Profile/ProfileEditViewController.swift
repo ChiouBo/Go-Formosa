@@ -43,7 +43,9 @@ class ProfileEditViewController: UIViewController {
             let textLocation = editUserFrom.text,
             let textIntro = editUserIntro.text,
             let id = Auth.auth().currentUser?.uid,
-            let email = Auth.auth().currentUser?.email else { return }
+            let email = Auth.auth().currentUser?.email,
+            let eventCreate = editUserInfo?.eventCreate,
+            let event = editUserInfo?.event else { return }
         
         var isCover = false //如果背景沒圖 ＝ false
         var isPicture = false
@@ -135,7 +137,7 @@ class ProfileEditViewController: UIViewController {
         
         group.notify(queue: DispatchQueue.main) {
             
-            let userInfo = User(id: id, name: textName, email: email, picture: self.personPhoto, introduction: textIntro, coverImage: self.backgroundImage, userLocation: textLocation)
+            let userInfo = UserInfo(id: id, name: textName, email: email, picture: self.personPhoto, introduction: textIntro, coverImage: self.backgroundImage, userLocation: textLocation, eventCreate: eventCreate, event: event)
             
             UserManager.share.uploadUserData(userInfo: userInfo) { result in
                 
@@ -181,7 +183,7 @@ class ProfileEditViewController: UIViewController {
     
     weak var delegate: ProfileEditViewControllerDelegate?
     
-    var editUserInfo: User?
+    var editUserInfo: UserInfo?
     
     var addUser = false
     

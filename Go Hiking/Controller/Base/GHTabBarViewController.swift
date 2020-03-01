@@ -21,7 +21,7 @@ private enum Tab {
     
     case campaign
     
-//    case chat
+    case chat
     
     case profile
     
@@ -37,7 +37,7 @@ private enum Tab {
             
         case .campaign: controller = UIStoryboard.campaign.instantiateInitialViewController()!
             
-//        case .chat: controller = UIStoryboard.chat.instantiateInitialViewController()!
+        case .chat: controller = UIStoryboard.chat.instantiateInitialViewController()!
             
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
 
@@ -75,12 +75,12 @@ private enum Tab {
                 selectedImage: UIImage.asset(.Icons_32px_Campaign_Selected)
             )
             
-//        case .chat:
-//            return UITabBarItem(
-//                title: nil,
-//                image: UIImage.asset(.Icons_36px_Chat_Normal),
-//                selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
-//            )
+        case .chat:
+            return UITabBarItem(
+                title: nil,
+                image: UIImage.asset(.Icons_36px_Chat_Normal),
+                selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
+            )
 
         case .profile:
             return UITabBarItem(
@@ -94,7 +94,7 @@ private enum Tab {
 
 class GHTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.earth, .trail, .campaign, .profile]
+    private let tabs: [Tab] = [.earth, .trail, .campaign, .chat, .profile]
     
     var chatTabBarItem: UITabBarItem!
     

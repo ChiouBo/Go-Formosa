@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController {
         case level = 2
     }
     
-    var userInfo: User?
+    var userInfo: UserInfo?
     
     var userPic = ""
     var coverPic = ""
@@ -49,13 +49,15 @@ class ProfileViewController: UIViewController {
             return
         }
         
-        let userProfileInfo = User(id: "",
+        let userProfileInfo = UserInfo(id: "",
                                    name: userName.text ?? "",
                                    email: "",
                                    picture: userPic,
                                    introduction: userIntroduction.text ?? "",
                                    coverImage: coverPic,
-                                   userLocation: "")
+                                   userLocation: "",
+                                   eventCreate: [],
+                                   event: [])
         
         editVC.editUserInfo = userProfileInfo
         editVC.backgroundImage = userProfileInfo.coverImage!

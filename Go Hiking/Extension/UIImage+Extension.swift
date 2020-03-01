@@ -27,6 +27,8 @@ enum ImageAsset: String {
     case Icons_32px_Go_Normal
     case Icons_32px_Go_Selected
     
+    case Icon_Plus
+    
     // Chisel
     case Icons_24px_chisel
     

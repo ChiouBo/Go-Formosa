@@ -39,6 +39,13 @@
 		051E6AD124017A81000D942D /* TrailPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E6AD024017A81000D942D /* TrailPhoto.swift */; };
 		053441E0240A37BE0021CFA8 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053441DE240A37BE0021CFA8 /* MemberTableViewCell.swift */; };
 		053441E1240A37BE0021CFA8 /* MemberTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053441DF240A37BE0021CFA8 /* MemberTableViewCell.xib */; };
+		054B97FC240BD7C300A49F9A /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B97F9240BD7C300A49F9A /* DatabaseRepresentation.swift */; };
+		054B97FD240BD7C300A49F9A /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B97FA240BD7C300A49F9A /* Channel.swift */; };
+		054B97FE240BD7C300A49F9A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B97FB240BD7C300A49F9A /* Message.swift */; };
+		054B9800240BD94400A49F9A /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B97FF240BD94300A49F9A /* AppSettings.swift */; };
+		054B9802240BE0B700A49F9A /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9801240BE0B700A49F9A /* ChatTableViewCell.swift */; };
+		054B9804240BFB8A00A49F9A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9803240BFB8A00A49F9A /* MessageViewController.swift */; };
+		054B9806240C030900A49F9A /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054B9805240C030900A49F9A /* UICollectionView+Additions.swift */; };
 		0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */; };
 		0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */; };
 		0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0551325D23F04BFF008EC8D3 /* EventUpload.swift */; };
@@ -154,6 +161,13 @@
 		051E6AD024017A81000D942D /* TrailPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailPhoto.swift; sourceTree = "<group>"; };
 		053441DE240A37BE0021CFA8 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		053441DF240A37BE0021CFA8 /* MemberTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberTableViewCell.xib; sourceTree = "<group>"; };
+		054B97F9240BD7C300A49F9A /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		054B97FA240BD7C300A49F9A /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		054B97FB240BD7C300A49F9A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		054B97FF240BD94300A49F9A /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		054B9801240BE0B700A49F9A /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		054B9803240BFB8A00A49F9A /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		054B9805240C030900A49F9A /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
 		0551325823F00BBA008EC8D3 /* PreContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreContentTableViewCell.swift; sourceTree = "<group>"; };
 		0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientColor+Extension.swift"; sourceTree = "<group>"; };
 		0551325D23F04BFF008EC8D3 /* EventUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventUpload.swift; sourceTree = "<group>"; };
@@ -335,6 +349,7 @@
 		05BF08B023E08680009CED63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				05F22C09240BD612000DAAF1 /* Chat */,
 				05E56ED923F81FAC00FFD804 /* Map */,
 				051A863C23EFE932008865FC /* Event */,
 				05BF08D423E1AD37009CED63 /* Profile */,
@@ -467,6 +482,7 @@
 		05BF08BE23E1AB10009CED63 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				054B9801240BE0B700A49F9A /* ChatTableViewCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -516,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08E323E2002D009CED63 /* ChatViewController.swift */,
+				054B9803240BFB8A00A49F9A /* MessageViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -594,6 +611,7 @@
 				0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */,
 				0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */,
 				0593573923FA748200BE89F2 /* UIAlert+Extension.swift */,
+				054B9805240C030900A49F9A /* UICollectionView+Additions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -621,6 +639,17 @@
 				05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */,
 			);
 			path = Achievement;
+			sourceTree = "<group>";
+		};
+		05F22C09240BD612000DAAF1 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				054B97FA240BD7C300A49F9A /* Channel.swift */,
+				054B97FF240BD94300A49F9A /* AppSettings.swift */,
+				054B97F9240BD7C300A49F9A /* DatabaseRepresentation.swift */,
+				054B97FB240BD7C300A49F9A /* Message.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
@@ -803,6 +832,8 @@
 				051A863323EEEE21008865FC /* TitleTableViewCell.swift in Sources */,
 				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
 				05BF091223E80C84009CED63 /* TrailObject.swift in Sources */,
+				054B9806240C030900A49F9A /* UICollectionView+Additions.swift in Sources */,
+				054B97FC240BD7C300A49F9A /* DatabaseRepresentation.swift in Sources */,
 				0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */,
 				051A862B23EE8DD3008865FC /* PhotoTableViewCell.swift in Sources */,
 				05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */,
@@ -816,6 +847,7 @@
 				05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */,
 				051E6AC023FD0C37000D942D /* LevelTableViewCell.swift in Sources */,
 				05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */,
+				054B9804240BFB8A00A49F9A /* MessageViewController.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
 				05BF08EF23E328F4009CED63 /* GHConstant.swift in Sources */,
 				056FDC92240414B30015198A /* ContentTableViewCell.swift in Sources */,
@@ -835,6 +867,7 @@
 				05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */,
 				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
+				054B97FE240BD7C300A49F9A /* Message.swift in Sources */,
 				051A863E23EFE960008865FC /* EventObject.swift in Sources */,
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
 				05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */,
@@ -847,6 +880,7 @@
 				051E6AC423FD0C53000D942D /* AchieveCollectionViewCell.swift in Sources */,
 				05BF090323E6C32D009CED63 /* LoginViewController.swift in Sources */,
 				058873BB23DB4A9B00B1612F /* Go_Hiking.xcdatamodeld in Sources */,
+				054B97FD240BD7C300A49F9A /* Channel.swift in Sources */,
 				05BF090F23E80571009CED63 /* TrailTableViewCell.swift in Sources */,
 				0593573A23FA748200BE89F2 /* UIAlert+Extension.swift in Sources */,
 				056FDC9524056C120015198A /* RequestTableViewCell.swift in Sources */,
@@ -868,6 +902,7 @@
 				05BF090A23E7E832009CED63 /* PrivateListViewController.swift in Sources */,
 				05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */,
 				05BF08FC23E5A4A9009CED63 /* CampaignTableViewCell.swift in Sources */,
+				054B9802240BE0B700A49F9A /* ChatTableViewCell.swift in Sources */,
 				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
 				056FDC902403FCAC0015198A /* ContentViewController.swift in Sources */,
 				05BF08E423E2002D009CED63 /* ChatViewController.swift in Sources */,
@@ -878,6 +913,7 @@
 				05BF090523E6DDB5009CED63 /* Campaign.swift in Sources */,
 				0551325923F00BBA008EC8D3 /* PreContentTableViewCell.swift in Sources */,
 				051E6AC823FD397F000D942D /* AchieveTableViewCell.swift in Sources */,
+				054B9800240BD94400A49F9A /* AppSettings.swift in Sources */,
 				05BF08DA23E1E392009CED63 /* UIStoryboard+Extension.swift in Sources */,
 				051A863B23EFE1AD008865FC /* PreviewViewController.swift in Sources */,
 				051E6ACD23FD59FC000D942D /* ProfileManager.swift in Sources */,

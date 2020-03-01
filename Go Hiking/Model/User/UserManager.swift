@@ -28,7 +28,7 @@ class UserManager {
     
     let userDB = Firestore.firestore()
     
-    var userInfo: User?
+    var userInfo: UserInfo?
     
     // MARK: - Save User Info in Database
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
@@ -43,7 +43,7 @@ class UserManager {
         
         let pictureString = "\(picture + image)"
         
-        let userInfo = User(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "")
+        let userInfo = UserInfo(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "", eventCreate: [], event: [])
         
         self.userDB.collection("users").document(id).setData(userInfo.todict){ (error) in
             
@@ -72,7 +72,7 @@ class UserManager {
     }
     
     // MARK: - Download Users Info
-    func loadUserInfo(completion: @escaping (Swift.Result<User, Error>) -> Void ) {
+    func loadUserInfo(completion: @escaping (Swift.Result<UserInfo, Error>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -83,7 +83,8 @@ class UserManager {
             }
             
             do {
-                guard let info = try user.data(as: User.self, decoder: Firestore.Decoder()) else {
+                guard let info = try user.data(as: UserInfo.self, decoder: Firestore.Decoder()) else {
+                    completion(.failure(FirebaseLogin.noneLogin))
                     return
                 }
                 completion(.success(info))
@@ -97,7 +98,7 @@ class UserManager {
     }
     
     // MARK: - Upload Users Data
-    func uploadUserData(userInfo: User, completion: @escaping (Result<String>) -> Void ) {
+    func uploadUserData(userInfo: UserInfo, completion: @escaping (Result<String>) -> Void ) {
         
         userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
             

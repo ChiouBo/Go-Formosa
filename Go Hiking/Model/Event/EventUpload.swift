@@ -24,11 +24,15 @@ class UploadEvent {
     let eventDB = Firestore.firestore()
     
     // MARK: - Upload Event Data
-    func uploadEventData(evenContent: EventContent, image: String) {
+    func uploadEventData(chatroomID: String, evenContent: EventContent, image: String) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let documentID = eventDB.collection("Event").document().documentID
+        
+        let channel = Channel(name: chatroomID, eventID: documentID)
+        
+        eventDB.collection("Chatroom").document(chatroomID).setData(channel.representation)
         
         eventDB.collection("Event").document(documentID).setData([
             
@@ -43,7 +47,8 @@ class UploadEvent {
             "eventID": documentID,
             "waitingList": [],
             "memberList": [],
-            "requestList": []
+            "requestList": [],
+            "chatroomID": chatroomID
             
         ]) { (error) in
             
@@ -139,7 +144,7 @@ class UploadEvent {
     }
     
     // MARK: - Request Event
-    func requestEvent(userRequest: User, event: EventCurrent, completion: @escaping (Result<String>) -> Void ) {
+    func requestEvent(userRequest: UserInfo, event: EventCurrent, completion: @escaping (Result<String>) -> Void ) {
         
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
@@ -157,11 +162,11 @@ class UploadEvent {
     }
     
     // MARK: - Upload Request to Event
-    func loadRequestUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[User], Error>) -> Void) {
+    func loadRequestUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[UserInfo], Error>) -> Void) {
 
         print(event.eventID)
         
-        var waitingMembers: [User] = []
+        var waitingMembers: [UserInfo] = []
         
         for count in 0 ..< event.waitingList.count {
             
@@ -172,7 +177,7 @@ class UploadEvent {
                     guard let data = userinfo else { return }
                     
                     do {
-                        guard let userData = try data.data(as: User.self, decoder: Firestore.Decoder()) else { return }
+                        guard let userData = try data.data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
                        
                         waitingMembers.append(userData)
                         
@@ -192,11 +197,11 @@ class UploadEvent {
   
     
     // MARK: - Load Member to Event
-    func loadMemberUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[User], Error>) -> Void) {
+    func loadMemberUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[UserInfo], Error>) -> Void) {
 
           print(event.eventID)
                  
-                 var acceptMembers: [User] = []
+                 var acceptMembers: [UserInfo] = []
                  
                  for count in 0 ..< event.memberList.count {
                      
@@ -207,7 +212,7 @@ class UploadEvent {
                              guard let data = userinfo else { return }
                              
                              do {
-                                 guard let userData = try data.data(as: User.self, decoder: Firestore.Decoder()) else { return }
+                                 guard let userData = try data.data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
                                 
                                  acceptMembers.append(userData)
                                  
@@ -229,17 +234,48 @@ class UploadEvent {
         
         let ref = eventDB.collection("users").document(uid)
         
-            eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayRemove([ref])])
-            
-            eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayRemove([ref])])
-            
-            eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayUnion([ref])])
+        let eventRef = eventDB.collection("Event").document(event.eventID)
         
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        
+        eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayRemove([ref])])
+        
+        eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayRemove([ref])])
+        
+        eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayUnion([ref])])
+        
+        eventDB.collection("users").document(uid).updateData(["event": FieldValue.arrayUnion([eventRef])])
+        
+        eventDB.collection("users").document(currentUid).updateData(["eventCreate": FieldValue.arrayUnion([eventRef])])
+        
+//        eventDB.collection("users").whereField("id", isEqualTo: uid).getDocuments { (snapshot, error) in
+//
+//            if error == nil {
+//
+//                guard let data = snapshot else { return }
+//
+//                do {
+//                    guard var userData = try data.documents[0].data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
+//
+////                    userData.event.append(eventRef)
+//                    self.uploadUserEvent(uid: uid, ref: eventRef)
+//
+//                    completion(.success(()))
+//
+//                } catch {
+//
+//                    completion(.failure(error))
+//                }
+//            }
+//        }
         // Request id
-        
-
             completion(.success(()))
     }
+    
+//    func uploadUserEvent(uid: String, ref: DocumentReference) {
+//        
+//        eventDB.collection("users").document(uid).updateData(["event": FieldValue.arrayUnion([ref])])
+//    }
     
     // MARK: - Delete Member
     func deleteMember(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
@@ -276,5 +312,17 @@ class UploadEvent {
             }
         }
     }
+    
+    //
+    func creatChatRoom(chatroomID: String, eventID: String, completion: @escaping (Swift.Result<String, Error>) -> Void) {
+        
+        let channel = Channel(name: chatroomID, eventID: eventID)
+        
+        eventDB.collection("Chatroom").document(chatroomID).setData(channel.representation) { (_) in
+            
+            completion(.success("Chatroom build"))
+        }
+    }
+    
 }
 
