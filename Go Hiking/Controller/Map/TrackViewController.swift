@@ -127,12 +127,12 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func stopBtn(_ sender: UIButton) {
         
         guard let id = Auth.auth().currentUser?.uid,
-            let distance = distanceLabel.text,
-            let time = timeLabel.text else { return }
+            let distance = distanceLabel.text
+             else { return }
         
         guard let sumDistance = Double(distance) else { return }
         
-            let path = UserRecord(id: id, date: date, distance: sumDistance, time: time, markerLat: pathLat, markerLong: pathLong, lineImage: "")
+        let path = UserRecord(id: id, date: date, distance: sumDistance, time: Int(floor(counter)), markerLat: pathLat, markerLong: pathLong, lineImage: "")
             
             LKProgressHUD.showWaitingList(text: "", viewController: self)
             
@@ -286,12 +286,10 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
 //        let origin = histroy(lat: location.latitude, long: location.longitude)
 //        pathLine.append(origin.toDict)
         
-        
         if let mapStyleURL = Bundle.main.url(forResource: "MapDarkMode", withExtension: "json") {
             trackMap.mapStyle = try? GMSMapStyle(contentsOfFileURL: mapStyleURL)
         }
     }
-    
     
     func setUserLocationTrack() {
         

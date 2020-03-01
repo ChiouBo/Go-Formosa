@@ -12,22 +12,20 @@ enum ImageAsset: String {
     
     
     // TabBar
-    case Icons_36px_Campaign_Normal
-    case Icons_36px_Campaign_Selected
+    case Icons_32px_Campaign_Normal
+    case Icons_32px_Campaign_Selected
     case Icons_36px_Chat_Normal
     case Icons_36px_Chat_Selected
-    case Icons_36px_Map_Normal
-    case Icons_24px_Map_Normal
     case Icons_32px_Map_Normal
-    case Icons_36px_Map_Selected
-    case Icons_36px_Private_Normal
-    case Icons_36px_Private_Selected
+    case Icons_32px_Map_Selected
+    case Icons_32px_Private_Normal
+    case Icons_32px_Private_Selected
     case Icons_36px_Profile_Normal
     case Icons_36px_Profile_Selected
-    case Icons_36px_Trail_Normal
-    case Icons_36px_Trail_Selected
-    case Icons_48px_Go_Normal
-    case Icons_48px_Go_Selected
+    case Icons_32px_Trail_Normal
+    case Icons_32px_Trail_Selected
+    case Icons_32px_Go_Normal
+    case Icons_32px_Go_Selected
     
     // Chisel
     case Icons_24px_chisel

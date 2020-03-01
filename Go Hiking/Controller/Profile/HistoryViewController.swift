@@ -24,6 +24,8 @@ class HistoryViewController: UIViewController {
     
     var sumDistance = 0.0
     
+    var sumTime = 0
+    
     @IBOutlet weak var historyTableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +69,13 @@ class HistoryViewController: UIViewController {
                     self.sumDistance += distance.distance
                 }
                 
+                self.sumTime = 0
+                
+                record.map { time in
+                    
+                    self.sumTime += time.time
+                }
+                
             case .failure(let error):
                 
                 print(error)
@@ -91,7 +100,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         headCell.selectionStyle = .none
         headCell.exploreTimes.text = "\(userRecord.count)"
         headCell.exploreKM.text = "\(sumDistance.roundTo(places: 2)) 公里"
-        headCell.exploreHR.text = ""
+        headCell.exploreHR.text = "\(sumTime / 3600).\(Int((sumTime % 3600) / 360)) 小時"
         
         return headCell
     } else {

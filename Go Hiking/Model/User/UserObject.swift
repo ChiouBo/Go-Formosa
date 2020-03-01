@@ -65,7 +65,7 @@ struct UserRecord: Codable {
     
     let distance: Double
     
-    let time: String
+    let time: Int
      
     let markerLat: [Double]
     
