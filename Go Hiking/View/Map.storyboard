@@ -245,8 +245,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon_Map_Pause" width="128" height="128"/>
-        <image name="Icon_Map_Stop" width="128" height="128"/>
+        <image name="Icon_Map_Pause" width="512" height="512"/>
+        <image name="Icon_Map_Stop" width="512" height="512"/>
         <image name="Map001" width="1386" height="936"/>
         <namedColor name="T3">
             <color red="0.4050000011920929" green="0.83700001239776611" blue="0.82200002670288086" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

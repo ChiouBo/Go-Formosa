@@ -17,69 +17,13 @@ class LocationStepsManager: NSObject {
     
     public static let shared = LocationStepsManager()
     
-    
     let locationManager = CLLocationManager()
-    
-//    fileprivate var locationSteps: [LocationStepCount] = []
-    
-//    fileprivate var currentLocation: CLLocationCoordinate2D? {
-//
-//        didSet {
-//
-//        }
-//    }
-    
-//    fileprivate var currentStepCount: Int = 0
-//
-//    var storeThread: Thread?
-//    var uploadThread: Thread?
-//    var storeTimer: Timer?
-//    var uploadTime: Timer?
-//
-//    fileprivate var isAllowWork: Bool = false
-//
-//    fileprivate let storeTimeInterval: TimeInterval = 120.0
-//    fileprivate let uploadTimeInterval: TimeInterval = 120.0
-    
-//    fileprivate let disposeBag = DisposeBag()
-//    fileprivate let uploadEvent = PublishSubject<UploadLoAndStepReq>()
-    
-//    fileprivate func startRecordLocation() {
-//
-//        locationManager.distanceFilter = 10
-//        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-//        locationManager.delegate = self
-        
-//        locationManager.requestAlwaysAuthorization()
-//        locationManager.requestWhenInUseAuthorization()
-//
-//        locationManager.pausesLocationUpdatesAutomatically = false
-//        locationManager.allowsBackgroundLocationUpdates = true
-//
-//        locationManager.startUpdatingLocation()
-//        handleUploadEvent()
-//    }
-    
-//    fileprivate func startWork() {
-//
-//        guard let coordinate = currentLocation else { return }
-        
-//        guard isInRange(coordinate: coordinate) else {
-            
-//            if isAllowWork {
-                
-        
-//            }
-//        }
-//    }
     
     func radian(inputDouble: Double) -> Double {
          return inputDouble * Double.pi/180.0
     }
     
     func markerView() -> UIImage {
-
-//        guard let marker = UIImage(named: "Icon_Map_RedDot")?.withRenderingMode(.alwaysTemplate) else { return UIImage() }
         
         let marker = UIImage()
         let markerView = UIImageView(image: marker)

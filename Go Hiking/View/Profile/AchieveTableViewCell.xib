@@ -19,7 +19,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-vp-Md2">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="550"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="550" id="bHh-Zg-Ne6"/>
                         </constraints>
@@ -31,6 +31,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="tN2-vp-Md2" secondAttribute="bottom" id="VkC-9X-NX7"/>
                     <constraint firstAttribute="trailing" secondItem="tN2-vp-Md2" secondAttribute="trailing" id="gn8-lA-xhh"/>
@@ -38,6 +39,7 @@
                     <constraint firstItem="tN2-vp-Md2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ti4-oj-uKg"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="achieveFlagCollectionView" destination="tN2-vp-Md2" id="8kg-oe-DMf"/>

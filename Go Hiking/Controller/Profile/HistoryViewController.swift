@@ -14,6 +14,10 @@ class HistoryViewController: UIViewController {
     
 //    let record = Record.getAllRecords()
     
+    var imagePoly = [Polyline]()
+    
+    let polyline = Polyline.getAllLines()
+    
     var userRecord: [UserRecord] = [] {
         
         didSet {
@@ -23,6 +27,8 @@ class HistoryViewController: UIViewController {
     }
     
     var sumDistance = 0.0
+    
+    var sumTime = 0
     
     @IBOutlet weak var historyTableView: UITableView!
     
@@ -67,6 +73,13 @@ class HistoryViewController: UIViewController {
                     self.sumDistance += distance.distance
                 }
                 
+                self.sumTime = 0
+                
+                record.map { time in
+                    
+                    self.sumTime += time.time
+                }
+                
             case .failure(let error):
                 
                 print(error)
@@ -91,7 +104,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         headCell.selectionStyle = .none
         headCell.exploreTimes.text = "\(userRecord.count)"
         headCell.exploreKM.text = "\(sumDistance.roundTo(places: 2)) 公里"
-        headCell.exploreHR.text = ""
+        headCell.exploreHR.text = "\(sumTime / 3600).\(Int((sumTime % 3600) / 360)) 小時"
         
         return headCell
     } else {
@@ -109,14 +122,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
 //        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
         
-        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2))"
+        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2)) 公里"
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
+        
+//        historyCell.explorePolyline.image = imagePoly[indexPath.row - 2].image
         
         return historyCell
         }
     }
-    
 }
 
 extension Double {

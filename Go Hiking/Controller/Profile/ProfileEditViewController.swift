@@ -43,7 +43,9 @@ class ProfileEditViewController: UIViewController {
             let textLocation = editUserFrom.text,
             let textIntro = editUserIntro.text,
             let id = Auth.auth().currentUser?.uid,
-            let email = Auth.auth().currentUser?.email else { return }
+            let email = Auth.auth().currentUser?.email,
+            let eventCreate = editUserInfo?.eventCreate,
+            let event = editUserInfo?.event else { return }
         
         var isCover = false //如果背景沒圖 ＝ false
         var isPicture = false
@@ -135,7 +137,7 @@ class ProfileEditViewController: UIViewController {
         
         group.notify(queue: DispatchQueue.main) {
             
-            let userInfo = User(id: id, name: textName, email: email, picture: self.personPhoto, introduction: textIntro, coverImage: self.backgroundImage, userLocation: textLocation)
+            let userInfo = UserInfo(id: id, name: textName, email: email, picture: self.personPhoto, introduction: textIntro, coverImage: self.backgroundImage, userLocation: textLocation, eventCreate: eventCreate, event: event)
             
             UserManager.share.uploadUserData(userInfo: userInfo) { result in
                 
@@ -181,7 +183,7 @@ class ProfileEditViewController: UIViewController {
     
     weak var delegate: ProfileEditViewControllerDelegate?
     
-    var editUserInfo: User?
+    var editUserInfo: UserInfo?
     
     var addUser = false
     
@@ -202,6 +204,7 @@ class ProfileEditViewController: UIViewController {
         imagePickerController.allowsEditing = true
         setElements()
         setUserInfo()
+        customizebackgroundView()
         coverImage.loadImage(backgroundImage, placeHolder: UIImage(named: "M001"))
     }
     
@@ -228,6 +231,23 @@ class ProfileEditViewController: UIViewController {
         editUserIntro.layer.cornerRadius = 5
         editUserIntro.layer.borderColor = UIColor.gray.cgColor
     }
+    
+    func customizebackgroundView() {
+            
+            let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+            let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+            let gradientColors = [bottomColor.cgColor, topColor.cgColor]
+            
+            let gradientLocations:[NSNumber] = [0.3, 1.0]
+            
+            let gradientLayer = CAGradientLayer()
+            gradientLayer.colors = gradientColors
+            gradientLayer.locations = gradientLocations
+    //        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+    //        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+            gradientLayer.frame = self.view.frame
+            self.view.layer.insertSublayer(gradientLayer, at: 0)
+        }
     
     func alertAskForUpload() {
         

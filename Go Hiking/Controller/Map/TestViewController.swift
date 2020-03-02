@@ -18,7 +18,7 @@ class FriendViewController: UIViewController, CLLocationManagerDelegate {
         
       test.delegate = self
       centerViewOnUserLocation()
-      myLocationManager.startUpdatingLocation()
+//      myLocationManager.startUpdatingLocation()
       myLocationManager.delegate = self
       myLocationManager.desiredAccuracy = kCLLocationAccuracyBest
       myLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
@@ -61,12 +61,12 @@ extension FriendViewController: GMSMapViewDelegate {
       return
     }
   }
-  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-      let location = locations.last
-      let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
-      self.test.animate(to: camera)
-      print("didUpdateLocations: \(location)")
-      let marker = GMSMarker()
-      marker.map = test
-  }
+//  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//      let location = locations.last
+//      let camera = GMSCameraPosition.camera(withLatitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude, zoom: 18.0)
+//      self.test.animate(to: camera)
+//      print("didUpdateLocations: \(location)")
+//      let marker = GMSMarker()
+//      marker.map = test
+//  }
 }

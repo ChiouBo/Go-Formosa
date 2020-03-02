@@ -28,11 +28,12 @@ class UserManager {
     
     let userDB = Firestore.firestore()
     
-    var userInfo: User?
+    var userInfo: UserInfo?
     
+    // MARK: - Save User Info in Database
     func saveUserData(completion: @escaping (Result<String>) -> Void) {
         
-      guard let name = Auth.auth().currentUser?.displayName,
+        guard let name = Auth.auth().currentUser?.displayName,
             let id = Auth.auth().currentUser?.uid,
             let email = Auth.auth().currentUser?.email,
             let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
@@ -42,7 +43,7 @@ class UserManager {
         
         let pictureString = "\(picture + image)"
         
-        let userInfo = User(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "")
+        let userInfo = UserInfo(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "", eventCreate: [], event: [])
         
         self.userDB.collection("users").document(id).setData(userInfo.todict){ (error) in
             
@@ -56,7 +57,7 @@ class UserManager {
         
     }
     
-    
+    // MARK: - Save Users Auth
     func signinUserData(credential: AuthCredential, completion: @escaping (Result<String>) -> Void) {
         
         Auth.auth().signIn(with: credential) { (authResult, error) in
@@ -70,18 +71,20 @@ class UserManager {
         }
     }
     
-    func loadUserInfo(completion: @escaping (Swift.Result<User, Error>) -> Void ) {
+    // MARK: - Download Users Info
+    func loadUserInfo(completion: @escaping (Swift.Result<UserInfo, Error>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-       userDB.collection("users").document(uid).getDocument { (user, error) in
+        userDB.collection("users").document(uid).getDocument { (user, error) in
             
             guard let user = user, error == nil else {
                 return
             }
             
             do {
-                guard let info = try user.data(as: User.self, decoder: Firestore.Decoder()) else {
+                guard let info = try user.data(as: UserInfo.self, decoder: Firestore.Decoder()) else {
+                    completion(.failure(FirebaseLogin.noneLogin))
                     return
                 }
                 completion(.success(info))
@@ -94,7 +97,8 @@ class UserManager {
         }
     }
     
-    func uploadUserData(userInfo: User, completion: @escaping (Result<String>) -> Void ) {
+    // MARK: - Upload Users Data
+    func uploadUserData(userInfo: UserInfo, completion: @escaping (Result<String>) -> Void ) {
         
         userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
             
@@ -108,12 +112,13 @@ class UserManager {
         }
     }
     
+    // MARK: - Upload Record Data
     func saveRecordData(userRecord: UserRecord, completion: @escaping (Result<String>) -> Void ) {
         
         let pathID = userDB.collection("users").document(userRecord.id).collection("Path").document().documentID
         
         do{
-           try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
+            try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
             
         } catch {
             
@@ -121,6 +126,7 @@ class UserManager {
         }
     }
     
+    // MARK: - Download Record Data
     func loadRecordData(completion: @escaping (Result<[UserRecord]>) -> Void ) {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -139,16 +145,14 @@ class UserManager {
                         recordData.append(data)
                         
                     } catch {
-
+                        
                         print(error)
                     }
                 }
                 completion(.success(recordData))
             }
-            
         }
     }
-    
 }
 
 

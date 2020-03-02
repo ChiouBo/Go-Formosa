@@ -129,11 +129,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         
         setAnimate()
         
-        guard let center = userLocationManager.location?.coordinate else { return }
-               
-               let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 16.0)
         
-        googleMapView.animate(to: myArrange)
         navigationController?.navigationBar.barStyle = .black
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -253,6 +249,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
             userLocationManager.startUpdatingLocation()
             userLocationManager.desiredAccuracy = kCLLocationAccuracyBest
             userLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
+            
+            guard let center = userLocationManager.location?.coordinate else { return }
+                   
+                   let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 16.0)
+            
+            googleMapView.animate(to: myArrange)
             
         } else {
             print("123")

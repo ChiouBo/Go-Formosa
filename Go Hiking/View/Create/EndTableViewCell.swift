@@ -29,7 +29,7 @@ class EndTableViewCell: UITableViewCell {
         
         let dateValue = DateFormatter()
         
-        dateValue.dateFormat = "yyyy年 MM月 dd日 EE"
+        dateValue.dateFormat = "yyyy-MM-dd EE"
         
         self.delegate?.selectedEndDate(self, date: dateValue.string(from: endDatePicker.date))
     }

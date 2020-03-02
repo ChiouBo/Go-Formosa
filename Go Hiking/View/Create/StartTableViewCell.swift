@@ -29,7 +29,7 @@ class StartTableViewCell: UITableViewCell {
         
         let dateValue = DateFormatter()
         
-        dateValue.dateFormat = "yyyy年 MM月 dd日 EE"
+        dateValue.dateFormat = "yyyy-MM-dd EE"
         
         self.delegate?.selectedStartDate(self, date: dateValue.string(from: startDatePicker.date))
     }

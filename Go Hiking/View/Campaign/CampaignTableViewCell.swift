@@ -14,7 +14,15 @@ class CampaignTableViewCell: UITableViewCell {
     
     @IBOutlet weak var campaignLevel: UILabel!
     
+    @IBOutlet weak var campaignMember: UILabel!
+    
     @IBOutlet weak var campaignImage: UIImageView!
+    
+    @IBOutlet weak var readyRequest: UIButton!
+    
+    @IBAction func requestCancel(_ sender: UIButton) {
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,10 +40,13 @@ class CampaignTableViewCell: UITableViewCell {
         
         campaignTitle.textColor = .white
         campaignLevel.textColor = .white
+        campaignMember.textColor = .white
         campaignTitle.shadowOffset = CGSize(width: 2, height: 2)
         campaignTitle.shadowColor = .gray
         campaignLevel.shadowOffset = CGSize(width: 1, height: 1)
         campaignLevel.shadowColor = .gray
+        campaignMember.shadowOffset = CGSize(width: 1, height: 1)
+        campaignMember.shadowColor = .gray
     }
     
     

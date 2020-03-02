@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import IQKeyboardManagerSwift
 import Kingfisher
 
@@ -42,15 +43,39 @@ class CampaignViewController: UIViewController {
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
+//        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
     
     @objc func toPrivateList() {
         
-        let controller = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "Private")
-        self.navigationController?.pushViewController(controller!, animated: true)
+        if Auth.auth().currentUser != nil {
+            
+            let controller = self.navigationController?.storyboard?.instantiateViewController(withIdentifier: "Private")
+            self.navigationController?.pushViewController(controller!, animated: true)
+        } else {
+            
+            let alertController = UIAlertController(title: "您尚未登入", message: "是否登入以繼續？", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "登入", style: .default) { (_) in
+                
+                if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+                    
+                    authVC.modalPresentationStyle = .overCurrentContext
+                    
+                    self.present(authVC, animated: false, completion: nil)
+                }
+            }
+            
+            alertController.addAction(okAction)
+            
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     func setNavVC() {
@@ -60,11 +85,14 @@ class CampaignViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = image
         navigationController?.navigationBar.isTranslucent = true
         
+        navigationItem.title = "活動"
+        navigationController?.navigationBar.tintColor = .white
+        
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(toPrivateList))
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.barTintColor = .clear
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
@@ -100,6 +128,8 @@ class CampaignViewController: UIViewController {
         
         publicTableView.separatorStyle = .none
         
+        publicTableView.backgroundColor = .red
+        
         setupElements()
     }
     
@@ -107,10 +137,18 @@ class CampaignViewController: UIViewController {
         super.viewWillAppear(true)
         
         eventData = []
-    
+        
+        filteredEvent = []
+        
         getEventData()
         
+//        navigationController?.setNavigationBarHidden(false, animated: false)
+        
         publicTableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     func getEventData() {
@@ -126,7 +164,6 @@ class CampaignViewController: UIViewController {
                 self.filteredEvent.append(data)
                 self.eventData.append(data)
 
-                
             case .failure(let error):
                 
                 print(error)
@@ -140,7 +177,6 @@ class CampaignViewController: UIViewController {
         
         filteredEvent = eventData.filter({ (event: EventCurrent) -> Bool in
         
-            
             let doesCategoryMatch = (scope == "All")
 
             if searchText.isEmpty {
@@ -172,17 +208,19 @@ class CampaignViewController: UIViewController {
 extension CampaignViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        filterContentForSearchText(searchText: searchBar.text!)
+//            , scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
 extension CampaignViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+//        let searchBar = searchController.searchBar
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
-        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//            , scope: scope)
     }
 }
 
@@ -206,8 +244,15 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.selectionStyle = .none
 
+//        let dateformat = DateFormatter()
+//        
+//        dateformat.dateFormat = "yyyy年 MM月 dd日 EE"
+//        
+//        let monthDay = dateformat.date(from: filteredEvent[indexPath.row].start)
+        
         cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
-        cell.campaignLevel.text = filteredEvent[indexPath.row].member
+        cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
+        cell.campaignLevel.text = filteredEvent[indexPath.row].start
         cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
         
         return cell
@@ -230,6 +275,20 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         }
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let content = UIStoryboard(name: "Campaign", bundle: nil)
+        guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
+        
+        let data = filteredEvent[indexPath.row]
+        
+        contentVC.eventDict = data
+        
+        print(contentVC.eventDict)
+        
+        show(contentVC, sender: nil)
+    }
 }
 
 extension CampaignViewController {
@@ -238,7 +297,7 @@ extension CampaignViewController {
         
         view.addSubview(publicTableView)
         publicTableView.backgroundColor = .clear
-        publicTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        publicTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         publicTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         publicTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         publicTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

@@ -22,10 +22,12 @@ class ProfileViewController: UIViewController {
         case level = 2
     }
     
-    var userInfo: User?
+    var userInfo: UserInfo?
     
     var userPic = ""
     var coverPic = ""
+    
+    @IBOutlet weak var profileContentView: UIView!
     
     @IBOutlet weak var userBackground: UIImageView!
     
@@ -37,6 +39,7 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var userIntroduction: UILabel!
     
+    @IBOutlet weak var btnStack: UIStackView!
     //
     @IBAction func editUserInfo(_ sender: UIButton) {
         
@@ -46,13 +49,15 @@ class ProfileViewController: UIViewController {
             return
         }
         
-        let userProfileInfo = User(id: "",
+        let userProfileInfo = UserInfo(id: "",
                                    name: userName.text ?? "",
                                    email: "",
                                    picture: userPic,
                                    introduction: userIntroduction.text ?? "",
                                    coverImage: coverPic,
-                                   userLocation: "")
+                                   userLocation: "",
+                                   eventCreate: [],
+                                   event: [])
         
         editVC.editUserInfo = userProfileInfo
         editVC.backgroundImage = userProfileInfo.coverImage!
@@ -60,6 +65,23 @@ class ProfileViewController: UIViewController {
         editVC.modalPresentationStyle = .overCurrentContext
         present(editVC, animated: true, completion: nil)
         
+    }
+    
+    func setElementConstraint() {
+        
+        NSLayoutConstraint.activate([
+            
+            userHistory.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            userAchievement.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            userLevel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            
+            userHistory.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            userAchievement.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            userLevel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            
+            indicator.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3),
+            btnStack.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width)
+        ])
     }
     
     
@@ -144,21 +166,21 @@ class ProfileViewController: UIViewController {
             
         case .history:
             userHistory.isHidden = false
-            contentChange[0].setTitleColor(.black, for: .normal)
-            contentChange[1].setTitleColor(.lightGray, for: .normal)
-            contentChange[2].setTitleColor(.lightGray, for: .normal)
+            contentChange[0].setTitleColor(.white, for: .normal)
+            contentChange[1].setTitleColor(.gray, for: .normal)
+            contentChange[2].setTitleColor(.gray, for: .normal)
             
         case .achievement:
             userAchievement.isHidden = false
-            contentChange[0].setTitleColor(.lightGray, for: .normal)
-            contentChange[1].setTitleColor(.black, for: .normal)
-            contentChange[2].setTitleColor(.lightGray, for: .normal)
+            contentChange[0].setTitleColor(.gray, for: .normal)
+            contentChange[1].setTitleColor(.white, for: .normal)
+            contentChange[2].setTitleColor(.gray, for: .normal)
             
         case .level:
             userLevel.isHidden = false
-            contentChange[0].setTitleColor(.lightGray, for: .normal)
-            contentChange[1].setTitleColor(.lightGray, for: .normal)
-            contentChange[2].setTitleColor(.black, for: .normal)
+            contentChange[0].setTitleColor(.gray, for: .normal)
+            contentChange[1].setTitleColor(.gray, for: .normal)
+            contentChange[2].setTitleColor(.white, for: .normal)
         }
     }
     
@@ -192,6 +214,7 @@ class ProfileViewController: UIViewController {
         updateContainer(type: .achievement)
         setProfileUI()
         getUserInfo()
+        setElementConstraint()
     }
     
     @objc func reload() {

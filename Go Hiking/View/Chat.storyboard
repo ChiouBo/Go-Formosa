@@ -16,26 +16,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="S__146939906" translatesAutoresizingMaskIntoConstraints="NO" id="9hJ-ix-r9Q">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="S__146939908" translatesAutoresizingMaskIntoConstraints="NO" id="I53-NZ-PJn">
-                                <rect key="frame" x="0.0" y="42" width="414" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="S__146939908拷貝" translatesAutoresizingMaskIntoConstraints="NO" id="Ycg-lM-CfX">
-                                <rect key="frame" x="1" y="765" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wLK-M3-3f2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Chatroom" rowHeight="103" id="vPI-N7-BxR" customClass="ChatTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="103"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vPI-N7-BxR" id="aMv-hD-hng">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="103"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bqA-Uc-iIy">
+                                                    <rect key="frame" x="20" y="20" width="60" height="63"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="8tF-Ay-c7d"/>
+                                                        <constraint firstAttribute="height" constant="60" id="r0A-T5-F2R"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-vu-JSp">
+                                                    <rect key="frame" x="90" y="41.5" width="48" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="4LO-5n-AXF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cFa-vu-JSp" firstAttribute="centerY" secondItem="aMv-hD-hng" secondAttribute="centerY" id="CS7-7i-1OL"/>
+                                                <constraint firstItem="cFa-vu-JSp" firstAttribute="leading" secondItem="bqA-Uc-iIy" secondAttribute="trailing" constant="10" id="dhG-wq-O99"/>
+                                                <constraint firstItem="bqA-Uc-iIy" firstAttribute="top" secondItem="aMv-hD-hng" secondAttribute="top" constant="20" id="eaZ-xK-c6R"/>
+                                                <constraint firstItem="bqA-Uc-iIy" firstAttribute="leading" secondItem="aMv-hD-hng" secondAttribute="leading" constant="20" id="hUZ-4V-TaH"/>
+                                                <constraint firstItem="bqA-Uc-iIy" firstAttribute="centerY" secondItem="aMv-hD-hng" secondAttribute="centerY" id="mP0-WM-0ED"/>
+                                                <constraint firstAttribute="bottom" secondItem="bqA-Uc-iIy" secondAttribute="bottom" constant="20" id="xrf-6v-8Nv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="groupImage" destination="bqA-Uc-iIy" id="lO0-jh-FaB"/>
+                                            <outlet property="groupName" destination="cFa-vu-JSp" id="us5-k2-bwD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="ock-2S-jzB" firstAttribute="bottom" secondItem="wLK-M3-3f2" secondAttribute="bottom" id="50f-8W-ON3"/>
+                            <constraint firstItem="wLK-M3-3f2" firstAttribute="top" secondItem="gfF-02-ZRw" secondAttribute="top" constant="88" id="WCF-pw-Gox"/>
+                            <constraint firstItem="wLK-M3-3f2" firstAttribute="leading" secondItem="ock-2S-jzB" secondAttribute="leading" id="gFq-dF-Jm7"/>
+                            <constraint firstItem="ock-2S-jzB" firstAttribute="trailing" secondItem="wLK-M3-3f2" secondAttribute="trailing" id="gKH-T8-SMe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ock-2S-jzB"/>
                     </view>
                     <navigationItem key="navigationItem" id="4gQ-s6-nxC"/>
+                    <connections>
+                        <outlet property="chatTableView" destination="wLK-M3-3f2" id="sbq-gI-o2Q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGh-Pc-bo3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1173.913043478261" y="-131.25"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="3Hq-RL-rQU">
+            <objects>
+                <viewController storyboardIdentifier="Chatroom" id="fLw-xZ-P2E" customClass="MessageViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0mg-nl-44G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aI7-RS-Q3a"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g14-CQ-kbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2010" y="-131"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7gN-KG-dwI">
@@ -56,9 +113,4 @@
             <point key="canvasLocation" x="263.768115942029" y="-131.25"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="S__146939906" width="750" height="1468"/>
-        <image name="S__146939908" width="749" height="80"/>
-        <image name="S__146939908拷貝" width="748" height="105"/>
-    </resources>
 </document>

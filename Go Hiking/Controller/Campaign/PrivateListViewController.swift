@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import Firebase
 import IQKeyboardManagerSwift
 
 class PrivateListViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     let transition = CreateTransition()
+//
+//    var filteredCampaign = [Campaign]()
+//
+//    let campaigns = Campaign.getAllCampaigns()
     
-    var filteredCampaign = [Campaign]()
+    var eventList = [EventCurrent]()
     
-    let campaigns = Campaign.getAllCampaigns()
+    var eventData = [EventCurrent]()
+    
+    var filteredEvent: [EventCurrent] = [] {
+        
+        didSet {
+            
+            privateTableView.reloadData()
+        }
+    }
     
     lazy var privateTableView: UITableView = {
         let pTV = UITableView()
@@ -35,7 +48,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
+//        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
@@ -43,7 +56,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
     lazy var createBtn: UIButton = {
        let create = UIButton()
         create.translatesAutoresizingMaskIntoConstraints = false
-        create.setImage(UIImage(named: "Icons_48px_Add"), for: .normal)
+        create.setImage(UIImage(named: "Icon_Plus"), for: .normal)
         create.addTarget(self, action: #selector(toCreateVC), for: .touchUpInside)
         return create
     }()
@@ -60,6 +73,40 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
     }
     
+    func setNavVC() {
+        
+        let image = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        navigationController?.navigationBar.shadowImage = image
+        navigationController?.navigationBar.isTranslucent = true
+        
+        navigationItem.title = "我的活動"
+        navigationController?.navigationBar.tintColor = .white
+        
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = .clear
+        
+        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
+    func customizebackgroundView() {
+              
+              let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+              let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+              let gradientColors = [bottomColor.cgColor, topColor.cgColor]
+              
+              let gradientLocations:[NSNumber] = [0.3, 1.0]
+              
+              let gradientLayer = CAGradientLayer()
+              gradientLayer.colors = gradientColors
+              gradientLayer.locations = gradientLocations
+              gradientLayer.frame = self.view.frame
+              self.view.layer.insertSublayer(gradientLayer, at: 0)
+          }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    
@@ -67,21 +114,76 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         
         privateTableView.separatorStyle = .none
         
+        customizebackgroundView()
+        
         setupElements()
+        
+        setNavVC()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        eventData = []
+        
+        filteredEvent = []
+        
+        getEventData()
+        
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        privateTableView.reloadData()
+    }
+    
+    func getEventData() {
+        
+        UploadEvent.shared.loadPrivate { (result) in
+            
+            switch result {
+                
+            case .success(let data):
+                
+                print(data)
+                
+                self.filteredEvent.append(data)
+                self.eventData.append(data)
+
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+    }
+    
     
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
-        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
-            
-            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
-            
-            if isSearchBarEmpty() {
+//        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
+//
+//            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
+//
+//            if isSearchBarEmpty() {
+//
+//                return doesCategoryMatch
+//            } else {
+//
+//                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+//            }
+//        })
+        
+        filteredEvent = []
+        
+        filteredEvent = eventData.filter({ (event: EventCurrent) -> Bool in
+        
+            let doesCategoryMatch = (scope == "All")
+
+            if searchText.isEmpty {
                 
                 return doesCategoryMatch
             } else {
-                
-                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+            
+                return doesCategoryMatch &&
+                    event.title.lowercased().contains(searchText.lowercased())
             }
         })
         
@@ -124,17 +226,19 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
 extension PrivateListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        filterContentForSearchText(searchText: searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        filterContentForSearchText(searchText: searchBar.text!)
+//            , scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
 extension PrivateListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        let searchBar = searchController.searchBar
-        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+//        let searchBar = searchController.searchBar
+//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
-        filterContentForSearchText(searchText: searchController.searchBar.text!, scope: scope)
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+//            , scope: scope)
     }
 }
 
@@ -142,13 +246,16 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if isFiltering() { return filteredCampaign.count}
+//        if isFiltering() { return filteredCampaign.count}
         
-        return campaigns.count
+//        return campaigns.count
+        
+        return filteredEvent.count
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return UIScreen.main.bounds.height / 4.5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,19 +264,36 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
             CampaignTableViewCell else { return UITableViewCell() }
         
         cell.selectionStyle = .none
+        cell.backgroundColor = .clear
+//        let currentCampaign: Campaign
+//
+//        if isFiltering() {
+//            currentCampaign = filteredCampaign[indexPath.row]
+//        } else {
+//            currentCampaign = campaigns[indexPath.row]
+//        }
         
-        let currentCampaign: Campaign
+//        cell.campaignTitle.text = currentCampaign.title
+//        cell.campaignLevel.text = currentCampaign.type
         
-        if isFiltering() {
-            currentCampaign = filteredCampaign[indexPath.row]
-        } else {
-            currentCampaign = campaigns[indexPath.row]
-        }
-        
-        cell.campaignTitle.text = currentCampaign.title
-        cell.campaignLevel.text = currentCampaign.type
-        cell.backgroundColor = .black
+            cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
+            cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
+            cell.campaignLevel.text = filteredEvent[indexPath.row].start
+            cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
+
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let content = UIStoryboard(name: "Campaign", bundle: nil)
+        guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
+        
+        let data = filteredEvent[indexPath.row]
+        
+        contentVC.eventDict = data
+        
+        show(contentVC, sender: nil)
     }
 }
 
@@ -180,7 +304,8 @@ extension PrivateListViewController {
         view.addSubview(privateTableView)
         view.addSubview(createBtn)
         
-        privateTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        privateTableView.backgroundColor = .clear
+        privateTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         privateTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         privateTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         privateTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

@@ -117,7 +117,7 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                                 
                             case .failure(let error):
                                 
-                                let fbLogin = error.localizedDescription.components(separatedBy: "noneLogin")
+                                let fbLogin = error.localizedDescription.components(separatedBy: "FirebaseLogin error")
                                 
                                 if fbLogin.count > 1 {
                                     
@@ -204,7 +204,7 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                             
                         case .failure(let error):
                             
-                            let googleLogin = error.localizedDescription.components(separatedBy: "noneLogin")
+                            let googleLogin = error.localizedDescription.components(separatedBy: "FirebaseLogin error")
                             
                             if googleLogin.count > 1 {
                                 

@@ -56,7 +56,7 @@ extension TitleTableViewCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard let text = textField.text else { return }
-        
+
         self.delegate?.titleIsEdited(self, title: text)
     }
 }

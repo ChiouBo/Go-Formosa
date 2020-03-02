@@ -42,4 +42,6 @@ target 'Go Hiking' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GoogleSignIn'
+  
+  pod 'MessageKit'
 end
