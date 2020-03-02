@@ -10,10 +10,16 @@ import UIKit
 import Photos
 import Firebase
 import MessageKit
+import InputBarAccessoryView
 import FirebaseFirestore
 
 class MessageViewController: MessagesViewController {
 
+    var userInfo: EventCurrent?
+    var personPhoto = ""
+    
+    let uid = Auth.auth().currentUser?.uid
+    
     private let db = Firestore.firestore()
     private var reference: CollectionReference?
     private let storage = Storage.storage().reference()
@@ -21,34 +27,29 @@ class MessageViewController: MessagesViewController {
     private var messages: [Message] = []
     private var messageListener: ListenerRegistration?
 
-    private let user: User
-    private let channel: Channel
-    
     deinit {
       messageListener?.remove()
-    }
-    
-    init(user: User, channel: Channel) {
-      self.user = user
-      self.channel = channel
-      super.init(nibName: nil, bundle: nil)
-      
-      title = channel.name
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let id = channel.id else {
-          navigationController?.popViewController(animated: true)
-          return
-        }
+        setListener()
+        setMessage()
+        setUser()
+        messageInputBar.leftStackView.alignment = .center
+        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+    }
+    
+    func setUser() {
         
-        reference = db.collection(["channels", id, "thread"].joined(separator: "/"))
+        
+    }
+    
+    
+    func setListener() {
+        
+        reference = db.collection(["channels", (uid ?? ""), "thread"].joined(separator: "/"))
         
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
           guard let snapshot = querySnapshot else {
@@ -56,19 +57,19 @@ class MessageViewController: MessagesViewController {
             return
           }
         }
+    }
+    
+    func setMessage() {
         
         navigationItem.largeTitleDisplayMode = .never
-        
         maintainPositionOnKeyboardFrameChanged = true
         messageInputBar.inputTextView.tintColor = .black
         messageInputBar.sendButton.setTitleColor(.black, for: .normal)
-        
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-        messageInputBar.leftStackView.alignment = .center
-        messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
+        messageInputBar.sendButton.addTarget(self, action: #selector(tapSend), for: .touchUpInside)
     }
     
     private func save(_ message: Message) {
@@ -77,7 +78,6 @@ class MessageViewController: MessagesViewController {
           print("Error sending message: \(e.localizedDescription)")
           return
         }
-        
         self.messagesCollectionView.scrollToBottom()
       }
     }
@@ -89,13 +89,9 @@ class MessageViewController: MessagesViewController {
       
       messages.append(message)
       messages.sort()
-      
       let isLatestMessage = messages.index(of: message) == (messages.count - 1)
       let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-
-      
       messagesCollectionView.reloadData()
-      
       if shouldScrollToBottom {
         DispatchQueue.main.async {
           self.messagesCollectionView.scrollToBottom(animated: true)
@@ -103,6 +99,17 @@ class MessageViewController: MessagesViewController {
       }
     }
     
+    private func handleDocumentChange(_ change: DocumentChange) {
+        guard let message = Message(document: change.document) else {
+            return
+        }
+        switch change.type {
+        case .added:
+            insertNewMessage(message)
+        default:
+            break
+        }
+    }
     
     
 }
@@ -130,7 +137,7 @@ extension MessageViewController: MessagesDisplayDelegate {
 extension MessageViewController: MessagesLayoutDelegate {
   
   func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-    return .zero
+    return CGSize(width: 100, height: 100)
   }
   
   func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
@@ -148,8 +155,10 @@ extension MessageViewController: MessagesLayoutDelegate {
 
 extension MessageViewController: MessagesDataSource {
     
+    
     func currentSender() -> SenderType {
-        return Sender(id: user.uid, displayName: AppSettings.displayName)
+        
+        return Sender(id: uid ?? "", displayName: AppSettings.displayName)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -162,6 +171,14 @@ extension MessageViewController: MessagesDataSource {
         return messages[indexPath.section]
     }
 
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 18
+    }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        return NSAttributedString(string: message.sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 12)])
+    }
+    
     func cellTopLabelAttributedText(for message: MessageType,
                                     at indexPath: IndexPath) -> NSAttributedString? {
         
@@ -179,12 +196,21 @@ extension MessageViewController: MessagesDataSource {
 // MARK: - MessageInputBarDelegate
 
 extension MessageViewController: MessageInputBarDelegate {
-  
-  func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
-    let message = Message(user: user, content: text)
 
-    save(message)
-    inputBar.inputTextView.text = ""
-  }
-  
+    @objc func tapSend() {
+        guard let text = messageInputBar.inputTextView.text,
+            let user = Auth.auth().currentUser else { return }
+        if let photo = Auth.auth().currentUser?.photoURL {
+            personPhoto = "\(photo)"
+        } else {
+            personPhoto = ""
+        }
+//        let message = Message(user: user, content: text, photo: personPhoto)
+        
+        let message = Message(user: user, content: text)
+        save(message)
+        messageInputBar.inputTextView.resignFirstResponder()
+        self.view.endEditing(true)
+        messageInputBar.inputTextView.text = ""
+    }
 }

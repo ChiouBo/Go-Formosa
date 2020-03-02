@@ -53,6 +53,7 @@
 		056FDC92240414B30015198A /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC91240414B30015198A /* ContentTableViewCell.swift */; };
 		056FDC9524056C120015198A /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056FDC9324056C120015198A /* RequestTableViewCell.swift */; };
 		056FDC9624056C120015198A /* RequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056FDC9424056C120015198A /* RequestTableViewCell.xib */; };
+		057850A0240C1DC300DD8B7A /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0578509F240C1DC300DD8B7A /* test.swift */; };
 		058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B023DB4A9B00B1612F /* AppDelegate.swift */; };
 		058873B523DB4A9B00B1612F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058873B423DB4A9B00B1612F /* ViewController.swift */; };
 		058873B823DB4A9B00B1612F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058873B623DB4A9B00B1612F /* Main.storyboard */; };
@@ -175,6 +176,7 @@
 		056FDC91240414B30015198A /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		056FDC9324056C120015198A /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
 		056FDC9424056C120015198A /* RequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestTableViewCell.xib; sourceTree = "<group>"; };
+		0578509F240C1DC300DD8B7A /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		058873AD23DB4A9B00B1612F /* Go Hiking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Go Hiking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		058873B023DB4A9B00B1612F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		058873B423DB4A9B00B1612F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 			children = (
 				05BF08E323E2002D009CED63 /* ChatViewController.swift */,
 				054B9803240BFB8A00A49F9A /* MessageViewController.swift */,
+				0578509F240C1DC300DD8B7A /* test.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -841,6 +844,7 @@
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				051E6ACB23FD4C37000D942D /* ProfileItem.swift in Sources */,
 				051E6AB823FD0C00000D942D /* AchieveHeadTableViewCell.swift in Sources */,
+				057850A0240C1DC300DD8B7A /* test.swift in Sources */,
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
 				0593573823F98AD700BE89F2 /* ProfileEditViewController.swift in Sources */,
 				05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */,

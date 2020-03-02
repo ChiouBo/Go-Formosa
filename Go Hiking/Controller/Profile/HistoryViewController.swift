@@ -14,6 +14,10 @@ class HistoryViewController: UIViewController {
     
 //    let record = Record.getAllRecords()
     
+    var imagePoly = [Polyline]()
+    
+    let polyline = Polyline.getAllLines()
+    
     var userRecord: [UserRecord] = [] {
         
         didSet {
@@ -122,10 +126,11 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
         
+//        historyCell.explorePolyline.image = imagePoly[indexPath.row - 2].image
+        
         return historyCell
         }
     }
-    
 }
 
 extension Double {

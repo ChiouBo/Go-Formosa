@@ -13,22 +13,6 @@ import MessageKit
 
 class ChatViewController: UIViewController {
     
-    private let db = Firestore.firestore()
-    
-//    private var channelReference: CollectionReference {
-//        return db.collection("channels")
-//    }
-//
-//    private var channels = [Channel]()
-//
-//    private var channelListener: ListenerRegistration?
-//
-//    deinit {
-//        channelListener?.remove()
-//    }
-//
-
-    
     var eventChat: [EventCurrent] = [] {
         
         didSet {
@@ -39,22 +23,17 @@ class ChatViewController: UIViewController {
     
     @IBOutlet weak var chatTableView: UITableView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setTableView()
-        getEvent()
-        setNavBar()
-    }
-    
-    func setTableView() {
         
         chatTableView.separatorStyle = .none
         chatTableView.contentMode = .scaleAspectFill
         chatTableView.delegate = self
         chatTableView.dataSource = self
         chatTableView.rowHeight = UITableView.automaticDimension
+        
+        getEvent()
+        setNavBar()
     }
     
     func getEvent() {
@@ -140,7 +119,17 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         return roomCell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let channel = UIStoryboard(name: "Chat", bundle: nil)
+        guard let chatVC = channel.instantiateViewController(withIdentifier: "Chatroom") as? MessageViewController else { return }
+        
+        let data = eventChat[indexPath.row]
+        
+        chatVC.userInfo = data
+        
+        show(chatVC, sender: nil)
+    }
     
 }
 

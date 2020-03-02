@@ -257,7 +257,7 @@ class UploadEvent {
 //                do {
 //                    guard var userData = try data.documents[0].data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
 //
-////                    userData.event.append(eventRef)
+//                    userData.event.append(eventRef)
 //                    self.uploadUserEvent(uid: uid, ref: eventRef)
 //
 //                    completion(.success(()))
