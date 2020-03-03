@@ -23,6 +23,14 @@ class CampaignTableViewCell: UITableViewCell {
     @IBAction func requestCancel(_ sender: UIButton) {
     }
     
+    @IBOutlet weak var campaignDelete: UIButton!
+    
+    @IBAction func campaignDelete(_ sender: UIButton) {
+        
+        deleteEventHandler?()
+    }
+    
+    var deleteEventHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()

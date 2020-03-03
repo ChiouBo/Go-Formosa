@@ -97,9 +97,11 @@ class TrailViewController: UIViewController {
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(
 //            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
 //            style: .done, target: self, action: #selector(filterBtn))
+        
         navigationController?.navigationBar.barTintColor = .clear
         navigationItem.title = "臺灣步道資訊"
         navigationController?.navigationBar.tintColor = .white
+        
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
@@ -143,7 +145,7 @@ class TrailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-       navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
         
         trailTableView.reloadData()
     }

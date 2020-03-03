@@ -138,9 +138,18 @@ class UploadEvent {
     }
     
     // MARK: - Remove Event Data
-    func removePost() {
+    func removeEvent(event: String, completion: @escaping (Result<Void>) -> Void) {
         
-        
+        eventDB.collection("Event").document(event).delete { (error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success(()))
+            }
+        }
     }
     
     // MARK: - Request Event
@@ -248,34 +257,9 @@ class UploadEvent {
         
         eventDB.collection("users").document(currentUid).updateData(["eventCreate": FieldValue.arrayUnion([eventRef])])
         
-//        eventDB.collection("users").whereField("id", isEqualTo: uid).getDocuments { (snapshot, error) in
-//
-//            if error == nil {
-//
-//                guard let data = snapshot else { return }
-//
-//                do {
-//                    guard var userData = try data.documents[0].data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
-//
-//                    userData.event.append(eventRef)
-//                    self.uploadUserEvent(uid: uid, ref: eventRef)
-//
-//                    completion(.success(()))
-//
-//                } catch {
-//
-//                    completion(.failure(error))
-//                }
-//            }
-//        }
-        // Request id
+
             completion(.success(()))
     }
-    
-//    func uploadUserEvent(uid: String, ref: DocumentReference) {
-//        
-//        eventDB.collection("users").document(uid).updateData(["event": FieldValue.arrayUnion([ref])])
-//    }
     
     // MARK: - Delete Member
     func deleteMember(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {

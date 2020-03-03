@@ -18,17 +18,13 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
 //
 //    let campaigns = Campaign.getAllCampaigns()
     
+    var eventAll: EventCurrent?
+    
     var eventList = [EventCurrent]()
     
     var eventData = [EventCurrent]()
     
-    var filteredEvent: [EventCurrent] = [] {
-        
-        didSet {
-            
-            privateTableView.reloadData()
-        }
-    }
+    var filteredEvent: [EventCurrent] = [] 
     
     lazy var privateTableView: UITableView = {
         let pTV = UITableView()
@@ -148,6 +144,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
                 self.filteredEvent.append(data)
                 self.eventData.append(data)
 
+                self.privateTableView.reloadData()
             case .failure(let error):
                 
                 print(error)
@@ -265,22 +262,39 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-//        let currentCampaign: Campaign
-//
-//        if isFiltering() {
-//            currentCampaign = filteredCampaign[indexPath.row]
-//        } else {
-//            currentCampaign = campaigns[indexPath.row]
-//        }
         
-//        cell.campaignTitle.text = currentCampaign.title
-//        cell.campaignLevel.text = currentCampaign.type
+        cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
+        cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
+        cell.campaignLevel.text = filteredEvent[indexPath.row].start
+        cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
         
-            cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
-            cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
-            cell.campaignLevel.text = filteredEvent[indexPath.row].start
-            cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
+        
+        
 
+            
+            cell.campaignDelete.isHidden = false
+            
+            cell.deleteEventHandler = {
+                
+                UploadEvent.shared.removeEvent(event: self.filteredEvent[indexPath.row].eventID) { (result) in
+                    
+                    switch result {
+                        
+                    case .success:
+                        
+                        self.filteredEvent.remove(at: indexPath.row)
+            
+                        self.privateTableView.deleteRows(at: [indexPath], with: .right)
+                    
+                        self.privateTableView.reloadData()
+                     
+                    case .failure(let error):
+                        
+                        print(error)
+                    }
+                }
+        }
+        
         return cell
     }
     

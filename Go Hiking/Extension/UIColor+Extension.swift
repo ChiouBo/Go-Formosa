@@ -31,6 +31,10 @@ private enum GHColor: String {
     case DarkBlue
     
     case LightGrayBlue
+    
+    case MapDark
+    
+    case MapLight
 }
 
 extension UIColor {
@@ -56,6 +60,10 @@ extension UIColor {
     static let DarkBlue = GHColor(.DarkBlue)
     
     static let LightGrayBlue = GHColor(.LightGrayBlue)
+    
+    static let MapDark = GHColor(.MapDark)
+    
+    static let MapLight = GHColor(.MapLight)
     
     private static func GHColor(_ color: GHColor) -> UIColor? {
 
