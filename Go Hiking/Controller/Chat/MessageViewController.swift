@@ -41,19 +41,25 @@ class MessageViewController: MessagesViewController {
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
     }
     
-    func setUser() {
-        
-    }
+        func setUser() {
     
+            guard let name = Auth.auth().currentUser?.displayName else { return }
+            AppSettings.displayName = name
+        }
     
     func setListener() {
         
-        reference = db.collection(["channels", (uid ?? ""), "thread"].joined(separator: "/"))
+        guard let charRoomID = userInfo?.chatroomID else { return }
+        
+        reference = db.collection(["Chatroom", charRoomID, "thread"].joined(separator: "/"))
         
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
                 print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
                 return
+            }
+            snapshot.documentChanges.forEach { change in
+               self.handleDocumentChange(change)
             }
         }
     }
@@ -118,7 +124,7 @@ class MessageViewController: MessagesViewController {
 extension MessageViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .red : .blue
+        return isFromCurrentSender(message: message) ? .lightGray : .darkGray
     }
     
     func shouldDisplayHeader(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> Bool {
@@ -128,6 +134,10 @@ extension MessageViewController: MessagesDisplayDelegate {
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
+    }
+    
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return .white
     }
 }
 
@@ -189,6 +199,10 @@ extension MessageViewController: MessagesDataSource {
             ]
         )
     }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        
+    }
 }
 
 // MARK: - MessageInputBarDelegate
@@ -205,7 +219,7 @@ extension MessageViewController: MessageInputBarDelegate {
         }
         //        let message = Message(user: user, content: text, photo: personPhoto)
         
-        let message = Message(user: user, content: text)
+        let message = Message(user: user, content: text, photo: personPhoto)
         save(message)
         messageInputBar.inputTextView.resignFirstResponder()
         self.view.endEditing(true)

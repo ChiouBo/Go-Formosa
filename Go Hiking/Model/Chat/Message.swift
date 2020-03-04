@@ -35,6 +35,7 @@ struct Message: MessageType {
     let id: String?
     let content: String
     let sentDate: Date
+    let photo: String
     let sender: SenderType
     
     var kind: MessageKind {
@@ -52,16 +53,18 @@ struct Message: MessageType {
     var image: UIImage? = nil
     var downloadURL: URL? = nil
     
-    init(user: User, content: String) {
+    init(user: User, content: String, photo: String) {
         sender = Sender(id: user.uid, displayName: AppSettings.displayName)
         self.content = content
+        self.photo = photo
         sentDate = Date()
         id = nil
     }
     
-    init(user: User, image: UIImage) {
+    init(user: User, image: UIImage, photo: String) {
         sender = Sender(id: user.uid, displayName: AppSettings.displayName)
         self.image = image
+        self.photo = photo
         content = ""
         sentDate = Date()
         id = nil
@@ -70,7 +73,7 @@ struct Message: MessageType {
     init?(document: QueryDocumentSnapshot) {
         let data = document.data()
         
-        guard let sentDate = data["created"] as? Date else {
+        guard let sentDate = data["created"] as? Timestamp else {
             return nil
         }
         guard let senderID = data["senderID"] as? String else {
@@ -79,10 +82,14 @@ struct Message: MessageType {
         guard let senderName = data["senderName"] as? String else {
             return nil
         }
+        guard let photo = data["photo"] as? String else {
+            return nil
+        }
         
         id = document.documentID
         
-        self.sentDate = sentDate
+        self.photo = photo
+        self.sentDate = sentDate.dateValue()
         sender = Sender(id: senderID, displayName: senderName)
         
         if let content = data["content"] as? String {
@@ -103,7 +110,8 @@ extension Message: DatabaseRepresentation {
         var rep: [String : Any] = [
             "created": sentDate,
             "senderID": sender.senderId,
-            "senderName": sender.displayName
+            "senderName": sender.displayName,
+            "photo": self.photo
         ]
         
         if let url = downloadURL {
@@ -126,5 +134,4 @@ extension Message: Comparable {
     static func < (lhs: Message, rhs: Message) -> Bool {
         return lhs.sentDate < rhs.sentDate
     }
-    
 }

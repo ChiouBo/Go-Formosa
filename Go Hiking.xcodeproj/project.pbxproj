@@ -127,6 +127,7 @@
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
 		12E4D21A240F5CC700F3A92D /* PolylineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4D219240F5CC700F3A92D /* PolylineViewController.swift */; };
+		12E4D21C240FA5B400F3A92D /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -254,6 +255,7 @@
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
 		12E4D219240F5CC700F3A92D /* PolylineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolylineViewController.swift; sourceTree = "<group>"; };
+		12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				0593573323F9633600BE89F2 /* AchievementViewController.swift */,
 				0593572F23F959CD00BE89F2 /* LevelViewController.swift */,
 				12E4D219240F5CC700F3A92D /* PolylineViewController.swift */,
+				12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
 				0593573023F959CD00BE89F2 /* LevelViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
+				12E4D21C240FA5B400F3A92D /* PersonalViewController.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
 				0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */,
