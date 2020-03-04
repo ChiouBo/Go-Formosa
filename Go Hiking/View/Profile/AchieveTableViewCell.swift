@@ -23,6 +23,8 @@ class AchieveTableViewCell: UITableViewCell {
     let manager = ProfileManager()
     
     
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setCollectionView()
@@ -45,6 +47,7 @@ extension AchieveTableViewCell: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         
         return manager.profileGroup.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,6 +63,8 @@ extension AchieveTableViewCell: UICollectionViewDataSource {
         let item = manager.profileGroup[indexPath.section].items[indexPath.row]
         
         achieveCell.layoutCell(image: item.image, title: item.title, desc: item.desc)
+        
+        
         
         return achieveCell
     }

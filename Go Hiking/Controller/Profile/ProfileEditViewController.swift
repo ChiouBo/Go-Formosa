@@ -62,15 +62,15 @@ class ProfileEditViewController: UIViewController {
             cover = coverTest
             picture = pictureTest
             
-            guard let coverD = coverTest.pngData(),
-                  let pictureD = pictureTest.pngData() else { return }
+            guard let coverD = coverTest.jpegData(compressionQuality: 0.5),
+                  let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else { return }
             
             coverData = coverD
             pictureData = pictureD
         } else if let coverTest = coverImage.image {
             isCover = true
             cover = coverTest
-            guard let coverD = coverTest.pngData() else { return }
+            guard let coverD = coverTest.jpegData(compressionQuality: 0.5) else { return }
                        coverData = coverD
                     
         } else if let pictureTest = userImage.image {
@@ -78,7 +78,7 @@ class ProfileEditViewController: UIViewController {
             if isLibrary {
                 isPicture = true
                 picture = pictureTest
-                guard let pictureD = pictureTest.pngData() else { return }
+                guard let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else { return }
                            pictureData = pictureD
             } else {
                 self.dismiss(animated: true, completion: nil)

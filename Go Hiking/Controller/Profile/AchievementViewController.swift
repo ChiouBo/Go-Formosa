@@ -8,6 +8,31 @@
 
 import UIKit
 
+//enum CellType {
+//
+//    case distance
+//
+//    case time
+//
+//    case height
+//
+//    case easy
+//
+//    case medium
+//
+//    case hard
+//
+//    case leader
+//}
+//
+//struct jim {
+//
+//    var type: CellType
+//
+//    var title: String
+//
+//}
+
 class AchievementViewController: UIViewController {
 
     var userRecord: [UserRecord] = [] {
@@ -17,6 +42,18 @@ class AchievementViewController: UIViewController {
             achieveTableView.reloadData()
         }
     }
+    
+    var farthest: [Double] = []
+    
+    var oldest: [Int] = []
+    
+//    var qaq: [jim] = [jim(type: .distance, title: ""),
+//                      jim(type: .time, title: ""),
+//                      jim(type: .height, title: ""),
+//                      jim(type: .easy, title: ""),
+//                      jim(type: .medium , title: ""),
+//                      jim(type: .hard , title: ""),
+//                      jim(type: .leader, title: "")]
     
     @IBOutlet weak var achieveTableView: UITableView!
     
@@ -31,7 +68,7 @@ class AchievementViewController: UIViewController {
 
         setTableview()
         
-        getHistoryData()
+//        getHistoryData()
     }
     
     func setTableview() {
@@ -53,6 +90,16 @@ class AchievementViewController: UIViewController {
             case .success(let record):
                 
                 self?.userRecord = record
+                
+                for distance in record {
+                    self?.farthest.append(distance.distance)
+                }
+                self?.farthest = self?.farthest.sorted { $0 > $1 } ?? [0.0]
+
+                for time in record {
+                    self?.oldest.append(time.time)
+                }
+                self?.oldest = self?.oldest.sorted { $0 > $1 } ?? [0]
                 
             case .failure(let error):
                 
@@ -78,6 +125,21 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         guard let headCell = tableView.dequeueReusableCell(withIdentifier: "AchieveHEAD", for: indexPath) as? AchieveHeadTableViewCell else { return UITableViewCell() }
         
         headCell.selectionStyle = .none
+        
+//        if farthest.isEmpty {
+//            headCell.achieveDesc.text = "0.0 公里"
+//        } else {
+//            headCell.achieveDesc.text = "\(farthest[0]) 公里"
+//        }
+//
+//        if oldest.isEmpty {
+//
+//            headCell.achieveDesc.text = "0.0 小時"
+//        } else {
+//
+//            headCell.achieveDesc.text = "\(oldest[0] / 3600).\(Int((oldest[0] % 3600) / 360)) 小時"
+//        }
+
         
         return headCell
     } else {

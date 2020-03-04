@@ -128,33 +128,35 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         
         guard let id = Auth.auth().currentUser?.uid,
             let distance = distanceLabel.text
-             else { return }
+            else { return }
         
         guard let sumDistance = Double(distance) else { return }
         
-        let path = UserRecord(id: id, date: date, distance: sumDistance, time: Int(floor(counter)), markerLat: pathLat, markerLong: pathLong, lineImage: "")
+        guard let screenshot = self.view.takeScreenshot().toString() else { return }
+        
+        let path = UserRecord(id: id, date: date, distance: sumDistance, time: Int(floor(counter)), markerLat: pathLat, markerLong: pathLong, lineImage: screenshot)
+        
+        LKProgressHUD.showWaitingList(text: "", viewController: self)
+        
+        LKProgressHUD.showSuccess(text: "紀錄完成", viewController: self)
+        
+        UserManager.share.saveRecordData(userRecord: path) { (result) in
             
-            LKProgressHUD.showWaitingList(text: "", viewController: self)
-            
-            LKProgressHUD.showSuccess(text: "紀錄完成", viewController: self)
-            
-            UserManager.share.saveRecordData(userRecord: path) { (result) in
+            switch result {
                 
-                switch result {
-                    
-                case .success(let data):
-                    print(data)
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            case .success(let data):
+                print(data)
                 
-                self.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+                print(error)
             }
         }
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     
     func dateToday() {
         
@@ -317,4 +319,30 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
 
 extension TrackViewController: GMSMapViewDelegate {
     
+}
+
+extension UIView {
+    
+    func takeScreenshot() -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        let polyImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if polyImage != nil {
+            
+            return polyImage!
+        }
+        return UIImage()
+    }
+}
+
+extension UIImage {
+    func toString() -> String? {
+        let data: Data? = self.jpegData(compressionQuality: 0.5)
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
 }

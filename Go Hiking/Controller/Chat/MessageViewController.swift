@@ -14,7 +14,7 @@ import InputBarAccessoryView
 import FirebaseFirestore
 
 class MessageViewController: MessagesViewController {
-
+    
     var userInfo: EventCurrent?
     var personPhoto = ""
     
@@ -26,14 +26,14 @@ class MessageViewController: MessagesViewController {
     
     private var messages: [Message] = []
     private var messageListener: ListenerRegistration?
-
+    
     deinit {
-      messageListener?.remove()
+        messageListener?.remove()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setListener()
         setMessage()
         setUser()
@@ -43,7 +43,6 @@ class MessageViewController: MessagesViewController {
     
     func setUser() {
         
-        
     }
     
     
@@ -52,10 +51,10 @@ class MessageViewController: MessagesViewController {
         reference = db.collection(["channels", (uid ?? ""), "thread"].joined(separator: "/"))
         
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
-          guard let snapshot = querySnapshot else {
-            print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
-            return
-          }
+            guard let snapshot = querySnapshot else {
+                print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                return
+            }
         }
     }
     
@@ -73,30 +72,33 @@ class MessageViewController: MessagesViewController {
     }
     
     private func save(_ message: Message) {
-      reference?.addDocument(data: message.representation) { error in
-        if let e = error {
-          print("Error sending message: \(e.localizedDescription)")
-          return
+        reference?.addDocument(data: message.representation) { error in
+            if let e = error {
+                print("Error sending message: \(e.localizedDescription)")
+                return
+            }
+            self.messagesCollectionView.scrollToBottom()
         }
-        self.messagesCollectionView.scrollToBottom()
-      }
     }
     
     private func insertNewMessage(_ message: Message) {
-      guard !messages.contains(message) else {
-        return
-      }
-      
-      messages.append(message)
-      messages.sort()
-      let isLatestMessage = messages.index(of: message) == (messages.count - 1)
-      let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
-      messagesCollectionView.reloadData()
-      if shouldScrollToBottom {
-        DispatchQueue.main.async {
-          self.messagesCollectionView.scrollToBottom(animated: true)
+        guard !messages.contains(message) else {
+            return
         }
-      }
+        
+        messages.append(message)
+        messages.sort()
+        
+        let isLatestMessage = messages.index(of: message) == (messages.count - 1)
+        let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
+        
+        messagesCollectionView.reloadData()
+        
+        if shouldScrollToBottom {
+            DispatchQueue.main.async {
+                self.messagesCollectionView.scrollToBottom(animated: true)
+            }
+        }
     }
     
     private func handleDocumentChange(_ change: DocumentChange) {
@@ -110,11 +112,9 @@ class MessageViewController: MessagesViewController {
             break
         }
     }
-    
-    
 }
-// MARK: - MessagesDisplayDelegate
 
+// MARK: - MessagesDisplayDelegate
 extension MessageViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
@@ -129,26 +129,24 @@ extension MessageViewController: MessagesDisplayDelegate {
         let corner: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
         return .bubbleTail(corner, .curved)
     }
-    
 }
 
 // MARK: - MessagesLayoutDelegate
 
 extension MessageViewController: MessagesLayoutDelegate {
-  
-  func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-    return CGSize(width: 100, height: 100)
-  }
-  
-  func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-    return CGSize(width: 0, height: 8)
-  }
+    
+    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    
+    func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 0, height: 8)
+    }
     
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         
         return 0
     }
-    
 }
 
 // MARK: - MessagesDataSource
@@ -164,13 +162,13 @@ extension MessageViewController: MessagesDataSource {
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
-
+    
     func messageForItem(at indexPath: IndexPath,
                         in messagesCollectionView: MessagesCollectionView) -> MessageType {
         
         return messages[indexPath.section]
     }
-
+    
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 18
     }
@@ -196,7 +194,7 @@ extension MessageViewController: MessagesDataSource {
 // MARK: - MessageInputBarDelegate
 
 extension MessageViewController: MessageInputBarDelegate {
-
+    
     @objc func tapSend() {
         guard let text = messageInputBar.inputTextView.text,
             let user = Auth.auth().currentUser else { return }
@@ -205,7 +203,7 @@ extension MessageViewController: MessageInputBarDelegate {
         } else {
             personPhoto = ""
         }
-//        let message = Message(user: user, content: text, photo: personPhoto)
+        //        let message = Message(user: user, content: text, photo: personPhoto)
         
         let message = Message(user: user, content: text)
         save(message)

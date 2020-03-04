@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wLK-M3-3f2">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="MapDark"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Chatroom" rowHeight="103" id="vPI-N7-BxR" customClass="ChatTableViewCell" customModule="Go_Hiking" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="103"/>
@@ -41,7 +42,7 @@
                                                         <constraint firstAttribute="height" constant="20" id="4LO-5n-AXF"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -54,6 +55,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="bqA-Uc-iIy" secondAttribute="bottom" constant="20" id="xrf-6v-8Nv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="MapDark"/>
                                         <connections>
                                             <outlet property="groupImage" destination="bqA-Uc-iIy" id="lO0-jh-FaB"/>
                                             <outlet property="groupName" destination="cFa-vu-JSp" id="us5-k2-bwD"/>
@@ -86,7 +88,7 @@
                     <view key="view" contentMode="scaleToFill" id="0mg-nl-44G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="MapDark"/>
                         <viewLayoutGuide key="safeArea" id="aI7-RS-Q3a"/>
                     </view>
                 </viewController>
@@ -128,4 +130,9 @@
             <point key="canvasLocation" x="263.768115942029" y="-131.25"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="MapDark">
+            <color red="0.1271942556" green="0.1699921489" blue="0.29413074249999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

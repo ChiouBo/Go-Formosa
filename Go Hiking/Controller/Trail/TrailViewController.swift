@@ -94,9 +94,9 @@ class TrailViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = image
         navigationController?.navigationBar.isTranslucent = true
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
-//            style: .done, target: self, action: #selector(filterBtn))
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        //            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
+        //            style: .done, target: self, action: #selector(filterBtn))
         
         navigationController?.navigationBar.barTintColor = .clear
         navigationItem.title = "臺灣步道資訊"
@@ -155,18 +155,20 @@ class TrailViewController: UIViewController {
         
         trailFilter = trailListData.filter({ (trail: Trail) -> Bool in
             let doesCategoryMatch = (scope == "All")
-
+            
             if searchText.isEmpty {
-
+                
                 return doesCategoryMatch
             } else {
+                
                 if trail.trPosition != nil {
-                return doesCategoryMatch && (trail.trCname.lowercased().contains(searchText.lowercased()) || trail.trPosition?.lowercased().contains(searchText.lowercased()) ?? true)
+                    
+                    return doesCategoryMatch && (trail.trCname.lowercased().contains(searchText.lowercased()) || trail.trPosition?.lowercased().contains(searchText.lowercased()) ?? true)
                 }
                 return doesCategoryMatch && trail.trCname.lowercased().contains(searchText.lowercased())
             }
         })
-
+        
         trailTableView.reloadData()
     }
     
@@ -209,7 +211,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
             
             return 0
         } else {
-
+            
             return trailFilter.count
         }
     }
@@ -223,7 +225,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Trail", for: indexPath) as?
             TrailTableViewCell else { return UITableViewCell() }
- 
+        
         cell.selectionStyle = .none
         
         if trailFilter[indexPath.row].trPosition != nil {
@@ -235,7 +237,6 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
             
             var container: TrTyp?
             var containers = ""
-            
             
             for typeCount in 0 ..< trailType.count {
                 if trailType[typeCount].trailid == trailFilter[indexPath.row].trailid {
@@ -251,13 +252,10 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
                 
             case .暫停開放:
                 containers = " 暫停開放 "
-                
             case .注意:
                 containers = "  注意  "
             case .部分封閉:
                 containers = " 部分封閉 "
-            default:
-                containers = ""
             }
             cell.setTrailType(content: containers)
         }
@@ -278,12 +276,12 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
                                 location: trailFilter[indexPath.row].trPosition ?? "")
         
         let photo = trailPhoto.place[indexPath.row]
+        
         trailVC.trailPhoto = photo
         trailVC.trailDict = data
         
         show(trailVC, sender: nil)
     }
-
 }
 
 // MARK: - CollectionViewDelegate, CollectionViewDataSource
@@ -307,7 +305,7 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
             withReuseIdentifier: "Filter", for: indexPath)
             as? FilterCollectionViewCell else {
                 return UICollectionViewCell() }
-
+        
         let item = filter.groups[indexPath.section].items[indexPath.row]
         
         filterCell.layoutCell(title: item.filterButton)
@@ -343,7 +341,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 0 && indexPath.row == 0 {
             
             return CGSize(width: UIScreen.main.bounds.width / 4.0, height: 40.0)
-        
+            
         } else if indexPath.section == 1 && indexPath.row == 0 {
             
             return CGSize(width: UIScreen.main.bounds.width / 4.0, height: 40.0)
@@ -365,16 +363,16 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-
+        
         return UIEdgeInsets(top: 10.0, left: 35, bottom: 0, right: 35)
     }
-
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-
+        
         return 20.0
     }
     
@@ -383,7 +381,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-
+        
         return 0
     }
 }
@@ -414,9 +412,6 @@ extension TrailViewController: TrailTypeResponseDelegate {
             self.trailTableView.reloadData()
         }
     }
-    
-    
-    
 }
 
 // MARK: - ViewConstrants
@@ -441,13 +436,3 @@ extension TrailViewController {
         filterClose?.isActive = true
     }
 }
-
-extension String {
-    func toImage() -> UIImage? {
-        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
-            return UIImage(data: data)
-        }
-        return nil
-    }
-}
-

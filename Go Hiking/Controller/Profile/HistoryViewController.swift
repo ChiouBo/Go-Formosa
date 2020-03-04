@@ -126,8 +126,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
         
-//        historyCell.explorePolyline.image = imagePoly[indexPath.row - 2].image
-        
+        historyCell.explorePolyline.image = userRecord[indexPath.row - 1].lineImage.toImage()
         return historyCell
         }
     }
@@ -138,5 +137,15 @@ extension Double {
     public func roundTo(places: Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
+    }
+}
+
+extension String {
+
+    func toImage() -> UIImage? {
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+            return UIImage(data: data)
+        }
+        return nil
     }
 }
