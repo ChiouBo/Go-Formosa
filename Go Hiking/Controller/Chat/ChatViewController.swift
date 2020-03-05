@@ -36,6 +36,12 @@ class ChatViewController: UIViewController {
         setNavBar()
     }
     
+    func setNavi() {
+        
+        navigationController?.navigationBar.tintColor = .clear
+        
+    }
+    
     func getEvent() {
         
         UserManager.share.loadUserInfo { (userInfo) in

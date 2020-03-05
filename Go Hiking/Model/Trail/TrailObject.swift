@@ -26,6 +26,7 @@ struct Trail: Codable {
     let trHutName: String?
     let trPermit: TRPermit?
     let url: String
+    var photo: String?
 
     enum CodingKeys: String, CodingKey {
         case trailid = "TRAILID"

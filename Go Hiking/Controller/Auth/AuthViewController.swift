@@ -29,7 +29,6 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
     
     @IBOutlet weak var ghAppleSignIn: UIView!
     
-    
     func setNavVC() {
         
         let navBarNude = UIImage()
@@ -90,6 +89,8 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
     @IBAction func ghFacebookLogin(_ sender: UIButton) {
         
         let manager = LoginManager()
+        
+        manager.logOut()
         
         manager.logIn(permissions: [.publicProfile, .email], viewController: self) { (result) in
             
@@ -184,6 +185,8 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
             return
         }
         guard let authentication = user.authentication else { return }
+        
+        LKProgressHUD.showSuccess(text: "登入成功！", viewController: self)
         
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         

@@ -42,5 +42,9 @@ target 'Go Hiking' do
   
   pod 'MessageKit'
   pod 'SwiftMessages'
-
+  
+  pod 'EFCountingLabel'
+  pod 'Koloda'
+  pod 'CountdownLabel'
+  
 end

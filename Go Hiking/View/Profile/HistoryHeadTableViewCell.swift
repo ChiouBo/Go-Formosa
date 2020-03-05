@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EFCountingLabel
 
 class HistoryHeadTableViewCell: UITableViewCell {
 
@@ -21,6 +22,9 @@ class HistoryHeadTableViewCell: UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     
     @IBOutlet weak var hourLabel: UILabel!
+    
+    @IBOutlet weak var timesEF: EFCountingLabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
