@@ -29,8 +29,15 @@ enum ImageAsset: String {
     
     case Icon_32px_Track_Normal
     case Icon_32px_Track_Select
+    case Icon_32px_Track2_Select
+    case Icon_26px_Track3_Select
     case Icon_32px_Mountain_Normal
     case Icon_32px_Mountain_Select
+    case Icon_32px_Chat_Select
+    case Icon_32px_Chat_Select2
+    case Icon_32px_Chat_Select3
+    case Icon_26px_Profile_Select
+    case Icon_26px_Event_Select
     
     case Icon_Plus
     

@@ -57,36 +57,36 @@ private enum Tab {
         case .earth:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_32px_Map_Normal),
-                selectedImage: UIImage.asset(.Icons_32px_Map_Selected)
+                image: UIImage.asset(.Icon_26px_Track3_Select),
+                selectedImage: UIImage.asset(.Icon_26px_Track3_Select)
             )
             
         case .trail:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_32px_Trail_Normal),
-                selectedImage: UIImage.asset(.Icons_32px_Trail_Selected)
+                image: UIImage.asset(.Icon_32px_Mountain_Select),
+                selectedImage: UIImage.asset(.Icon_32px_Mountain_Select)
             )
             
         case .campaign:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_32px_Campaign_Normal),
-                selectedImage: UIImage.asset(.Icons_32px_Campaign_Selected)
+                image: UIImage.asset(.Icon_26px_Event_Select),
+                selectedImage: UIImage.asset(.Icon_26px_Event_Select)
             )
             
         case .chat:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Chat_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Chat_Selected)
+                image: UIImage.asset(.Icon_32px_Chat_Select3),
+                selectedImage: UIImage.asset(.Icon_32px_Chat_Select3)
             )
 
         case .profile:
             return UITabBarItem(
                 title: nil,
-                image: UIImage.asset(.Icons_36px_Profile_Normal),
-                selectedImage: UIImage.asset(.Icons_36px_Profile_Selected)
+                image: UIImage.asset(.Icon_26px_Profile_Select),
+                selectedImage: UIImage.asset(.Icon_26px_Profile_Select)
             )
         }
     }

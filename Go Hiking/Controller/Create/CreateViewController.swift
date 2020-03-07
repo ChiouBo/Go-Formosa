@@ -144,7 +144,7 @@ class CreateViewController: UIViewController {
     
     func checkDate() {
 
-        if endText > startText {
+        if endText >= startText {
 
             checkText = true
 

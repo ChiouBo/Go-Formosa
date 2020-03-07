@@ -227,6 +227,7 @@
                     <navigationItem key="navigationItem" id="mHE-yz-ybx"/>
                     <connections>
                         <outlet property="btnStack" destination="ocd-UA-ye6" id="aye-eE-5o2"/>
+                        <outlet property="contentLayout" destination="Qi3-PI-6rT" id="UIo-cf-x49"/>
                         <outlet property="indicator" destination="nhm-a1-ogu" id="qV4-mp-soH"/>
                         <outlet property="indicatorConstaint" destination="kKL-Sy-suF" id="daq-bs-XL5"/>
                         <outlet property="logout" destination="dtO-9P-4nh" id="Asr-Cr-DtI"/>
@@ -586,7 +587,7 @@
             <color red="0.074000000953674316" green="0.079999998211860657" blue="0.17100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="MapDark">
-            <color red="0.1271942556" green="0.1699921489" blue="0.29413074249999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.12549019607843137" green="0.16862745098039217" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

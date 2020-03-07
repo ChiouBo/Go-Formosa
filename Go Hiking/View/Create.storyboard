@@ -175,13 +175,23 @@
                                                                             <action selector="uploadBtn:" destination="S9k-uF-HHR" eventType="touchUpInside" id="IZB-fo-nss"/>
                                                                         </connections>
                                                                     </button>
+                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fpL-QT-Iqe">
+                                                                        <rect key="frame" x="110" y="-10" width="20" height="20"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="20" id="Lxk-5H-wsB"/>
+                                                                            <constraint firstAttribute="width" constant="20" id="X8f-aA-wri"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button" image="Icon_Delete"/>
+                                                                    </button>
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="O3q-eY-VMQ" firstAttribute="centerX" secondItem="DIb-Pp-y3a" secondAttribute="centerX" id="DIY-fQ-eLg"/>
                                                                     <constraint firstAttribute="bottom" secondItem="76P-DX-xn3" secondAttribute="bottom" id="Gkj-Wt-gEH"/>
                                                                     <constraint firstItem="76P-DX-xn3" firstAttribute="leading" secondItem="DIb-Pp-y3a" secondAttribute="leading" id="L7D-VF-Yt3"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="fpL-QT-Iqe" secondAttribute="bottom" constant="110" id="WdO-yX-FBF"/>
                                                                     <constraint firstItem="O3q-eY-VMQ" firstAttribute="centerY" secondItem="DIb-Pp-y3a" secondAttribute="centerY" id="Zeo-z6-T1A"/>
                                                                     <constraint firstItem="76P-DX-xn3" firstAttribute="top" secondItem="DIb-Pp-y3a" secondAttribute="top" id="bKa-UZ-AaC"/>
+                                                                    <constraint firstItem="fpL-QT-Iqe" firstAttribute="leading" secondItem="O3q-eY-VMQ" secondAttribute="trailing" constant="25" id="lQd-Og-PAW"/>
                                                                     <constraint firstAttribute="trailing" secondItem="76P-DX-xn3" secondAttribute="trailing" id="ngX-Un-I2m"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
@@ -546,7 +556,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Desc" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTo-oF-tdN">
-                                                            <rect key="frame" x="20" y="338" width="364" height="218"/>
+                                                            <rect key="frame" x="20" y="338" width="364" height="198"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -560,7 +570,7 @@
                                                         <constraint firstItem="i62-uy-G7p" firstAttribute="top" secondItem="M46-99-8QN" secondAttribute="bottom" constant="20" id="IPt-aK-rT0"/>
                                                         <constraint firstAttribute="trailing" secondItem="UTo-oF-tdN" secondAttribute="trailing" constant="20" id="NKu-5A-dHM"/>
                                                         <constraint firstAttribute="trailing" secondItem="Mih-SK-Qtb" secondAttribute="trailing" id="Tsz-hS-dKS"/>
-                                                        <constraint firstAttribute="bottom" secondItem="UTo-oF-tdN" secondAttribute="bottom" id="U0Q-o1-Qbc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="UTo-oF-tdN" secondAttribute="bottom" constant="20" id="U0Q-o1-Qbc"/>
                                                         <constraint firstItem="UTo-oF-tdN" firstAttribute="top" secondItem="7fD-ZJ-fnL" secondAttribute="bottom" constant="10" id="WQb-DJ-dIZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="7fD-ZJ-fnL" secondAttribute="trailing" constant="20" id="fcG-Bw-zlx"/>
                                                         <constraint firstItem="7fD-ZJ-fnL" firstAttribute="top" secondItem="i62-uy-G7p" secondAttribute="bottom" constant="8" id="hpJ-0i-wdR"/>
@@ -674,6 +684,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Icon_Delete" width="128" height="128"/>
         <image name="Icons_24px_CleanAll" width="24" height="24"/>
         <image name="Image_AddImage" width="127" height="100"/>
         <image name="M001" width="850" height="566"/>

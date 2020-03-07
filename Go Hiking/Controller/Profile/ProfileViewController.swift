@@ -27,6 +27,8 @@ class ProfileViewController: UIViewController {
     var userPic = ""
     var coverPic = ""
     
+    @IBOutlet weak var contentLayout: NSLayoutConstraint!
+    
     @IBOutlet weak var profileContentView: UIView!
     
     @IBOutlet weak var userBackground: UIImageView!
@@ -228,7 +230,8 @@ class ProfileViewController: UIViewController {
     func setProfileUI() {
         
         profileContent.layer.cornerRadius = 500
-        
+        contentLayout = userPhoto.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 4.6)
+        contentLayout.isActive = true
         userPhoto.layer.cornerRadius = 50
         userPhoto.layer.borderWidth = 3
         userPhoto.layer.borderColor = UIColor.white.cgColor
