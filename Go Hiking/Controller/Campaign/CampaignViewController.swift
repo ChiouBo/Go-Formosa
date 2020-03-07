@@ -87,10 +87,11 @@ class CampaignViewController: UIViewController {
         
         navigationItem.title = "活動"
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
+            image: UIImage(named: "Icon_Flag")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(toPrivateList))
         navigationController?.navigationBar.barTintColor = .clear
         

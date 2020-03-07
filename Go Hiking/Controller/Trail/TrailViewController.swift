@@ -101,6 +101,7 @@ class TrailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .clear
         navigationItem.title = "臺灣步道資訊"
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage

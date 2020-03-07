@@ -17,6 +17,7 @@ target 'Go Hiking' do
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
   pod 'FirebaseInstanceID'
+  pod 'Firebase/Messaging'
   
   pod 'Kingfisher'
   pod 'MJRefresh'
