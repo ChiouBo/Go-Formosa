@@ -227,7 +227,6 @@
                     <navigationItem key="navigationItem" id="mHE-yz-ybx"/>
                     <connections>
                         <outlet property="btnStack" destination="ocd-UA-ye6" id="aye-eE-5o2"/>
-                        <outlet property="contentLayout" destination="Qi3-PI-6rT" id="UIo-cf-x49"/>
                         <outlet property="indicator" destination="nhm-a1-ogu" id="qV4-mp-soH"/>
                         <outlet property="indicatorConstaint" destination="kKL-Sy-suF" id="daq-bs-XL5"/>
                         <outlet property="logout" destination="dtO-9P-4nh" id="Asr-Cr-DtI"/>

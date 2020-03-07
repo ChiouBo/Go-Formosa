@@ -27,8 +27,6 @@ class ProfileViewController: UIViewController {
     var userPic = ""
     var coverPic = ""
     
-    @IBOutlet weak var contentLayout: NSLayoutConstraint!
-    
     @IBOutlet weak var profileContentView: UIView!
     
     @IBOutlet weak var userBackground: UIImageView!
@@ -210,12 +208,17 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.barStyle = .black
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        
         updateContainer(type: .achievement)
+        
         setProfileUI()
+        
         getUserInfo()
+        
         setElementConstraint()
     }
     
@@ -230,8 +233,7 @@ class ProfileViewController: UIViewController {
     func setProfileUI() {
         
         profileContent.layer.cornerRadius = 500
-        contentLayout = userPhoto.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height / 4.6)
-        contentLayout.isActive = true
+        profileContent.topAnchor.constraint(equalTo: view.topAnchor, constant: UIScreen.main.bounds.height / 4.6).isActive = true
         userPhoto.layer.cornerRadius = 50
         userPhoto.layer.borderWidth = 3
         userPhoto.layer.borderColor = UIColor.white.cgColor
@@ -248,6 +250,5 @@ extension ProfileViewController: ProfileEditViewControllerDelegate {
         userIntroduction.text = intro
         userPhoto.image = picture
         userBackground.image = cover
-        
     }
 }
