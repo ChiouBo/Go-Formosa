@@ -17,8 +17,9 @@ import UserNotifications
 class MessageViewController: MessagesViewController {
     
     var userInfo: EventCurrent?
-    var personPhoto = ""
-    
+    var userPhoto = ""
+    var otherUserPhoto: String = ""
+    var user: UserInfo?
     //Notification
     let app = UIApplication.shared.delegate as! AppDelegate
     var center: UNUserNotificationCenter?
@@ -61,6 +62,7 @@ class MessageViewController: MessagesViewController {
         guard let name = Auth.auth().currentUser?.displayName else { return }
         AppSettings.displayName = name
     }
+    
     
     func setListener() {
         
@@ -239,14 +241,33 @@ extension MessageViewController: MessagesDataSource {
             string: name,
             attributes: [
                 .font: UIFont.preferredFont(forTextStyle: .caption1),
-//                .foregroundColor: UIColor.white
                 .foregroundColor: UIColor(white: 0.3, alpha: 1)
             ]
         )
     }
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+       
+        guard let currentUser = self.user,
+              let event = userInfo else {
+            return
+            
+        }
         
+        if message.sender.senderId == currentUser.id {
+            
+            avatarView.loadImage(currentUser.picture)
+        } else {
+            
+            
+            
+            event.memberList.forEach { docRef in
+                
+                
+            }
+            
+            avatarView.loadImage(otherUserPhoto)
+        }
     }
     
 }
@@ -259,12 +280,12 @@ extension MessageViewController: MessageInputBarDelegate {
         guard let text = messageInputBar.inputTextView.text,
             let user = Auth.auth().currentUser else { return }
         if let photo = Auth.auth().currentUser?.photoURL {
-            personPhoto = "\(photo)"
+            userPhoto = "\(photo)"
         } else {
-            personPhoto = ""
+            userPhoto = ""
         }
        
-        let message = Message(user: user, content: text, photo: personPhoto)
+        let message = Message(user: user, content: text, photo: userPhoto)
         save(message)
         messageInputBar.inputTextView.resignFirstResponder()
         self.view.endEditing(true)

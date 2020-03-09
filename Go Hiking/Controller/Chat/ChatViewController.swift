@@ -21,6 +21,8 @@ class ChatViewController: UIViewController {
         }
     }
     
+    var currentUser: UserInfo?
+    
     @IBOutlet weak var chatTableView: UITableView!
     
     override func viewDidLoad() {
@@ -33,7 +35,7 @@ class ChatViewController: UIViewController {
         chatTableView.rowHeight = UITableView.automaticDimension
         
         getEvent()
-//        setNavBar()
+        getUserInfo()
         setNavi()
         
         customizebackgroundView()
@@ -70,6 +72,24 @@ class ChatViewController: UIViewController {
         gradientLayer.locations = gradientLocations
         gradientLayer.frame = self.view.frame
         self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    func getUserInfo() {
+        
+        UserManager.share.loadUserInfo { (userInfo) in
+            
+            switch userInfo {
+                
+            case .success(let user):
+                
+                self.currentUser = user
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+            
+        }
     }
     
     func getEvent() {
@@ -180,9 +200,9 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         guard let chatVC = channel.instantiateViewController(withIdentifier: "Chatroom") as? MessageViewController else { return }
         
         let data = eventChat[indexPath.row]
-        
+        let current = currentUser
         chatVC.userInfo = data
-        
+        chatVC.user = current
         show(chatVC, sender: nil)
     }
     
