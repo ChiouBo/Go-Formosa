@@ -138,7 +138,7 @@ class ProfileEditViewController: UIViewController {
             
             let userInfo = UserInfo(id: id, name: textName, email: email, picture: self.personPhoto, introduction: textIntro, coverImage: self.backgroundImage, userLocation: textLocation, eventCreate: eventCreate, event: event)
             
-            UserManager.share.uploadUserData(userInfo: userInfo) { result in
+            UserManager.share.uploadUserData(userID: userInfo.id, userName: userInfo.name, userIntro: userInfo.introduction ?? "", coverImage: userInfo.coverImage ?? "", userImage: userInfo.picture, completion: { result in
                 
                 switch result {
                     
@@ -153,7 +153,7 @@ class ProfileEditViewController: UIViewController {
                 case .failure(let error):
                     print(error)
                 }
-            }
+            })
             
         }
     }

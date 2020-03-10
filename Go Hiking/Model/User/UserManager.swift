@@ -98,19 +98,24 @@ class UserManager {
     }
     
     // MARK: - Upload Users Data
-    func uploadUserData(userInfo: UserInfo, completion: @escaping (Result<String>) -> Void ) {
+    func uploadUserData(userID: String, userName: String, userIntro: String, coverImage: String, userImage: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        
-        userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
+        userDB.collection("users").document(userID).setData(["name": userName, "introduction": userIntro, "picture": userImage, "coverImage": coverImage], merge: true) { (error) in
             
             if let error = error {
-                
+
                 completion(.failure(error))
-            } else {
                 
-                completion(.success("success"))
+            } else {
+
+                completion(.success(()))
             }
         }
+        
+//        userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
+//
+            
+//        }
     }
     
     // MARK: - Upload Record Data
