@@ -13,9 +13,9 @@ import Kingfisher
 
 class CampaignViewController: UIViewController {
 
-    var eventList = [EventCurrent]()
+    var eventList: [EventCurrent] = []
     
-    var eventData = [EventCurrent]()
+    var eventData: [EventCurrent] = []
     
     var filteredEvent: [EventCurrent] = [] {
         
@@ -24,6 +24,8 @@ class CampaignViewController: UIViewController {
             publicTableView.reloadData()
         }
     }
+    
+    var refreshControl: UIRefreshControl!
     
     lazy var publicTableView: UITableView = {
         let pTV = UITableView()
@@ -118,6 +120,25 @@ class CampaignViewController: UIViewController {
           self.view.layer.insertSublayer(gradientLayer, at: 0)
       }
     
+    func refreshData() {
+
+        refreshControl = UIRefreshControl()
+        publicTableView.addSubview(refreshControl)
+
+        refreshControl.attributedTitle = NSAttributedString(string: "正在更新", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refreshControl.tintColor = UIColor.white
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.addTarget(self, action: #selector(getAllData), for: UIControl.Event.valueChanged)
+
+    }
+    
+    @objc func getAllData() {
+        
+        filteredEvent = []
+        eventData = []
+        getEventData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,25 +152,11 @@ class CampaignViewController: UIViewController {
         
         publicTableView.backgroundColor = .red
         
-        setupElements()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        eventData = []
-        
-        filteredEvent = []
-        
         getEventData()
         
-//        navigationController?.setNavigationBarHidden(false, animated: false)
+        setupElements()
         
-        publicTableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        refreshData()
     }
 
     func getEventData() {
@@ -169,6 +176,9 @@ class CampaignViewController: UIViewController {
                 
                 print(error)
             }
+            self.publicTableView.reloadData()
+
+            self.refreshControl.endRefreshing()
         }
     }
     

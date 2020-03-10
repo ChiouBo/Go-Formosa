@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class ContentViewController: UIViewController {
-
+    
     @IBOutlet weak var createrInfo: UIButton!
     
     @IBOutlet weak var contentImage: UIImageView!
@@ -30,20 +30,20 @@ class ContentViewController: UIViewController {
     var userDict: UserInfo?
     
     func customizebackgroundView() {
-              
-              let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-              let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-              let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-              
-              let gradientLocations:[NSNumber] = [0.3, 1.0]
-              
-              let gradientLayer = CAGradientLayer()
-              gradientLayer.colors = gradientColors
-              gradientLayer.locations = gradientLocations
-
-              gradientLayer.frame = self.view.frame
-              self.view.layer.insertSublayer(gradientLayer, at: 0)
-          }
+        
+        let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
+        let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
+        let gradientColors = [bottomColor.cgColor, topColor.cgColor]
+        
+        let gradientLocations:[NSNumber] = [0.3, 1.0]
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        gradientLayer.locations = gradientLocations
+        
+        gradientLayer.frame = self.view.frame
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
     
     func loadUserInfo() {
         
@@ -64,9 +64,7 @@ class ContentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        print(eventDict)
         titleImage()
         
         setElement()
@@ -167,9 +165,9 @@ class ContentViewController: UIViewController {
         createrInfo.layer.cornerRadius = 25
         createrInfo.layer.borderWidth = 2
         createrInfo.layer.borderColor = UIColor.white.cgColor
-
+        
     }
-
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let originOffsetY = -imageOriginHeight
@@ -187,7 +185,7 @@ class ContentViewController: UIViewController {
             contentTableView.backgroundColor = UIColor(white: 0, alpha: moveDistance / imageOriginHeight)
         }
     }
-
+    
 }
 
 extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
@@ -231,7 +229,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
+        
         let headerView = UIView()
         
         headerView.backgroundColor = UIColor.clear
@@ -243,29 +241,29 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         headerView.addSubview(titleLabel)
         
         if Auth.auth().currentUser?.uid == eventDict?.creater {
-
+            
             if section == 1 {
-
-                titleLabel.text = "目前成員 \(eventDict?.memberList.count ?? 0) 人"
+                
+                titleLabel.text = "目前成員 \(eventDict?.memberListUser.count ?? 0) 人"
             } else if section == 2 {
-
-                titleLabel.text = "等候加入 \(eventDict?.waitingList.count ?? 0) 人"
+                
+                titleLabel.text = "等候加入 \(eventDict?.waitingListUser.count ?? 0) 人"
             } else {
                 return nil
             }
         } else {
-
+            
             if section == 1 {
-
-                titleLabel.text = "目前成員 \(eventDict?.memberList.count ?? 0) 人"
+                
+                titleLabel.text = "目前成員 \(eventDict?.memberListUser.count ?? 0) 人"
             }
         }
-
+        
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-
+        
         return 30
     }
     
@@ -280,7 +278,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                 
             }
             cell.selectionStyle = .none
-
+            
             cell.contentTitle.text = eventDict?.title
             cell.contentLocation.text = ""
             cell.contentDate.text = "\(eventDict?.start ?? "") - \(eventDict?.end ?? "")"
@@ -340,7 +338,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             memberCell.selectionStyle = .none
-
+            
             memberCell.memberName.text = memberList.name
             
             memberCell.memberImage.loadImage(memberList.picture)
@@ -359,7 +357,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         self.contentTableView.deleteRows(at: [indexPath], with: .right)
                         
-//                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
+                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
                         
                         self.contentTableView.reloadData()
                         
@@ -370,8 +368,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
-        return memberCell
-        
+            return memberCell
+            
         } else {
             
             guard let reqCell = tableView.dequeueReusableCell(withIdentifier: "Request", for: indexPath) as? RequestTableViewCell else {
@@ -387,16 +385,16 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             if Auth.auth().currentUser?.uid == eventData.creater {
-            
+                
                 reqCell.reqUserImage.loadImage(event.waitingListUser[indexPath.row].picture)
-                    
-                    reqCell.reqUserName.text = "\(event.waitingListUser[indexPath.row].name) 想要加入活動"
+                
+                reqCell.reqUserName.text = "\(event.waitingListUser[indexPath.row].name) 想要加入活動"
             }
             
             reqCell.requestHandler = {
                 
                 let reqUid = event.waitingListUser[indexPath.row].id
-
+                
                 UploadEvent.shared.acceptRequestUser(event: eventData, uid: reqUid) { (result) in
                     
                     switch result {
@@ -408,8 +406,8 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                         self.contentTableView.deleteRows(at: [indexPath], with: .right)
                         
                         self.eventDict?.memberListUser.append(object)
-
-//                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
+                        
+                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
                         
                         self.contentTableView.reloadData()
                         
@@ -434,7 +432,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         self.contentTableView.deleteRows(at: [indexPath], with: .right)
                         
-//                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
+                        //                        self.contentTableView.reloadSections(IndexSet(1...2), with: .automatic)
                         
                         self.contentTableView.reloadData()
                         

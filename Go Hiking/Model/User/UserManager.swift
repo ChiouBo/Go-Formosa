@@ -100,6 +100,7 @@ class UserManager {
     // MARK: - Upload Users Data
     func uploadUserData(userInfo: UserInfo, completion: @escaping (Result<String>) -> Void ) {
         
+        
         userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
             
             if let error = error {

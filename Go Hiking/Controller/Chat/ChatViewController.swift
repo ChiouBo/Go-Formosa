@@ -23,6 +23,8 @@ class ChatViewController: UIViewController {
     
     var currentUser: UserInfo?
     
+    var refreshControl: UIRefreshControl!
+    
     @IBOutlet weak var chatTableView: UITableView!
     
     override func viewDidLoad() {
@@ -35,8 +37,12 @@ class ChatViewController: UIViewController {
         chatTableView.rowHeight = UITableView.automaticDimension
         
         getEvent()
+        
         getUserInfo()
+        
         setNavi()
+        
+        refreshData()
         
         customizebackgroundView()
     }
@@ -59,6 +65,18 @@ class ChatViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
+    func refreshData() {
+
+        refreshControl = UIRefreshControl()
+        chatTableView.addSubview(refreshControl)
+
+        refreshControl.attributedTitle = NSAttributedString(string: "正在更新", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refreshControl.tintColor = UIColor.white
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.addTarget(self, action: #selector(getAllData), for: UIControl.Event.valueChanged)
+
+    }
+    
     func customizebackgroundView() {
         
         let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
@@ -72,6 +90,12 @@ class ChatViewController: UIViewController {
         gradientLayer.locations = gradientLocations
         gradientLayer.frame = self.view.frame
         self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    @objc func getAllData() {
+        getUserInfo()
+        eventChat = []
+        getEvent()
     }
     
     func getUserInfo() {
@@ -145,6 +169,10 @@ class ChatViewController: UIViewController {
                 
                 print(error)
             }
+            
+            self.chatTableView.reloadData()
+
+            self.refreshControl.endRefreshing()
         }
     }
     

@@ -126,7 +126,9 @@ class TrailViewController: UIViewController {
         
         setNavVC()
         
-        customizebackgroundView()
+//        customizebackgroundView()
+        
+        setCustomBackground()
     }
     
     func customizebackgroundView() {

@@ -17,9 +17,13 @@ import UserNotifications
 class MessageViewController: MessagesViewController {
     
     var userInfo: EventCurrent?
+    
     var userPhoto = ""
+    
     var otherUserPhoto: String = ""
+    
     var user: UserInfo?
+    
     //Notification
     let app = UIApplication.shared.delegate as! AppDelegate
     var center: UNUserNotificationCenter?
@@ -40,21 +44,42 @@ class MessageViewController: MessagesViewController {
         messageListener?.remove()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setChatUI()
+        
         setListener()
+        
         setMessage()
+        
         setUser()
+        
         messageInputBar.leftStackView.alignment = .center
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
         
         //Notification
         let category = UNNotificationCategory(identifier: "123", actions: [snoozeAction, deleteAction], intentIdentifiers: [], options: [])
         
-//        center =
+        //        center =
         
+    }
+    
+    func addLongPressGesture() {
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+        longPress.minimumPressDuration = 1.5
+    }
+    
+    @objc func longPress(gesture: UILongPressGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizer.State.began {
+            print("Long Press")
+        }
     }
     
     func setUser() {
@@ -76,7 +101,7 @@ class MessageViewController: MessagesViewController {
                 return
             }
             snapshot.documentChanges.forEach { change in
-               self.handleDocumentChange(change)
+                self.handleDocumentChange(change)
             }
         }
     }
@@ -112,7 +137,7 @@ class MessageViewController: MessagesViewController {
         messages.append(message)
         messages.sort()
         
-        let isLatestMessage = messages.index(of: message) == (messages.count - 1)
+        let isLatestMessage = messages.firstIndex(of: message) == (messages.count - 1)
         let shouldScrollToBottom = messagesCollectionView.isAtBottom && isLatestMessage
         
         messagesCollectionView.reloadData()
@@ -139,20 +164,10 @@ class MessageViewController: MessagesViewController {
     func setChatUI() {
         
         messagesCollectionView.backgroundColor = UIColor.MapSea
-
+        
         navigationController?.navigationBar.tintColor = .white
-//        navigationController?.navigationBar.backgroundColor = UIColor.DarkBlue
         navigationController?.toolbar.tintColor = .white
         
-        let image = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
-        navigationController?.navigationBar.shadowImage = image
-        navigationController?.navigationBar.isTranslucent = true
-        
-        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
-        navigationController?.navigationBar.backIndicatorImage = backImage
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
 }
@@ -247,11 +262,11 @@ extension MessageViewController: MessagesDataSource {
     }
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-       
+        
         guard let currentUser = self.user,
-              let event = userInfo else {
-            return
-            
+            let message = message as? Message else {
+                return
+                
         }
         
         if message.sender.senderId == currentUser.id {
@@ -259,16 +274,12 @@ extension MessageViewController: MessagesDataSource {
             avatarView.loadImage(currentUser.picture)
         } else {
             
+            avatarView.loadImage(message.photo)
             
-            
-            event.memberList.forEach { docRef in
-                
-                
-            }
-            
-            avatarView.loadImage(otherUserPhoto)
+            //            avatarView.loadImage(message)
         }
     }
+    
     
 }
 
@@ -284,7 +295,7 @@ extension MessageViewController: MessageInputBarDelegate {
         } else {
             userPhoto = ""
         }
-       
+        
         let message = Message(user: user, content: text, photo: userPhoto)
         save(message)
         messageInputBar.inputTextView.resignFirstResponder()

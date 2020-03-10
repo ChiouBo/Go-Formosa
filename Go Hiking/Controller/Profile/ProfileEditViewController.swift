@@ -18,7 +18,6 @@ protocol ProfileEditViewControllerDelegate: AnyObject {
 
 class ProfileEditViewController: UIViewController {
     
-    
     var personPhoto = ""
     
     var backgroundImage = ""

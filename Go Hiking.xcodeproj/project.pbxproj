@@ -123,9 +123,9 @@
 		05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EAE60B23ED4DE30033BA6C /* Create.storyboard */; };
 		05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */; };
 		05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */; };
-		05F4E03C23F8EBA400D0B778 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F4E03B23F8EBA400D0B778 /* TestViewController.swift */; };
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
+		12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */; };
 		12E4D21A240F5CC700F3A92D /* PolylineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4D219240F5CC700F3A92D /* PolylineViewController.swift */; };
 		12E4D21C240FA5B400F3A92D /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
@@ -251,9 +251,9 @@
 		05EAE60B23ED4DE30033BA6C /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
 		05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewController.swift; sourceTree = "<group>"; };
 		05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransition.swift; sourceTree = "<group>"; };
-		05F4E03B23F8EBA400D0B778 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
+		12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		12E4D219240F5CC700F3A92D /* PolylineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolylineViewController.swift; sourceTree = "<group>"; };
 		12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
@@ -507,7 +507,6 @@
 			isa = PBXGroup;
 			children = (
 				05BF08DD23E1FF40009CED63 /* MapViewController.swift */,
-				05F4E03B23F8EBA400D0B778 /* TestViewController.swift */,
 				051E6ACE23FE67A0000D942D /* TrackViewController.swift */,
 			);
 			path = Map;
@@ -616,11 +615,12 @@
 				05BF090723E7CD37009CED63 /* UITextField+Extension.swift */,
 				05BF090B23E7F70D009CED63 /* String+Extension.swift */,
 				05BF092523E9A5CF009CED63 /* NSLocalizedString+Extension.swift */,
-				05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */,
 				0551325A23F030E5008EC8D3 /* GradientColor+Extension.swift */,
 				0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */,
 				0593573923FA748200BE89F2 /* UIAlert+Extension.swift */,
 				054B9805240C030900A49F9A /* UICollectionView+Additions.swift */,
+				05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */,
+				12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -837,7 +837,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05F4E03C23F8EBA400D0B778 /* TestViewController.swift in Sources */,
 				051A863323EEEE21008865FC /* TitleTableViewCell.swift in Sources */,
 				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
 				05BF091223E80C84009CED63 /* TrailObject.swift in Sources */,
@@ -914,6 +913,7 @@
 				05BF090A23E7E832009CED63 /* PrivateListViewController.swift in Sources */,
 				05BF090123E5B70D009CED63 /* UIColor+Extension.swift in Sources */,
 				05BF08FC23E5A4A9009CED63 /* CampaignTableViewCell.swift in Sources */,
+				12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */,
 				054B9802240BE0B700A49F9A /* ChatTableViewCell.swift in Sources */,
 				05BF08F323E3310E009CED63 /* UserObject.swift in Sources */,
 				056FDC902403FCAC0015198A /* ContentViewController.swift in Sources */,
@@ -1075,7 +1075,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Go Hiking/Go Hiking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4T6NSZK86S;
 				INFOPLIST_FILE = "Go Hiking/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -1083,6 +1083,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1253,7 +1254,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Go Hiking/Go Hiking.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4T6NSZK86S;
 				INFOPLIST_FILE = "Go Hiking/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -1261,6 +1262,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

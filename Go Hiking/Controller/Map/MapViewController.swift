@@ -110,7 +110,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
             
             present(alertController, animated: true, completion: nil)
         }
-//        mapSetting.isHidden = false
+        //        mapSetting.isHidden = false
     }
     
     @IBAction func mapSetting(_ sender: UIButton) {
@@ -128,7 +128,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         super.viewDidLoad()
         
         setAnimate()
-        
         
         navigationController?.navigationBar.barStyle = .black
         resultsViewController = GMSAutocompleteResultsViewController()
@@ -201,7 +200,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     func didRequestAutocompletePredictionsForTableDataSource(tableDataSource: GMSAutocompleteTableDataSource) {
         // Turn the network activity indicator on.
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        // Reload table data.
+
         searchDisplayController?.searchResultsTableView.reloadData()
     }
     
@@ -251,8 +250,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
             userLocationManager.distanceFilter = kCLLocationAccuracyNearestTenMeters
             
             guard let center = userLocationManager.location?.coordinate else { return }
-                   
-                   let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 16.0)
+            
+            let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 16.0)
             
             googleMapView.animate(to: myArrange)
             
@@ -284,7 +283,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         
         let location = locations.last
         
-        print("didUpdateLocations: \(location)")
+//        print("didUpdateLocations: \(location)")
         
         let marker = GMSMarker()
         
@@ -317,12 +316,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     func setTimer() {
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
-
+            
             guard let cord = self.userLocationManager.location?.coordinate,
-                  let currentPosition = self.currentPosition else { return }
+                let currentPosition = self.currentPosition else { return }
             
             let outCome = LocationStepsManager.shared.getDistance(lat1: currentPosition.latitude, lng1: currentPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
-      
+            
             if outCome > 0.001 {
                 
                 self.currentPosition = cord
@@ -332,11 +331,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
                 let marker = GMSMarker()
                 
                 marker.position = CLLocationCoordinate2D(latitude: cord.latitude, longitude: cord.longitude)
-                marker.title = "1"
-                //            marker.icon = UIImage(named: "Icon_Map_BG")
+                
                 marker.icon = LocationStepsManager.shared.markerView()
+                
                 marker.map = self.googleMapView
             } else {
+                
                 return
             }
         }
@@ -357,19 +357,25 @@ extension MapViewController: GMSAutocompleteViewControllerDelegate {
         googleMapView.clear()
         
         let marker = GMSMarker()
-        marker.position = place.coordinate
-        marker.title = place.name
-        marker.snippet = place.formattedAddress
-        let camera = GMSCameraPosition.camera(withTarget: place.coordinate, zoom: 16.0)
-        googleMapView.animate(to: camera)
-        marker.map = googleMapView
         
+        marker.position = place.coordinate
+        
+        marker.title = place.name
+        
+        marker.snippet = place.formattedAddress
+        
+        let camera = GMSCameraPosition.camera(withTarget: place.coordinate, zoom: 16.0)
+        
+        googleMapView.animate(to: camera)
+        
+        marker.map = googleMapView
         
         marker.tracksInfoWindowChanges = true
         
         print("Place name: \(place.name ?? "")")
         print("Place ID: \(place.placeID ?? "")")
         print("Place attributions: \(place.attributions ?? nil)")
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -436,10 +442,14 @@ extension MapViewController: GMSAutocompleteTableDataSourceDelegate {
     }
     
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
+        
         tableDataSource?.sourceTextHasChanged(searchString)
+        
         return false
     }
+    
     func tableDataSource(tableDataSource: GMSAutocompleteTableDataSource, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool {
+        
         return true
     }
 }

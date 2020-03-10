@@ -113,13 +113,20 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         pause = !pause
         
         if pause == true {
+            
             pauseBtn.setImage(UIImage(named: "Icon_Map_Play"), for: .normal)
+            
             isTimerRunning = false
+            
             timer.invalidate()
+            
             stopBtn.isHidden = false
         } else {
+            
             pauseBtn.setImage(UIImage(named: "Icon_Map_Pause"), for: .normal)
+            
             setTimer()
+            
             stopBtn.isHidden = true
         }
     }
@@ -127,8 +134,10 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func stopBtn(_ sender: UIButton) {
         
         guard let id = Auth.auth().currentUser?.uid,
-            let distance = distanceLabel.text
-            else { return }
+            let distance = distanceLabel.text else {
+                return
+                
+        }
         
         guard let sumDistance = Double(distance) else { return }
         
@@ -226,9 +235,10 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     line.strokeWidth = 10
                     line.strokeColor = .white
                     line.geodesic = true
-                    let redYellow =
-                        GMSStrokeStyle.gradient(from: .red, to: .yellow)
+                    
+                    let redYellow = GMSStrokeStyle.gradient(from: .red, to: .yellow)
                     let yellowRed = GMSStrokeStyle.gradient(from: .yellow, to: .red)
+                    
                     line.spans = [GMSStyleSpan(style: redYellow),
                                   GMSStyleSpan(style: redYellow),
                                   GMSStyleSpan(style: yellowRed)]
@@ -285,8 +295,8 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         pathLat.append(location.latitude)
         pathLong.append(location.longitude)
         
-//        let origin = histroy(lat: location.latitude, long: location.longitude)
-//        pathLine.append(origin.toDict)
+        //        let origin = histroy(lat: location.latitude, long: location.longitude)
+        //        pathLine.append(origin.toDict)
         
         if let mapStyleURL = Bundle.main.url(forResource: "MapDarkMode", withExtension: "json") {
             trackMap.mapStyle = try? GMSMapStyle(contentsOfFileURL: mapStyleURL)
