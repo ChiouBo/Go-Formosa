@@ -25,7 +25,9 @@ class MessageViewController: MessagesViewController {
     var user: UserInfo?
     
     //Notification
+    // swiftlint:disable force_cast
     let app = UIApplication.shared.delegate as! AppDelegate
+    // swiftlint:enable force_cast
     var center: UNUserNotificationCenter?
     //Notification
     let snoozeAction = UNNotificationAction(identifier: "SnoozeAction", title: "Snooze", options: [.authenticationRequired])
@@ -33,7 +35,7 @@ class MessageViewController: MessagesViewController {
     
     let uid = Auth.auth().currentUser?.uid
     
-    private let db = Firestore.firestore()
+    private let dbChat = Firestore.firestore()
     private var reference: CollectionReference?
     private let storage = Storage.storage().reference()
     
@@ -63,7 +65,7 @@ class MessageViewController: MessagesViewController {
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
         
         //Notification
-        let category = UNNotificationCategory(identifier: "123", actions: [snoozeAction, deleteAction], intentIdentifiers: [], options: [])
+//        let category = UNNotificationCategory(identifier: "123", actions: [snoozeAction, deleteAction], intentIdentifiers: [], options: [])
         
         //        center =
         
@@ -88,12 +90,11 @@ class MessageViewController: MessagesViewController {
         AppSettings.displayName = name
     }
     
-    
     func setListener() {
         
         guard let charRoomID = userInfo?.chatroomID else { return }
         
-        reference = db.collection(["Chatroom", charRoomID, "thread"].joined(separator: "/"))
+        reference = dbChat.collection(["Chatroom", charRoomID, "thread"].joined(separator: "/"))
         
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
             guard let snapshot = querySnapshot else {
@@ -121,8 +122,8 @@ class MessageViewController: MessagesViewController {
     
     private func save(_ message: Message) {
         reference?.addDocument(data: message.representation) { error in
-            if let e = error {
-                print("Error sending message: \(e.localizedDescription)")
+            if let error = error {
+                print("Error sending message: \(error.localizedDescription)")
                 return
             }
             self.messagesCollectionView.scrollToBottom()
@@ -280,7 +281,6 @@ extension MessageViewController: MessagesDataSource {
         }
     }
     
-    
 }
 
 // MARK: - MessageInputBarDelegate
@@ -334,12 +334,12 @@ extension MessageViewController: MessageInputBarDelegate {
                 content.sound = UNNotificationSound.default
                 content.badge = NSNumber(integerLiteral: UIApplication.shared.applicationIconBadgeNumber + 1)
                 content.categoryIdentifier = "123"
-                
             }
         }
     }
     
     func deniedAlert() {
+        // swiftlint:disable unused_closure_parameter
         let useNotificationsAlertController = UIAlertController(title: "Turn on notifications",
                                                                 message: "This app needs notifications turned on for the best user experience \n ",
                                                                 preferredStyle: .alert)

@@ -9,7 +9,8 @@
 import UIKit
 
 private enum GHColor: String {
-
+    
+// swiftlint:disable identifier_name redundant_string_enum_value superfluous_disable_command
     case G1
 
     case T1

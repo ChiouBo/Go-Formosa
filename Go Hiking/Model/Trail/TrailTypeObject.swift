@@ -29,7 +29,7 @@ struct TrailType: Codable {
         case depName = "DEP_NAME"
     }
 }
-
+// swiftlint:disable identifier_name redundant_string_enum_value
 enum TrSub: String, Codable {
     case 全線 = "全線"
     case 其他 = "其他"

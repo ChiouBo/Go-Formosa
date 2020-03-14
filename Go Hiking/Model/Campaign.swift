@@ -30,12 +30,10 @@ struct Campaign {
             Campaign(type: "Hiking", title: "雪山"),
             Campaign(type: "Hiking", title: "南湖大山"),
             Campaign(type: "Hiking", title: "大霸尖山"),
-            Campaign(type: "Hiking", title: "武陵四秀"),
-            
+            Campaign(type: "Hiking", title: "武陵四秀")
         ]
     }
 }
-
 
 struct Record {
     
@@ -55,29 +53,7 @@ struct Record {
             Record(time: "2020.02.01", title: "越野跑劍潭山"),
             Record(time: "2020.01.17", title: "金面山"),
             Record(time: "2020.01.15", title: "越野跑軍艦岩"),
-            Record(time: "2020.01.01", title: "雪山"),
-        ]
-    }
-}
-
-struct Polyline {
-    
-    let image: UIImage
-    
-    static func getAllLines() -> [Polyline] {
-        
-        return [
-        
-            Polyline(image: UIImage(named: "001") ?? UIImage()),
-            Polyline(image: UIImage(named: "002") ?? UIImage()),
-            Polyline(image: UIImage(named: "003") ?? UIImage()),
-            Polyline(image: UIImage(named: "004") ?? UIImage()),
-            Polyline(image: UIImage(named: "005") ?? UIImage()),
-            Polyline(image: UIImage(named: "006") ?? UIImage()),
-            Polyline(image: UIImage(named: "007") ?? UIImage()),
-            Polyline(image: UIImage(named: "008") ?? UIImage()),
-            Polyline(image: UIImage(named: "001") ?? UIImage()),
-           
+            Record(time: "2020.01.01", title: "雪山")
         ]
     }
 }

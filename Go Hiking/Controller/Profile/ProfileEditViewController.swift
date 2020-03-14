@@ -11,7 +11,7 @@ import FirebaseAuth
 import KMPlaceholderTextView
 
 protocol ProfileEditViewControllerDelegate: AnyObject {
-    
+    // swiftlint:disable function_parameter_count
     func infoEditedBacktoProfileVC(_ profileEditViewController: ProfileEditViewController,
                                    name: String, from: String, intro: String, cover: UIImage, picture: UIImage)
 }
@@ -34,9 +34,8 @@ class ProfileEditViewController: UIViewController {
         
         dismiss(animated: true, completion: nil)
     }
-    
+    // swiftlint:disable cyclomatic_complexity
     @IBAction func editComplete(_ sender: UIButton) {
-        
         
         guard let textName = editUserName.text,
             let textLocation = editUserFrom.text,
@@ -199,11 +198,16 @@ class ProfileEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         imagePickerController.delegate = self
         imagePickerController.allowsEditing = true
+        
         setElements()
+        
         setUserInfo()
-        customizebackgroundView()
+ 
+        setCustomBackground()
+        
         coverImage.loadImage(backgroundImage, placeHolder: UIImage(named: "M001"))
     }
     
@@ -230,23 +234,6 @@ class ProfileEditViewController: UIViewController {
         editUserIntro.layer.cornerRadius = 5
         editUserIntro.layer.borderColor = UIColor.gray.cgColor
     }
-    
-    func customizebackgroundView() {
-            
-            let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-            let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-            let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-            
-            let gradientLocations:[NSNumber] = [0.3, 1.0]
-            
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = gradientColors
-            gradientLayer.locations = gradientLocations
-    //        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-    //        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-            gradientLayer.frame = self.view.frame
-            self.view.layer.insertSublayer(gradientLayer, at: 0)
-        }
     
     func alertAskForUpload() {
         
@@ -285,7 +272,7 @@ class ProfileEditViewController: UIViewController {
 }
 
 extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    // swiftlint:disable colon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         var selectedImageFromPicker: UIImage?

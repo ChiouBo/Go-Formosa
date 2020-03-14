@@ -25,7 +25,6 @@ class FilterCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
     }
 
 }

@@ -47,14 +47,6 @@ class AchievementViewController: UIViewController {
     
     var oldest: [Int] = []
     
-//    var qaq: [jim] = [jim(type: .distance, title: ""),
-//                      jim(type: .time, title: ""),
-//                      jim(type: .height, title: ""),
-//                      jim(type: .easy, title: ""),
-//                      jim(type: .medium , title: ""),
-//                      jim(type: .hard , title: ""),
-//                      jim(type: .leader, title: "")]
-    
     @IBOutlet weak var achieveTableView: UITableView!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,7 +104,6 @@ class AchievementViewController: UIViewController {
 
 extension AchievementViewController: UITableViewDelegate, UITableViewDataSource {
     
-
 func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return 2
@@ -140,7 +131,6 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 //            headCell.achieveDesc.text = "\(oldest[0] / 3600).\(Int((oldest[0] % 3600) / 360)) 小時"
 //        }
 
-        
         return headCell
     } else {
         

@@ -126,24 +126,7 @@ class TrailViewController: UIViewController {
         
         setNavVC()
         
-//        customizebackgroundView()
-        
         setCustomBackground()
-    }
-    
-    func customizebackgroundView() {
-        
-        let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-        let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-        let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-        
-        let gradientLocations:[NSNumber] = [0.3, 1.0]
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        gradientLayer.locations = gradientLocations
-        gradientLayer.frame = self.view.frame
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -240,7 +223,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
             
             var container: TrTyp?
             var containers = ""
-            
+            // swiftlint:disable for_where
             for typeCount in 0 ..< trailType.count {
                 if trailType[typeCount].trailid == trailFilter[indexPath.row].trailid {
                     container = trailType[typeCount].trTyp
@@ -303,7 +286,6 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         guard let filterCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Filter", for: indexPath)
             as? FilterCollectionViewCell else {
@@ -352,14 +334,12 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         } else if indexPath.section == 0 {
             
             return CGSize(width: UIScreen.main.bounds.width / 7.0, height: 40.0)
-        } else  {
-            
+        } else {
             return CGSize(width: UIScreen.main.bounds.width / 5.2, height: 40.0)
         }
         
         return CGSize.zero
     }
-    
     
     func collectionView(
         _ collectionView: UICollectionView,

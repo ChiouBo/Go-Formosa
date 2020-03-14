@@ -22,7 +22,7 @@ struct ProfileGroup {
     let items: [ProfileItem]
 }
 
-enum achieveItem: ProfileItem {
+enum AchieveItem: ProfileItem {
     
     case longestDistance
     
@@ -70,7 +70,7 @@ enum achieveItem: ProfileItem {
     
 }
 
-enum mountainItem: ProfileItem {
+enum MountainItem: ProfileItem {
     
     case typeEasy
     

@@ -22,8 +22,7 @@ class TitleTableViewCell: UITableViewCell {
     @IBOutlet weak var titleTextField: UITextField! {
         
         didSet {
-            
-
+        
         }
     }
     
@@ -31,10 +30,7 @@ class TitleTableViewCell: UITableViewCell {
     
     @IBAction func eventCancel(_ sender: UIButton) {
         
-        
     }
-    
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

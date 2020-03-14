@@ -119,7 +119,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="DescTextView" destination="KzX-P5-fEf" id="jUT-qk-lrF"/>
+                                            <outlet property="descTextView" destination="KzX-P5-fEf" id="jUT-qk-lrF"/>
                                             <outlet property="eventDesc" destination="AUB-ll-QCb" id="agN-go-NT7"/>
                                         </connections>
                                     </tableViewCell>

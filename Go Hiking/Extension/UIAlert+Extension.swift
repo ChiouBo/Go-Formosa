@@ -15,5 +15,4 @@ class UploadPicture {
     
     static let shared = UploadPicture()
 
-  
 }

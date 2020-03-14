@@ -122,7 +122,7 @@
 		05E56EDB23F81FC400FFD804 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E56EDA23F81FC400FFD804 /* LocationManager.swift */; };
 		05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EAE60B23ED4DE30033BA6C /* Create.storyboard */; };
 		05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */; };
-		05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */; };
+		05EAE61023ED51CB0033BA6C /* CircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */; };
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
 		12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */; };
@@ -250,7 +250,7 @@
 		05E56EDA23F81FC400FFD804 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		05EAE60B23ED4DE30033BA6C /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
 		05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewController.swift; sourceTree = "<group>"; };
-		05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTransition.swift; sourceTree = "<group>"; };
+		05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransition.swift; sourceTree = "<group>"; };
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
 		12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
@@ -619,8 +619,8 @@
 				0593573523F982EF00BE89F2 /* UIGesture+Extension.swift */,
 				0593573923FA748200BE89F2 /* UIAlert+Extension.swift */,
 				054B9805240C030900A49F9A /* UICollectionView+Additions.swift */,
-				05EAE60F23ED51CB0033BA6C /* CreateTransition.swift */,
 				12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */,
+				05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -692,6 +692,7 @@
 				058873AB23DB4A9B00B1612F /* Resources */,
 				CDC90E3CF07FE293E31DCA2B /* [CP] Embed Pods Frameworks */,
 				004A02A488FA5CBC07F21B13 /* [CP] Copy Pods Resources */,
+				12C43DC1241B72FE00C7B4D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -791,6 +792,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		12C43DC1241B72FE00C7B4D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		BD9EBBFC0408CDE2D9630035 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -845,7 +863,7 @@
 				0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */,
 				12E4D21A240F5CC700F3A92D /* PolylineViewController.swift in Sources */,
 				051A862B23EE8DD3008865FC /* PhotoTableViewCell.swift in Sources */,
-				05EAE61023ED51CB0033BA6C /* CreateTransition.swift in Sources */,
+				05EAE61023ED51CB0033BA6C /* CircleTransition.swift in Sources */,
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
 				05BF08F123E32FF1009CED63 /* Bundle+Extension.swift in Sources */,
 				051E6ACB23FD4C37000D942D /* ProfileItem.swift in Sources */,

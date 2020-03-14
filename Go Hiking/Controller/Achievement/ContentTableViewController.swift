@@ -10,12 +10,9 @@ import UIKit
 
 class ContentTableViewController: UITableViewController {
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
 
 }

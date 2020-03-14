@@ -113,7 +113,6 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
         historyCell.selectionStyle = .none
         
-        
 //        guard let distance = userRecord[indexPath.row - 1].distance else { return UITableViewCell() }
        
 //        var sumDistance = 0.0
@@ -143,7 +142,7 @@ extension Double {
 extension String {
 
     func toImage() -> UIImage? {
-        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters) {
             return UIImage(data: data)
         }
         return nil

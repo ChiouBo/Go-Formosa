@@ -13,7 +13,7 @@ import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
     
-    private enum contentType: Int {
+    private enum ContentType: Int {
         
         case history = 0
         
@@ -84,7 +84,6 @@ class ProfileViewController: UIViewController {
         ])
     }
     
-    
     @IBOutlet weak var indicator: UIView!
     
     @IBOutlet weak var indicatorConstaint: NSLayoutConstraint!
@@ -102,7 +101,7 @@ class ProfileViewController: UIViewController {
         
         moveIndicatorView(reference: sender)
         
-        guard let type = contentType(rawValue: sender.tag) else { return }
+        guard let type = ContentType(rawValue: sender.tag) else { return }
         
         updateContainer(type: type)
     }
@@ -122,7 +121,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logout(_ sender: UIButton) {
         
-        do{
+        do {
             try Auth.auth().signOut()
             
         } catch let logOutError {
@@ -136,9 +135,9 @@ class ProfileViewController: UIViewController {
             withIdentifier: "mainVC") as? GHTabBarViewController else {
                 return
         }
-        
+        // swiftlint:disable force_cast
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        
+        // swiftlint:enable force_cast
         delegate.window?.rootViewController = mainVC
     }
     
@@ -158,7 +157,7 @@ class ProfileViewController: UIViewController {
         })
     }
     
-    private func updateContainer(type: contentType) {
+    private func updateContainer(type: ContentType) {
         
         containerViews.forEach({ $0.isHidden = true })
         
@@ -242,7 +241,7 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileEditViewControllerDelegate {
-    
+    // swiftlint:disable function_parameter_count
     func infoEditedBacktoProfileVC(_ profileEditViewController: ProfileEditViewController,
                                    name: String, from: String, intro: String, cover: UIImage, picture: UIImage) {
         

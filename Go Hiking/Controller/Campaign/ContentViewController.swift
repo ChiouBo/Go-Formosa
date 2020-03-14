@@ -29,22 +29,6 @@ class ContentViewController: UIViewController {
     
     var userDict: UserInfo?
     
-    func customizebackgroundView() {
-        
-        let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-        let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-        let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-        
-        let gradientLocations:[NSNumber] = [0.3, 1.0]
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        gradientLayer.locations = gradientLocations
-        
-        gradientLayer.frame = self.view.frame
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-    }
-    
     func loadUserInfo() {
         
         UserManager.share.loadUserInfo { (result) in
@@ -75,7 +59,7 @@ class ContentViewController: UIViewController {
         
         loadUserInfo()
         
-        customizebackgroundView()
+        setCustomBackground()
     }
     
     func titleImage() {
@@ -266,7 +250,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
         
         return 30
     }
-    
+    // swiftlint:disable cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let event = eventDict else { return UITableViewCell() }
@@ -299,7 +283,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.contentJoin.isHidden = false
                 
                 guard let eventData = eventDict else { return UITableViewCell()}
-                
+                // swiftlint:disable control_statement
                 if (eventData.requestList.contains(user)) {
                     
                     cell.contentJoin.backgroundColor = .gray

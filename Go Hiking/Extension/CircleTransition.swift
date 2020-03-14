@@ -70,19 +70,18 @@ extension CreateTransition: UIViewControllerAnimatedTransitioning {
                     presentedView.transform = CGAffineTransform.identity
                     presentedView.alpha = 1
                     presentedView.center = viewCenter
-                    
+                    // swiftlint:disable colon
                 }, completion: { (success:Bool) in
                     transitionContext.completeTransition(success)
                 })
             }
             
-        }else{
+        } else {
             let transitionModeKey = (transitionMode == .pop) ? UITransitionContextViewKey.to : UITransitionContextViewKey.from
             
             if let returningView = transitionContext.view(forKey: transitionModeKey) {
                 let viewCenter = returningView.center
                 let viewSize = returningView.frame.size
-                
                 
                 circle.frame = frameForCircle(withViewCenter: viewCenter, size: viewSize, startPoint: startingPoint)
                 

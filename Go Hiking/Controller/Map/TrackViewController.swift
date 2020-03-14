@@ -14,7 +14,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
-struct histroy {
+struct Histroy {
     
     let lat: Double
     let long: Double
@@ -165,7 +165,6 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
     
     func dateToday() {
         

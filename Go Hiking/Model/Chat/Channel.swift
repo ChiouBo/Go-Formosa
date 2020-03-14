@@ -59,7 +59,7 @@ struct Channel {
 }
 
 extension Channel: DatabaseRepresentation {
-    
+    // swiftlint:disable colon
     var representation: [String : Any] {
         var rep = ["name": name, "eventID": eventID]
         

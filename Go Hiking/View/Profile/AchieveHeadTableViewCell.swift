@@ -16,7 +16,6 @@ class AchieveHeadTableViewCell: UITableViewCell {
     
     @IBOutlet weak var achieveDesc: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

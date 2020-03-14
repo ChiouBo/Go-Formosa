@@ -14,18 +14,12 @@ class PolylineViewController: UIViewController {
         
         didSet {
             
-            
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
     }
     
-
-   
-
 }

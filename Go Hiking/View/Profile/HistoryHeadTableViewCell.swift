@@ -25,7 +25,6 @@ class HistoryHeadTableViewCell: UITableViewCell {
     
     @IBOutlet weak var timesEF: EFCountingLabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

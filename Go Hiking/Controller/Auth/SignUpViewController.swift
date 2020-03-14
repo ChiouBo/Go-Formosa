@@ -46,7 +46,7 @@ class SignUpViewController: UIViewController {
                 present(alertController, animated: true, completion: nil)
                 
             } else {
-                
+                // swiftlint:disable unused_closure_parameter
                 Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { (user, error) in
                     
                     if error == nil {

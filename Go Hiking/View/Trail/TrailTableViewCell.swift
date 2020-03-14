@@ -34,7 +34,6 @@ class TrailTableViewCell: UITableViewCell {
         setCellType()
     }
     
-    
     func setTrailType(content: String) {
         
         trailStatus.text = content

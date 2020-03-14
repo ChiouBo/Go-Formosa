@@ -60,6 +60,7 @@ class CreateViewController: UIViewController {
         
         dismiss(animated: true, completion: nil)
     }
+    // swiftlint:disable cyclomatic_complexity
     @IBAction func eventPost(_ sender: UIButton) {
         
         if data?.image != nil, data?.title != "", data?.desc != "", data?.start != "", data?.end != "", data?.amount != "", checkText == true {
@@ -84,7 +85,6 @@ class CreateViewController: UIViewController {
                           case .success(let upload):
                               
                               guard let data = self.data else { return }
-                              
                               
                               UploadEvent.shared.uploadEventData(chatroomID: chatroomID, evenContent: data, image: upload.absoluteString)
                               
@@ -188,7 +188,6 @@ class CreateViewController: UIViewController {
         self.endDate = today
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -246,10 +245,10 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
-    
+    // swiftlint:disable switch_case_alignment cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
+    switch indexPath.row {
 
         case 0:
             
@@ -267,10 +266,9 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             descCell.selectionStyle = .none
             descCell.delegate = self
 
-            descCell.DescTextView.text = data?.desc
+            descCell.descTextView.text = data?.desc
 
             return descCell
-
 
         case 2 :
 

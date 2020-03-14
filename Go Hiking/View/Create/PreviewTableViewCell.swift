@@ -21,17 +21,6 @@ class PreviewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var previewBtn: UIButton!
     
- 
-//    func setupNoticeLabel(notice: String) {
-//
-//
-//    }
-    
-    
-    
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
 

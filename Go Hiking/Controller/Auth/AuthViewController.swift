@@ -126,8 +126,8 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                                         
                                         switch result {
                                             
-                                        case .success(let ya):
-                                            print(ya)
+                                        case .success(let success):
+                                            print(success)
                                             
                                         case .failure:
                                             
@@ -215,8 +215,8 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
                                     
                                     switch result {
                                         
-                                    case .success(let ya):
-                                        print(ya)
+                                    case .success(let success):
+                                        print(success)
                                         
                                     case .failure:
                                         
@@ -244,6 +244,7 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
     
     private func randomNonceString(length: Int = 32) -> String {
       precondition(length > 0)
+        // swiftlint:disable syntactic_sugar
       let charset: Array<Character> =
           Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
       var result = ""
@@ -355,7 +356,7 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
             }
             
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
-            
+            // swiftlint:disable unused_closure_parameter control_statement
             Auth.auth().signIn(with: credential) { (authResult, error) in
         
                 if (error != nil) {

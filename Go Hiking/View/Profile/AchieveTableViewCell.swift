@@ -22,9 +22,6 @@ class AchieveTableViewCell: UITableViewCell {
     
     let manager = ProfileManager()
     
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setCollectionView()
@@ -63,8 +60,6 @@ extension AchieveTableViewCell: UICollectionViewDataSource {
         let item = manager.profileGroup[indexPath.section].items[indexPath.row]
         
         achieveCell.layoutCell(image: item.image, title: item.title, desc: item.desc)
-        
-        
         
         return achieveCell
     }

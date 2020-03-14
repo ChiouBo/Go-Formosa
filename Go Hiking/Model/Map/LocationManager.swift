@@ -50,4 +50,3 @@ class LocationStepsManager: NSObject {
        return distance
     }
 }
-

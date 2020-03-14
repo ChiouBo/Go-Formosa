@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UNUserNotificationCenter.current().delegate = self
             
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-            
+            // swiftlint:disable unused_closure_parameter
             UNUserNotificationCenter.current().requestAuthorization(options: authOptions) { (state, error) in
                 
             }
@@ -65,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
-        
         
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
@@ -86,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "Go_Hiking")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -110,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-
+// swiftlint:disable comma
 @available(iOS 10,*)
 extension AppDelegate: UNUserNotificationCenterDelegate {
     

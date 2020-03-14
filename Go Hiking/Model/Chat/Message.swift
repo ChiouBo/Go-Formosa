@@ -49,7 +49,7 @@ struct Message: MessageType {
     var messageId: String {
         return id ?? UUID().uuidString
     }
-    
+    // swiftlint:disable redundant_optional_initialization
     var image: UIImage? = nil
     var downloadURL: URL? = nil
     
@@ -106,8 +106,8 @@ struct Message: MessageType {
 
 extension Message: DatabaseRepresentation {
     
-    var representation: [String : Any] {
-        var rep: [String : Any] = [
+    var representation: [String: Any] {
+        var rep: [String: Any] = [
             "created": sentDate,
             "senderID": sender.senderId,
             "senderName": sender.displayName,

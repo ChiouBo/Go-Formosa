@@ -13,10 +13,6 @@ class PersonalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
     }
     
-
- 
-
 }

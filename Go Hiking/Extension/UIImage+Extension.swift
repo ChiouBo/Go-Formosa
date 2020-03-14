@@ -9,10 +9,9 @@
 import UIKit
 
 enum ImageAsset: String {
-    
-    
+// swiftlint:disable identifier_name redundant_string_enum_value superfluous_disable_command
     // TabBar
-    case Icons_32px_Campaign_Normal
+    case icons_32px_Campaign_Normal
     case Icons_32px_Campaign_Selected
     case Icons_36px_Chat_Normal
     case Icons_36px_Chat_Selected

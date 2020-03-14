@@ -13,18 +13,18 @@ class ProfileManager {
     let achieveGroup = ProfileGroup(
         
         items: [
-            achieveItem.longestDistance,
-            achieveItem.longestTime,
-            achieveItem.mostExplore
+            AchieveItem.longestDistance,
+            AchieveItem.longestTime,
+            AchieveItem.mostExplore
         ]
     )
     
     let mountainGroup = ProfileGroup(
         
         items: [
-            mountainItem.typeEasy,
-            mountainItem.typeMedium,
-            mountainItem.typeHard
+            MountainItem.typeEasy,
+            MountainItem.typeMedium,
+            MountainItem.typeHard
         ]
     )
     
@@ -34,7 +34,6 @@ class ProfileManager {
             LeaderItem.leading
         ]
     )
-    
     
     let userLevelGroup = ProfileGroup(
         
@@ -53,4 +52,3 @@ class ProfileManager {
     
     lazy var levelGroup: [ProfileGroup] = [userLevelGroup]
 }
-

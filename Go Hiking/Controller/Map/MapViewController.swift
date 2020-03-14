@@ -226,7 +226,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         marker.map = googleMapView
     }
     
-    
     // MARK: - Location Authorization Alert
     func setAlert() {
         
@@ -453,4 +452,3 @@ extension MapViewController: GMSAutocompleteTableDataSourceDelegate {
         return true
     }
 }
-

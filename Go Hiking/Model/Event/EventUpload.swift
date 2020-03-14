@@ -37,17 +37,29 @@ class UploadEvent {
         eventDB.collection("Event").document(documentID).setData([
             
             "title": evenContent.title,
+            
             "desc": evenContent.desc,
+            
             "location": evenContent.location,
+            
             "start": evenContent.start,
+            
             "end": evenContent.end,
+            
             "member": evenContent.amount,
+            
             "image": image,
+            
             "creater": uid,
+            
             "eventID": documentID,
+            
             "waitingList": [],
+            
             "memberList": [],
+            
             "requestList": [],
+            
             "chatroomID": chatroomID
             
         ]) { (error) in
@@ -61,7 +73,7 @@ class UploadEvent {
     
     // MARK: - Download Photo URL
     func storage(uniqueString: String, data: Data, completion: @escaping (Result<URL>) -> Void ) {
-        
+        // swiftlint:disable unused_closure_parameter
         let uploadData = data
         
         let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).jpg")
@@ -299,6 +311,4 @@ class UploadEvent {
             completion(.success("Chatroom build"))
         }
     }
-    
 }
-
