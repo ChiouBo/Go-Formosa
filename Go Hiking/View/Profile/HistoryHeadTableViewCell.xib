@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtD-WK-XKd">
                         <rect key="frame" x="0.0" y="0.0" width="451" height="253"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7c-8d-yLv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7c-8d-yLv" customClass="EFCountingLabel" customModule="EFCountingLabel">
                                 <rect key="frame" x="100" y="30" width="251" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="XoF-fM-Mh6"/>
@@ -57,7 +57,7 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80.0 公里" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-gL-WF6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80.0 公里" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-gL-WF6" customClass="EFCountingLabel" customModule="EFCountingLabel">
                                 <rect key="frame" x="40" y="168" width="89" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="TdT-MT-y2n"/>
@@ -66,7 +66,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.0 小時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-qz-E4S">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.0 小時" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fad-qz-E4S" customClass="EFCountingLabel" customModule="EFCountingLabel">
                                 <rect key="frame" x="322" y="168" width="89" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="Q7y-Ag-pjx"/>
@@ -126,6 +126,7 @@
                 <outlet property="exploreKM" destination="Ix1-gL-WF6" id="h8j-OS-QFh"/>
                 <outlet property="exploreTimes" destination="y7c-8d-yLv" id="fuw-nH-1WE"/>
                 <outlet property="hourLabel" destination="Pj6-sP-Xwy" id="EgS-Oi-rDo"/>
+                <outlet property="timesEF" destination="y7c-8d-yLv" id="wz7-V6-J9s"/>
                 <outlet property="timesLabel" destination="Xyc-cc-w0F" id="2TU-n6-lr6"/>
             </connections>
             <point key="canvasLocation" x="226.81159420289856" y="51.897321428571423"/>

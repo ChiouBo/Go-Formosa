@@ -21,6 +21,10 @@ class ChatViewController: UIViewController {
         }
     }
     
+    var currentUser: UserInfo?
+    
+    var refreshControl: UIRefreshControl!
+    
     @IBOutlet weak var chatTableView: UITableView!
     
     override func viewDidLoad() {
@@ -33,7 +37,71 @@ class ChatViewController: UIViewController {
         chatTableView.rowHeight = UITableView.automaticDimension
         
         getEvent()
-        setNavBar()
+        
+        getUserInfo()
+        
+        setNavi()
+        
+        refreshData()
+        
+        setCustomBackground()
+    }
+    
+    func setNavi() {
+        
+        navigationController?.navigationBar.barStyle = .black
+        navigationItem.title = "聊天"
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        let image = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(image, for: .default)
+        navigationController?.navigationBar.shadowImage = image
+        navigationController?.navigationBar.isTranslucent = true
+        
+        let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
+    func refreshData() {
+        
+        refreshControl = UIRefreshControl()
+        chatTableView.addSubview(refreshControl)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "正在更新", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refreshControl.tintColor = UIColor.white
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.addTarget(self, action: #selector(getAllData), for: UIControl.Event.valueChanged)
+        
+    }
+    
+    @objc func getAllData() {
+        
+        getUserInfo()
+        
+        eventChat = []
+        
+        getEvent()
+    }
+    
+    func getUserInfo() {
+        
+        UserManager.share.loadUserInfo { (userInfo) in
+            
+            switch userInfo {
+                
+            case .success(let user):
+                
+                self.currentUser = user
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+            
+        }
     }
     
     func getEvent() {
@@ -50,7 +118,7 @@ class ChatViewController: UIViewController {
                         if error == nil {
                             
                             guard let event = event else { return }
-                      
+                            
                             do {
                                 guard let eventChat = try event.data(as: EventCurrent.self, decoder: Firestore.Decoder()) else { return }
                                 
@@ -71,7 +139,7 @@ class ChatViewController: UIViewController {
                         if error == nil {
                             
                             guard let event = event else { return }
-                      
+                            
                             do {
                                 guard let eventChat = try event.data(as: EventCurrent.self, decoder: Firestore.Decoder()) else { return }
                                 
@@ -89,20 +157,46 @@ class ChatViewController: UIViewController {
                 
                 print(error)
             }
+            
+            self.chatTableView.reloadData()
+            
+            self.refreshControl.endRefreshing()
         }
     }
     
     func setNavBar() {
+        
         navigationController?.navigationBar.barStyle = .black
         
         let navBarNude = UIImage()
+        
         navigationController?.navigationBar.setBackgroundImage(navBarNude, for: .default)
+        
         self.navigationController?.navigationBar.shadowImage = navBarNude
     }
- 
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
+        
+        let animator = UIViewPropertyAnimator(duration: 1.0, timingParameters: spring)
+        
+        cell.alpha = 0
+        cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.3)
+        
+        animator.addAnimations {
+            
+            cell.alpha = 1
+            cell.transform = .identity
+            self.chatTableView.layoutIfNeeded()
+        }
+        animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
+    }
+    
 }
 
 extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return eventChat.count
@@ -122,46 +216,18 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let channel = UIStoryboard(name: "Chat", bundle: nil)
+        
         guard let chatVC = channel.instantiateViewController(withIdentifier: "Chatroom") as? MessageViewController else { return }
         
         let data = eventChat[indexPath.row]
         
+        let current = currentUser
+        
         chatVC.userInfo = data
+        
+        chatVC.user = current
         
         show(chatVC, sender: nil)
     }
     
 }
-
-
-//    func customizebackgroundView() {
-//
-//        let topColor = UIColor(red: 10/255, green: 80/255, blue: 80/255, alpha: 1)
-//        let buttomColor = UIColor(red: 48/255, green: 207/255, blue: 208/255, alpha: 1)
-//        let gradientColors = [topColor.cgColor, buttomColor.cgColor]
-//
-//        let gradientLocations:[NSNumber] = [0.4, 1.0]
-//
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = gradientColors
-//        gradientLayer.locations = gradientLocations
-//
-//        gradientLayer.frame = self.view.frame
-//        self.view.layer.insertSublayer(gradientLayer, at: 0)
-//    }
-    
-//    func customizebackground() {
-//
-//        let topColor = UIColor(red: 51/255, green: 8/255, blue: 103/255, alpha: 1)
-//        let buttomColor = UIColor(red: 48/255, green: 207/255, blue: 208/255, alpha: 1)
-//        let gradientColors = [topColor.cgColor, buttomColor.cgColor]
-//
-//        let gradientLocations:[NSNumber] = [0.3, 1.0]
-//
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = gradientColors
-//        gradientLayer.locations = gradientLocations
-//
-//        gradientLayer.frame = self.view.frame
-//        self.view.layer.insertSublayer(gradientLayer, at: 0)
-//    }

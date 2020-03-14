@@ -35,51 +35,51 @@ struct Channel {
     let eventID: String
     
     init(name: String, eventID: String) {
-    id = nil
-    self.name = name
+        id = nil
+        self.name = name
         self.eventID = eventID
-  }
-  
-  init?(document: QueryDocumentSnapshot) {
-    let data = document.data()
-    
-    guard let name = data["name"] as? String else {
-      return nil
     }
     
-    guard let eventID = data["eventID"] as? String else {
-        return nil
+    init?(document: QueryDocumentSnapshot) {
+        let data = document.data()
+        
+        guard let name = data["name"] as? String else {
+            return nil
+        }
+        
+        guard let eventID = data["eventID"] as? String else {
+            return nil
+        }
+        
+        id = document.documentID
+        self.name = name
+        self.eventID = eventID
     }
     
-    id = document.documentID
-    self.name = name
-    self.eventID = eventID
-  }
-  
 }
 
 extension Channel: DatabaseRepresentation {
-  
-  var representation: [String : Any] {
-    var rep = ["name": name, "eventID": eventID]
-    
-    if let id = id {
-      rep["id"] = id
+    // swiftlint:disable colon
+    var representation: [String : Any] {
+        var rep = ["name": name, "eventID": eventID]
+        
+        if let id = id {
+            rep["id"] = id
+        }
+        
+        return rep
     }
     
-    return rep
-  }
-  
 }
 
 extension Channel: Comparable {
-  
-  static func == (lhs: Channel, rhs: Channel) -> Bool {
-    return lhs.id == rhs.id
-  }
-  
-  static func < (lhs: Channel, rhs: Channel) -> Bool {
-    return lhs.name < rhs.name
-  }
+    
+    static func == (lhs: Channel, rhs: Channel) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    static func < (lhs: Channel, rhs: Channel) -> Bool {
+        return lhs.name < rhs.name
+    }
     
 }

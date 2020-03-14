@@ -36,7 +36,6 @@ class LevelViewController: UIViewController {
         getHistoryData()
     }
     
-    
     func setTableview() {
         
         levelTableView.dataSource = self
@@ -67,12 +66,11 @@ class LevelViewController: UIViewController {
 
 extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return icon.userLevelGroup.items.count + 1
     }
-    
+    // swiftlint:disable cyclomatic_complexity
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
@@ -80,7 +78,7 @@ extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
             guard let headCell = tableView.dequeueReusableCell(withIdentifier: "LevelHEAD", for: indexPath) as? LevelHeadTableViewCell else { return UITableViewCell() }
             headCell.selectionStyle = .none
             
-            if userRecord.count == 0 && userRecord.count < 5{
+            if userRecord.count == 0 && userRecord.count < 5 {
                 
                 headCell.currentLevelImage.image = UIImage(named: "Icon_Goal_Gray_1")
                 headCell.currentLevelTitle.text = "初心者"
@@ -235,10 +233,10 @@ extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
                     levelCell.levelImage.image = UIImage(named: "Icon_Goal_Color_7")
                 }
             }
-        levelCell.levelTitle.text = icon.userLevelGroup.items[indexPath.row - 1].title
-        levelCell.levelPoint.text = icon.userLevelGroup.items[indexPath.row - 1].desc
-        
-        return levelCell
+            levelCell.levelTitle.text = icon.userLevelGroup.items[indexPath.row - 1].title
+            levelCell.levelPoint.text = icon.userLevelGroup.items[indexPath.row - 1].desc
+            
+            return levelCell
+        }
     }
-}
 }

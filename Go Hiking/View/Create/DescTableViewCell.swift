@@ -20,24 +20,22 @@ class DescTableViewCell: UITableViewCell {
     
     @IBOutlet weak var eventDesc: UILabel!
     
-    @IBOutlet weak var DescTextView: KMPlaceholderTextView!
-    
-    
+    @IBOutlet weak var descTextView: KMPlaceholderTextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        DescTextView.delegate = self
+        descTextView.delegate = self
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        DescTextView.delegate = self
+        descTextView.delegate = self
     }
     
 }
 
-extension DescTableViewCell: UITextViewDelegate{
+extension DescTableViewCell: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         

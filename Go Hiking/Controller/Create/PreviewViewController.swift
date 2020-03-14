@@ -42,6 +42,7 @@ class PreviewViewController: UIViewController {
         preTableView.rowHeight = UITableView.automaticDimension
         
         preTableView.delegate = self
+        
         preTableView.dataSource = self
     }
     
@@ -80,12 +81,15 @@ extension PreviewViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: "PreContent", for: indexPath) as? PreContentTableViewCell else {
                 return UITableViewCell()
         }
+        
         cell.selectionStyle = .none
+        
         cell.eventTitle.text = data?.title
         cell.eventDesc.text = data?.desc
         cell.eventTime.text = "\(data?.start ?? "") \(data?.end ?? "")"
         cell.eventAmount.text = "隊員 \(data?.amount ?? "")"
         cell.eventImage.image = data?.image[indexPath.row]
+        
         return cell
     }
 }

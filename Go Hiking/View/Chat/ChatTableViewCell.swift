@@ -13,9 +13,7 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var groupImage: UIImageView!
     
     @IBOutlet weak var groupName: UILabel!
-    
-    
-    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -31,6 +29,5 @@ class ChatTableViewCell: UITableViewCell {
         
         groupImage.layer.cornerRadius = 30
     }
-    
     
 }

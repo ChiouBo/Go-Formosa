@@ -14,7 +14,6 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
-    
     @IBOutlet weak var userLoginEmail: UITextField!
     
     @IBOutlet weak var userLoginPassword: UITextField!
@@ -34,7 +33,7 @@ class LoginViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
         
         } else {
-            
+            // swiftlint:disable unused_closure_parameter
             Auth.auth().signIn(withEmail: self.userLoginEmail.text!, password: self.userLoginPassword.text!) { (user, error) in
                 
                 if error == nil {
@@ -63,7 +62,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setButton()
+        
         setLoginTextField(textField: userLoginEmail, placeholder: "Email")
+        
         setLoginTextField(textField: userLoginPassword, placeholder: "Password")
     }
     

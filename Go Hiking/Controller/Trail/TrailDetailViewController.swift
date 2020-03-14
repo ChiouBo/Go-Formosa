@@ -23,7 +23,7 @@ class TrailDetailViewController: UIViewController {
         return trailImage
     }()
     
-    lazy var TrailContentTableView: UITableView = {
+    lazy var trailContentTableView: UITableView = {
         let tcTV = UITableView()
         let tCell = UINib(nibName: "TrailContentTableViewCell", bundle: nil)
         let cCell = UINib(nibName: "TrailLocationTableViewCell", bundle: nil)
@@ -56,28 +56,11 @@ class TrailDetailViewController: UIViewController {
     
     var imageHeight: NSLayoutConstraint?
     
-    func customizebackgroundView() {
-            
-            let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-            let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-            let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-            
-            let gradientLocations:[NSNumber] = [0.3, 1.0]
-            
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.colors = gradientColors
-            gradientLayer.locations = gradientLocations
-    //        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-    //        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-            gradientLayer.frame = self.view.frame
-            self.view.layer.insertSublayer(gradientLayer, at: 0)
-        }
-    
     func setupElement() {
         
         view.addSubview(trailImage)
-        view.addSubview(TrailContentTableView)
-        TrailContentTableView.addSubview(backtoList)
+        view.addSubview(trailContentTableView)
+        trailContentTableView.addSubview(backtoList)
         
         trailImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         trailImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -85,12 +68,12 @@ class TrailDetailViewController: UIViewController {
         imageHeight = trailImage.heightAnchor.constraint(equalToConstant: 400)
         imageHeight?.isActive = true
         
-        TrailContentTableView.backgroundColor = .clear
-        TrailContentTableView.contentInset = UIEdgeInsets(top: imageOriginHeight, left: 0, bottom: 0, right: 0)
-        TrailContentTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        TrailContentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        TrailContentTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        TrailContentTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        trailContentTableView.backgroundColor = .clear
+        trailContentTableView.contentInset = UIEdgeInsets(top: imageOriginHeight, left: 0, bottom: 0, right: 0)
+        trailContentTableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        trailContentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        trailContentTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        trailContentTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         backtoList.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         backtoList.topAnchor.constraint(equalTo: view.topAnchor, constant: 33).isActive = true
@@ -105,7 +88,7 @@ class TrailDetailViewController: UIViewController {
         
         setupElement()
         
-        customizebackgroundView()
+        setCustomBackground()
         
         navigationController?.navigationBar.barStyle = .black
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -121,18 +104,19 @@ class TrailDetailViewController: UIViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let originOffsetY = -imageOriginHeight
+        
         let moveDistance = abs(scrollView.contentOffset.y - originOffsetY)
         
         if scrollView.contentOffset.y < originOffsetY {
             
             imageHeight?.constant = imageOriginHeight + moveDistance
             
-            TrailContentTableView.backgroundColor = UIColor.clear
+            trailContentTableView.backgroundColor = UIColor.clear
         } else {
             
             imageHeight?.constant = imageOriginHeight
             
-            TrailContentTableView.backgroundColor = UIColor(white: 0, alpha: moveDistance / imageOriginHeight)
+            trailContentTableView.backgroundColor = UIColor(white: 0, alpha: moveDistance / imageOriginHeight)
         }
     }
 }
@@ -151,7 +135,10 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             
             guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
-            TrailContentTableViewCell else { return UITableViewCell() }
+            TrailContentTableViewCell else {
+                return UITableViewCell()
+                
+            }
             
             contentCell.backgroundColor = .clear
             contentCell.selectionStyle = .none
@@ -164,7 +151,10 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case 1:
             
             guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
-            TrailLocationTableViewCell else { return UITableViewCell() }
+            TrailLocationTableViewCell else {
+                return UITableViewCell()
+                
+            }
             
             createCell.backgroundColor = .clear
             createCell.selectionStyle = .none
@@ -182,11 +172,20 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         if Auth.auth().currentUser != nil {
         
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
-        guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
+        
+            guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else {
+                return
+                
+            }
         
         var currentImage: [UIImage] = []
-        guard let image = trailImage.image else { return }
-        currentImage.append(image)
+        
+            guard let image = trailImage.image else {
+                return
+                
+            }
+        
+            currentImage.append(image)
         
         let trailInfo = EventContent(image: currentImage,
                                      title: trailDict?.title ?? "",
@@ -231,10 +230,10 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     @objc func sameEvent() {
-        
+        // swiftlint:disable force_cast
         ((UIApplication.shared.delegate as! AppDelegate).window?.rootViewController as! GHTabBarViewController).selectedIndex = 2
+        // swiftlint:enable force_cast
     }
-    
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
@@ -245,11 +244,14 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         cell.alpha = 0
         cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
         cell.backgroundColor = .clear
+        
         animator.addAnimations {
             
             cell.alpha = 1
+            
             cell.transform = .identity
-            self.TrailContentTableView.layoutIfNeeded()
+            
+            self.trailContentTableView.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 0.3 * Double(indexPath.item))
     }

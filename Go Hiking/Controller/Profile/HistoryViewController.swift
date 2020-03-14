@@ -9,14 +9,8 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
-
+    
     var loadRecord = [UserRecord]()
-    
-//    let record = Record.getAllRecords()
-    
-    var imagePoly = [Polyline]()
-    
-    let polyline = Polyline.getAllLines()
     
     var userRecord: [UserRecord] = [] {
         
@@ -40,9 +34,9 @@ class HistoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setTableView()
-    
+        
         getHistoryData()
     }
     
@@ -55,7 +49,7 @@ class HistoryViewController: UIViewController {
         historyTableView.rowHeight = UITableView.automaticDimension
         historyTableView.separatorStyle = .none
     }
-
+    
     func getHistoryData() {
         
         UserManager.share.loadRecordData { (userRecord) in
@@ -65,7 +59,7 @@ class HistoryViewController: UIViewController {
             case .success(let record):
                 
                 self.userRecord = record
-        
+                
                 self.sumDistance = 0.0
                 
                 record.map { distance in
@@ -90,45 +84,35 @@ class HistoryViewController: UIViewController {
 
 extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-       return userRecord.count + 1
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return userRecord.count + 1
+    }
     
-    if indexPath.row == 0 {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let headCell = tableView.dequeueReusableCell(withIdentifier: "HistoryHEAD", for: indexPath) as? HistoryHeadTableViewCell else { return UITableViewCell() }
-        
-        headCell.selectionStyle = .none
-        headCell.exploreTimes.text = "\(userRecord.count)"
-        headCell.exploreKM.text = "\(sumDistance.roundTo(places: 2)) 公里"
-        headCell.exploreHR.text = "\(sumTime / 3600).\(Int((sumTime % 3600) / 360)) 小時"
-        
-        return headCell
-    } else {
-        
-        guard let historyCell = tableView.dequeueReusableCell(withIdentifier: "HISTORY", for: indexPath) as? HistoryTableViewCell else { return UITableViewCell() }
-        
-        historyCell.selectionStyle = .none
-        
-        
-//        guard let distance = userRecord[indexPath.row - 1].distance else { return UITableViewCell() }
-       
-//        var sumDistance = 0.0
-//        sumDistance += distance
-//        print(sumDistance)
-
-//        historyCell.exploreTitle.text = "\(distance.roundTo(places: 2))"
-        
-        historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2)) 公里"
-        
-        historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
-        
-//        historyCell.explorePolyline.image = imagePoly[indexPath.row - 2].image
-        
-        return historyCell
+        if indexPath.row == 0 {
+            
+            guard let headCell = tableView.dequeueReusableCell(withIdentifier: "HistoryHEAD", for: indexPath) as? HistoryHeadTableViewCell else { return UITableViewCell() }
+            
+            headCell.selectionStyle = .none
+            headCell.exploreTimes.text = "\(userRecord.count)"
+            headCell.exploreKM.text = "\(sumDistance.roundTo(places: 2)) 公里"
+            headCell.exploreHR.text = "\(sumTime / 3600).\(Int((sumTime % 3600) / 360)) 小時"
+            
+            return headCell
+        } else {
+            
+            guard let historyCell = tableView.dequeueReusableCell(withIdentifier: "HISTORY", for: indexPath) as? HistoryTableViewCell else { return UITableViewCell() }
+            
+            historyCell.selectionStyle = .none
+            
+            historyCell.exploreTitle.text = "\(userRecord[indexPath.row - 1].distance.roundTo(places: 2)) 公里"
+            
+            historyCell.exploreDate.text = userRecord[indexPath.row - 1].date
+            
+            historyCell.explorePolyline.image = userRecord[indexPath.row - 1].lineImage.toImage()
+            return historyCell
         }
     }
 }
@@ -138,5 +122,15 @@ extension Double {
     public func roundTo(places: Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
+    }
+}
+
+extension String {
+    
+    func toImage() -> UIImage? {
+        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters) {
+            return UIImage(data: data)
+        }
+        return nil
     }
 }

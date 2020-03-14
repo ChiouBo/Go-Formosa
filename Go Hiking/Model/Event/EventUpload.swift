@@ -37,17 +37,29 @@ class UploadEvent {
         eventDB.collection("Event").document(documentID).setData([
             
             "title": evenContent.title,
+            
             "desc": evenContent.desc,
+            
             "location": evenContent.location,
+            
             "start": evenContent.start,
+            
             "end": evenContent.end,
+            
             "member": evenContent.amount,
+            
             "image": image,
+            
             "creater": uid,
+            
             "eventID": documentID,
+            
             "waitingList": [],
+            
             "memberList": [],
+            
             "requestList": [],
+            
             "chatroomID": chatroomID
             
         ]) { (error) in
@@ -61,7 +73,7 @@ class UploadEvent {
     
     // MARK: - Download Photo URL
     func storage(uniqueString: String, data: Data, completion: @escaping (Result<URL>) -> Void ) {
-        
+        // swiftlint:disable unused_closure_parameter
         let uploadData = data
         
         let storageRef = Storage.storage().reference().child("GHEventPhotoUpload").child("\(uniqueString).jpg")
@@ -159,20 +171,15 @@ class UploadEvent {
         
         let ref: DocumentReference = eventDB.collection("users").document(userUid)
         
-//        do{
-            //            try eventDB.collection("Event").document(event.eventID).collection("Request").document(userUid).setData(from: userRequest)
-            eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayUnion([ref])])
-            
-            eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayUnion([userUid])])
-//        } catch {
-            
-//            print(error.localizedDescription)
-//        }
+        eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayUnion([ref])])
+        
+        eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayUnion([userUid])])
+        
     }
     
     // MARK: - Upload Request to Event
     func loadRequestUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[UserInfo], Error>) -> Void) {
-
+        
         print(event.eventID)
         
         var waitingMembers: [UserInfo] = []
@@ -187,11 +194,11 @@ class UploadEvent {
                     
                     do {
                         guard let userData = try data.data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
-                       
+                        
                         waitingMembers.append(userData)
                         
                         if waitingMembers.count == event.waitingList.count {
- 
+                            
                             completion(.success(waitingMembers))
                         }
                         
@@ -203,40 +210,38 @@ class UploadEvent {
         }
     }
     
-  
-    
     // MARK: - Load Member to Event
     func loadMemberUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[UserInfo], Error>) -> Void) {
-
-          print(event.eventID)
-                 
-                 var acceptMembers: [UserInfo] = []
-                 
-                 for count in 0 ..< event.memberList.count {
-                     
-                     event.memberList[count].getDocument { userinfo, error in
-                         
-                         if error == nil {
-                             
-                             guard let data = userinfo else { return }
-                             
-                             do {
-                                 guard let userData = try data.data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
-                                
-                                 acceptMembers.append(userData)
-                                 
-                                 if acceptMembers.count == event.memberList.count {
-          
-                                     completion(.success(acceptMembers))
-                                 }
-                                 
-                             } catch {
-                                 completion(.failure(error))
-                             }
-                         }
-                     }
-                 }
-      }
+        
+        print(event.eventID)
+        
+        var acceptMembers: [UserInfo] = []
+        
+        for count in 0 ..< event.memberList.count {
+            
+            event.memberList[count].getDocument { userinfo, error in
+                
+                if error == nil {
+                    
+                    guard let data = userinfo else { return }
+                    
+                    do {
+                        guard let userData = try data.data(as: UserInfo.self, decoder: Firestore.Decoder()) else { return }
+                        
+                        acceptMembers.append(userData)
+                        
+                        if acceptMembers.count == event.memberList.count {
+                            
+                            completion(.success(acceptMembers))
+                        }
+                        
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            }
+        }
+    }
     
     // MARK: - Bring User to Event Mamber
     func acceptRequestUser(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
@@ -257,8 +262,7 @@ class UploadEvent {
         
         eventDB.collection("users").document(currentUid).updateData(["eventCreate": FieldValue.arrayUnion([eventRef])])
         
-
-            completion(.success(()))
+        completion(.success(()))
     }
     
     // MARK: - Delete Member
@@ -297,7 +301,7 @@ class UploadEvent {
         }
     }
     
-    //
+    // MARK: - Create Chatroom
     func creatChatRoom(chatroomID: String, eventID: String, completion: @escaping (Swift.Result<String, Error>) -> Void) {
         
         let channel = Channel(name: chatroomID, eventID: eventID)
@@ -307,6 +311,4 @@ class UploadEvent {
             completion(.success("Chatroom build"))
         }
     }
-    
 }
-

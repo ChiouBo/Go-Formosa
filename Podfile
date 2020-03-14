@@ -17,6 +17,7 @@ target 'Go Hiking' do
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
   pod 'FirebaseInstanceID'
+  pod 'Firebase/Messaging'
   
   pod 'Kingfisher'
   pod 'MJRefresh'
@@ -42,5 +43,9 @@ target 'Go Hiking' do
   
   pod 'MessageKit'
   pod 'SwiftMessages'
-
+  
+  pod 'EFCountingLabel'
+  pod 'Koloda'
+  pod 'CountdownLabel'
+  
 end

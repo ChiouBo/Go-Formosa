@@ -60,4 +60,3 @@ class StartTableViewCell: UITableViewCell {
     }
 
 }
-

@@ -13,9 +13,9 @@ import Kingfisher
 
 class CampaignViewController: UIViewController {
 
-    var eventList = [EventCurrent]()
+    var eventList: [EventCurrent] = []
     
-    var eventData = [EventCurrent]()
+    var eventData: [EventCurrent] = []
     
     var filteredEvent: [EventCurrent] = [] {
         
@@ -24,6 +24,8 @@ class CampaignViewController: UIViewController {
             publicTableView.reloadData()
         }
     }
+    
+    var refreshControl: UIRefreshControl!
     
     lazy var publicTableView: UITableView = {
         let pTV = UITableView()
@@ -87,10 +89,11 @@ class CampaignViewController: UIViewController {
         
         navigationItem.title = "活動"
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationController?.navigationBar.barStyle = .black
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "Icons_24px_Explore")?.withRenderingMode(.alwaysOriginal),
+            image: UIImage(named: "Icon_Flag")?.withRenderingMode(.alwaysOriginal),
             style: .done, target: self, action: #selector(toPrivateList))
         navigationController?.navigationBar.barTintColor = .clear
         
@@ -100,55 +103,45 @@ class CampaignViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
-    func customizebackgroundView() {
-          
-          let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-          let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-          let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-          
-          let gradientLocations:[NSNumber] = [0.3, 1.0]
-          
-          let gradientLayer = CAGradientLayer()
-          gradientLayer.colors = gradientColors
-          gradientLayer.locations = gradientLocations
-//          gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-//          gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-          gradientLayer.frame = self.view.frame
-          self.view.layer.insertSublayer(gradientLayer, at: 0)
-      }
+    func refreshData() {
+
+        refreshControl = UIRefreshControl()
+        publicTableView.addSubview(refreshControl)
+
+        refreshControl.attributedTitle = NSAttributedString(string: "正在更新", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        refreshControl.tintColor = UIColor.white
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.addTarget(self, action: #selector(getAllData), for: UIControl.Event.valueChanged)
+
+    }
+    
+    @objc func getAllData() {
+        
+        filteredEvent = []
+        
+        eventData = []
+        
+        getEventData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavVC()
         
-        customizebackgroundView()
-        
+        setCustomBackground()
+    
         navigationItem.searchController = searchController
         
         publicTableView.separatorStyle = .none
         
         publicTableView.backgroundColor = .red
         
-        setupElements()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        eventData = []
-        
-        filteredEvent = []
-        
         getEventData()
         
-//        navigationController?.setNavigationBarHidden(false, animated: false)
+        setupElements()
         
-        publicTableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        refreshData()
     }
 
     func getEventData() {
@@ -168,6 +161,9 @@ class CampaignViewController: UIViewController {
                 
                 print(error)
             }
+            self.publicTableView.reloadData()
+
+            self.refreshControl.endRefreshing()
         }
     }
     

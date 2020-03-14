@@ -14,7 +14,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseDatabase
 
-struct histroy {
+struct Histroy {
     
     let lat: Double
     let long: Double
@@ -78,9 +78,12 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         presentingViewController?.tabBarController?.tabBar.isHidden = true
         
         var bounds: GMSCoordinateBounds = GMSCoordinateBounds()
+        
         for index in 0 ..< path.count() {
+        
             bounds = bounds.includingCoordinate(path.coordinate(at: index))
         }
+        
         self.trackMap.animate(with: GMSCameraUpdate.fit(bounds))
     }
     
@@ -113,13 +116,20 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         pause = !pause
         
         if pause == true {
+            
             pauseBtn.setImage(UIImage(named: "Icon_Map_Play"), for: .normal)
+            
             isTimerRunning = false
+            
             timer.invalidate()
+            
             stopBtn.isHidden = false
         } else {
+            
             pauseBtn.setImage(UIImage(named: "Icon_Map_Pause"), for: .normal)
+            
             setTimer()
+            
             stopBtn.isHidden = true
         }
     }
@@ -127,34 +137,37 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func stopBtn(_ sender: UIButton) {
         
         guard let id = Auth.auth().currentUser?.uid,
-            let distance = distanceLabel.text
-             else { return }
+            let distance = distanceLabel.text else {
+                return
+                
+        }
         
         guard let sumDistance = Double(distance) else { return }
         
-        let path = UserRecord(id: id, date: date, distance: sumDistance, time: Int(floor(counter)), markerLat: pathLat, markerLong: pathLong, lineImage: "")
+        guard let screenshot = self.view.takeScreenshot().toString() else { return }
+        
+        let path = UserRecord(id: id, date: date, distance: sumDistance, time: Int(floor(counter)), markerLat: pathLat, markerLong: pathLong, lineImage: screenshot)
+        
+        LKProgressHUD.showWaitingList(text: "", viewController: self)
+        
+        LKProgressHUD.showSuccess(text: "紀錄完成", viewController: self)
+        
+        UserManager.share.saveRecordData(userRecord: path) { (result) in
             
-            LKProgressHUD.showWaitingList(text: "", viewController: self)
-            
-            LKProgressHUD.showSuccess(text: "紀錄完成", viewController: self)
-            
-            UserManager.share.saveRecordData(userRecord: path) { (result) in
+            switch result {
                 
-                switch result {
-                    
-                case .success(let data):
-                    print(data)
-                    
-                case .failure(let error):
-                    print(error)
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            case .success(let data):
+                print(data)
                 
-                self.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+                print(error)
             }
         }
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     func dateToday() {
         
@@ -187,17 +200,23 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     func setTimer() {
         
         if !isTimerRunning {
+            
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+            
             isTimerRunning = true
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
                 
                 guard let cord = self.userLocationManager.location?.coordinate,
-                    let userPosition = self.userPosition else { return }
+                    let userPosition = self.userPosition else {
+                        return
+                        
+                }
                 
-                let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude, lng1: userPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
-                
-                print(outCome)
+                let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude,
+                                                                      lng1: userPosition.longitude,
+                                                                      lat2: cord.latitude,
+                                                                      lng2: cord.longitude)
                 
                 if outCome > 0.0001 {
                     
@@ -218,15 +237,14 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     self.pathLat.append(cord.latitude)
                     self.pathLong.append(cord.longitude)
                     
-                    print(self.pathLine)
-                    
                     let line = GMSPolyline(path: self.path)
                     line.strokeWidth = 10
                     line.strokeColor = .white
                     line.geodesic = true
-                    let redYellow =
-                        GMSStrokeStyle.gradient(from: .red, to: .yellow)
+                    
+                    let redYellow = GMSStrokeStyle.gradient(from: .red, to: .yellow)
                     let yellowRed = GMSStrokeStyle.gradient(from: .yellow, to: .red)
+                    
                     line.spans = [GMSStyleSpan(style: redYellow),
                                   GMSStyleSpan(style: redYellow),
                                   GMSStyleSpan(style: yellowRed)]
@@ -234,11 +252,13 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     line.map = self.trackMap
                     
                     self.distance += Double(Int(outCome)) / 1000
+                    
                     let setDistance = String(format: "%.2f", self.distance)
+                    
                     self.distanceLabel.text = "\(setDistance)"
-                    print(self.distanceLabel.text ?? "")
                     
                 } else {
+                    
                     return
                 }
             }
@@ -283,8 +303,8 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         pathLat.append(location.latitude)
         pathLong.append(location.longitude)
         
-//        let origin = histroy(lat: location.latitude, long: location.longitude)
-//        pathLine.append(origin.toDict)
+        //        let origin = histroy(lat: location.latitude, long: location.longitude)
+        //        pathLine.append(origin.toDict)
         
         if let mapStyleURL = Bundle.main.url(forResource: "MapDarkMode", withExtension: "json") {
             trackMap.mapStyle = try? GMSMapStyle(contentsOfFileURL: mapStyleURL)
@@ -307,9 +327,13 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 18.0)
         
         trackMap.camera = myArrange
+        
         userPosition = center
+        
         let marker = GMSMarker()
+        
         marker.position = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
+        
         marker.map = trackMap
     }
     
@@ -317,4 +341,34 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
 
 extension TrackViewController: GMSMapViewDelegate {
     
+}
+
+extension UIView {
+    
+    func takeScreenshot() -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, UIScreen.main.scale)
+        
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        
+        let polyImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        if polyImage != nil {
+            
+            return polyImage!
+        }
+        return UIImage()
+    }
+}
+
+extension UIImage {
+    
+    func toString() -> String? {
+        
+        let data: Data? = self.jpegData(compressionQuality: 0.5)
+        
+        return data?.base64EncodedString(options: .endLineWithLineFeed)
+    }
 }

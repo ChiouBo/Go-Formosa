@@ -13,10 +13,10 @@ import IQKeyboardManagerSwift
 class PrivateListViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
     let transition = CreateTransition()
-//
-//    var filteredCampaign = [Campaign]()
-//
-//    let campaigns = Campaign.getAllCampaigns()
+    //
+    //    var filteredCampaign = [Campaign]()
+    //
+    //    let campaigns = Campaign.getAllCampaigns()
     
     var eventAll: EventCurrent?
     
@@ -44,13 +44,13 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         search.searchBar.placeholder = "請輸入活動關鍵字"
         search.searchBar.sizeToFit()
         search.searchBar.searchBarStyle = .prominent
-//        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
+        //        search.searchBar.scopeButtonTitles = ["All", "Hiking", "Running", "Cycling"]
         search.searchBar.delegate = self
         return search
     }()
     
     lazy var createBtn: UIButton = {
-       let create = UIButton()
+        let create = UIButton()
         create.translatesAutoresizingMaskIntoConstraints = false
         create.setImage(UIImage(named: "Icon_Plus"), for: .normal)
         create.addTarget(self, action: #selector(toCreateVC), for: .touchUpInside)
@@ -88,29 +88,14 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
     
-    func customizebackgroundView() {
-              
-              let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-              let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-              let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-              
-              let gradientLocations:[NSNumber] = [0.3, 1.0]
-              
-              let gradientLayer = CAGradientLayer()
-              gradientLayer.colors = gradientColors
-              gradientLayer.locations = gradientLocations
-              gradientLayer.frame = self.view.frame
-              self.view.layer.insertSublayer(gradientLayer, at: 0)
-          }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        
         navigationItem.searchController = searchController
         
         privateTableView.separatorStyle = .none
-        
-        customizebackgroundView()
+ 
+        setCustomBackground()
         
         setupElements()
         
@@ -143,7 +128,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
                 
                 self.filteredEvent.append(data)
                 self.eventData.append(data)
-
+                
                 self.privateTableView.reloadData()
             case .failure(let error):
                 
@@ -152,33 +137,32 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
         }
     }
     
-    
     func filterContentForSearchText(searchText: String, scope: String = "All") {
         
-//        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
-//
-//            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
-//
-//            if isSearchBarEmpty() {
-//
-//                return doesCategoryMatch
-//            } else {
-//
-//                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
-//            }
-//        })
+        //        filteredCampaign = campaigns.filter({ (campaign: Campaign) -> Bool in
+        //
+        //            let doesCategoryMatch = (scope == "All") || (campaign.type == scope)
+        //
+        //            if isSearchBarEmpty() {
+        //
+        //                return doesCategoryMatch
+        //            } else {
+        //
+        //                return doesCategoryMatch && (campaign.title.lowercased().contains(searchText.lowercased()) || campaign.type.lowercased().contains(searchText.lowercased()))
+        //            }
+        //        })
         
         filteredEvent = []
         
         filteredEvent = eventData.filter({ (event: EventCurrent) -> Bool in
-        
+            
             let doesCategoryMatch = (scope == "All")
-
+            
             if searchText.isEmpty {
                 
                 return doesCategoryMatch
             } else {
-            
+                
                 return doesCategoryMatch &&
                     event.title.lowercased().contains(searchText.lowercased())
             }
@@ -224,18 +208,18 @@ extension PrivateListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         filterContentForSearchText(searchText: searchBar.text!)
-//            , scope: searchBar.scopeButtonTitles![selectedScope])
+        //            , scope: searchBar.scopeButtonTitles![selectedScope])
     }
 }
 
 extension PrivateListViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-//        let searchBar = searchController.searchBar
-//        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        //        let searchBar = searchController.searchBar
+        //        let scope = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         
         filterContentForSearchText(searchText: searchController.searchBar.text!)
-//            , scope: scope)
+        //            , scope: scope)
     }
 }
 
@@ -243,9 +227,9 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-//        if isFiltering() { return filteredCampaign.count}
+        //        if isFiltering() { return filteredCampaign.count}
         
-//        return campaigns.count
+        //        return campaigns.count
         
         return filteredEvent.count
         
@@ -268,31 +252,27 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.campaignLevel.text = filteredEvent[indexPath.row].start
         cell.campaignImage.kf.setImage(with: URL(string: filteredEvent[indexPath.row].image))
         
+        cell.campaignDelete.isHidden = false
         
-        
-
+        cell.deleteEventHandler = {
             
-            cell.campaignDelete.isHidden = false
-            
-            cell.deleteEventHandler = {
+            UploadEvent.shared.removeEvent(event: self.filteredEvent[indexPath.row].eventID) { (result) in
                 
-                UploadEvent.shared.removeEvent(event: self.filteredEvent[indexPath.row].eventID) { (result) in
+                switch result {
                     
-                    switch result {
-                        
-                    case .success:
-                        
-                        self.filteredEvent.remove(at: indexPath.row)
-            
-                        self.privateTableView.deleteRows(at: [indexPath], with: .right)
+                case .success:
                     
-                        self.privateTableView.reloadData()
-                     
-                    case .failure(let error):
-                        
-                        print(error)
-                    }
+                    self.filteredEvent.remove(at: indexPath.row)
+                    
+                    self.privateTableView.deleteRows(at: [indexPath], with: .right)
+                    
+                    self.privateTableView.reloadData()
+                    
+                case .failure(let error):
+                    
+                    print(error)
                 }
+            }
         }
         
         return cell
@@ -301,6 +281,7 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let content = UIStoryboard(name: "Campaign", bundle: nil)
+        
         guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
         
         let data = filteredEvent[indexPath.row]

@@ -110,7 +110,7 @@ struct AppleUser {
     
     let firstName: String
     
-    let LastName: String
+    let lastName: String
     
     let email: String
     
@@ -119,7 +119,7 @@ struct AppleUser {
         
         self.id = credentials.user
         self.firstName = credentials.fullName?.givenName ?? ""
-        self.LastName = credentials.fullName?.familyName ?? ""
+        self.lastName = credentials.fullName?.familyName ?? ""
         self.email = credentials.email ?? ""
     }
 }
@@ -130,7 +130,7 @@ extension AppleUser: CustomDebugStringConvertible {
         return """
         ID: \(id)
         First Name: \(firstName)
-        Last Name: \(LastName)
+        Last Name: \(lastName)
         Email: \(email)
         """
     }

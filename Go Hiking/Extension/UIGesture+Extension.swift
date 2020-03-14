@@ -8,18 +8,18 @@
 
 import UIKit
 
-enum GHGesture: String {
-    
-    case Up
-    
-    case Down
-    
-    case Left
-    
-    case Right
-}
-
-extension UISwipeGestureRecognizer {
-    
-    
-}
+//enum GHGesture: String {
+//    
+//    case Up
+//    
+//    case Down
+//    
+//    case Left
+//    
+//    case Right
+//}
+//
+//extension UISwipeGestureRecognizer {
+//    
+//    
+//}

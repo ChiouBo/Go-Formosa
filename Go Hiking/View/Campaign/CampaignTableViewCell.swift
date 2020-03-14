@@ -57,7 +57,6 @@ class CampaignTableViewCell: UITableViewCell {
         campaignMember.shadowColor = .gray
     }
     
-    
     func setView() {
         
         campaignImage.layer.cornerRadius = 10

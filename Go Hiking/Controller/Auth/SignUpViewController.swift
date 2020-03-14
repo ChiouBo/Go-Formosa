@@ -28,12 +28,19 @@ class SignUpViewController: UIViewController {
     @IBAction func userSubmit(_ sender: UIButton) {
         
         if let name = userName.text,
+            
             let email = userEmail.text,
+            
             let password = userPassword.text,
+            
             let confirmpassword = userConfirmPassword.text,
+            
             name != "",
+            
             email != "",
+            
             password != "",
+            
             confirmpassword != "" {
             
             if userPassword.text != userConfirmPassword.text {
@@ -41,12 +48,13 @@ class SignUpViewController: UIViewController {
                 let alertController = UIAlertController(title: "Error", message: "輸入的密碼不一致！", preferredStyle: .alert)
                 
                 let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                
                 alertController.addAction(defaultAction)
                 
                 present(alertController, animated: true, completion: nil)
                 
             } else {
-                
+                // swiftlint:disable unused_closure_parameter
                 Auth.auth().createUser(withEmail: userEmail.text!, password: userPassword.text!) { (user, error) in
                     
                     if error == nil {
@@ -89,10 +97,15 @@ class SignUpViewController: UIViewController {
         userDB.collection("userEmail").document("\(userEmail.text!)").setData([
         
             "Name": name,
+            
             "Email": email,
+            
             "Password": password,
+            
             "Confirm": confirmpassword,
+            
             "ID": userID as Any
+        
         ]) { (error) in
             
             if let error = error {

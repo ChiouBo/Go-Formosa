@@ -10,7 +10,7 @@ import UIKit
 
 class RecordCampaignViewController: UIViewController {
     
-    private enum infoType: Int {
+    private enum InfoType: Int {
         
         case mainInfo = 0
         
@@ -43,11 +43,10 @@ class RecordCampaignViewController: UIViewController {
         
         moveIndicatorView(reference: sender)
         
-        guard let type = infoType(rawValue: sender.tag) else { return }
+        guard let type = InfoType(rawValue: sender.tag) else { return }
         
         updateContainer(type: type)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +68,7 @@ class RecordCampaignViewController: UIViewController {
         })
     }
     
-    private func updateContainer(type: infoType) {
+    private func updateContainer(type: InfoType) {
         
         containerViews.forEach({ $0.isHidden = true })
         
@@ -83,9 +82,3 @@ class RecordCampaignViewController: UIViewController {
         }
     }
 }
-
-
-
-
-
-

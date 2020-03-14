@@ -13,7 +13,6 @@ protocol PressToUploadPhoto: AnyObject {
     func presstoUploadPhoto(_ tableViewCell: PhotoTableViewCell)
 }
 
-
 class PhotoTableViewCell: UITableViewCell {
 
     weak var delegate: PressToUploadPhoto?
@@ -102,7 +101,6 @@ extension PhotoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         return UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0, right: 20.0)
     }
 
-    
 }
 
 extension PhotoTableViewCell: UploadPhotoDelegate {

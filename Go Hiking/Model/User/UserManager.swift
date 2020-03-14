@@ -45,21 +45,19 @@ class UserManager {
         
         let userInfo = UserInfo(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "", eventCreate: [], event: [])
         
-        self.userDB.collection("users").document(id).setData(userInfo.todict){ (error) in
+        self.userDB.collection("users").document(id).setData(userInfo.todict) { (error) in
             
             if let error = error {
                 
                 print(error.localizedDescription)
             }
-            
             completion(.success("SaveUserData"))
         }
-        
     }
     
     // MARK: - Save Users Auth
     func signinUserData(credential: AuthCredential, completion: @escaping (Result<String>) -> Void) {
-        
+        // swiftlint:disable unused_closure_parameter
         Auth.auth().signIn(with: credential) { (authResult, error) in
             
             if let error = error {
@@ -98,16 +96,19 @@ class UserManager {
     }
     
     // MARK: - Upload Users Data
-    func uploadUserData(userInfo: UserInfo, completion: @escaping (Result<String>) -> Void ) {
+    
+    // swiftlint:disable function_parameter_count
+    func uploadUserData(userID: String, userName: String, userIntro: String, coverImage: String, userImage: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        userDB.collection("users").document(userInfo.id).setData(userInfo.todict) { (error) in
+        userDB.collection("users").document(userID).setData(["name": userName, "introduction": userIntro, "picture": userImage, "coverImage": coverImage], merge: true) { (error) in
             
             if let error = error {
-                
+
                 completion(.failure(error))
-            } else {
                 
-                completion(.success("success"))
+            } else {
+
+                completion(.success(()))
             }
         }
     }
@@ -117,7 +118,7 @@ class UserManager {
         
         let pathID = userDB.collection("users").document(userRecord.id).collection("Path").document().documentID
         
-        do{
+        do {
             try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
             
         } catch {
@@ -154,5 +155,3 @@ class UserManager {
         }
     }
 }
-
-

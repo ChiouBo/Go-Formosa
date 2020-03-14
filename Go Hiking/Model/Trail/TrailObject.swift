@@ -26,6 +26,7 @@ struct Trail: Codable {
     let trHutName: String?
     let trPermit: TRPermit?
     let url: String
+    var photo: String?
 
     enum CodingKeys: String, CodingKey {
         case trailid = "TRAILID"
@@ -56,6 +57,7 @@ struct Trail: Codable {
     }
 }
 
+// swiftlint:disable identifier_name redundant_string_enum_value
 enum TrAdmin: String, Codable {
     case 南投林區管理處 = "南投林區管理處"
     case 南投林區管理處花蓮林區管理處 = "南投林區管理處\u{d}\n花蓮林區管理處"

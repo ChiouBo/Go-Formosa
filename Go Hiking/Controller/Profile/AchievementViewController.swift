@@ -9,7 +9,7 @@
 import UIKit
 
 class AchievementViewController: UIViewController {
-
+    
     var userRecord: [UserRecord] = [] {
         
         didSet {
@@ -17,6 +17,10 @@ class AchievementViewController: UIViewController {
             achieveTableView.reloadData()
         }
     }
+    
+    var farthest: [Double] = []
+    
+    var oldest: [Int] = []
     
     @IBOutlet weak var achieveTableView: UITableView!
     
@@ -28,10 +32,10 @@ class AchievementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setTableview()
         
-        getHistoryData()
+        //        getHistoryData()
     }
     
     func setTableview() {
@@ -54,40 +58,48 @@ class AchievementViewController: UIViewController {
                 
                 self?.userRecord = record
                 
+                for distance in record {
+                    self?.farthest.append(distance.distance)
+                }
+                self?.farthest = self?.farthest.sorted { $0 > $1 } ?? [0.0]
+                
+                for time in record {
+                    self?.oldest.append(time.time)
+                }
+                self?.oldest = self?.oldest.sorted { $0 > $1 } ?? [0]
+                
             case .failure(let error):
                 
                 print(error)
             }
         }
     }
-
+    
 }
 
 extension AchievementViewController: UITableViewDelegate, UITableViewDataSource {
     
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-    return 2
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    if indexPath.row == 0 {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let headCell = tableView.dequeueReusableCell(withIdentifier: "AchieveHEAD", for: indexPath) as? AchieveHeadTableViewCell else { return UITableViewCell() }
-        
-        headCell.selectionStyle = .none
-        
-        return headCell
-    } else {
-        
-        guard let achieveCell = tableView.dequeueReusableCell(withIdentifier: "ACHIEVE", for: indexPath) as? AchieveTableViewCell else { return UITableViewCell() }
-        
-        achieveCell.selectionStyle = .none
-        
-        return achieveCell
-        }
+        return 2
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == 0 {
+            
+            guard let headCell = tableView.dequeueReusableCell(withIdentifier: "AchieveHEAD", for: indexPath) as? AchieveHeadTableViewCell else { return UITableViewCell() }
+            
+            headCell.selectionStyle = .none
+            
+            return headCell
+        } else {
+            
+            guard let achieveCell = tableView.dequeueReusableCell(withIdentifier: "ACHIEVE", for: indexPath) as? AchieveTableViewCell else { return UITableViewCell() }
+            
+            achieveCell.selectionStyle = .none
+            
+            return achieveCell
+        }
+    }
 }

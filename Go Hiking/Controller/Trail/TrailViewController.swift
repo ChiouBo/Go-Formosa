@@ -94,13 +94,14 @@ class TrailViewController: UIViewController {
         navigationController?.navigationBar.shadowImage = image
         navigationController?.navigationBar.isTranslucent = true
         
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(
-//            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
-//            style: .done, target: self, action: #selector(filterBtn))
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(
+        //            image: UIImage(named: "Icons_24px_Sorting")?.withRenderingMode(.alwaysOriginal),
+        //            style: .done, target: self, action: #selector(filterBtn))
         
         navigationController?.navigationBar.barTintColor = .clear
         navigationItem.title = "臺灣步道資訊"
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         let backImage = UIImage(named: "Icons_44px_Back01")?.withRenderingMode(.alwaysOriginal)
         navigationController?.navigationBar.backIndicatorImage = backImage
@@ -125,22 +126,7 @@ class TrailViewController: UIViewController {
         
         setNavVC()
         
-        customizebackgroundView()
-    }
-    
-    func customizebackgroundView() {
-        
-        let bottomColor = UIColor(red: 9/255, green: 32/255, blue: 63/255, alpha: 1)
-        let topColor = UIColor(red: 59/255, green: 85/255, blue: 105/255, alpha: 1)
-        let gradientColors = [bottomColor.cgColor, topColor.cgColor]
-        
-        let gradientLocations:[NSNumber] = [0.3, 1.0]
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        gradientLayer.locations = gradientLocations
-        gradientLayer.frame = self.view.frame
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        setCustomBackground()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -155,18 +141,20 @@ class TrailViewController: UIViewController {
         
         trailFilter = trailListData.filter({ (trail: Trail) -> Bool in
             let doesCategoryMatch = (scope == "All")
-
+            
             if searchText.isEmpty {
-
+                
                 return doesCategoryMatch
             } else {
+                
                 if trail.trPosition != nil {
-                return doesCategoryMatch && (trail.trCname.lowercased().contains(searchText.lowercased()) || trail.trPosition?.lowercased().contains(searchText.lowercased()) ?? true)
+                    
+                    return doesCategoryMatch && (trail.trCname.lowercased().contains(searchText.lowercased()) || trail.trPosition?.lowercased().contains(searchText.lowercased()) ?? true)
                 }
                 return doesCategoryMatch && trail.trCname.lowercased().contains(searchText.lowercased())
             }
         })
-
+        
         trailTableView.reloadData()
     }
     
@@ -188,6 +176,7 @@ class TrailViewController: UIViewController {
 extension TrailViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
         filterContentForSearchText(searchText: searchBar.text!)
     }
 }
@@ -209,7 +198,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
             
             return 0
         } else {
-
+            
             return trailFilter.count
         }
     }
@@ -222,11 +211,15 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Trail", for: indexPath) as?
-            TrailTableViewCell else { return UITableViewCell() }
- 
+            TrailTableViewCell else {
+                return UITableViewCell()
+                
+        }
+        
         cell.selectionStyle = .none
         
         if trailFilter[indexPath.row].trPosition != nil {
+            
             cell.trailTitle.text = "  \(trailFilter[indexPath.row].trCname)"
             cell.trailPosition.text = trailFilter[indexPath.row].trPosition
             cell.trailLevel.text = "難易度：\(trailFilter[indexPath.row].trDIFClass ?? "") 級"
@@ -234,14 +227,17 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.trailImage.loadImage(trailPhoto.place[indexPath.row])
             
             var container: TrTyp?
+            
             var containers = ""
-            
-            
+            // swiftlint:disable for_where
             for typeCount in 0 ..< trailType.count {
+                
                 if trailType[typeCount].trailid == trailFilter[indexPath.row].trailid {
+                    
                     container = trailType[typeCount].trTyp
                 }
             }
+            
             guard let apple = container else {
                 cell.trailStatus.text = ""
                 return cell
@@ -251,13 +247,10 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
                 
             case .暫停開放:
                 containers = " 暫停開放 "
-                
             case .注意:
                 containers = "  注意  "
             case .部分封閉:
                 containers = " 部分封閉 "
-            default:
-                containers = ""
             }
             cell.setTrailType(content: containers)
         }
@@ -267,7 +260,11 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let trail = UIStoryboard(name: "Trail", bundle: nil)
-        guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
+        
+        guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else {
+            return
+            
+        }
         
         let data = EventContent(image: [],
                                 title: trailFilter[indexPath.row].trCname,
@@ -278,12 +275,13 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
                                 location: trailFilter[indexPath.row].trPosition ?? "")
         
         let photo = trailPhoto.place[indexPath.row]
+        
         trailVC.trailPhoto = photo
+        
         trailVC.trailDict = data
         
         show(trailVC, sender: nil)
     }
-
 }
 
 // MARK: - CollectionViewDelegate, CollectionViewDataSource
@@ -302,12 +300,13 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         guard let filterCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Filter", for: indexPath)
             as? FilterCollectionViewCell else {
-                return UICollectionViewCell() }
-
+                return UICollectionViewCell()
+                
+        }
+        
         let item = filter.groups[indexPath.section].items[indexPath.row]
         
         filterCell.layoutCell(title: item.filterButton)
@@ -327,9 +326,12 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
         animator.addAnimations {
             
             cell.alpha = 1
+            
             cell.transform = .identity
+            
             self.trailTableView.layoutIfNeeded()
         }
+        
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
 }
@@ -343,7 +345,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         if indexPath.section == 0 && indexPath.row == 0 {
             
             return CGSize(width: UIScreen.main.bounds.width / 4.0, height: 40.0)
-        
+            
         } else if indexPath.section == 1 && indexPath.row == 0 {
             
             return CGSize(width: UIScreen.main.bounds.width / 4.0, height: 40.0)
@@ -351,30 +353,28 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         } else if indexPath.section == 0 {
             
             return CGSize(width: UIScreen.main.bounds.width / 7.0, height: 40.0)
-        } else  {
-            
+        } else {
             return CGSize(width: UIScreen.main.bounds.width / 5.2, height: 40.0)
         }
         
         return CGSize.zero
     }
     
-    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int
     ) -> UIEdgeInsets {
-
+        
         return UIEdgeInsets(top: 10.0, left: 35, bottom: 0, right: 35)
     }
-
+    
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-
+        
         return 20.0
     }
     
@@ -383,7 +383,7 @@ extension TrailViewController: UICollectionViewDelegateFlowLayout {
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-
+        
         return 0
     }
 }
@@ -414,9 +414,6 @@ extension TrailViewController: TrailTypeResponseDelegate {
             self.trailTableView.reloadData()
         }
     }
-    
-    
-    
 }
 
 // MARK: - ViewConstrants
@@ -441,13 +438,3 @@ extension TrailViewController {
         filterClose?.isActive = true
     }
 }
-
-extension String {
-    func toImage() -> UIImage? {
-        if let data = Data(base64Encoded: self, options: .ignoreUnknownCharacters){
-            return UIImage(data: data)
-        }
-        return nil
-    }
-}
-

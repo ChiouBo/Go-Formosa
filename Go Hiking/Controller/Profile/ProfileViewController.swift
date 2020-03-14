@@ -13,7 +13,7 @@ import FBSDKLoginKit
 
 class ProfileViewController: UIViewController {
     
-    private enum contentType: Int {
+    private enum ContentType: Int {
         
         case history = 0
         
@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
     var userInfo: UserInfo?
     
     var userPic = ""
+    
     var coverPic = ""
     
     @IBOutlet weak var profileContentView: UIView!
@@ -60,9 +61,13 @@ class ProfileViewController: UIViewController {
                                    event: [])
         
         editVC.editUserInfo = userProfileInfo
+        
         editVC.backgroundImage = userProfileInfo.coverImage!
+        
         editVC.delegate = self
+        
         editVC.modalPresentationStyle = .overCurrentContext
+        
         present(editVC, animated: true, completion: nil)
         
     }
@@ -84,7 +89,6 @@ class ProfileViewController: UIViewController {
         ])
     }
     
-    
     @IBOutlet weak var indicator: UIView!
     
     @IBOutlet weak var indicatorConstaint: NSLayoutConstraint!
@@ -102,7 +106,7 @@ class ProfileViewController: UIViewController {
         
         moveIndicatorView(reference: sender)
         
-        guard let type = contentType(rawValue: sender.tag) else { return }
+        guard let type = ContentType(rawValue: sender.tag) else { return }
         
         updateContainer(type: type)
     }
@@ -122,7 +126,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logout(_ sender: UIButton) {
         
-        do{
+        do {
             try Auth.auth().signOut()
             
         } catch let logOutError {
@@ -136,9 +140,9 @@ class ProfileViewController: UIViewController {
             withIdentifier: "mainVC") as? GHTabBarViewController else {
                 return
         }
-        
+        // swiftlint:disable force_cast
         let delegate = UIApplication.shared.delegate as! AppDelegate
-        
+        // swiftlint:enable force_cast
         delegate.window?.rootViewController = mainVC
     }
     
@@ -158,7 +162,7 @@ class ProfileViewController: UIViewController {
         })
     }
     
-    private func updateContainer(type: contentType) {
+    private func updateContainer(type: ContentType) {
         
         containerViews.forEach({ $0.isHidden = true })
         
@@ -191,11 +195,17 @@ class ProfileViewController: UIViewController {
             switch userInfo {
                 
             case .success(let user):
+                
                 self.userName.text = user.name
+                
                 self.userPhoto.loadImage(user.picture)
+                
                 self.userPic = user.picture
+                
                 self.userBackground.loadImage(user.coverImage, placeHolder: UIImage(named: "M001"))
+                
                 guard let photo = user.coverImage else { return }
+                
                 self.coverPic = photo
                 
             case .failure(let error):
@@ -208,27 +218,34 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationController?.navigationBar.barStyle = .black
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        
         updateContainer(type: .achievement)
+        
         setProfileUI()
+        
         getUserInfo()
+        
         setElementConstraint()
     }
     
     @objc func reload() {
+        
         getUserInfo()
     }
     
     override func viewWillLayoutSubviews() {
+        
         setProfileUI()
     }
     
     func setProfileUI() {
         
         profileContent.layer.cornerRadius = 500
-        
+        profileContent.topAnchor.constraint(equalTo: view.topAnchor, constant: UIScreen.main.bounds.height / 4.6).isActive = true
         userPhoto.layer.cornerRadius = 50
         userPhoto.layer.borderWidth = 3
         userPhoto.layer.borderColor = UIColor.white.cgColor
@@ -237,7 +254,7 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileEditViewControllerDelegate {
-    
+    // swiftlint:disable function_parameter_count
     func infoEditedBacktoProfileVC(_ profileEditViewController: ProfileEditViewController,
                                    name: String, from: String, intro: String, cover: UIImage, picture: UIImage) {
         
@@ -245,6 +262,5 @@ extension ProfileViewController: ProfileEditViewControllerDelegate {
         userIntroduction.text = intro
         userPhoto.image = picture
         userBackground.image = cover
-        
     }
 }
