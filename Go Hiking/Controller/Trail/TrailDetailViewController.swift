@@ -104,6 +104,7 @@ class TrailDetailViewController: UIViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let originOffsetY = -imageOriginHeight
+        
         let moveDistance = abs(scrollView.contentOffset.y - originOffsetY)
         
         if scrollView.contentOffset.y < originOffsetY {
@@ -134,7 +135,10 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             
             guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
-            TrailContentTableViewCell else { return UITableViewCell() }
+            TrailContentTableViewCell else {
+                return UITableViewCell()
+                
+            }
             
             contentCell.backgroundColor = .clear
             contentCell.selectionStyle = .none
@@ -147,7 +151,10 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case 1:
             
             guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
-            TrailLocationTableViewCell else { return UITableViewCell() }
+            TrailLocationTableViewCell else {
+                return UITableViewCell()
+                
+            }
             
             createCell.backgroundColor = .clear
             createCell.selectionStyle = .none
@@ -165,11 +172,20 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         if Auth.auth().currentUser != nil {
         
         let createEvent = UIStoryboard(name: "Create", bundle: nil)
-        guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else { return }
+        
+            guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else {
+                return
+                
+            }
         
         var currentImage: [UIImage] = []
-        guard let image = trailImage.image else { return }
-        currentImage.append(image)
+        
+            guard let image = trailImage.image else {
+                return
+                
+            }
+        
+            currentImage.append(image)
         
         let trailInfo = EventContent(image: currentImage,
                                      title: trailDict?.title ?? "",
@@ -228,10 +244,13 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         cell.alpha = 0
         cell.transform = CGAffineTransform(translationX: 0, y: 100 * 0.6)
         cell.backgroundColor = .clear
+        
         animator.addAnimations {
             
             cell.alpha = 1
+            
             cell.transform = .identity
+            
             self.trailContentTableView.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 0.3 * Double(indexPath.item))

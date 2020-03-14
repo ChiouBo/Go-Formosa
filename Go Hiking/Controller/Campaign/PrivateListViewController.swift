@@ -281,6 +281,7 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let content = UIStoryboard(name: "Campaign", bundle: nil)
+        
         guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
         
         let data = filteredEvent[indexPath.row]

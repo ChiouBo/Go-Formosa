@@ -8,33 +8,8 @@
 
 import UIKit
 
-//enum CellType {
-//
-//    case distance
-//
-//    case time
-//
-//    case height
-//
-//    case easy
-//
-//    case medium
-//
-//    case hard
-//
-//    case leader
-//}
-//
-//struct jim {
-//
-//    var type: CellType
-//
-//    var title: String
-//
-//}
-
 class AchievementViewController: UIViewController {
-
+    
     var userRecord: [UserRecord] = [] {
         
         didSet {
@@ -57,10 +32,10 @@ class AchievementViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setTableview()
         
-//        getHistoryData()
+        //        getHistoryData()
     }
     
     func setTableview() {
@@ -87,7 +62,7 @@ class AchievementViewController: UIViewController {
                     self?.farthest.append(distance.distance)
                 }
                 self?.farthest = self?.farthest.sorted { $0 > $1 } ?? [0.0]
-
+                
                 for time in record {
                     self?.oldest.append(time.time)
                 }
@@ -99,47 +74,32 @@ class AchievementViewController: UIViewController {
             }
         }
     }
-
+    
 }
 
 extension AchievementViewController: UITableViewDelegate, UITableViewDataSource {
     
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
-    return 2
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    if indexPath.row == 0 {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let headCell = tableView.dequeueReusableCell(withIdentifier: "AchieveHEAD", for: indexPath) as? AchieveHeadTableViewCell else { return UITableViewCell() }
-        
-        headCell.selectionStyle = .none
-        
-//        if farthest.isEmpty {
-//            headCell.achieveDesc.text = "0.0 公里"
-//        } else {
-//            headCell.achieveDesc.text = "\(farthest[0]) 公里"
-//        }
-//
-//        if oldest.isEmpty {
-//
-//            headCell.achieveDesc.text = "0.0 小時"
-//        } else {
-//
-//            headCell.achieveDesc.text = "\(oldest[0] / 3600).\(Int((oldest[0] % 3600) / 360)) 小時"
-//        }
-
-        return headCell
-    } else {
-        
-        guard let achieveCell = tableView.dequeueReusableCell(withIdentifier: "ACHIEVE", for: indexPath) as? AchieveTableViewCell else { return UITableViewCell() }
-        
-        achieveCell.selectionStyle = .none
-        
-        return achieveCell
-        }
+        return 2
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.row == 0 {
+            
+            guard let headCell = tableView.dequeueReusableCell(withIdentifier: "AchieveHEAD", for: indexPath) as? AchieveHeadTableViewCell else { return UITableViewCell() }
+            
+            headCell.selectionStyle = .none
+            
+            return headCell
+        } else {
+            
+            guard let achieveCell = tableView.dequeueReusableCell(withIdentifier: "ACHIEVE", for: indexPath) as? AchieveTableViewCell else { return UITableViewCell() }
+            
+            achieveCell.selectionStyle = .none
+            
+            return achieveCell
+        }
+    }
 }

@@ -46,16 +46,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     
     @IBAction func startExplore(_ sender: UIButton) {
         
-        //        setAlert()
-        //        keepTrackUserLocation()
-        //        trackingUserLocation()
-        //
-        //        guard let location = userLocationManager.location?.coordinate else { return }
-        //
-        //        currentPosition = location
-        //
-        //        setTimer()
-        
         if Auth.auth().currentUser != nil {
             
             navigationController?.navigationBar.isHidden = true
@@ -200,7 +190,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     func didRequestAutocompletePredictionsForTableDataSource(tableDataSource: GMSAutocompleteTableDataSource) {
         // Turn the network activity indicator on.
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-
+        
         searchDisplayController?.searchResultsTableView.reloadData()
     }
     
@@ -280,9 +270,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location = locations.last
+        //        let location = locations.last
         
-//        print("didUpdateLocations: \(location)")
+        //        print("didUpdateLocations: \(location)")
         
         let marker = GMSMarker()
         
@@ -317,7 +307,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
             
             guard let cord = self.userLocationManager.location?.coordinate,
-                let currentPosition = self.currentPosition else { return }
+                let currentPosition = self.currentPosition else {
+                    return
+                    
+            }
             
             let outCome = LocationStepsManager.shared.getDistance(lat1: currentPosition.latitude, lng1: currentPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
             
@@ -451,4 +444,5 @@ extension MapViewController: GMSAutocompleteTableDataSourceDelegate {
         
         return true
     }
+    
 }

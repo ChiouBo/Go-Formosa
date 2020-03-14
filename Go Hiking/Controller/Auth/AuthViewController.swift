@@ -68,10 +68,13 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
         }
         
         setButtonUI(button: ghSignUp)
+        
         setButtonUI(button: ghFacebookLogin)
+        
         setButtonUI(button: ghGoogleSignIn)
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         GIDSignIn.sharedInstance().delegate = self
         
         if let token = AccessToken.current {
@@ -243,58 +246,61 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
     }
     
     private func randomNonceString(length: Int = 32) -> String {
-      precondition(length > 0)
+        precondition(length > 0)
         // swiftlint:disable syntactic_sugar
-      let charset: Array<Character> =
-          Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-      var result = ""
-      var remainingLength = length
-
-      while remainingLength > 0 {
-        let randoms: [UInt8] = (0 ..< 16).map { _ in
-          var random: UInt8 = 0
-          let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
-          if errorCode != errSecSuccess {
-            fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
-          }
-          return random
+        let charset: Array<Character> =
+            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
-
-        randoms.forEach { random in
-          if remainingLength == 0 {
-            return
-          }
-
-          if random < charset.count {
-            result.append(charset[Int(random)])
-            remainingLength -= 1
-          }
-        }
-      }
-
-      return result
+        
+        return result
     }
     
     @available(iOS 13.0, *)
     func startSignInWithAppleFlow() {
         
-            let appleBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+        let appleBtn = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+        
+        appleBtn.translatesAutoresizingMaskIntoConstraints = false
+        
+        appleBtn.addTarget(self, action: #selector(didTapAppleBtn), for: .touchUpInside)
+        
+        appleBtn.cornerRadius = 24
+        
+        appleBtn.frame = ghAppleSignIn.bounds
+        
+        ghAppleSignIn.addSubview(appleBtn)
+        
+        NSLayoutConstraint.activate([
             
-            appleBtn.translatesAutoresizingMaskIntoConstraints = false
-            appleBtn.addTarget(self, action: #selector(didTapAppleBtn), for: .touchUpInside)
-            
-            appleBtn.cornerRadius = 24
-            
-            appleBtn.frame = ghAppleSignIn.bounds
-            
-            ghAppleSignIn.addSubview(appleBtn)
-            NSLayoutConstraint.activate([
-                appleBtn.leadingAnchor.constraint(equalTo: ghAppleSignIn.leadingAnchor, constant: 0),
-                appleBtn.trailingAnchor.constraint(equalTo: ghAppleSignIn.trailingAnchor, constant: 0),
-                appleBtn.topAnchor.constraint(equalTo: ghAppleSignIn.topAnchor, constant: 0),
-                appleBtn.bottomAnchor.constraint(equalTo: ghAppleSignIn.bottomAnchor, constant: 0)
-            ])
-      
+            appleBtn.leadingAnchor.constraint(equalTo: ghAppleSignIn.leadingAnchor, constant: 0),
+            appleBtn.trailingAnchor.constraint(equalTo: ghAppleSignIn.trailingAnchor, constant: 0),
+            appleBtn.topAnchor.constraint(equalTo: ghAppleSignIn.topAnchor, constant: 0),
+            appleBtn.bottomAnchor.constraint(equalTo: ghAppleSignIn.bottomAnchor, constant: 0)
+        ])
+        
     }
     
     @objc func didTapAppleBtn() {
@@ -305,8 +311,11 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
             currentNonce = nonce
             
             let provider = ASAuthorizationAppleIDProvider()
+            
             let request = provider.createRequest()
+            
             request.requestedScopes = [.fullName, .email]
+            
             request.nonce = sha256(nonce)
             
             let controller = ASAuthorizationController(authorizationRequests: [request])
@@ -327,8 +336,8 @@ class AuthViewController: UIViewController, GIDSignInDelegate {
         let hashString = hashedData.compactMap {
             return String(format: "%02x", $0)
         }.joined()
-       
-      return hashString
+        
+        return hashString
     }
 }
 
@@ -358,10 +367,10 @@ extension AuthViewController: ASAuthorizationControllerDelegate {
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             // swiftlint:disable unused_closure_parameter control_statement
             Auth.auth().signIn(with: credential) { (authResult, error) in
-        
+                
                 if (error != nil) {
                     
-                    print(error?.localizedDescription)
+                    print(error?.localizedDescription ?? "")
                 } else {
                     
                     self.dismiss(animated: true, completion: nil)

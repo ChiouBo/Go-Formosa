@@ -61,26 +61,38 @@ class ProfileEditViewController: UIViewController {
             picture = pictureTest
             
             guard let coverD = coverTest.jpegData(compressionQuality: 0.5),
-                  let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else { return }
+                let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else {
+                    return
+                    
+            }
             
             coverData = coverD
             pictureData = pictureD
         } else if let coverTest = coverImage.image {
             isCover = true
             cover = coverTest
-            guard let coverD = coverTest.jpegData(compressionQuality: 0.5) else { return }
-                       coverData = coverD
-                    
+            guard let coverD = coverTest.jpegData(compressionQuality: 0.5) else {
+                return
+                
+            }
+            coverData = coverD
+            
         } else if let pictureTest = userImage.image {
             
             if isLibrary {
                 isPicture = true
                 picture = pictureTest
-                guard let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else { return }
-                           pictureData = pictureD
+                guard let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else {
+                    return
+                    
+                }
+                pictureData = pictureD
+                
             } else {
+                
                 self.dismiss(animated: true, completion: nil)
             }
+            
         } else {
             
             self.dismiss(animated: true, completion: nil)
@@ -88,15 +100,21 @@ class ProfileEditViewController: UIViewController {
         
         let uniqueStringUser = NSUUID().uuidString
         let uniqueStringCover = NSUUID().uuidString
-    
+        
         let group = DispatchGroup()
         
         if isCover && isPicture {
+            
             group.enter()
             group.enter()
         } else if isCover || isPicture {
+            
             group.enter()
-        } else { return  }
+            
+        } else {
+            return
+            
+        }
         
         if isPicture {
             UploadEvent.shared.storage(uniqueString: uniqueStringUser, data: pictureData) { (result) in
@@ -118,42 +136,56 @@ class ProfileEditViewController: UIViewController {
         if isCover && isLibrary {
             
             UploadEvent.shared.storage(uniqueString: uniqueStringCover, data: coverData) { (result) in
-                      
-                      switch result {
-                          
-                      case .success(let userUpload):
-                          
-                          self.backgroundImage = "\(userUpload)"
-                          group.leave()
-                          
-                      case .failure(let error):
-                          print(error)
-                      }
-                  }
+                
+                switch result {
+                    
+                case .success(let userUpload):
+                    
+                    self.backgroundImage = "\(userUpload)"
+                    group.leave()
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
             
         } else { group.leave() }
         
         group.notify(queue: DispatchQueue.main) {
             
-            let userInfo = UserInfo(id: id, name: textName, email: email, picture: self.personPhoto, introduction: textIntro, coverImage: self.backgroundImage, userLocation: textLocation, eventCreate: eventCreate, event: event)
+            let userInfo = UserInfo(id: id, name: textName,
+                                    email: email,
+                                    picture: self.personPhoto,
+                                    introduction: textIntro,
+                                    coverImage: self.backgroundImage,
+                                    userLocation: textLocation,
+                                    eventCreate: eventCreate,
+                                    event: event)
             
-            UserManager.share.uploadUserData(userID: userInfo.id, userName: userInfo.name, userIntro: userInfo.introduction ?? "", coverImage: userInfo.coverImage ?? "", userImage: userInfo.picture, completion: { result in
-                
+            UserManager.share.uploadUserData(
+                userID: userInfo.id,
+                userName: userInfo.name,
+                userIntro: userInfo.introduction ?? "",
+                coverImage: userInfo.coverImage ?? "",
+                userImage: userInfo.picture, completion: { result in
+                                                
                 switch result {
-                    
+                                                    
                 case .success(let success):
-                    print(success)
-                    NotificationCenter.default.post(name: Notification.Name("reload"), object: nil)
                     
+                    print(success)
+                    
+                    NotificationCenter.default.post(name: Notification.Name("reload"), object: nil)
+                                                    
                     self.delegate?.infoEditedBacktoProfileVC(self, name: textName, from: textLocation, intro: textIntro, cover: cover, picture: picture)
-                       
+                                                    
                     self.dismiss(animated: true, completion: nil)
-                       
+                                                    
                 case .failure(let error):
+                    
                     print(error)
                 }
             })
-            
         }
     }
     
@@ -162,12 +194,14 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet weak var userImage: UIImageView!
     
     @IBAction func changeCover(_ sender: UIButton) {
+        
         addUser = false
         addCover = true
         alertAskForUpload()
     }
     
     @IBAction func changeUserPhoto(_ sender: UIButton) {
+        
         addUser = true
         addCover = false
         alertAskForUpload()
@@ -205,7 +239,7 @@ class ProfileEditViewController: UIViewController {
         setElements()
         
         setUserInfo()
- 
+        
         setCustomBackground()
         
         coverImage.loadImage(backgroundImage, placeHolder: UIImage(named: "M001"))
@@ -280,6 +314,7 @@ extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigati
         isLibrary = true
         
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
             selectedImageFromPicker = pickedImage
             
             if addUser == true {

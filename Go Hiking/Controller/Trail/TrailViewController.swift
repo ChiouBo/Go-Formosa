@@ -176,6 +176,7 @@ class TrailViewController: UIViewController {
 extension TrailViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
         filterContentForSearchText(searchText: searchBar.text!)
     }
 }
@@ -210,11 +211,15 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Trail", for: indexPath) as?
-            TrailTableViewCell else { return UITableViewCell() }
+            TrailTableViewCell else {
+                return UITableViewCell()
+                
+        }
         
         cell.selectionStyle = .none
         
         if trailFilter[indexPath.row].trPosition != nil {
+            
             cell.trailTitle.text = "  \(trailFilter[indexPath.row].trCname)"
             cell.trailPosition.text = trailFilter[indexPath.row].trPosition
             cell.trailLevel.text = "難易度：\(trailFilter[indexPath.row].trDIFClass ?? "") 級"
@@ -222,13 +227,17 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.trailImage.loadImage(trailPhoto.place[indexPath.row])
             
             var container: TrTyp?
+            
             var containers = ""
             // swiftlint:disable for_where
             for typeCount in 0 ..< trailType.count {
+                
                 if trailType[typeCount].trailid == trailFilter[indexPath.row].trailid {
+                    
                     container = trailType[typeCount].trTyp
                 }
             }
+            
             guard let apple = container else {
                 cell.trailStatus.text = ""
                 return cell
@@ -251,7 +260,11 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let trail = UIStoryboard(name: "Trail", bundle: nil)
-        guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else { return }
+        
+        guard let trailVC = trail.instantiateViewController(withIdentifier: "TrailDetail") as? TrailDetailViewController else {
+            return
+            
+        }
         
         let data = EventContent(image: [],
                                 title: trailFilter[indexPath.row].trCname,
@@ -264,6 +277,7 @@ extension TrailViewController: UITableViewDelegate, UITableViewDataSource {
         let photo = trailPhoto.place[indexPath.row]
         
         trailVC.trailPhoto = photo
+        
         trailVC.trailDict = data
         
         show(trailVC, sender: nil)
@@ -289,7 +303,9 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
         guard let filterCell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "Filter", for: indexPath)
             as? FilterCollectionViewCell else {
-                return UICollectionViewCell() }
+                return UICollectionViewCell()
+                
+        }
         
         let item = filter.groups[indexPath.section].items[indexPath.row]
         
@@ -310,9 +326,12 @@ extension TrailViewController: UICollectionViewDelegate, UICollectionViewDataSou
         animator.addAnimations {
             
             cell.alpha = 1
+            
             cell.transform = .identity
+            
             self.trailTableView.layoutIfNeeded()
         }
+        
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
     }
 }

@@ -233,10 +233,10 @@ extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
                     levelCell.levelImage.image = UIImage(named: "Icon_Goal_Color_7")
                 }
             }
-        levelCell.levelTitle.text = icon.userLevelGroup.items[indexPath.row - 1].title
-        levelCell.levelPoint.text = icon.userLevelGroup.items[indexPath.row - 1].desc
-        
-        return levelCell
+            levelCell.levelTitle.text = icon.userLevelGroup.items[indexPath.row - 1].title
+            levelCell.levelPoint.text = icon.userLevelGroup.items[indexPath.row - 1].desc
+            
+            return levelCell
+        }
     }
-}
 }

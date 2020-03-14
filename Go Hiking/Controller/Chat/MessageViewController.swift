@@ -31,15 +31,19 @@ class MessageViewController: MessagesViewController {
     var center: UNUserNotificationCenter?
     //Notification
     let snoozeAction = UNNotificationAction(identifier: "SnoozeAction", title: "Snooze", options: [.authenticationRequired])
+    
     let deleteAction = UNNotificationAction(identifier: "DeleteAction", title: "Delete", options: [.destructive])
     
     let uid = Auth.auth().currentUser?.uid
     
     private let dbChat = Firestore.firestore()
+    
     private var reference: CollectionReference?
+    
     private let storage = Storage.storage().reference()
     
     private var messages: [Message] = []
+    
     private var messageListener: ListenerRegistration?
     
     deinit {
@@ -62,6 +66,7 @@ class MessageViewController: MessagesViewController {
         setUser()
         
         messageInputBar.leftStackView.alignment = .center
+        
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
         
         //Notification
@@ -74,12 +79,14 @@ class MessageViewController: MessagesViewController {
     func addLongPressGesture() {
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
+       
         longPress.minimumPressDuration = 1.5
     }
     
     @objc func longPress(gesture: UILongPressGestureRecognizer) {
         
         if gesture.state == UIGestureRecognizer.State.began {
+        
             print("Long Press")
         }
     }
@@ -97,11 +104,15 @@ class MessageViewController: MessagesViewController {
         reference = dbChat.collection(["Chatroom", charRoomID, "thread"].joined(separator: "/"))
         
         messageListener = reference?.addSnapshotListener { querySnapshot, error in
+            
             guard let snapshot = querySnapshot else {
+            
                 print("Error listening for channel updates: \(error?.localizedDescription ?? "No error")")
+                
                 return
             }
             snapshot.documentChanges.forEach { change in
+                
                 self.handleDocumentChange(change)
             }
         }
@@ -121,9 +132,13 @@ class MessageViewController: MessagesViewController {
     }
     
     private func save(_ message: Message) {
+        
         reference?.addDocument(data: message.representation) { error in
+        
             if let error = error {
+            
                 print("Error sending message: \(error.localizedDescription)")
+                
                 return
             }
             self.messagesCollectionView.scrollToBottom()
@@ -144,7 +159,9 @@ class MessageViewController: MessagesViewController {
         messagesCollectionView.reloadData()
         
         if shouldScrollToBottom {
+            
             DispatchQueue.main.async {
+            
                 self.messagesCollectionView.scrollToBottom(animated: true)
             }
         }
@@ -155,9 +172,12 @@ class MessageViewController: MessagesViewController {
             return
         }
         switch change.type {
+            
         case .added:
+            
             insertNewMessage(message)
         default:
+            
             break
         }
     }
@@ -168,7 +188,6 @@ class MessageViewController: MessagesViewController {
         
         navigationController?.navigationBar.tintColor = .white
         navigationController?.toolbar.tintColor = .white
-        
     }
     
 }
@@ -276,8 +295,6 @@ extension MessageViewController: MessagesDataSource {
         } else {
             
             avatarView.loadImage(message.photo)
-            
-            //            avatarView.loadImage(message)
         }
     }
     
@@ -322,13 +339,17 @@ extension MessageViewController: MessageInputBarDelegate {
         DispatchQueue.main.async {
             
             let titleText = Auth.auth().currentUser?.displayName
+            
             let bodyText = "您有新訊息"
             
             if titleText != nil && bodyText != nil {
                 
                 let customID = titleText!
+            
                 let identifier = "Message" + customID
+                
                 let content = UNMutableNotificationContent()
+                
                 content.title = titleText!
                 content.body = bodyText
                 content.sound = UNNotificationSound.default
@@ -345,15 +366,21 @@ extension MessageViewController: MessageInputBarDelegate {
                                                                 preferredStyle: .alert)
         
         let goToSettingsAction = UIAlertAction(title: "Go to settings", style: .default, handler: { (action) in
+            
             guard let settingURL = URL(string: UIApplication.openSettingsURLString) else { return }
+            
             if UIApplication.shared.canOpenURL(settingURL) {
+            
                 UIApplication.shared.open(settingURL, completionHandler: { (success) in
+                
                     print("Settings opened: \(success)")
                 })
             }
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        
         useNotificationsAlertController.addAction(goToSettingsAction)
+        
         useNotificationsAlertController.addAction(cancelAction)
         
         self.present(useNotificationsAlertController, animated: true)

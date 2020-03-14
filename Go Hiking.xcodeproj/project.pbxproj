@@ -121,13 +121,10 @@
 		05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092723E9A6FC009CED63 /* FilterItemManager.swift */; };
 		05E56EDB23F81FC400FFD804 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E56EDA23F81FC400FFD804 /* LocationManager.swift */; };
 		05EAE60C23ED4DE30033BA6C /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05EAE60B23ED4DE30033BA6C /* Create.storyboard */; };
-		05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */; };
 		05EAE61023ED51CB0033BA6C /* CircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */; };
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
 		12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */; };
-		12E4D21A240F5CC700F3A92D /* PolylineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4D219240F5CC700F3A92D /* PolylineViewController.swift */; };
-		12E4D21C240FA5B400F3A92D /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
 
@@ -249,13 +246,10 @@
 		05BF092723E9A6FC009CED63 /* FilterItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemManager.swift; sourceTree = "<group>"; };
 		05E56EDA23F81FC400FFD804 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		05EAE60B23ED4DE30033BA6C /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
-		05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableViewController.swift; sourceTree = "<group>"; };
 		05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransition.swift; sourceTree = "<group>"; };
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
 		12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		12E4D219240F5CC700F3A92D /* PolylineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolylineViewController.swift; sourceTree = "<group>"; };
-		12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -320,7 +314,6 @@
 		05A83C3E23EBF3C20004B38C /* Create */ = {
 			isa = PBXGroup;
 			children = (
-				05EAE60D23ED4E840033BA6C /* CreateTableViewController.swift */,
 				051A862C23EE9031008865FC /* CreateViewController.swift */,
 				051A863A23EFE1AC008865FC /* PreviewViewController.swift */,
 			);
@@ -529,8 +522,6 @@
 				0593573123F9632300BE89F2 /* HistoryViewController.swift */,
 				0593573323F9633600BE89F2 /* AchievementViewController.swift */,
 				0593572F23F959CD00BE89F2 /* LevelViewController.swift */,
-				12E4D219240F5CC700F3A92D /* PolylineViewController.swift */,
-				12E4D21B240FA5B400F3A92D /* PersonalViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -861,7 +852,6 @@
 				054B9806240C030900A49F9A /* UICollectionView+Additions.swift in Sources */,
 				054B97FC240BD7C300A49F9A /* DatabaseRepresentation.swift in Sources */,
 				0551325E23F04BFF008EC8D3 /* EventUpload.swift in Sources */,
-				12E4D21A240F5CC700F3A92D /* PolylineViewController.swift in Sources */,
 				051A862B23EE8DD3008865FC /* PhotoTableViewCell.swift in Sources */,
 				05EAE61023ED51CB0033BA6C /* CircleTransition.swift in Sources */,
 				058873B523DB4A9B00B1612F /* ViewController.swift in Sources */,
@@ -898,7 +888,6 @@
 				054B97FE240BD7C300A49F9A /* Message.swift in Sources */,
 				051A863E23EFE960008865FC /* EventObject.swift in Sources */,
 				05BF08E223E2001C009CED63 /* CampaignViewController.swift in Sources */,
-				05EAE60E23ED4E840033BA6C /* CreateTableViewController.swift in Sources */,
 				0593573623F982EF00BE89F2 /* UIGesture+Extension.swift in Sources */,
 				05BF092623E9A5CF009CED63 /* NSLocalizedString+Extension.swift in Sources */,
 				0593573223F9632300BE89F2 /* HistoryViewController.swift in Sources */,
@@ -920,7 +909,6 @@
 				05A83C3523EA986E0004B38C /* TrailDetailViewController.swift in Sources */,
 				0593573023F959CD00BE89F2 /* LevelViewController.swift in Sources */,
 				05BF08EC23E32784009CED63 /* HTTPClient.swift in Sources */,
-				12E4D21C240FA5B400F3A92D /* PersonalViewController.swift in Sources */,
 				058873B123DB4A9B00B1612F /* AppDelegate.swift in Sources */,
 				05BF08E823E314AF009CED63 /* AuthViewController.swift in Sources */,
 				0551325B23F030E5008EC8D3 /* GradientColor+Extension.swift in Sources */,

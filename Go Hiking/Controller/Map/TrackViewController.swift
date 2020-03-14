@@ -78,9 +78,12 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         presentingViewController?.tabBarController?.tabBar.isHidden = true
         
         var bounds: GMSCoordinateBounds = GMSCoordinateBounds()
+        
         for index in 0 ..< path.count() {
+        
             bounds = bounds.includingCoordinate(path.coordinate(at: index))
         }
+        
         self.trackMap.animate(with: GMSCameraUpdate.fit(bounds))
     }
     
@@ -197,17 +200,23 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     func setTimer() {
         
         if !isTimerRunning {
+            
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+            
             isTimerRunning = true
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
                 
                 guard let cord = self.userLocationManager.location?.coordinate,
-                    let userPosition = self.userPosition else { return }
+                    let userPosition = self.userPosition else {
+                        return
+                        
+                }
                 
-                let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude, lng1: userPosition.longitude, lat2: cord.latitude, lng2: cord.longitude)
-                
-                print(outCome)
+                let outCome = LocationStepsManager.shared.getDistance(lat1: userPosition.latitude,
+                                                                      lng1: userPosition.longitude,
+                                                                      lat2: cord.latitude,
+                                                                      lng2: cord.longitude)
                 
                 if outCome > 0.0001 {
                     
@@ -228,8 +237,6 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     self.pathLat.append(cord.latitude)
                     self.pathLong.append(cord.longitude)
                     
-                    print(self.pathLine)
-                    
                     let line = GMSPolyline(path: self.path)
                     line.strokeWidth = 10
                     line.strokeColor = .white
@@ -245,11 +252,13 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
                     line.map = self.trackMap
                     
                     self.distance += Double(Int(outCome)) / 1000
+                    
                     let setDistance = String(format: "%.2f", self.distance)
+                    
                     self.distanceLabel.text = "\(setDistance)"
-                    print(self.distanceLabel.text ?? "")
                     
                 } else {
+                    
                     return
                 }
             }
@@ -318,9 +327,13 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         let myArrange = GMSCameraPosition.camera(withTarget: center, zoom: 18.0)
         
         trackMap.camera = myArrange
+        
         userPosition = center
+        
         let marker = GMSMarker()
+        
         marker.position = CLLocationCoordinate2D(latitude: center.latitude, longitude: center.longitude)
+        
         marker.map = trackMap
     }
     
@@ -339,6 +352,7 @@ extension UIView {
         drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         
         let polyImage = UIGraphicsGetImageFromCurrentImageContext()
+        
         UIGraphicsEndImageContext()
         
         if polyImage != nil {
@@ -350,8 +364,11 @@ extension UIView {
 }
 
 extension UIImage {
+    
     func toString() -> String? {
+        
         let data: Data? = self.jpegData(compressionQuality: 0.5)
+        
         return data?.base64EncodedString(options: .endLineWithLineFeed)
     }
 }

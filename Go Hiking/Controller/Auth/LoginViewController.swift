@@ -62,7 +62,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         setButton()
+        
         setLoginTextField(textField: userLoginEmail, placeholder: "Email")
+        
         setLoginTextField(textField: userLoginPassword, placeholder: "Password")
     }
     

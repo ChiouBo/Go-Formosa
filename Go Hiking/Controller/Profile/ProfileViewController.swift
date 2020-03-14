@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
     var userInfo: UserInfo?
     
     var userPic = ""
+    
     var coverPic = ""
     
     @IBOutlet weak var profileContentView: UIView!
@@ -60,9 +61,13 @@ class ProfileViewController: UIViewController {
                                    event: [])
         
         editVC.editUserInfo = userProfileInfo
+        
         editVC.backgroundImage = userProfileInfo.coverImage!
+        
         editVC.delegate = self
+        
         editVC.modalPresentationStyle = .overCurrentContext
+        
         present(editVC, animated: true, completion: nil)
         
     }
@@ -190,11 +195,17 @@ class ProfileViewController: UIViewController {
             switch userInfo {
                 
             case .success(let user):
+                
                 self.userName.text = user.name
+                
                 self.userPhoto.loadImage(user.picture)
+                
                 self.userPic = user.picture
+                
                 self.userBackground.loadImage(user.coverImage, placeHolder: UIImage(named: "M001"))
+                
                 guard let photo = user.coverImage else { return }
+                
                 self.coverPic = photo
                 
             case .failure(let error):
@@ -222,10 +233,12 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func reload() {
+        
         getUserInfo()
     }
     
     override func viewWillLayoutSubviews() {
+        
         setProfileUI()
     }
     

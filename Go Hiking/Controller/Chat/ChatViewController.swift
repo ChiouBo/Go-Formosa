@@ -66,20 +66,23 @@ class ChatViewController: UIViewController {
     }
     
     func refreshData() {
-
+        
         refreshControl = UIRefreshControl()
         chatTableView.addSubview(refreshControl)
-
+        
         refreshControl.attributedTitle = NSAttributedString(string: "正在更新", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         refreshControl.tintColor = UIColor.white
         refreshControl.backgroundColor = UIColor.clear
         refreshControl.addTarget(self, action: #selector(getAllData), for: UIControl.Event.valueChanged)
-
+        
     }
     
     @objc func getAllData() {
+        
         getUserInfo()
+        
         eventChat = []
+        
         getEvent()
     }
     
@@ -115,7 +118,7 @@ class ChatViewController: UIViewController {
                         if error == nil {
                             
                             guard let event = event else { return }
-                      
+                            
                             do {
                                 guard let eventChat = try event.data(as: EventCurrent.self, decoder: Firestore.Decoder()) else { return }
                                 
@@ -136,7 +139,7 @@ class ChatViewController: UIViewController {
                         if error == nil {
                             
                             guard let event = event else { return }
-                      
+                            
                             do {
                                 guard let eventChat = try event.data(as: EventCurrent.self, decoder: Firestore.Decoder()) else { return }
                                 
@@ -156,19 +159,22 @@ class ChatViewController: UIViewController {
             }
             
             self.chatTableView.reloadData()
-
+            
             self.refreshControl.endRefreshing()
         }
     }
     
     func setNavBar() {
+        
         navigationController?.navigationBar.barStyle = .black
         
         let navBarNude = UIImage()
+        
         navigationController?.navigationBar.setBackgroundImage(navBarNude, for: .default)
+        
         self.navigationController?.navigationBar.shadowImage = navBarNude
     }
- 
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let spring = UISpringTimingParameters(dampingRatio: 0.5, initialVelocity: CGVector(dx: 1.0, dy: 0.2))
@@ -210,45 +216,18 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let channel = UIStoryboard(name: "Chat", bundle: nil)
+        
         guard let chatVC = channel.instantiateViewController(withIdentifier: "Chatroom") as? MessageViewController else { return }
         
         let data = eventChat[indexPath.row]
+        
         let current = currentUser
+        
         chatVC.userInfo = data
+        
         chatVC.user = current
+        
         show(chatVC, sender: nil)
     }
     
 }
-
-//    func customizebackgroundView() {
-//
-//        let topColor = UIColor(red: 10/255, green: 80/255, blue: 80/255, alpha: 1)
-//        let buttomColor = UIColor(red: 48/255, green: 207/255, blue: 208/255, alpha: 1)
-//        let gradientColors = [topColor.cgColor, buttomColor.cgColor]
-//
-//        let gradientLocations:[NSNumber] = [0.4, 1.0]
-//
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = gradientColors
-//        gradientLayer.locations = gradientLocations
-//
-//        gradientLayer.frame = self.view.frame
-//        self.view.layer.insertSublayer(gradientLayer, at: 0)
-//    }
-    
-//    func customizebackground() {
-//
-//        let topColor = UIColor(red: 51/255, green: 8/255, blue: 103/255, alpha: 1)
-//        let buttomColor = UIColor(red: 48/255, green: 207/255, blue: 208/255, alpha: 1)
-//        let gradientColors = [topColor.cgColor, buttomColor.cgColor]
-//
-//        let gradientLocations:[NSNumber] = [0.3, 1.0]
-//
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.colors = gradientColors
-//        gradientLayer.locations = gradientLocations
-//
-//        gradientLayer.frame = self.view.frame
-//        self.view.layer.insertSublayer(gradientLayer, at: 0)
-//    }

@@ -118,7 +118,9 @@ class CampaignViewController: UIViewController {
     @objc func getAllData() {
         
         filteredEvent = []
+        
         eventData = []
+        
         getEventData()
     }
     

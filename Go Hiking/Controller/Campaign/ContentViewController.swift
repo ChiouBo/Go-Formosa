@@ -155,6 +155,7 @@ class ContentViewController: UIViewController {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let originOffsetY = -imageOriginHeight
+        
         let moveDistance = abs(scrollView.contentOffset.y - originOffsetY)
         
         if scrollView.contentOffset.y < originOffsetY {
