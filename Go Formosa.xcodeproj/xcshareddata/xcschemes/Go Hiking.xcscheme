@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "058873AC23DB4A9B00B1612F"
-               BuildableName = "Go Hiking.app"
-               BlueprintName = "Go Hiking"
-               ReferencedContainer = "container:Go Hiking.xcodeproj">
+               BuildableName = "Go Formosa.app"
+               BlueprintName = "Go Formosa"
+               ReferencedContainer = "container:Go Formosa.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "058873AC23DB4A9B00B1612F"
-            BuildableName = "Go Hiking.app"
-            BlueprintName = "Go Hiking"
-            ReferencedContainer = "container:Go Hiking.xcodeproj">
+            BuildableName = "Go Formosa.app"
+            BlueprintName = "Go Formosa"
+            ReferencedContainer = "container:Go Formosa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "058873AC23DB4A9B00B1612F"
-            BuildableName = "Go Hiking.app"
-            BlueprintName = "Go Hiking"
-            ReferencedContainer = "container:Go Hiking.xcodeproj">
+            BuildableName = "Go Formosa.app"
+            BlueprintName = "Go Formosa"
+            ReferencedContainer = "container:Go Formosa.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
