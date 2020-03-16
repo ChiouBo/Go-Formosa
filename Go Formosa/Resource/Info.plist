@@ -41,7 +41,7 @@
 	<key>FacebookAppID</key>
 	<string>554466721947676</string>
 	<key>FacebookDisplayName</key>
-	<string>Go Hiking</string>
+	<string>Go Formosa</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -54,11 +54,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string></string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
+	<string>Go Formosa 需取得您的位置以紀錄軌跡</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
+	<string>Go Formosa 需取得您的位置以紀錄軌跡</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Go Hiking 需取得您的位置以紀錄軌跡</string>
+	<string>Go Formosa 需取得您的位置以紀錄軌跡</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
 	<key>UIBackgroundModes</key>

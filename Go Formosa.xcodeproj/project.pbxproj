@@ -124,6 +124,7 @@
 		05EAE61023ED51CB0033BA6C /* CircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */; };
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
+		122D2483241F497C00820293 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 122D2482241F497C00820293 /* Info.plist */; };
 		12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
@@ -183,7 +184,6 @@
 		058873BA23DB4A9B00B1612F /* Go_Hiking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Go_Hiking.xcdatamodel; sourceTree = "<group>"; };
 		058873BC23DB4AA100B1612F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058873BF23DB4AA100B1612F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		058873C123DB4AA100B1612F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0593572F23F959CD00BE89F2 /* LevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 		0593573123F9632300BE89F2 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0593573323F9633600BE89F2 /* AchievementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +249,7 @@
 		05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTransition.swift; sourceTree = "<group>"; };
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
+		122D2482241F497C00820293 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,7 +282,7 @@
 		058873A423DB4A9B00B1612F = {
 			isa = PBXGroup;
 			children = (
-				058873AF23DB4A9B00B1612F /* Go Hiking */,
+				058873AF23DB4A9B00B1612F /* Go Formosa */,
 				058873AE23DB4A9B00B1612F /* Products */,
 				4680AE3ECEA40BE318569B7F /* Pods */,
 				FA0C5BCD5FA54BACB80BCF8B /* Frameworks */,
@@ -296,7 +297,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		058873AF23DB4A9B00B1612F /* Go Hiking */ = {
+		058873AF23DB4A9B00B1612F /* Go Formosa */ = {
 			isa = PBXGroup;
 			children = (
 				05B7AE102403916C00AC55F2 /* Go Hiking.entitlements */,
@@ -308,7 +309,7 @@
 				05BF08B123E0868A009CED63 /* View */,
 				058873B023DB4A9B00B1612F /* AppDelegate.swift */,
 			);
-			path = "Go Hiking";
+			path = "Go Formosa";
 			sourceTree = "<group>";
 		};
 		05A83C3E23EBF3C20004B38C /* Create */ = {
@@ -405,8 +406,8 @@
 			children = (
 				05BF08ED23E328D4009CED63 /* Constant */,
 				058873BC23DB4AA100B1612F /* Assets.xcassets */,
-				058873C123DB4AA100B1612F /* Info.plist */,
 				051E6AAC23FC0E9A000D942D /* GoogleService-Info.plist */,
+				122D2482241F497C00820293 /* Info.plist */,
 				05F4E03D23F8F82A00D0B778 /* GoogleMap.json */,
 				05F4E04223F92DCB00D0B778 /* MapDarkMode.json */,
 			);
@@ -748,6 +749,7 @@
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
 				053441E1240A37BE0021CFA8 /* MemberTableViewCell.xib in Resources */,
+				122D2483241F497C00820293 /* Info.plist in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
 				05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */,
 				051E6AAD23FC0E9A000D942D /* GoogleService-Info.plist in Resources */,
@@ -1079,11 +1081,11 @@
 			baseConfigurationReference = DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Go Hiking/Go Hiking.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4T6NSZK86S;
-				INFOPLIST_FILE = "Go Hiking/Resource/Info.plist";
+				INFOPLIST_FILE = "Go Formosa/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1258,11 +1260,11 @@
 			baseConfigurationReference = B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Go Hiking/Go Hiking.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4T6NSZK86S;
-				INFOPLIST_FILE = "Go Hiking/Resource/Info.plist";
+				INFOPLIST_FILE = "Go Formosa/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
