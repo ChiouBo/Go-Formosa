@@ -72,7 +72,6 @@
 		05A83C3C23EAAB710004B38C /* TrailLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */; };
 		05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */; };
 		05A83C4023EBF4180004B38C /* Record.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05A83C3F23EBF4180004B38C /* Record.storyboard */; };
-		05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */; };
 		05AD57E623F1A61E00F11EB5 /* EventDwonload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AD57E523F1A61E00F11EB5 /* EventDwonload.swift */; };
 		05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B523E16995009CED63 /* KingFisherWrapper.swift */; };
 		05BF08B823E16BA6009CED63 /* JGProgressHUDWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF08B723E16BA6009CED63 /* JGProgressHUDWrapper.swift */; };
@@ -113,7 +112,6 @@
 		05BF091423E8116A009CED63 /* TrailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091323E8116A009CED63 /* TrailManager.swift */; };
 		05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091523E960B8009CED63 /* TrailTypeObject.swift */; };
 		05BF091823E96180009CED63 /* TrailTypeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091723E96180009CED63 /* TrailTypeManager.swift */; };
-		05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091923E976BC009CED63 /* RecordCampaignViewController.swift */; };
 		05BF092123E99B2C009CED63 /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF091F23E99B2C009CED63 /* FilterCollectionViewCell.swift */; };
 		05BF092223E99B2C009CED63 /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05BF092023E99B2C009CED63 /* FilterCollectionViewCell.xib */; };
 		05BF092423E99E85009CED63 /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF092323E99E85009CED63 /* FilterItem.swift */; };
@@ -125,6 +123,8 @@
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
 		122D2483241F497C00820293 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 122D2482241F497C00820293 /* Info.plist */; };
+		122D24862422606700820293 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122D24852422606700820293 /* PushNotification.swift */; };
+		122D24882423563C00820293 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122D24872423563C00820293 /* NotificationManager.swift */; };
 		12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */; };
 		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
 /* End PBXBuildFile section */
@@ -196,7 +196,6 @@
 		05A83C3A23EAAB710004B38C /* TrailLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailLocationTableViewCell.swift; sourceTree = "<group>"; };
 		05A83C3B23EAAB710004B38C /* TrailLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrailLocationTableViewCell.xib; sourceTree = "<group>"; };
 		05A83C3F23EBF4180004B38C /* Record.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Record.storyboard; sourceTree = "<group>"; };
-		05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewController.swift; sourceTree = "<group>"; };
 		05AD57E523F1A61E00F11EB5 /* EventDwonload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDwonload.swift; sourceTree = "<group>"; };
 		05B7AE102403916C00AC55F2 /* Go Hiking.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Go Hiking.entitlements"; sourceTree = "<group>"; };
 		05BF08B523E16995009CED63 /* KingFisherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingFisherWrapper.swift; sourceTree = "<group>"; };
@@ -238,7 +237,6 @@
 		05BF091323E8116A009CED63 /* TrailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailManager.swift; sourceTree = "<group>"; };
 		05BF091523E960B8009CED63 /* TrailTypeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTypeObject.swift; sourceTree = "<group>"; };
 		05BF091723E96180009CED63 /* TrailTypeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailTypeManager.swift; sourceTree = "<group>"; };
-		05BF091923E976BC009CED63 /* RecordCampaignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCampaignViewController.swift; sourceTree = "<group>"; };
 		05BF091F23E99B2C009CED63 /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		05BF092023E99B2C009CED63 /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		05BF092323E99E85009CED63 /* FilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
@@ -250,6 +248,8 @@
 		05F4E03D23F8F82A00D0B778 /* GoogleMap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GoogleMap.json; sourceTree = "<group>"; };
 		05F4E04223F92DCB00D0B778 /* MapDarkMode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkMode.json; sourceTree = "<group>"; };
 		122D2482241F497C00820293 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		122D24852422606700820293 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
+		122D24872423563C00820293 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
 		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,6 +349,7 @@
 		05BF08B023E08680009CED63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				122D24842422604D00820293 /* Notification */,
 				05F22C09240BD612000DAAF1 /* Chat */,
 				05E56ED923F81FAC00FFD804 /* Map */,
 				051A863C23EFE932008865FC /* Event */,
@@ -388,7 +389,6 @@
 		05BF08B223E08692009CED63 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				05EAE60923ED4D460033BA6C /* Achievement */,
 				05A83C3E23EBF3C20004B38C /* Create */,
 				05BF08D523E1D186009CED63 /* Base */,
 				05BF08CB23E1AC91009CED63 /* Auth */,
@@ -633,15 +633,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		05EAE60923ED4D460033BA6C /* Achievement */ = {
-			isa = PBXGroup;
-			children = (
-				05BF091923E976BC009CED63 /* RecordCampaignViewController.swift */,
-				05A83C5423EC13FD0004B38C /* ContentTableViewController.swift */,
-			);
-			path = Achievement;
-			sourceTree = "<group>";
-		};
 		05F22C09240BD612000DAAF1 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +642,15 @@
 				054B97FB240BD7C300A49F9A /* Message.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		122D24842422604D00820293 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				122D24852422606700820293 /* PushNotification.swift */,
+				122D24872423563C00820293 /* NotificationManager.swift */,
+			);
+			path = Notification;
 			sourceTree = "<group>";
 		};
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
@@ -848,6 +848,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				122D24862422606700820293 /* PushNotification.swift in Sources */,
 				051A863323EEEE21008865FC /* TitleTableViewCell.swift in Sources */,
 				05BF08FF23E5AF28009CED63 /* SignUpViewController.swift in Sources */,
 				05BF091223E80C84009CED63 /* TrailObject.swift in Sources */,
@@ -864,8 +865,8 @@
 				05BF08D723E1D5D5009CED63 /* GHTabBarViewController.swift in Sources */,
 				0593573823F98AD700BE89F2 /* ProfileEditViewController.swift in Sources */,
 				05BF091623E960BA009CED63 /* TrailTypeObject.swift in Sources */,
-				05A83C5523EC13FD0004B38C /* ContentTableViewController.swift in Sources */,
 				051E6AC023FD0C37000D942D /* LevelTableViewCell.swift in Sources */,
+				122D24882423563C00820293 /* NotificationManager.swift in Sources */,
 				05BF092823E9A6FC009CED63 /* FilterItemManager.swift in Sources */,
 				054B9804240BFB8A00A49F9A /* MessageViewController.swift in Sources */,
 				05BF08B623E16995009CED63 /* KingFisherWrapper.swift in Sources */,
@@ -884,7 +885,6 @@
 				051E6AB023FCF353000D942D /* HistoryTableViewCell.swift in Sources */,
 				051A863523EEEE77008865FC /* DescTableViewCell.swift in Sources */,
 				051E6AB423FD0BD1000D942D /* HistoryHeadTableViewCell.swift in Sources */,
-				05BF091A23E976BD009CED63 /* RecordCampaignViewController.swift in Sources */,
 				05BF091423E8116A009CED63 /* TrailManager.swift in Sources */,
 				05BF08E023E20008009CED63 /* TrailViewController.swift in Sources */,
 				054B97FE240BD7C300A49F9A /* Message.swift in Sources */,

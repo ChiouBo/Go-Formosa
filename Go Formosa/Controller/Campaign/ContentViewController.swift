@@ -64,7 +64,10 @@ class ContentViewController: UIViewController {
     
     func titleImage() {
         
-        guard let photo = eventDict?.image else { return }
+        guard let photo = eventDict?.image else {
+            return
+            
+        }
         
         contentImage.loadImage(photo)
     }
@@ -72,8 +75,8 @@ class ContentViewController: UIViewController {
     func loadReqUsers() {
         
         guard let eventData = eventDict else {
-            
             return
+            
         }
         
         UploadEvent.shared.loadRequestUserInfo(event: eventData) { (result) in
@@ -437,6 +440,7 @@ extension ContentViewController: UITableViewDelegate, UITableViewDataSource {
             let currentUser = userDict else {
                 return
         }
+        
         UploadEvent.shared.requestEvent(userRequest: currentUser, event: currentEvent) { (result) in
             
             switch result {

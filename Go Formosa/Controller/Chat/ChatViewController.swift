@@ -128,7 +128,6 @@ class ChatViewController: UIViewController {
                                 
                                 print(error)
                             }
-                            
                         }
                     }
                 }
@@ -188,6 +187,7 @@ class ChatViewController: UIViewController {
             
             cell.alpha = 1
             cell.transform = .identity
+            
             self.chatTableView.layoutIfNeeded()
         }
         animator.startAnimation(afterDelay: 0.1 * Double(indexPath.item))
@@ -204,10 +204,15 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let roomCell = tableView.dequeueReusableCell(withIdentifier: "Chatroom", for: indexPath) as? ChatTableViewCell else { return UITableViewCell() }
+        guard let roomCell = tableView.dequeueReusableCell(withIdentifier: "Chatroom", for: indexPath) as? ChatTableViewCell else {
+            return UITableViewCell()
+            
+        }
         
         roomCell.selectionStyle = .none
+        
         roomCell.groupImage.loadImage(eventChat[indexPath.row].image)
+        
         roomCell.groupName.text = eventChat[indexPath.row].title
         
         return roomCell
@@ -217,7 +222,10 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource {
         
         let channel = UIStoryboard(name: "Chat", bundle: nil)
         
-        guard let chatVC = channel.instantiateViewController(withIdentifier: "Chatroom") as? MessageViewController else { return }
+        guard let chatVC = channel.instantiateViewController(withIdentifier: "Chatroom") as? MessageViewController else {
+            return
+            
+        }
         
         let data = eventChat[indexPath.row]
         

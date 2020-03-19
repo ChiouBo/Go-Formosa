@@ -19,12 +19,7 @@ class TitleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventTitle: UILabel!
     
-    @IBOutlet weak var titleTextField: UITextField! {
-        
-        didSet {
-        
-        }
-    }
+    @IBOutlet weak var titleTextField: UITextField!
     
     @IBOutlet weak var eventCancel: UIButton!
     
@@ -34,14 +29,13 @@ class TitleTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
         titleTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
         titleTextField.delegate = self
     }
 

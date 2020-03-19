@@ -239,12 +239,6 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
             CampaignTableViewCell else { return UITableViewCell() }
         
         cell.selectionStyle = .none
-
-//        let dateformat = DateFormatter()
-//        
-//        dateformat.dateFormat = "yyyy年 MM月 dd日 EE"
-//        
-//        let monthDay = dateformat.date(from: filteredEvent[indexPath.row].start)
         
         cell.campaignTitle.text = "  \(filteredEvent[indexPath.row].title)"
         cell.campaignMember.text = "參加人數 \(filteredEvent[indexPath.row].memberList.count) 人"
@@ -280,8 +274,6 @@ extension CampaignViewController: UITableViewDelegate, UITableViewDataSource {
         let data = filteredEvent[indexPath.row]
         
         contentVC.eventDict = data
-        
-        print(contentVC.eventDict)
         
         show(contentVC, sender: nil)
     }

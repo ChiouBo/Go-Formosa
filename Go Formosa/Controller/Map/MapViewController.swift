@@ -120,6 +120,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         setAnimate()
         
         navigationController?.navigationBar.barStyle = .black
+        
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
         
@@ -172,7 +173,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
         return transition
     }
     
-    //
     func keepTrackUserLocation() {
         
         userLocationManager.allowsBackgroundLocationUpdates = true
@@ -245,7 +245,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchDi
             googleMapView.animate(to: myArrange)
             
         } else {
-            print("123")
+            
         }
     }
     
@@ -366,7 +366,7 @@ extension MapViewController: GMSAutocompleteViewControllerDelegate {
         
         print("Place name: \(place.name ?? "")")
         print("Place ID: \(place.placeID ?? "")")
-        print("Place attributions: \(place.attributions ?? nil)")
+        print("Place attributions: \(String(describing: place.attributions ?? nil))")
         
         dismiss(animated: true, completion: nil)
     }
@@ -401,18 +401,21 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
         
         print("Place name: \(place.name ?? "")")
         print("Place address: \(place.formattedAddress ?? "")")
-        print("Place attributions: \(place.attributions ?? nil)")
+        print("Place attributions: \(String(describing: place.attributions ?? nil))")
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController, didFailAutocompleteWithError error: Error) {
+        
         print("Error: ", error.localizedDescription)
     }
     
     func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
@@ -421,6 +424,7 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
 extension MapViewController: GMSAutocompleteTableDataSourceDelegate {
     
     func tableDataSource(_ tableDataSource: GMSAutocompleteTableDataSource, didFailAutocompleteWithError error: Error) {
+        
         print("Error: \(error.localizedDescription)")
     }
     
@@ -430,7 +434,7 @@ extension MapViewController: GMSAutocompleteTableDataSourceDelegate {
         
         print("Place name: \(place.name ?? "")")
         print("Place address: \(place.formattedAddress ?? "")")
-        print("Place attributions: \(place.attributions ?? nil)")
+        print("Place attributions: \(String(describing: place.attributions ?? nil))")
     }
     
     func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
@@ -440,7 +444,7 @@ extension MapViewController: GMSAutocompleteTableDataSourceDelegate {
         return false
     }
     
-    func tableDataSource(tableDataSource: GMSAutocompleteTableDataSource, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool {
+    private func tableDataSource(tableDataSource: GMSAutocompleteTableDataSource, didSelectPrediction prediction: GMSAutocompletePrediction) -> Bool {
         
         return true
     }

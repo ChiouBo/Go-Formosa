@@ -60,7 +60,7 @@ class CreateViewController: UIViewController {
         
         dismiss(animated: true, completion: nil)
     }
-    // swiftlint:disable cyclomatic_complexity
+    // swiftlint:disable cyclomatic_complexity colon
     @IBAction func eventPost(_ sender: UIButton) {
         
         if data?.image != nil, data?.title != "", data?.desc != "", data?.start != "", data?.end != "", data?.amount != "", checkText == true {
@@ -252,8 +252,13 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
 
         case 0:
             
-            guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else { return UITableViewCell() }
+            guard let titleCell = tableView.dequeueReusableCell(withIdentifier: "Title", for: indexPath) as? TitleTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             titleCell.selectionStyle = .none
+            
             titleCell.delegate = self
 
             titleCell.titleTextField.text = data?.title
@@ -262,8 +267,13 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
             
         case 1:
 
-            guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else { return UITableViewCell() }
+            guard let descCell = tableView.dequeueReusableCell(withIdentifier: "DESC", for: indexPath) as? DescTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             descCell.selectionStyle = .none
+            
             descCell.delegate = self
 
             descCell.descTextView.text = data?.desc
@@ -272,8 +282,13 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
 
         case 2 :
 
-            guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else { return UITableViewCell() }
+            guard let photoCell = tableView.dequeueReusableCell(withIdentifier: "Photo", for: indexPath) as? PhotoTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             photoCell.selectionStyle = .none
+            
             photoCell.delegate = self
 
             photoCell.photoArray = imageArray
@@ -282,38 +297,68 @@ extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
 
         case 3:
 
-            guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else { return UITableViewCell() }
+            guard let startDateCell = tableView.dequeueReusableCell(withIdentifier: "Start", for: indexPath) as? StartTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             startDateCell.selectionStyle = .none
+            
             startDateCell.delegate = self
+            
             startDateCell.setupDatePicker(isSelected: isStartDate, date: startDate)
+            
             startText = startDateCell.startDatePicker.date
+            
             checkDate()
+            
             return startDateCell
 
         case 4:
 
-            guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else { return UITableViewCell() }
+            guard let endDateCell = tableView.dequeueReusableCell(withIdentifier: "End", for: indexPath) as? EndTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             endDateCell.selectionStyle = .none
+            
             endDateCell.delegate = self
+            
             endDateCell.setupDatePicker(isSelected: isEndDate, date: endDate)
+            
             endText = endDateCell.endDatePicker.date
+            
             checkDate()
+            
             return endDateCell
 
         case 5:
 
-            guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else { return UITableViewCell() }
+            guard let personCell = tableView.dequeueReusableCell(withIdentifier: "Person", for: indexPath) as? PersonTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             personCell.selectionStyle = .none
+            
             personCell.delegate = self
+        
             personCell.setupAmountPicker(counter: counter, isSelected: isAmount, amount: data!.amount)
+            
             personCell.amountPickerView.delegate = self
 
             return personCell
 
         case 6:
 
-            guard let previewCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else { return UITableViewCell() }
+            guard let previewCell = tableView.dequeueReusableCell(withIdentifier: "Preview", for: indexPath) as? PreviewTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             previewCell.selectionStyle = .none
+            
             previewCell.previewBtn.addTarget(self, action: #selector(passDatatoPreview), for: .touchUpInside)
 
             return previewCell
@@ -409,22 +454,17 @@ extension CreateViewController: PressToUploadPhoto {
         
         alertAskForUpload()
     }
-    
 }
 
 extension CreateViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        var selectedImageFromPicker: UIImage?
-        
-        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+        if let selectedImageFromPicker = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             
-            selectedImageFromPicker = pickedImage
+            imageArray.append(selectedImageFromPicker)
             
-            imageArray.append(pickedImage)
-            
-            self.data?.image.append(pickedImage)
+            self.data?.image.append(selectedImageFromPicker)
             
             currentImageCount = imageArray.count
         }

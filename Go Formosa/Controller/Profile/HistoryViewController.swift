@@ -96,8 +96,11 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
             guard let headCell = tableView.dequeueReusableCell(withIdentifier: "HistoryHEAD", for: indexPath) as? HistoryHeadTableViewCell else { return UITableViewCell() }
             
             headCell.selectionStyle = .none
+            
             headCell.exploreTimes.text = "\(userRecord.count)"
+            
             headCell.exploreKM.text = "\(sumDistance.roundTo(places: 2)) 公里"
+            
             headCell.exploreHR.text = "\(sumTime / 3600).\(Int((sumTime % 3600) / 360)) 小時"
             
             return headCell

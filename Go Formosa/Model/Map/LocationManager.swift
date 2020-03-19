@@ -20,6 +20,7 @@ class LocationStepsManager: NSObject {
     let locationManager = CLLocationManager()
     
     func radian(inputDouble: Double) -> Double {
+        
          return inputDouble * Double.pi/180.0
     }
     

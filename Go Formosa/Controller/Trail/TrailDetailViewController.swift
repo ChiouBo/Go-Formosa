@@ -10,13 +10,13 @@ import UIKit
 import Firebase
 
 class TrailDetailViewController: UIViewController {
-
+    
     var trailDict: EventContent?
     
     var trailPhoto: String?
     
     lazy var trailImage: UIImageView = {
-       let trailImage = UIImageView()
+        let trailImage = UIImageView()
         trailImage.translatesAutoresizingMaskIntoConstraints = false
         trailImage.contentMode = .scaleAspectFill
         trailImage.clipsToBounds = true
@@ -45,7 +45,7 @@ class TrailDetailViewController: UIViewController {
         back.addTarget(self, action: #selector(backtoTList), for: .touchUpInside)
         return back
     }()
-
+    
     @objc func backtoTList() {
         navigationController!.popViewController(animated: true)
         navigationController?.navigationBar.isHidden = false
@@ -135,13 +135,14 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             
             guard let contentCell = tableView.dequeueReusableCell(withIdentifier: "TrailContent", for: indexPath) as?
-            TrailContentTableViewCell else {
-                return UITableViewCell()
-                
+                TrailContentTableViewCell else {
+                    return UITableViewCell()
+                    
             }
             
             contentCell.backgroundColor = .clear
             contentCell.selectionStyle = .none
+            
             contentCell.trailTitle.text = trailDict?.title
             contentCell.trailLocation.text = trailDict?.location
             contentCell.trailDescription.text = trailDict?.desc
@@ -151,13 +152,14 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case 1:
             
             guard let createCell = tableView.dequeueReusableCell(withIdentifier: "TrailCreate", for: indexPath) as?
-            TrailLocationTableViewCell else {
-                return UITableViewCell()
-                
+                TrailLocationTableViewCell else {
+                    return UITableViewCell()
+                    
             }
             
             createCell.backgroundColor = .clear
             createCell.selectionStyle = .none
+            
             createCell.createTrailEvent.addTarget(self, action: #selector(trailCreate), for: .touchUpInside)
             createCell.otherTrailEvent.addTarget(self, action: #selector(sameEvent), for: .touchUpInside)
             return createCell
@@ -170,40 +172,40 @@ extension TrailDetailViewController: UITableViewDelegate, UITableViewDataSource 
     @objc func trailCreate() {
         
         if Auth.auth().currentUser != nil {
-        
-        let createEvent = UIStoryboard(name: "Create", bundle: nil)
-        
+            
+            let createEvent = UIStoryboard(name: "Create", bundle: nil)
+            
             guard let createVC = createEvent.instantiateViewController(withIdentifier: "CREATE") as? CreateViewController else {
                 return
                 
             }
-        
-        var currentImage: [UIImage] = []
-        
+            
+            var currentImage: [UIImage] = []
+            
             guard let image = trailImage.image else {
                 return
                 
             }
-        
+            
             currentImage.append(image)
-        
-        let trailInfo = EventContent(image: currentImage,
-                                     title: trailDict?.title ?? "",
-                                     desc: trailDict?.desc ?? "",
-                                     start: "",
-                                     end: "",
-                                     amount: "",
-                                     location: trailDict?.location ?? "")
-        
-        createVC.data = trailInfo
-        
-        createVC.loadViewIfNeeded()
-
-        createVC.imageArray.append(trailImage.image!)
- 
-        createVC.modalPresentationStyle = .custom
-        
-        present(createVC, animated: true, completion: nil)
+            
+            let trailInfo = EventContent(image: currentImage,
+                                         title: trailDict?.title ?? "",
+                                         desc: trailDict?.desc ?? "",
+                                         start: "",
+                                         end: "",
+                                         amount: "",
+                                         location: trailDict?.location ?? "")
+            
+            createVC.data = trailInfo
+            
+            createVC.loadViewIfNeeded()
+            
+            createVC.imageArray.append(trailImage.image!)
+            
+            createVC.modalPresentationStyle = .custom
+            
+            present(createVC, animated: true, completion: nil)
             
         } else {
             
