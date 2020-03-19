@@ -12,6 +12,8 @@ class PushNotificationSender {
     
     func sendPushNotification(to token: String, title: String, body: String) {
         
+        // swiftlint:disable colon unused_closure_parameter opening_brace
+        
         let urlString = "https://fcm.googleapis.com/fcm/send"
         
         let url = NSURL(string: urlString)!

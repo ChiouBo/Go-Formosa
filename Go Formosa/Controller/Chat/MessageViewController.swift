@@ -18,7 +18,7 @@ class MessageViewController: MessagesViewController {
     
     var userInfo: EventCurrent?
     
-    let db = Firestore.firestore()
+    let chatDB = Firestore.firestore()
     
     var memberFCM: [String] = []
     
@@ -27,16 +27,6 @@ class MessageViewController: MessagesViewController {
     var otherUserPhoto: String = ""
     
     var user: UserInfo?
-    
-    //Notification
-    // swiftlint:disable force_cast
-    let app = UIApplication.shared.delegate as! AppDelegate
-    // swiftlint:enable force_cast
-    var center: UNUserNotificationCenter?
-    //Notification
-    let snoozeAction = UNNotificationAction(identifier: "SnoozeAction", title: "Snooze", options: [.authenticationRequired])
-    
-    let deleteAction = UNNotificationAction(identifier: "DeleteAction", title: "Delete", options: [.destructive])
     
     let uid = Auth.auth().currentUser?.uid
     
@@ -76,13 +66,13 @@ class MessageViewController: MessagesViewController {
         messageInputBar.setLeftStackViewWidthConstant(to: 50, animated: false)
     
     }
-    
+     // swiftlint:disable unused_closure_parameter
     func getMemberFCmToken() {
         
         guard let member = userInfo,
               let currentUid = Auth.auth().currentUser?.uid else { return }
         
-        let uidRef = db.collection("Users").document(currentUid)
+        let uidRef = chatDB.collection("Users").document(currentUid)
         
         for ref in member.memberList where ref != uidRef {
             
@@ -96,7 +86,6 @@ class MessageViewController: MessagesViewController {
             }
         }
     }
-    
     
     func addLongPressGesture() {
         
@@ -350,70 +339,6 @@ extension MessageViewController: MessageInputBarDelegate {
             sender.sendPushNotification(to: members, title: chatroom.title, body: message.content)
         }
         
-        //Notification
-//        center?.getNotificationSettings(completionHandler: { (settings) in
-//
-//            if settings.authorizationStatus == .authorized {
-//
-//                self.sendNotification()
-//            } else if settings.authorizationStatus == .denied {
-//
-//                self.deniedAlert()
-//            } else {
-//                return
-//            }
-//        })
     }
-    
-//    func sendNotification() {
-//
-//        DispatchQueue.main.async {
-//
-//            let titleText = Auth.auth().currentUser?.displayName
-//
-//            let bodyText = "您有新訊息"
-//
-//            if titleText != nil && bodyText != nil {
-//
-//                let customID = titleText!
-//
-//                let identifier = "Message" + customID
-//
-//                let content = UNMutableNotificationContent()
-//
-//                content.title = titleText!
-//                content.body = bodyText
-//                content.sound = UNNotificationSound.default
-//                content.badge = NSNumber(integerLiteral: UIApplication.shared.applicationIconBadgeNumber + 1)
-//                content.categoryIdentifier = "123"
-//            }
-//        }
-//    }
-//
-//    func deniedAlert() {
-//        // swiftlint:disable unused_closure_parameter
-//        let useNotificationsAlertController = UIAlertController(title: "Turn on notifications",
-//                                                                message: "This app needs notifications turned on for the best user experience \n ",
-//                                                                preferredStyle: .alert)
-//
-//        let goToSettingsAction = UIAlertAction(title: "Go to settings", style: .default, handler: { (action) in
-//
-//            guard let settingURL = URL(string: UIApplication.openSettingsURLString) else { return }
-//
-//            if UIApplication.shared.canOpenURL(settingURL) {
-//
-//                UIApplication.shared.open(settingURL, completionHandler: { (success) in
-//
-//                    print("Settings opened: \(success)")
-//                })
-//            }
-//        })
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-//
-//        useNotificationsAlertController.addAction(goToSettingsAction)
-//
-//        useNotificationsAlertController.addAction(cancelAction)
-//
-//        self.present(useNotificationsAlertController, animated: true)
-//    }
+
 }

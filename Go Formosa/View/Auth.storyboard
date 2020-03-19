@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cZv-Xw-wL2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cZv-Xw-wL2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Auth View Controller-->
         <scene sceneID="DCU-Wd-9TN">
             <objects>
-                <viewController id="2yc-L0-X9R" customClass="AuthViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2yc-L0-X9R" customClass="AuthViewController" customModule="Go_Formosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N7V-ec-ZfY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -143,7 +143,7 @@
         <!--Login View Controller-->
         <scene sceneID="VGf-du-PlK">
             <objects>
-                <viewController id="8XQ-aU-gtH" customClass="LoginViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8XQ-aU-gtH" customClass="LoginViewController" customModule="Go_Formosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qKC-Lm-H8l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,7 +169,7 @@
                                         <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-67-2gf" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ad9-67-2gf" customClass="GHTextField" customModule="Go_Formosa" customModuleProvider="target">
                                         <rect key="frame" x="40" y="381" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="XUG-nU-Lpd"/>
@@ -177,7 +177,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-3j-kqG" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k7j-3j-kqG" customClass="GHTextField" customModule="Go_Formosa" customModuleProvider="target">
                                         <rect key="frame" x="40" y="451" width="334" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="KPC-0D-qe4"/>
@@ -258,7 +258,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="fzf-Em-C3j">
             <objects>
-                <viewController id="XHr-Y6-7Am" customClass="SignUpViewController" customModule="Go_Hiking" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XHr-Y6-7Am" customClass="SignUpViewController" customModule="Go_Formosa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iBZ-Qb-hX9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,7 +282,7 @@
                                 <color key="textColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-2M-wgN" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQA-2M-wgN" customClass="GHTextField" customModule="Go_Formosa" customModuleProvider="target">
                                 <rect key="frame" x="40" y="381" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="2tX-83-Bfx"/>
@@ -297,7 +297,7 @@
                                     <constraint firstAttribute="height" constant="1" id="kTu-kS-u7z"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qkw-cO-euO" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qkw-cO-euO" customClass="GHTextField" customModule="Go_Formosa" customModuleProvider="target">
                                 <rect key="frame" x="40" y="452" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="VTk-ZX-MMH"/>
@@ -305,7 +305,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-zo-aJC" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lo8-zo-aJC" customClass="GHTextField" customModule="Go_Formosa" customModuleProvider="target">
                                 <rect key="frame" x="40" y="522" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kJC-5X-LNm"/>
@@ -313,7 +313,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOx-x0-2w6" customClass="GHTextField" customModule="Go_Hiking" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bOx-x0-2w6" customClass="GHTextField" customModule="Go_Formosa" customModuleProvider="target">
                                 <rect key="frame" x="40" y="592" width="334" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="J68-Bd-Rkt"/>

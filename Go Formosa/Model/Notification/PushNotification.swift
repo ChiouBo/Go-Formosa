@@ -14,31 +14,32 @@ import UserNotifications
 import FirebaseMessaging
 
 enum NotificationStatusType {
-     case authorized
-     case denied
-     case notDetermined
+    
+    case authorized
+    
+    case denied
+    
+    case notDetermined
 }
 
 class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
-
+    
     func checkNotificationPermissionStatus() {
-
-            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-                DispatchQueue.main.async {
-                    //注意！要切回主執行緒
-                    if settings.authorizationStatus == .authorized {
-                        //允許
-                        
-                    } else if settings.authorizationStatus == .denied {
-                        //不允許
-                        self.setupPushNotification()
-                    } else {
-                        //沒問過
-                        self.setupPushNotification()
-                    }
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            DispatchQueue.main.async {
+                
+                if settings.authorizationStatus == .authorized {
+                    
+                } else if settings.authorizationStatus == .denied {
+                    
+                    self.setupPushNotification()
+                } else {
+                    
+                    self.setupPushNotification()
                 }
             }
-
+        }
     }
     
     func setupPushNotification() {
@@ -88,16 +89,24 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
         uploadFCMToken()
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
-        guard let userInfo = notification.request.content.userInfo as? [String: Any] else { return }
+        guard let userInfo = notification.request.content.userInfo as? [String: Any] else {
+            return
+            
+        }
         
         print("willPresent userInfo: \(userInfo)")
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         
-        guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else { return }
+        guard let userInfo = response.notification.request.content.userInfo as? [String: Any] else {
+            return
+            
+        }
         
         print("didPresent userInfo: \(userInfo)")
         
