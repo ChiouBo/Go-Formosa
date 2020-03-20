@@ -1,4 +1,6 @@
 # Go Formosa
+擁有豐富山林資源的臺灣，您可以體驗各種地形與自然景觀，在 Go Formosa 找到可靠的夥伴一同探索，現在就出發吧！
+
 <a href="https://apps.apple.com/app/id1501021100"><img src="https://i.imgur.com/eRntvcA.png" height="40"></a>
 ## Features
 
