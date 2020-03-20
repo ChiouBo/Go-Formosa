@@ -43,7 +43,8 @@ class ProfileEditViewController: UIViewController {
             let id = Auth.auth().currentUser?.uid,
             let email = Auth.auth().currentUser?.email,
             let eventCreate = editUserInfo?.eventCreate,
-            let event = editUserInfo?.event else { return }
+            let event = editUserInfo?.event,
+            let userFCM = editUserInfo?.userFCM else { return }
         
         var isCover = false //如果背景沒圖 ＝ false
         var isPicture = false
@@ -55,8 +56,10 @@ class ProfileEditViewController: UIViewController {
         var pictureData = Data()
         
         if let coverTest = coverImage.image, let pictureTest = userImage.image {
+            
             isCover = true
             isPicture = true
+            
             cover = coverTest
             picture = pictureTest
             
@@ -68,9 +71,13 @@ class ProfileEditViewController: UIViewController {
             
             coverData = coverD
             pictureData = pictureD
+            
         } else if let coverTest = coverImage.image {
+            
             isCover = true
+            
             cover = coverTest
+            
             guard let coverD = coverTest.jpegData(compressionQuality: 0.5) else {
                 return
                 
@@ -80,12 +87,16 @@ class ProfileEditViewController: UIViewController {
         } else if let pictureTest = userImage.image {
             
             if isLibrary {
+                
                 isPicture = true
+                
                 picture = pictureTest
+                
                 guard let pictureD = pictureTest.jpegData(compressionQuality: 0.5) else {
                     return
                     
                 }
+                
                 pictureData = pictureD
                 
             } else {
@@ -99,6 +110,7 @@ class ProfileEditViewController: UIViewController {
         }
         
         let uniqueStringUser = NSUUID().uuidString
+        
         let uniqueStringCover = NSUUID().uuidString
         
         let group = DispatchGroup()
@@ -106,7 +118,9 @@ class ProfileEditViewController: UIViewController {
         if isCover && isPicture {
             
             group.enter()
+            
             group.enter()
+            
         } else if isCover || isPicture {
             
             group.enter()
@@ -153,14 +167,16 @@ class ProfileEditViewController: UIViewController {
         
         group.notify(queue: DispatchQueue.main) {
             
-            let userInfo = UserInfo(id: id, name: textName,
+            let userInfo = UserInfo(id: id,
+                                    name: textName,
                                     email: email,
                                     picture: self.personPhoto,
                                     introduction: textIntro,
                                     coverImage: self.backgroundImage,
                                     userLocation: textLocation,
                                     eventCreate: eventCreate,
-                                    event: event)
+                                    event: event,
+                                    userFCM: userFCM)
             
             UserManager.share.uploadUserData(
                 userID: userInfo.id,

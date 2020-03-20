@@ -75,7 +75,11 @@ extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.row == 0 {
             
-            guard let headCell = tableView.dequeueReusableCell(withIdentifier: "LevelHEAD", for: indexPath) as? LevelHeadTableViewCell else { return UITableViewCell() }
+            guard let headCell = tableView.dequeueReusableCell(withIdentifier: "LevelHEAD", for: indexPath) as? LevelHeadTableViewCell else {
+                return UITableViewCell()
+                
+            }
+            
             headCell.selectionStyle = .none
             
             if userRecord.count == 0 && userRecord.count < 5 {
@@ -128,9 +132,13 @@ extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return headCell
+            
         } else {
             
-            guard let levelCell = tableView.dequeueReusableCell(withIdentifier: "LEVEL", for: indexPath) as? LevelTableViewCell else { return UITableViewCell() }
+            guard let levelCell = tableView.dequeueReusableCell(withIdentifier: "LEVEL", for: indexPath) as? LevelTableViewCell else {
+                return UITableViewCell()
+                
+            }
             
             levelCell.selectionStyle = .none
             
@@ -233,6 +241,7 @@ extension LevelViewController: UITableViewDelegate, UITableViewDataSource {
                     levelCell.levelImage.image = UIImage(named: "Icon_Goal_Color_7")
                 }
             }
+            
             levelCell.levelTitle.text = icon.userLevelGroup.items[indexPath.row - 1].title
             levelCell.levelPoint.text = icon.userLevelGroup.items[indexPath.row - 1].desc
             

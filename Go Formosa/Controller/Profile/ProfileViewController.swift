@@ -58,7 +58,8 @@ class ProfileViewController: UIViewController {
                                    coverImage: coverPic,
                                    userLocation: "",
                                    eventCreate: [],
-                                   event: [])
+                                   event: [],
+                                   userFCM: "")
         
         editVC.editUserInfo = userProfileInfo
         
@@ -230,6 +231,10 @@ class ProfileViewController: UIViewController {
         getUserInfo()
         
         setElementConstraint()
+        
+        let manager = PushNotificationManager()
+        
+        manager.setupPushNotification()
     }
     
     @objc func reload() {

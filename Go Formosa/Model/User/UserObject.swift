@@ -42,6 +42,8 @@ struct UserInfo: Codable {
     
     var event: [DocumentReference]
     
+    var userFCM: String
+    
     var todict: [String: Any] {
         
         return [
@@ -61,7 +63,9 @@ struct UserInfo: Codable {
             
             "eventCreate": eventCreate,
             
-            "event": event
+            "event": event,
+            
+            "userFCM": userFCM
         ]
     }
 }
@@ -101,7 +105,6 @@ struct UserRecord: Codable {
             "lineImage": lineImage
         ]
     }
-    
 }
 
 struct AppleUser {
@@ -118,8 +121,11 @@ struct AppleUser {
     init(credentials: ASAuthorizationAppleIDCredential) {
         
         self.id = credentials.user
+        
         self.firstName = credentials.fullName?.givenName ?? ""
+        
         self.lastName = credentials.fullName?.familyName ?? ""
+        
         self.email = credentials.email ?? ""
     }
 }
@@ -127,7 +133,9 @@ struct AppleUser {
 extension AppleUser: CustomDebugStringConvertible {
     
     var debugDescription: String {
+        
         return """
+        
         ID: \(id)
         First Name: \(firstName)
         Last Name: \(lastName)

@@ -59,13 +59,17 @@ class AchievementViewController: UIViewController {
                 self?.userRecord = record
                 
                 for distance in record {
+                    
                     self?.farthest.append(distance.distance)
                 }
+                
                 self?.farthest = self?.farthest.sorted { $0 > $1 } ?? [0.0]
                 
                 for time in record {
+                    
                     self?.oldest.append(time.time)
                 }
+                
                 self?.oldest = self?.oldest.sorted { $0 > $1 } ?? [0]
                 
             case .failure(let error):
@@ -74,7 +78,6 @@ class AchievementViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension AchievementViewController: UITableViewDelegate, UITableViewDataSource {

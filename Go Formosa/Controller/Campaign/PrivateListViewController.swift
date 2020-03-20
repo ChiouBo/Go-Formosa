@@ -184,7 +184,7 @@ class PrivateListViewController: UIViewController, UIViewControllerTransitioning
     }
     
     // MARK: - Transition
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         transition.transitionMode = .present
         transition.startingPoint = createBtn.center
@@ -242,7 +242,10 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Campaign", for: indexPath) as?
-            CampaignTableViewCell else { return UITableViewCell() }
+            CampaignTableViewCell else {
+                return UITableViewCell()
+                
+        }
         
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
@@ -282,7 +285,10 @@ extension PrivateListViewController: UITableViewDelegate, UITableViewDataSource 
         
         let content = UIStoryboard(name: "Campaign", bundle: nil)
         
-        guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else { return }
+        guard let contentVC = content.instantiateViewController(withIdentifier: "EventContent") as? ContentViewController else {
+            return
+            
+        }
         
         let data = filteredEvent[indexPath.row]
         

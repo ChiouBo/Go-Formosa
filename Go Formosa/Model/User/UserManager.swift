@@ -39,19 +39,38 @@ class UserManager {
             let picture = Auth.auth().currentUser?.photoURL?.absoluteString else {
                 return
         }
+        
         let image = "?width=400&height=400"
         
         let pictureString = "\(picture + image)"
         
-        let userInfo = UserInfo(id: id, name: name, email: email, picture: pictureString, introduction: "", coverImage: "", userLocation: "", eventCreate: [], event: [])
+        let userInfo = UserInfo(id: id, name: name, email: email, picture: pictureString,
+                                introduction: "", coverImage: "", userLocation: "", eventCreate: [], event: [], userFCM: "")
         
-        self.userDB.collection("users").document(id).setData(userInfo.todict) { (error) in
+        self.userDB.collection("Users").document(id).setData(userInfo.todict) { (error) in
             
             if let error = error {
                 
                 print(error.localizedDescription)
             }
             completion(.success("SaveUserData"))
+        }
+    }
+    
+    // MARK: - Save Users FCMToken
+    func uploadUserFCMToken(userFCM: String, completion: @escaping (Result<Void>) -> Void) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        userDB.collection("Users").document(uid).setData(["userFCM": userFCM], merge: true) { (error) in
+            
+            if let error = error {
+                
+                completion(.failure(error))
+            } else {
+                
+                completion(.success(()))
+            }
         }
     }
     
@@ -74,7 +93,7 @@ class UserManager {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        userDB.collection("users").document(uid).getDocument { (user, error) in
+        userDB.collection("Users").document(uid).getDocument { (user, error) in
             
             guard let user = user, error == nil else {
                 return
@@ -83,9 +102,12 @@ class UserManager {
             do {
                 guard let info = try user.data(as: UserInfo.self, decoder: Firestore.Decoder()) else {
                     completion(.failure(FirebaseLogin.noneLogin))
+                    
                     return
                 }
+                
                 completion(.success(info))
+                
             } catch {
                 
                 print("\(error.localizedDescription)")
@@ -96,11 +118,10 @@ class UserManager {
     }
     
     // MARK: - Upload Users Data
-    
     // swiftlint:disable function_parameter_count
     func uploadUserData(userID: String, userName: String, userIntro: String, coverImage: String, userImage: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        userDB.collection("users").document(userID).setData(["name": userName, "introduction": userIntro, "picture": userImage, "coverImage": coverImage], merge: true) { (error) in
+        userDB.collection("Users").document(userID).setData(["name": userName, "introduction": userIntro, "picture": userImage, "coverImage": coverImage], merge: true) { (error) in
             
             if let error = error {
 
@@ -116,10 +137,10 @@ class UserManager {
     // MARK: - Upload Record Data
     func saveRecordData(userRecord: UserRecord, completion: @escaping (Result<String>) -> Void ) {
         
-        let pathID = userDB.collection("users").document(userRecord.id).collection("Path").document().documentID
+        let pathID = userDB.collection("Users").document(userRecord.id).collection("Path").document().documentID
         
         do {
-            try userDB.collection("users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
+            try userDB.collection("Users").document(userRecord.id).collection("Path").document(pathID).setData(from: userRecord)
             
         } catch {
             
@@ -132,7 +153,7 @@ class UserManager {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        userDB.collection("users").document(uid).collection("Path").order(by: "date", descending: true).getDocuments { (snapshot, error) in
+        userDB.collection("Users").document(uid).collection("Path").order(by: "date", descending: true).getDocuments { (snapshot, error) in
             
             var recordData: [UserRecord] = []
             

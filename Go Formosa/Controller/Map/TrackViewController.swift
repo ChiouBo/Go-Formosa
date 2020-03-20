@@ -290,7 +290,6 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
     
     func getCurrentLocation() {
         
-        trackMap.delegate = self
         userLocationManager.delegate = self
         userLocationManager.startUpdatingLocation()
         trackMap.isMyLocationEnabled = true
@@ -336,10 +335,6 @@ class TrackViewController: UIViewController, CLLocationManagerDelegate {
         
         marker.map = trackMap
     }
-    
-}
-
-extension TrackViewController: GMSMapViewDelegate {
     
 }
 

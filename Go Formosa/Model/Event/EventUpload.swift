@@ -71,7 +71,7 @@ class UploadEvent {
         }
     }
     
-    // MARK: - Download Photo URL
+    // MARK: - Store Photo at Storage & Download Photo URL
     func storage(uniqueString: String, data: Data, completion: @escaping (Result<URL>) -> Void ) {
         // swiftlint:disable unused_closure_parameter
         let uploadData = data
@@ -164,12 +164,12 @@ class UploadEvent {
         }
     }
     
-    // MARK: - Request Event
+    // MARK: - Making Request to Event
     func requestEvent(userRequest: UserInfo, event: EventCurrent, completion: @escaping (Result<String>) -> Void ) {
         
         guard let userUid = Auth.auth().currentUser?.uid else { return }
         
-        let ref: DocumentReference = eventDB.collection("users").document(userUid)
+        let ref: DocumentReference = eventDB.collection("Users").document(userUid)
         
         eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayUnion([ref])])
         
@@ -210,7 +210,7 @@ class UploadEvent {
         }
     }
     
-    // MARK: - Load Member to Event
+    // MARK: - Upload Member to Event
     func loadMemberUserInfo(event: EventCurrent, completion: @escaping (Swift.Result<[UserInfo], Error>) -> Void) {
         
         print(event.eventID)
@@ -243,10 +243,10 @@ class UploadEvent {
         }
     }
     
-    // MARK: - Bring User to Event Mamber
+    // MARK: - Bring Waitinglist to Mamberlist
     func acceptRequestUser(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        let ref = eventDB.collection("users").document(uid)
+        let ref = eventDB.collection("Users").document(uid)
         
         let eventRef = eventDB.collection("Event").document(event.eventID)
         
@@ -258,9 +258,9 @@ class UploadEvent {
         
         eventDB.collection("Event").document(event.eventID).updateData(["memberList": FieldValue.arrayUnion([ref])])
         
-        eventDB.collection("users").document(uid).updateData(["event": FieldValue.arrayUnion([eventRef])])
+        eventDB.collection("Users").document(uid).updateData(["event": FieldValue.arrayUnion([eventRef])])
         
-        eventDB.collection("users").document(currentUid).updateData(["eventCreate": FieldValue.arrayUnion([eventRef])])
+        eventDB.collection("Users").document(currentUid).updateData(["eventCreate": FieldValue.arrayUnion([eventRef])])
         
         completion(.success(()))
     }
@@ -268,7 +268,7 @@ class UploadEvent {
     // MARK: - Delete Member
     func deleteMember(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        let ref = eventDB.collection("users").document(uid)
+        let ref = eventDB.collection("Users").document(uid)
         
         eventDB.collection("Event").document(event.eventID).updateData(["requestList": FieldValue.arrayRemove([ref.documentID])])
         
@@ -284,10 +284,10 @@ class UploadEvent {
         }
     }
     
-    // MARK: - Delete Request
+    // MARK: - Reject Request
     func deleteRequest(event: EventCurrent, uid: String, completion: @escaping (Result<Void>) -> Void ) {
         
-        let ref = eventDB.collection("users").document(uid)
+        let ref = eventDB.collection("Users").document(uid)
         
         eventDB.collection("Event").document(event.eventID).updateData(["waitingList": FieldValue.arrayRemove([ref])]) { (error) in
             

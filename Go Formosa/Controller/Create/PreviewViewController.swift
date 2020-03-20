@@ -12,6 +12,10 @@ import FirebaseFirestore
 
 class PreviewViewController: UIViewController {
     
+    var data: EventContent?
+    
+    var seletedImage = UIImage()
+    
     @IBOutlet weak var preView: UIView!
     
     @IBOutlet weak var preTableView: UITableView!
@@ -24,8 +28,6 @@ class PreviewViewController: UIViewController {
     @IBOutlet weak var previewDismiss: UIButton!
     
     @IBOutlet weak var eventCancel: UIButton!
-    
-    var seletedImage = UIImage()
     
     @IBAction func eventCancel(_ sender: UIButton) {
                 
@@ -65,11 +67,10 @@ class PreviewViewController: UIViewController {
         preView.layer.shadowColor = UIColor.lightGray.cgColor
     }
     
-    var data: EventContent?
-    
 }
 
 extension PreviewViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1
