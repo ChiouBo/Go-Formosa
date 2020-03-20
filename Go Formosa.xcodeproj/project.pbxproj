@@ -122,11 +122,10 @@
 		05EAE61023ED51CB0033BA6C /* CircleTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05EAE60F23ED51CB0033BA6C /* CircleTransition.swift */; };
 		05F4E03E23F8F82A00D0B778 /* GoogleMap.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E03D23F8F82A00D0B778 /* GoogleMap.json */; };
 		05F4E04323F92DCB00D0B778 /* MapDarkMode.json in Resources */ = {isa = PBXBuildFile; fileRef = 05F4E04223F92DCB00D0B778 /* MapDarkMode.json */; };
-		122D2483241F497C00820293 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 122D2482241F497C00820293 /* Info.plist */; };
 		122D24862422606700820293 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122D24852422606700820293 /* PushNotification.swift */; };
 		122D24882423563C00820293 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122D24872423563C00820293 /* NotificationManager.swift */; };
 		12C43DC02417A7E700C7B4D0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */; };
-		7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */; };
+		2F42E4E49641CEE6DF30FB5D /* Pods_Go_Formosa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2D3727C67FEFE6D3EA81D81 /* Pods_Go_Formosa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -251,9 +250,9 @@
 		122D24852422606700820293 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		122D24872423563C00820293 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		12C43DBF2417A7E700C7B4D0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.release.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.release.xcconfig"; sourceTree = "<group>"; };
-		BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Hiking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Hiking.debug.xcconfig"; path = "Target Support Files/Pods-Go Hiking/Pods-Go Hiking.debug.xcconfig"; sourceTree = "<group>"; };
+		2011AE1AB6285F10A92A8488 /* Pods-Go Formosa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Formosa.release.xcconfig"; path = "Target Support Files/Pods-Go Formosa/Pods-Go Formosa.release.xcconfig"; sourceTree = "<group>"; };
+		A2D3727C67FEFE6D3EA81D81 /* Pods_Go_Formosa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Go_Formosa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA841B512C98F452939B859A /* Pods-Go Formosa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Go Formosa.debug.xcconfig"; path = "Target Support Files/Pods-Go Formosa/Pods-Go Formosa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7854C137BAE75D4B866E3C22 /* Pods_Go_Hiking.framework in Frameworks */,
 				05BF08F523E3349C009CED63 /* Accelerate.framework in Frameworks */,
+				2F42E4E49641CEE6DF30FB5D /* Pods_Go_Formosa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,8 +655,8 @@
 		4680AE3ECEA40BE318569B7F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */,
-				B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */,
+				FA841B512C98F452939B859A /* Pods-Go Formosa.debug.xcconfig */,
+				2011AE1AB6285F10A92A8488 /* Pods-Go Formosa.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -666,7 +665,7 @@
 			isa = PBXGroup;
 			children = (
 				05BF08F423E3349C009CED63 /* Accelerate.framework */,
-				BF982935F425F9369927AC2C /* Pods_Go_Hiking.framework */,
+				A2D3727C67FEFE6D3EA81D81 /* Pods_Go_Formosa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -678,13 +677,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 058873C423DB4AA100B1612F /* Build configuration list for PBXNativeTarget "Go Formosa" */;
 			buildPhases = (
-				BD9EBBFC0408CDE2D9630035 /* [CP] Check Pods Manifest.lock */,
+				CC2A1322F7B95BB3DE1C307C /* [CP] Check Pods Manifest.lock */,
 				058873A923DB4A9B00B1612F /* Sources */,
 				058873AA23DB4A9B00B1612F /* Frameworks */,
 				058873AB23DB4A9B00B1612F /* Resources */,
-				CDC90E3CF07FE293E31DCA2B /* [CP] Embed Pods Frameworks */,
-				004A02A488FA5CBC07F21B13 /* [CP] Copy Pods Resources */,
 				12C43DC1241B72FE00C7B4D0 /* ShellScript */,
+				47DF6922A23B0FCCBB8BCEED /* [CP] Embed Pods Frameworks */,
+				F86FE6CD693AFD00A74387F4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -749,7 +748,6 @@
 				05BF08C823E1AC16009CED63 /* Campaign.storyboard in Resources */,
 				058873BD23DB4AA100B1612F /* Assets.xcassets in Resources */,
 				053441E1240A37BE0021CFA8 /* MemberTableViewCell.xib in Resources */,
-				122D2483241F497C00820293 /* Info.plist in Resources */,
 				05BF08C023E1AB54009CED63 /* Trail.storyboard in Resources */,
 				05A83C3D23EAAB710004B38C /* TrailLocationTableViewCell.xib in Resources */,
 				051E6AAD23FC0E9A000D942D /* GoogleService-Info.plist in Resources */,
@@ -768,23 +766,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		004A02A488FA5CBC07F21B13 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		12C43DC1241B72FE00C7B4D0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -802,7 +783,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		BD9EBBFC0408CDE2D9630035 /* [CP] Check Pods Manifest.lock */ = {
+		47DF6922A23B0FCCBB8BCEED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Go Formosa/Pods-Go Formosa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Go Formosa/Pods-Go Formosa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Go Formosa/Pods-Go Formosa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC2A1322F7B95BB3DE1C307C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -817,28 +815,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Go Hiking-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Go Formosa-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CDC90E3CF07FE293E31DCA2B /* [CP] Embed Pods Frameworks */ = {
+		F86FE6CD693AFD00A74387F4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Go Formosa/Pods-Go Formosa-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Go Formosa/Pods-Go Formosa-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Go Hiking/Pods-Go Hiking-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Go Formosa/Pods-Go Formosa-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1078,7 +1076,7 @@
 		};
 		058873C523DB4AA100B1612F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DAAC93C6DD903529BD89EC57 /* Pods-Go Hiking.debug.xcconfig */;
+			baseConfigurationReference = FA841B512C98F452939B859A /* Pods-Go Formosa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -1091,7 +1089,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1257,7 +1255,7 @@
 		};
 		058873C623DB4AA100B1612F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B81F904271B5D86310646928 /* Pods-Go Hiking.release.xcconfig */;
+			baseConfigurationReference = 2011AE1AB6285F10A92A8488 /* Pods-Go Formosa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
@@ -1270,7 +1268,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

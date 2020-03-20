@@ -314,7 +314,7 @@ extension MessageViewController: MessagesDataSource {
 
 // MARK: - MessageInputBarDelegate
 
-extension MessageViewController: MessageInputBarDelegate {
+extension MessageViewController: InputBarAccessoryViewDelegate {
     
     @objc func tapSend() {
         guard let text = messageInputBar.inputTextView.text,
