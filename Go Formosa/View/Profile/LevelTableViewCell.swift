@@ -16,7 +16,6 @@ class LevelTableViewCell: UITableViewCell {
     
     @IBOutlet weak var levelPoint: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
